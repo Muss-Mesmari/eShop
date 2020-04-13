@@ -65,18 +65,28 @@ namespace eShop.Web.Controllers
         // POST: Event/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Event newEvent)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var _newEvent = new Event()
+                {
+                    Name = newEvent.Name,
+                    ShortDescription = newEvent.ShortDescription,
+                    LongDescription = newEvent.LongDescription,
+                    Price = newEvent.Price,
+                    ImageUrl = newEvent.ImageUrl,
+                    IsHighlightedEvent = newEvent.IsHighlightedEvent,
+                    InStock = newEvent.InStock,
+                    Category = newEvent.Category,
+                };
 
-                return RedirectToAction(nameof(Index));
+                _newEvent = _eventRepository.CreateEvent(newEvent);
+
+                return RedirectToAction(nameof(Details), new { id = _newEvent.EventId });
             }
-            catch
-            {
-                return View();
-            }
+
+            return View();
         }
 
         // GET: Event/Edit/5

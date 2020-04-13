@@ -39,5 +39,12 @@ namespace eShop.Data.Repository
             return _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId);
         }
 
+        public Event CreateEvent(Event newEvent)
+        {
+            newEvent.EventId = _eShopDbContext.Events.Max(e => e.EventId) + 1;
+            _eShopDbContext.Events.Add(newEvent);
+            return newEvent;
+        }
+
     }
 }

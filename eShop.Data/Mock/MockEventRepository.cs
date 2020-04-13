@@ -22,7 +22,10 @@ namespace eShop.Data.Mock
 
         public IEnumerable<Event> IsHighlightedEvent { get; }
 
-
+        public Event CreateEvent(Event newEvent)
+        {
+            throw new NotImplementedException();
+        }
 
         public Event GetEventById(int? eventId)
         {
