@@ -12,7 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using eShop.Data.Data;
-
+using eShop.Data.IRepository;
+using eShop.Data.Repository;
 
 namespace eShop.Web
 {
@@ -34,9 +35,9 @@ namespace eShop.Web
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<eShopDbContext>();
 
-            //services.AddScoped<ICategoryRepository, CategoryRepository>();
-            //services.AddScoped<IProductRepository, ProductRepository>();
-            //services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             //services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
 
             services.AddHttpContextAccessor();
