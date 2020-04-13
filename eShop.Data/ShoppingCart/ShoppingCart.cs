@@ -1,5 +1,5 @@
 ﻿using eShop.Data.Data;
-using eShop.infrastructure.Models;
+using eShop.Infrastructure.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;

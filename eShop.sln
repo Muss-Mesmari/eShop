@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Web", "eShop.Web.csproj", "{D4076409-295B-4043-9CCF-57513B6744AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.infrastructure", "eShop.infrastructure\eShop.infrastructure.csproj", "{A9C3A637-1014-4B83-B559-35049E1674DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Infrastructure", "eShop.infrastructure\eShop.Infrastructure.csproj", "{A9C3A637-1014-4B83-B559-35049E1674DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Data", "eShop.Data\eShop.Data.csproj", "{8B9E2C14-28CA-4E46-A349-54C69B27E2EF}"
 EndProject

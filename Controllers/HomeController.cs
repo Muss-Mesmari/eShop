@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using eShop.Web.Models;
 
-namespace eShop.Controllers
+namespace eShop.Web.Controllers
 {
     public class HomeController : Controller
     {

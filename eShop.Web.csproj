@@ -19,10 +19,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="eShop.Data\eShop.Data.csproj" />
-    <ProjectReference Include="eShop.infrastructure\eShop.infrastructure.csproj" />
+    <ProjectReference Include="eShop.infrastructure\eShop.Infrastructure.csproj" />
   </ItemGroup>
 </Project>
