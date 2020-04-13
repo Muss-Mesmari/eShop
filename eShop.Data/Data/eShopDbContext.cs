@@ -29,7 +29,7 @@ namespace eShop.Data.Data
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 2, CategoryName = "Category Two" });
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 3, CategoryName = "Category Three" });
 
-            //seed products
+            //seed events
 
             modelBuilder.Entity<Event>().HasData(new Event
             {

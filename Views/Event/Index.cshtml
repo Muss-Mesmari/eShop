@@ -1,0 +1,9 @@
+﻿@model eShop.Web.ViewModels.EventsListViewModel
+
+
+<h1>@Model.CurrentCategory</h1>
+
+@foreach (var item in Model.Events)
+ {
+    <partial name="_EventCard" model="item"/>
+ }
