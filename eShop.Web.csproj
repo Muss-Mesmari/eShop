@@ -4,9 +4,19 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>eShop</UserSecretsId>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="eShop.Data\**" />
+    <Compile Remove="eShop.Infrastructure\**" />
+    <Content Remove="eShop.Data\**" />
+    <Content Remove="eShop.Infrastructure\**" />
+    <EmbeddedResource Remove="eShop.Data\**" />
+    <EmbeddedResource Remove="eShop.Infrastructure\**" />
+    <None Remove="eShop.Data\**" />
+    <None Remove="eShop.Infrastructure\**" />
+  </ItemGroup>
 
 
   <ItemGroup>

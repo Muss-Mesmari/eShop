@@ -37,7 +37,7 @@ namespace eShop.Web
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
+            //services.AddScoped<IOrderRepository, OrderRepository>();
             //services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
 
             services.AddHttpContextAccessor();

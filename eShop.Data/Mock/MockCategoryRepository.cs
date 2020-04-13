@@ -1,5 +1,5 @@
 ﻿using eShop.Data.IRepository;
-using eShop.infrastructure.Models;
+using eShop.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
