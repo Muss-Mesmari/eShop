@@ -6,21 +6,39 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using eShop.Web.Models;
+using eShop.Data.IRepository;
+using eShop.Web.ViewModels;
 
 namespace eShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        // private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+
+        //public IActionResult Index()
+        //{
+        //     return View();
+        //}
+
+        private readonly IEventRepository _eventRepository;
+
+        public HomeController(IEventRepository eventRepository)
         {
-            _logger = logger;
+            _eventRepository = eventRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                IsHighlightedEvent = _eventRepository.IsHighlightedEvent
+            };
+
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()
