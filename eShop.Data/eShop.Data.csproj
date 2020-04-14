@@ -20,10 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\eShop.infrastructure\eShop.Infrastructure.csproj" />
   </ItemGroup>
 

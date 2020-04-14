@@ -65,29 +65,26 @@ namespace eShop.Web.Controllers
         // POST: Event/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Event newEvent)
+        public IActionResult Create(Event newEvent)
         {
             if (ModelState.IsValid)
-            {
-                var _newEvent = new Event()
-                {
-                    Name = newEvent.Name,
-                    ShortDescription = newEvent.ShortDescription,
-                    LongDescription = newEvent.LongDescription,
-                    Price = newEvent.Price,
-                    ImageUrl = newEvent.ImageUrl,
-                    IsHighlightedEvent = newEvent.IsHighlightedEvent,
-                    InStock = newEvent.InStock,
-                    Category = newEvent.Category,
-                };
-
-                _newEvent = _eventRepository.CreateEvent(newEvent);
-
-                return RedirectToAction(nameof(Details), new { id = _newEvent.EventId });
+            {                
+                _eventRepository.CreateEvent(newEvent);
+                return RedirectToAction(nameof(Details), new { id = _eventRepository.AllEvents.Max(e => e.EventId) });
+               // return RedirectToAction("SeedComplete");
             }
 
-            return View();
+            return View(newEvent);
         }
+
+        //public IActionResult SeedComplete()
+        //{
+        //    ViewBag.SeedCompleteMessage = "Thanks for adding the event!";            
+
+        //    RedirectToAction(nameof(Details), new { id = _eventRepository.AllEvents.Max(e => e.EventId)});
+
+        //    return View();
+        //}
 
         // GET: Event/Edit/5
         public ActionResult Edit(int id)
