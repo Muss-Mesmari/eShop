@@ -46,7 +46,7 @@ namespace eShop.Web.Controllers
         }
 
         // GET: Event/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Details(int id)
         {
             var model = _eventRepository.GetEventById(id);
             if (model == null)
@@ -57,9 +57,12 @@ namespace eShop.Web.Controllers
         }
 
         // GET: Event/Create
-        public ActionResult Create()
-        {
-            return View();
+        public IActionResult Create()
+        {           
+            CRUDEventsViewModel Category = new CRUDEventsViewModel();
+            Category.Categories = _categoryRepository.PopulateCategories();
+            return View(Category);
+           // return View();                       
         }
 
         // POST: Event/Create
@@ -76,15 +79,6 @@ namespace eShop.Web.Controllers
 
             return View(newEvent);
         }
-
-        //public IActionResult SeedComplete()
-        //{
-        //    ViewBag.SeedCompleteMessage = "Thanks for adding the event!";            
-
-        //    RedirectToAction(nameof(Details), new { id = _eventRepository.AllEvents.Max(e => e.EventId)});
-
-        //    return View();
-        //}
 
         // GET: Event/Edit/5
         public ActionResult Edit(int id)
