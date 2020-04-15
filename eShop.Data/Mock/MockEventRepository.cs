@@ -31,5 +31,10 @@ namespace eShop.Data.Mock
         {
             return AllEvents.FirstOrDefault(e => e.EventId == eventId);
         }
+
+        public void UpdateEvent(Event oldEvent)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

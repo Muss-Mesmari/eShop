@@ -72,31 +72,31 @@ namespace eShop.Web.Controllers
                 _eventRepository.CreateEvent(newEvent);
                 return RedirectToAction(nameof(Details), new { id = _eventRepository.AllEvents.Max(e => e.EventId) });  
             }
-
-            return View(newEvent);
+            return View();
         }
 
         // GET: Event/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Edit(int id)
         {
-            return View();
+            var model = _eventRepository.GetEventById(id);
+            if (model == null)
+            {
+                return View("NotFound");
+            }
+            return View(model);
         }
 
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, Event newEvent)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
+                _eventRepository.UpdateEvent(newEvent);
+                return RedirectToAction(nameof(Details), new { id = newEvent.EventId });
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Event/Delete/5

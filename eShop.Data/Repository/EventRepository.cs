@@ -54,8 +54,27 @@ namespace eShop.Data.Repository
                 CategoryId = newEvent.CategoryId
             };
             _eShopDbContext.Events.Add(_newEvent);
-            _eShopDbContext.SaveChanges();           
+            _eShopDbContext.SaveChanges();
         }
 
+        public void UpdateEvent(Event newEvent)
+        {            
+            if (newEvent != null)
+            {
+                newEvent.Name = newEvent.Name;
+                newEvent.ShortDescription = newEvent.ShortDescription;
+                newEvent.LongDescription = newEvent.LongDescription;
+                newEvent.Price = newEvent.Price;
+                newEvent.ImageUrl = newEvent.ImageUrl;
+                newEvent.IsHighlightedEvent = newEvent.IsHighlightedEvent;
+                newEvent.InStock = newEvent.InStock;
+                newEvent.Category = newEvent.Category;
+                newEvent.CategoryId = newEvent.CategoryId;
+            }
+
+            var entity = _eShopDbContext.Entry(newEvent);
+            entity.State = EntityState.Modified;
+            _eShopDbContext.SaveChanges();
+        }  
     }
 }

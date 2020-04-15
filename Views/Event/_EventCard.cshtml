@@ -2,9 +2,9 @@
 
 <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
-        <img src="@Model.ImageUrl" alt="product" usemap="#eventmap">
+        <img src="@Model.ImageUrl" alt="event" usemap="#eventmap">
         <map name="#eventmap">
-            <area shape="default" alt="event" href="/Event/Details/@Model.EventId">
+            <area shape="default" alt="event" href="/Product/Details/@Model.EventId">
         </map>
         <div class="caption">
             <h3 class="pull-right">@Model.Price.ToString("C")</h3>
@@ -18,7 +18,7 @@
                 <a id="btn" class="btn btn-primary"
                    asp-controller="ShoppingCart"
                    asp-action="AddToShoppingCart"
-                   asp-route-productId="@Model.EventId">Add to cart</a>
+                   asp-route-eventId="@Model.EventId">Add to cart</a>
             </p>
         </div>*@
     </div>

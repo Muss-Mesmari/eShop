@@ -4,87 +4,91 @@
     ViewData["Title"] = "Details";
 }
 
-    <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-            <img src="@Model.ImageUrl" alt="product" usemap="#eventmap">
-            <map name="#eventmap">
-                <area shape="default" alt="event" href="/Event/Details/@Model.EventId">
-            </map>
-            <div class="caption">
-                <h3 class="pull-right">@Model.Price.ToString("C")</h3>
-                <h3>
-                    <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.EventId">@Model.Name</a>
-                </h3>
-                <p>@Model.ShortDescription</p>
-            </div>
-            @*<div class="addToCart">
-                <p class="button">
-                    <a id="btn" class="btn btn-primary"
-                       asp-controller="ShoppingCart"
-                       asp-action="AddToShoppingCart"
-                       asp-route-productId="@Model.EventId">Add to cart</a>
-                </p>
-            </div>*@
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <img src="@Model.ImageUrl" alt="product" usemap="#eventmap">
+        <map name="#eventmap">
+            <area shape="default" alt="event" href="/Event/Details/@Model.EventId">
+        </map>
+        <div class="caption">
+            <h3 class="pull-right">@Model.Price.ToString("C")</h3>
+            <h3>
+                <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.EventId">@Model.Name</a>
+            </h3>
+            <p>@Model.ShortDescription</p>
         </div>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.EventId }) |
+        @*<div class="addToCart">
+            <p class="button">
+                <a id="btn" class="btn btn-primary"
+                   asp-controller="ShoppingCart"
+                   asp-action="AddToShoppingCart"
+                   asp-route-productId="@Model.EventId">Add to cart
+                 </a>
+            </p>
+        </div>*@
     </div>
+</div>
+
+
 
 @*<h1>Details</h1>
 
-<div>
-    <h4>Event</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ShortDescription)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ShortDescription)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LongDescription)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LongDescription)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IsHighlightedEvent)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IsHighlightedEvent)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.InStock)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.InStock)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Category.CategoryId)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.EventId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>*@
+    <div>
+        <h4>Event</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ShortDescription)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LongDescription)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LongDescription)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IsHighlightedEvent)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IsHighlightedEvent)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.InStock)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.InStock)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Category.CategoryId)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.EventId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>*@

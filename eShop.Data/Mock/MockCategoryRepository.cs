@@ -15,7 +15,5 @@ namespace eShop.Data.Mock
                 new Category{CategoryId=2, CategoryName="Category Two", Description="All events of category two"},
                 new Category{CategoryId=3, CategoryName="Category Three", Description="All events of category three"}
         };
-
-
     }
 }

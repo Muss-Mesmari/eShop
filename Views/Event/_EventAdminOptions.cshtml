@@ -1,0 +1,10 @@
+﻿@model eShop.Infrastructure.Models.Event
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel_title">@Model.Name</h3>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.EventId }) |
+        @Html.ActionLink("Details", "Details", new { id = Model.EventId }) |
+        @*@Html.ActionLink("Delete", "Delete", new { id = Model.EventId })*@
+    </div>
+</div>

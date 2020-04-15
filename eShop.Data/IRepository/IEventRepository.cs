@@ -11,5 +11,6 @@ namespace eShop.Data.IRepository
         IEnumerable<Event> IsHighlightedEvent { get; }
         Event GetEventById(int? eventId);
         void CreateEvent(Event newEvent);
+        void UpdateEvent(Event oldEvent);
     }
 }
