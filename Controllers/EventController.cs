@@ -59,10 +59,7 @@ namespace eShop.Web.Controllers
         // GET: Event/Create
         public IActionResult Create()
         {           
-            CRUDEventsViewModel Category = new CRUDEventsViewModel();
-            Category.Categories = _categoryRepository.PopulateCategories();
-            return View(Category);
-           // return View();                       
+            return View();                       
         }
 
         // POST: Event/Create
@@ -73,8 +70,7 @@ namespace eShop.Web.Controllers
             if (ModelState.IsValid)
             {                
                 _eventRepository.CreateEvent(newEvent);
-                return RedirectToAction(nameof(Details), new { id = _eventRepository.AllEvents.Max(e => e.EventId) });
-               // return RedirectToAction("SeedComplete");
+                return RedirectToAction(nameof(Details), new { id = _eventRepository.AllEvents.Max(e => e.EventId) });  
             }
 
             return View(newEvent);

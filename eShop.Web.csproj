@@ -36,4 +36,8 @@
     <ProjectReference Include="eShop.Data\eShop.Data.csproj" />
     <ProjectReference Include="eShop.infrastructure\eShop.Infrastructure.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
 </Project>

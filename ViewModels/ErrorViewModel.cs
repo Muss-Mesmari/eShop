@@ -1,6 +1,6 @@
 using System;
 
-namespace eShop.Web.Models
+namespace eShop.Web.ViewModels
 {
     public class ErrorViewModel
     {

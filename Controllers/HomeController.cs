@@ -5,9 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using eShop.Web.Models;
-using eShop.Data.IRepository;
 using eShop.Web.ViewModels;
+using eShop.Data.IRepository;
 
 namespace eShop.Web.Controllers
 {

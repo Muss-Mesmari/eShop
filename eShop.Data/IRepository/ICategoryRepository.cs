@@ -9,6 +9,6 @@ namespace eShop.Data.IRepository
     public interface ICategoryRepository
     {
         IEnumerable<Category> AllCategories { get; }
-        List<SelectListItem> PopulateCategories();
+      
     }
 }
