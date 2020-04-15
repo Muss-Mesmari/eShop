@@ -75,6 +75,16 @@ namespace eShop.Data.Repository
             var entity = _eShopDbContext.Entry(newEvent);
             entity.State = EntityState.Modified;
             _eShopDbContext.SaveChanges();
-        }  
+        }
+
+        public void DeleteEvent(int id)
+        {
+            var removedEvent = GetEventById(id);
+            if (removedEvent != null)
+            {
+               _eShopDbContext.Remove(removedEvent);
+                _eShopDbContext.SaveChanges();
+            }
+        }
     }
 }

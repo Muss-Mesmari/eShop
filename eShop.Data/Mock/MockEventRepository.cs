@@ -27,6 +27,11 @@ namespace eShop.Data.Mock
             throw new NotImplementedException();
         }
 
+        public void DeleteEvent(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Event GetEventById(int? eventId)
         {
             return AllEvents.FirstOrDefault(e => e.EventId == eventId);

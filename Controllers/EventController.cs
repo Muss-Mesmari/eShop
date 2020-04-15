@@ -100,26 +100,26 @@ namespace eShop.Web.Controllers
         }
 
         // GET: Event/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
-            return View();
+            var model = _eventRepository.GetEventById(id);
+            if (model == null)
+            {
+                return View("NotFound");
+            }
+            return View(model);
         }
 
         // POST: Event/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id, Event removedEvent)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
+                _eventRepository.DeleteEvent(id);              
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

@@ -12,5 +12,6 @@ namespace eShop.Data.IRepository
         Event GetEventById(int? eventId);
         void CreateEvent(Event newEvent);
         void UpdateEvent(Event oldEvent);
+        void DeleteEvent(int id);
     }
 }
