@@ -10,5 +10,7 @@ namespace eShop.Web.ViewModels
     {
         public IEnumerable<Event> Events { get; set; }
         public string CurrentCategory { get; set; }
+
+        
     }
 }

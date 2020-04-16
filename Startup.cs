@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using eShop.Data.Data;
 using eShop.Data.IRepository;
 using eShop.Data.Repository;
+using eShop.Data;
 
 namespace eShop.Web
 {
@@ -37,8 +38,8 @@ namespace eShop.Web
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
-            //services.AddScoped<IOrderRepository, OrderRepository>();
-            //services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
 
             services.AddHttpContextAccessor();
             services.AddSession();

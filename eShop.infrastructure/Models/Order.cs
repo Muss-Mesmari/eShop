@@ -29,7 +29,7 @@ namespace eShop.Infrastructure.Models
 
         [Required(ErrorMessage = "Please enter your dance level")]
         [Display(Name = "Dance level")]
-        public DanceRole DanceLevel { get; set; }
+        public DanceLevel DanceLevel { get; set; }
 
         [Required(ErrorMessage = "Please enter your country")]
         [StringLength(50)]
