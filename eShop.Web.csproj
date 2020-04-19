@@ -9,15 +9,19 @@
 
   <ItemGroup>
     <Compile Remove="eShop.Data\**" />
+    <Compile Remove="eShop.Identity\**" />
     <Compile Remove="eShop.Infrastructure\**" />
     <Compile Remove="eShop.Services\**" />
     <Content Remove="eShop.Data\**" />
+    <Content Remove="eShop.Identity\**" />
     <Content Remove="eShop.Infrastructure\**" />
     <Content Remove="eShop.Services\**" />
     <EmbeddedResource Remove="eShop.Data\**" />
+    <EmbeddedResource Remove="eShop.Identity\**" />
     <EmbeddedResource Remove="eShop.Infrastructure\**" />
     <EmbeddedResource Remove="eShop.Services\**" />
     <None Remove="eShop.Data\**" />
+    <None Remove="eShop.Identity\**" />
     <None Remove="eShop.Infrastructure\**" />
     <None Remove="eShop.Services\**" />
   </ItemGroup>
@@ -38,6 +42,7 @@
 
   <ItemGroup>
     <ProjectReference Include="eShop.Data\eShop.Data.csproj" />
+    <ProjectReference Include="eShop.Identity\eShop.Identity.csproj" />
     <ProjectReference Include="eShop.infrastructure\eShop.Infrastructure.csproj" />
   </ItemGroup>
 
