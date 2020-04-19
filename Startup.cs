@@ -33,6 +33,7 @@ namespace eShop.Web
             services.AddDbContext<eShopDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<eShopDbContext>();
 
