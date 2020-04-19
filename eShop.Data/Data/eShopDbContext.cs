@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using eShop.Infrastructure.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace eShop.Data.Data
 {
-    public class eShopDbContext : IdentityDbContext
+    public class eShopDbContext : IdentityDbContext<IdentityUser>
     {
         public eShopDbContext(DbContextOptions<eShopDbContext> options)
             : base(options)
