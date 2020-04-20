@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using eShop.Services.IRepository;
 using eShop.Data.Entities;
-using eShop.Services.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using eShop.Presentation.ViewModels;
 
 namespace eShop.Web.Controllers
 {

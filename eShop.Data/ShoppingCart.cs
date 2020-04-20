@@ -14,14 +14,19 @@ namespace eShop.Services
     {
         private readonly eShopDbContext _eShopDbContext;
 
-        public string ShoppingCartId { get; set; }
-
-        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         private ShoppingCart(eShopDbContext eShopDbContext)
         {
             _eShopDbContext = eShopDbContext;
         }
+
+        private ShoppingCart()
+        {
+        }
+
+        public string ShoppingCartId { get; set; }
+
+        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         public static ShoppingCart GetCart(IServiceProvider services)
         {

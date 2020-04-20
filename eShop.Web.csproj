@@ -11,21 +11,25 @@
     <Compile Remove="eShop.Data\**" />
     <Compile Remove="eShop.Identity\**" />
     <Compile Remove="eShop.Infrastructure\**" />
+    <Compile Remove="eShop.Presentation\**" />
     <Compile Remove="eShop.Services\**" />
     <Compile Remove="ViewModels\**" />
     <Content Remove="eShop.Data\**" />
     <Content Remove="eShop.Identity\**" />
     <Content Remove="eShop.Infrastructure\**" />
+    <Content Remove="eShop.Presentation\**" />
     <Content Remove="eShop.Services\**" />
     <Content Remove="ViewModels\**" />
     <EmbeddedResource Remove="eShop.Data\**" />
     <EmbeddedResource Remove="eShop.Identity\**" />
     <EmbeddedResource Remove="eShop.Infrastructure\**" />
+    <EmbeddedResource Remove="eShop.Presentation\**" />
     <EmbeddedResource Remove="eShop.Services\**" />
     <EmbeddedResource Remove="ViewModels\**" />
     <None Remove="eShop.Data\**" />
     <None Remove="eShop.Identity\**" />
     <None Remove="eShop.Infrastructure\**" />
+    <None Remove="eShop.Presentation\**" />
     <None Remove="eShop.Services\**" />
     <None Remove="ViewModels\**" />
   </ItemGroup>
@@ -47,7 +51,8 @@
   <ItemGroup>
     <ProjectReference Include="eShop.Data\eShop.Data.csproj" />
     <ProjectReference Include="eShop.Identity\eShop.Identity.csproj" />
-    <ProjectReference Include="eShop.infrastructure\eShop.Services.csproj" />
+    <ProjectReference Include="eShop.Presentation\eShop.Presentation.csproj" />
+    <ProjectReference Include="eShop.Services\eShop.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

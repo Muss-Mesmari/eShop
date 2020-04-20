@@ -1,7 +1,7 @@
 ﻿using eShop.Data.Data;
 using eShop.Services.IRepository;
 using eShop.Data.Entities;
-using eShop.Services.ViewModels;
+using eShop.Presentation.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

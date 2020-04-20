@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace eShop.Services.ViewModels
+namespace eShop.Presentation.ViewModels
 {
     public class HomeViewModel
     {

@@ -1,6 +1,6 @@
 ﻿using eShop.Data;
+using eShop.Presentation.ViewModels;
 using eShop.Services;
-using eShop.Services.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

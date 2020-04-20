@@ -1,5 +1,5 @@
 ﻿using eShop.Data.Entities;
-using eShop.Services.ViewModels;
+using eShop.Presentation.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
