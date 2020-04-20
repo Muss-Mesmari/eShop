@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using eShop.Data.IRepository;
-using eShop.Infrastructure.Models;
-using eShop.Web.ViewModels;
+using eShop.Services.IRepository;
+using eShop.Data.Entities;
+using eShop.Services.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -58,14 +58,19 @@ namespace eShop.Web.Controllers
 
         // GET: Event/Create
         public IActionResult Create()
-        {           
-            return View();                       
+        {
+            var viewModel = new EventCreateEditViewModel
+            {
+                Categories = _categoryRepository.AllCategories.ToList()
+
+            };
+            return View(viewModel);                       
         }
 
         // POST: Event/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Event newEvent)
+        public IActionResult Create(EventCreateEditViewModel newEvent)
         {
             if (ModelState.IsValid)
             {                
@@ -78,23 +83,35 @@ namespace eShop.Web.Controllers
         // GET: Event/Edit/5
         public IActionResult Edit(int id)
         {
-            var model = _eventRepository.GetEventById(id);
-            if (model == null)
+
+            //var model = _eventRepository.GetEventById(id);
+            //if (model == null)
+            //{
+            //    return View("NotFound");
+            //}
+            //return View(model);
+
+            var viewModel = new EventCreateEditViewModel
+            {
+                Categories = _categoryRepository.AllCategories.ToList(),
+                Event = _eventRepository.GetEventById(id)
+            };
+            if (viewModel == null)
             {
                 return View("NotFound");
             }
-            return View(model);
+            return View(viewModel);
         }
 
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Event newEvent)
+        public IActionResult Edit(int id, EventCreateEditViewModel newEvent)
         {
             if (ModelState.IsValid)
             {
                 _eventRepository.UpdateEvent(newEvent);
-                return RedirectToAction(nameof(Details), new { id = newEvent.EventId });
+                return RedirectToAction(nameof(Details), new { id = newEvent.Event.EventId });
             }
             return View();
         }

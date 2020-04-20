@@ -1,11 +1,12 @@
 ﻿using eShop.Data.Data;
-using eShop.Data.IRepository;
-using eShop.Infrastructure.Models;
+using eShop.Services.IRepository;
+using eShop.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using eShop.Data;
 
-namespace eShop.Data.Repository
+namespace eShop.Services.Repository
 {
     public class OrderRepository : IOrderRepository
     {

@@ -1,5 +1,5 @@
 ﻿using eShop.Data.Data;
-using eShop.Infrastructure.Models;
+using eShop.Data.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace eShop.Data
+namespace eShop.Services
 {
     public class ShoppingCart
     {

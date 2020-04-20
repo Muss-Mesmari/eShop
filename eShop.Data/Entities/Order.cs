@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace eShop.Infrastructure.Models
+namespace eShop.Data.Entities
 {
     public class Order
     {

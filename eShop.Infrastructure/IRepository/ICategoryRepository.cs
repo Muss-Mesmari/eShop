@@ -1,10 +1,11 @@
-﻿using eShop.Infrastructure.Models;
+﻿using eShop.Data.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace eShop.Data.IRepository
+
+namespace eShop.Services.IRepository
 {
     public interface ICategoryRepository
     {

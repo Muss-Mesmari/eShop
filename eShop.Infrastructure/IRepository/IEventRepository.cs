@@ -1,17 +1,18 @@
-﻿using eShop.Infrastructure.Models;
+﻿using eShop.Data.Entities;
+using eShop.Services.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace eShop.Data.IRepository
+namespace eShop.Services.IRepository
 {
     public interface IEventRepository
     {
         IEnumerable<Event> AllEvents { get; }
         IEnumerable<Event> IsHighlightedEvent { get; }
         Event GetEventById(int? eventId);
-        void CreateEvent(Event newEvent);
-        void UpdateEvent(Event oldEvent);
-        void DeleteEvent(int id);
+        void CreateEvent(EventCreateEditViewModel newEvent);
+        void UpdateEvent(EventCreateEditViewModel oldEvent);
+        void DeleteEvent(int id);      
     }
 }

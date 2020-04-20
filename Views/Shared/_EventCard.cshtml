@@ -1,4 +1,4 @@
-﻿@model eShop.Infrastructure.Models.Event
+﻿@model eShop.Data.Entities.Event
 
 <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
@@ -15,7 +15,8 @@
                 <a id="btn" class="btn btn-primary"
                    asp-controller="ShoppingCart"
                    asp-action="AddToShoppingCart"
-                   asp-route-eventId="@Model.EventId">Add to cart
+                   asp-route-eventId="@Model.EventId">
+                    Add to cart
                 </a>
             </p>
         </div>

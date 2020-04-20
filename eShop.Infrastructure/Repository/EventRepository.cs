@@ -1,13 +1,14 @@
 ﻿using eShop.Data.Data;
-using eShop.Data.IRepository;
-using eShop.Infrastructure.Models;
+using eShop.Services.IRepository;
+using eShop.Data.Entities;
+using eShop.Services.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace eShop.Data.Repository
+namespace eShop.Services.Repository
 {
     public class EventRepository : IEventRepository
     {
@@ -39,40 +40,39 @@ namespace eShop.Data.Repository
             return _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId);
         }
 
-        public void CreateEvent(Event newEvent)
+        public void CreateEvent(EventCreateEditViewModel newEvent)
         {
             var _newEvent = new Event()
             {
-                Name = newEvent.Name,
-                ShortDescription = newEvent.ShortDescription,
-                LongDescription = newEvent.LongDescription,
-                Price = newEvent.Price,
-                ImageUrl = newEvent.ImageUrl,
-                IsHighlightedEvent = newEvent.IsHighlightedEvent,
-                InStock = newEvent.InStock,
-                Category = newEvent.Category,
-                CategoryId = newEvent.CategoryId
+                Name = newEvent.Event.Name,
+                ShortDescription = newEvent.Event.ShortDescription,
+                LongDescription = newEvent.Event.LongDescription,
+                Price = newEvent.Event.Price,
+                ImageUrl = newEvent.Event.ImageUrl,
+                IsHighlightedEvent = newEvent.Event.IsHighlightedEvent,
+                InStock = newEvent.Event.InStock,
+                Category = newEvent.Event.Category,
+                CategoryId = newEvent.Event.CategoryId
             };
             _eShopDbContext.Events.Add(_newEvent);
             _eShopDbContext.SaveChanges();
         }
 
-        public void UpdateEvent(Event newEvent)
+        public void UpdateEvent(EventCreateEditViewModel newEvent)
         {            
             if (newEvent != null)
             {
-                newEvent.Name = newEvent.Name;
-                newEvent.ShortDescription = newEvent.ShortDescription;
-                newEvent.LongDescription = newEvent.LongDescription;
-                newEvent.Price = newEvent.Price;
-                newEvent.ImageUrl = newEvent.ImageUrl;
-                newEvent.IsHighlightedEvent = newEvent.IsHighlightedEvent;
-                newEvent.InStock = newEvent.InStock;
-                newEvent.Category = newEvent.Category;
-                newEvent.CategoryId = newEvent.CategoryId;
+                newEvent.Event.Name = newEvent.Event.Name;
+                newEvent.Event.ShortDescription = newEvent.Event.ShortDescription;
+                newEvent.Event.LongDescription = newEvent.Event.LongDescription;
+                newEvent.Event.Price = newEvent.Event.Price;
+                newEvent.Event.ImageUrl = newEvent.Event.ImageUrl;
+                newEvent.Event.IsHighlightedEvent = newEvent.Event.IsHighlightedEvent;
+                newEvent.Event.InStock = newEvent.Event.InStock;              
+                newEvent.Event.CategoryId = newEvent.Event.CategoryId;               
             }
-
-            var entity = _eShopDbContext.Entry(newEvent);
+            
+            var entity = _eShopDbContext.Entry(newEvent.Event);
             entity.State = EntityState.Modified;
             _eShopDbContext.SaveChanges();
         }

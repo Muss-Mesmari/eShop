@@ -1,6 +1,6 @@
 ﻿using eShop.Data.Data;
-using eShop.Data.IRepository;
-using eShop.Infrastructure.Models;
+using eShop.Services.IRepository;
+using eShop.Data.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
 
-namespace eShop.Data.Repository
+namespace eShop.Services.Repository
 {
     public class CategoryRepository : ICategoryRepository
     {

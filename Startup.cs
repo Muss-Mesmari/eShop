@@ -12,9 +12,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using eShop.Data.Data;
-using eShop.Data.IRepository;
-using eShop.Data.Repository;
+using eShop.Services.IRepository;
 using eShop.Data;
+using eShop.Services.Repository;
+using eShop.Services;
 
 namespace eShop.Web
 {

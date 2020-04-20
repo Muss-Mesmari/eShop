@@ -1,11 +1,12 @@
-﻿using eShop.Data.IRepository;
-using eShop.Infrastructure.Models;
+﻿using eShop.Services.IRepository;
+using eShop.Data.Entities;
+using eShop.Services.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace eShop.Data.Mock
+namespace eShop.Services.Mock
 {
     public class MockEventRepository : IEventRepository
     {
@@ -22,7 +23,7 @@ namespace eShop.Data.Mock
 
         public IEnumerable<Event> IsHighlightedEvent { get; }
 
-        public void CreateEvent(Event newEvent)
+        public void CreateEvent(EventCreateEditViewModel newEvent)
         {
             throw new NotImplementedException();
         }
@@ -37,7 +38,7 @@ namespace eShop.Data.Mock
             return AllEvents.FirstOrDefault(e => e.EventId == eventId);
         }
 
-        public void UpdateEvent(Event oldEvent)
+        public void UpdateEvent(EventCreateEditViewModel oldEvent)
         {
             throw new NotImplementedException();
         }

@@ -12,18 +12,22 @@
     <Compile Remove="eShop.Identity\**" />
     <Compile Remove="eShop.Infrastructure\**" />
     <Compile Remove="eShop.Services\**" />
+    <Compile Remove="ViewModels\**" />
     <Content Remove="eShop.Data\**" />
     <Content Remove="eShop.Identity\**" />
     <Content Remove="eShop.Infrastructure\**" />
     <Content Remove="eShop.Services\**" />
+    <Content Remove="ViewModels\**" />
     <EmbeddedResource Remove="eShop.Data\**" />
     <EmbeddedResource Remove="eShop.Identity\**" />
     <EmbeddedResource Remove="eShop.Infrastructure\**" />
     <EmbeddedResource Remove="eShop.Services\**" />
+    <EmbeddedResource Remove="ViewModels\**" />
     <None Remove="eShop.Data\**" />
     <None Remove="eShop.Identity\**" />
     <None Remove="eShop.Infrastructure\**" />
     <None Remove="eShop.Services\**" />
+    <None Remove="ViewModels\**" />
   </ItemGroup>
 
 
@@ -43,7 +47,7 @@
   <ItemGroup>
     <ProjectReference Include="eShop.Data\eShop.Data.csproj" />
     <ProjectReference Include="eShop.Identity\eShop.Identity.csproj" />
-    <ProjectReference Include="eShop.infrastructure\eShop.Infrastructure.csproj" />
+    <ProjectReference Include="eShop.infrastructure\eShop.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

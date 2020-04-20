@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eShop.Data;
-using eShop.Data.IRepository;
-using eShop.Infrastructure.Models;
+using eShop.Services.IRepository;
+using eShop.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using eShop.Services;
 
 namespace eShop.Web.Controllers
 {

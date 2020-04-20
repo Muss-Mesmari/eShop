@@ -1,11 +1,11 @@
-﻿using eShop.Data.IRepository;
-using eShop.Infrastructure.Models;
+﻿using eShop.Services.IRepository;
+using eShop.Data.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace eShop.Data.Mock
+namespace eShop.Services.Mock
 {
     public class MockCategoryRepository : ICategoryRepository
     {
