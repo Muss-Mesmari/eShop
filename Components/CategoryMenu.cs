@@ -1,4 +1,4 @@
-﻿using eShop.Services.IRepository;
+﻿using eShop.Infrastructure.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

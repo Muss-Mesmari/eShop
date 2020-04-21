@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using eShop.Data;
-using eShop.Presentation.ViewModels;
-using eShop.Services;
-using eShop.Services.IRepository;
+using eShop.Infrastructure;
+using eShop.Web.ViewModels;
+using eShop.Infrastructure.Repository;
+using eShop.Infrastructure.IRepository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eShop.Web.Controllers

@@ -8,30 +8,34 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="eShop.Data\**" />
+    <Compile Remove="eShop.Entities\**" />
     <Compile Remove="eShop.Identity\**" />
     <Compile Remove="eShop.Infrastructure\**" />
+    <Compile Remove="eShop.Models\**" />
     <Compile Remove="eShop.Presentation\**" />
     <Compile Remove="eShop.Services\**" />
-    <Compile Remove="ViewModels\**" />
-    <Content Remove="eShop.Data\**" />
+    <Compile Remove="eShop.ShoppingCart\**" />
+    <Content Remove="eShop.Entities\**" />
     <Content Remove="eShop.Identity\**" />
     <Content Remove="eShop.Infrastructure\**" />
+    <Content Remove="eShop.Models\**" />
     <Content Remove="eShop.Presentation\**" />
     <Content Remove="eShop.Services\**" />
-    <Content Remove="ViewModels\**" />
-    <EmbeddedResource Remove="eShop.Data\**" />
+    <Content Remove="eShop.ShoppingCart\**" />
+    <EmbeddedResource Remove="eShop.Entities\**" />
     <EmbeddedResource Remove="eShop.Identity\**" />
     <EmbeddedResource Remove="eShop.Infrastructure\**" />
+    <EmbeddedResource Remove="eShop.Models\**" />
     <EmbeddedResource Remove="eShop.Presentation\**" />
     <EmbeddedResource Remove="eShop.Services\**" />
-    <EmbeddedResource Remove="ViewModels\**" />
-    <None Remove="eShop.Data\**" />
+    <EmbeddedResource Remove="eShop.ShoppingCart\**" />
+    <None Remove="eShop.Entities\**" />
     <None Remove="eShop.Identity\**" />
     <None Remove="eShop.Infrastructure\**" />
+    <None Remove="eShop.Models\**" />
     <None Remove="eShop.Presentation\**" />
     <None Remove="eShop.Services\**" />
-    <None Remove="ViewModels\**" />
+    <None Remove="eShop.ShoppingCart\**" />
   </ItemGroup>
 
 
@@ -46,12 +50,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="eShop.Data\eShop.Data.csproj" />
     <ProjectReference Include="eShop.Identity\eShop.Identity.csproj" />
-    <ProjectReference Include="eShop.Presentation\eShop.Presentation.csproj" />
+    <ProjectReference Include="eShop.Infrastructure\eShop.Infrastructure.csproj" />
+    <ProjectReference Include="eShop.Models\eShop.Presentation.csproj" />
     <ProjectReference Include="eShop.Services\eShop.Services.csproj" />
   </ItemGroup>
 
