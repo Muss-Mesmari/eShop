@@ -8,6 +8,9 @@ using eShop.Entities.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using eShop.Infrastructure.Repository;
+using Microsoft.CodeAnalysis.Options;
+using eShop.Services;
+using Microsoft.Extensions.Options;
 
 namespace eShop.Web.Controllers
 {
@@ -16,16 +19,25 @@ namespace eShop.Web.Controllers
     {
         private readonly IOrderRepository _orderRepository;
         private readonly ShoppingCart _shoppingCart;
+        private readonly FeaturesConfiguration _featuresConfiguration;
 
-        public OrderController(IOrderRepository orderRepository, ShoppingCart shoppingCart)
+        public OrderController(IOrderRepository orderRepository, ShoppingCart shoppingCart, IOptions<FeaturesConfiguration> options)
         {
             _orderRepository = orderRepository;
             _shoppingCart = shoppingCart;
+            _featuresConfiguration = options.Value;
         }
         // GET: /<controller>/
         public IActionResult Checkout()
         {
-            return View();
+            if (_featuresConfiguration.EnableOrder)
+            {
+                return View();
+            }
+            else
+            {
+                return View("_BlockedPage");
+            }
         }
 
         [HttpPost]

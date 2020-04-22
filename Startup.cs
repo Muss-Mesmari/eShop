@@ -15,6 +15,8 @@ using eShop.Infrastructure.Database;
 using eShop.Infrastructure;
 using eShop.Infrastructure.Repository;
 using eShop.Infrastructure.IRepository;
+using Microsoft.AspNetCore.Http.Features;
+using eShop.Services;
 
 namespace eShop.Web
 {
@@ -35,12 +37,14 @@ namespace eShop.Web
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<eShopDbContext>();
+                .AddEntityFrameworkStores<eShopDbContext>();            
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+
+            services.Configure<FeaturesConfiguration>(Configuration.GetSection("Features"));
 
             services.AddHttpContextAccessor();
             services.AddSession();

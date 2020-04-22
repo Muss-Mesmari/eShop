@@ -7,6 +7,8 @@ using eShop.Web.ViewModels;
 using eShop.Infrastructure.Repository;
 using eShop.Infrastructure.IRepository;
 using Microsoft.AspNetCore.Mvc;
+using eShop.Services;
+using Microsoft.Extensions.Options;
 
 namespace eShop.Web.Controllers
 {
@@ -14,33 +16,45 @@ namespace eShop.Web.Controllers
     {
         private readonly IEventRepository _eventRepository;
         private readonly ShoppingCart _shoppingCart;
+        private readonly FeaturesConfiguration _featuresConfiguration;
 
-        public ShoppingCartController(IEventRepository eventRepository, ShoppingCart shoppingCart)
+        public ShoppingCartController(IEventRepository eventRepository, ShoppingCart shoppingCart, IOptions<FeaturesConfiguration> options)
         {
             _eventRepository = eventRepository;
             _shoppingCart = shoppingCart;
+            _featuresConfiguration = options.Value;
         }
         public IActionResult Index()
         {
-            var items = _shoppingCart.GetShoppingCartItems();
-            _shoppingCart.ShoppingCartItems = items;
-
-            var shoppingCartViewModel = new ShoppingCartViewModel
+            if (_featuresConfiguration.EnableOrder)
             {
-                ShoppingCart = _shoppingCart,
-                ShoppingCartTotalSEK = _shoppingCart.GetShoppingCartTotalSEK(),
-                ShoppingCartTotalEUR = _shoppingCart.GetShoppingCartTotalEUR()
-            };
+                var items = _shoppingCart.GetShoppingCartItems();
+                _shoppingCart.ShoppingCartItems = items;
 
-            return View(shoppingCartViewModel);
+                var shoppingCartViewModel = new ShoppingCartViewModel
+                {
+                    ShoppingCart = _shoppingCart,
+                    ShoppingCartTotalSEK = _shoppingCart.GetShoppingCartTotalSEK(),
+                    ShoppingCartTotalEUR = _shoppingCart.GetShoppingCartTotalEUR()
+                };
+
+                return View(shoppingCartViewModel);
+            }
+            else
+            {
+                return View("_BlockedPage");
+            }
         }
         public RedirectToActionResult AddToShoppingCart(int eventId)
         {
-            var selectedEvent = _eventRepository.AllEvents.FirstOrDefault(e => e.EventId == eventId);
-
-            if (selectedEvent != null)
+            if (_featuresConfiguration.EnableOrder)
             {
-                _shoppingCart.AddToCart(selectedEvent, 1);
+                var selectedEvent = _eventRepository.AllEvents.FirstOrDefault(e => e.EventId == eventId);
+
+                if (selectedEvent != null)
+                {
+                    _shoppingCart.AddToCart(selectedEvent, 1);
+                }                
             }
             return RedirectToAction("Index");
         }
