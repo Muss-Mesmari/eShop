@@ -52,7 +52,8 @@ namespace eShop.Infrastructure.Repository
                 IsHighlightedEvent = newEvent.Event.IsHighlightedEvent,
                 InStock = newEvent.Event.InStock,
                 Category = newEvent.Event.Category,
-                CategoryId = newEvent.Event.CategoryId
+                CategoryId = newEvent.Event.CategoryId,
+                Currency = newEvent.Event.Currency                
             };
             _eShopDbContext.Events.Add(_newEvent);
             _eShopDbContext.SaveChanges();
@@ -69,7 +70,8 @@ namespace eShop.Infrastructure.Repository
                 newEvent.Event.ImageUrl = newEvent.Event.ImageUrl;
                 newEvent.Event.IsHighlightedEvent = newEvent.Event.IsHighlightedEvent;
                 newEvent.Event.InStock = newEvent.Event.InStock;              
-                newEvent.Event.CategoryId = newEvent.Event.CategoryId;               
+                newEvent.Event.CategoryId = newEvent.Event.CategoryId;
+                newEvent.Event.Currency = newEvent.Event.Currency;
             }
             
             var entity = _eShopDbContext.Entry(newEvent.Event);
