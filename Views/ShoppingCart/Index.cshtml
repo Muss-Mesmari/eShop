@@ -13,29 +13,39 @@
     </thead>
     <tbody>
         @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
-        {
+         {
             <tr>
                 <td class="text-center">@line.Amount</td>
                 <td class="text-left">@line.Event.Name</td>
-                <td class="text-right">@line.Event.Price.ToString("c")</td>
+                <td class="text-right">@line.Event.Price @line.Event.Currency</td>
                 <td class="text-right">
-                    @((line.Amount * line.Event.Price).ToString("c"))
+                    @(line.Amount * line.Event.Price) @(line.Event.Currency)
                 </td>
             </tr>
-        }
+         }
     </tbody>
     <tfoot>
-        <tr>
-            <td colspan="3" class="text-right">Total:</td>
-            <td class="text-right">
-                @Model.ShoppingCartTotal.ToString("c")
-            </td>
-        </tr>
+        @if (@Model.ShoppingCartTotalSEK != 0)
+         {
+            <tr>
+                <td colspan="3" class="text-right font-weight-bold">Total SEK:</td>
+                <td class="text-right">
+                    @Model.ShoppingCartTotalSEK
+                </td>
+            </tr>
+         }
+        @if (@Model.ShoppingCartTotalEUR != 0)
+         {
+            <tr>
+                <td colspan="3" class="text-right font-weight-bold">Total EUR:</td>
+                <td class="text-right">
+                    @Model.ShoppingCartTotalEUR
+                </td>
+            </tr>
+         }
     </tfoot>
 </table>
 
 <div class="text-center">
     <a id="btn" class="btn btn-primary" asp-controller="Order" asp-action="Checkout">Check out now!</a>
 </div>
-
-

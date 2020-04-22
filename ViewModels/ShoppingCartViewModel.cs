@@ -11,6 +11,7 @@ namespace eShop.Web.ViewModels
     public class ShoppingCartViewModel
     {
         public ShoppingCart ShoppingCart { get; set; }
-        public decimal ShoppingCartTotal { get; set; }
+        public decimal ShoppingCartTotalSEK { get; set; }
+        public decimal ShoppingCartTotalEUR { get; set; }
     }
 }

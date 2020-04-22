@@ -50,7 +50,11 @@ namespace eShop.Entities.Entities
 
         [BindNever]
         [ScaffoldColumn(false)]
-        public decimal OrderTotal { get; set; }
+        public decimal OrderTotalSEK { get; set; }
+
+        [BindNever]
+        [ScaffoldColumn(false)]
+        public decimal OrderTotalEUR { get; set; }
 
         [BindNever]
         [ScaffoldColumn(false)]

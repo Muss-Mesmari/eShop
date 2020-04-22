@@ -26,8 +26,8 @@ namespace eShop.Web.Components
             var shoppingCartViewModel = new ShoppingCartViewModel
             {
                 ShoppingCart = _shoppingCart,
-                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
-
+                ShoppingCartTotalSEK = _shoppingCart.GetShoppingCartTotalSEK(),
+                ShoppingCartTotalEUR = _shoppingCart.GetShoppingCartTotalEUR()
             };
             return View(shoppingCartViewModel);
         }

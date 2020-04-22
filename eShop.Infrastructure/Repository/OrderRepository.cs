@@ -23,7 +23,8 @@ namespace eShop.Infrastructure.Repository
             order.OrderPlaced = DateTime.Now;
 
             var shoppingCartItems = _shoppingCart.ShoppingCartItems;
-            order.OrderTotal = _shoppingCart.GetShoppingCartTotal();
+            order.OrderTotalSEK = _shoppingCart.GetShoppingCartTotalSEK();
+            order.OrderTotalEUR = _shoppingCart.GetShoppingCartTotalEUR();
 
             order.OrderDetails = new List<OrderDetail>();
             //adding the order with its details

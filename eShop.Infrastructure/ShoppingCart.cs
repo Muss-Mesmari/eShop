@@ -21,6 +21,10 @@ namespace eShop.Infrastructure
 
         public string ShoppingCartId { get; set; }
 
+        //By default the current currency is SEK 
+        //because it is the first item in the Currency enum class
+        private Currency SEK { get; set; }
+
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         public static ShoppingCart GetCart(IServiceProvider services)
@@ -46,10 +50,17 @@ namespace eShop.Infrastructure
                            .ToList());
         }
 
-        public decimal GetShoppingCartTotal()
+        public decimal GetShoppingCartTotalSEK()
         {
-            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
-                .Select(e => e.Event.Price * e.Amount).Sum();
+            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency == SEK)
+    .Select(e => e.Event.Price * e.Amount).Sum();
+            return total;
+        }
+
+        public decimal GetShoppingCartTotalEUR()
+        {
+            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency != SEK)
+    .Select(e => e.Event.Price * e.Amount).Sum();
             return total;
         }
 
