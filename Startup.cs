@@ -17,6 +17,12 @@ using eShop.Infrastructure.Repository;
 using eShop.Infrastructure.IRepository;
 using Microsoft.AspNetCore.Http.Features;
 using eShop.Services;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.CodeAnalysis.Options;
+using Microsoft.Extensions.Options;
+using eShop.Infrastructure.Rule;
+using eShop.Infrastructure.Rule.GeneralRules;
+using eShop.Infrastructure.Rule.Membership;
 
 namespace eShop.Web
 {
@@ -31,20 +37,30 @@ namespace eShop.Web
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {            
+        {
             services.AddDbContext<eShopDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<eShopDbContext>();            
+                .AddEntityFrameworkStores<eShopDbContext>();
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
 
+
+            services.AddScoped<IRuleProcessor, RuleProcessor>();
+            services.AddSingleton<IPurchaseRule, RuleOne>();
+            services.AddSingleton<IPurchaseRule, RuleTwo>();
+            services.AddScoped<IPurchaseRule, MembershipRuleOneConfiguration>();
+            services.AddScoped<IPurchaseRule, MembershipRuleTwoConfiguration>();
+            services.AddScoped<IPurchaseRule, MembershipRuleThreeConfiguration>();
+
+            services.TryAddSingleton<IMembershipRules>(sp => sp.GetRequiredService<IOptions<MembershipRules>>().Value);
             services.Configure<FeaturesConfiguration>(Configuration.GetSection("Features"));
+            
 
             services.AddHttpContextAccessor();
             services.AddSession();
@@ -53,35 +69,35 @@ namespace eShop.Web
             services.AddRazorPages();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseSession();
-            app.UseRouting();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
-            });
+            app.UseDeveloperExceptionPage();
+            app.UseDatabaseErrorPage();
         }
+        else
+        {
+            app.UseExceptionHandler("/Home/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
+        }
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+        app.UseSession();
+        app.UseRouting();
+
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+            endpoints.MapRazorPages();
+        });
     }
+}
 }

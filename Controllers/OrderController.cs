@@ -11,6 +11,7 @@ using eShop.Infrastructure.Repository;
 using Microsoft.CodeAnalysis.Options;
 using eShop.Services;
 using Microsoft.Extensions.Options;
+using eShop.Infrastructure.Rule;
 
 namespace eShop.Web.Controllers
 {
@@ -19,18 +20,25 @@ namespace eShop.Web.Controllers
     {
         private readonly IOrderRepository _orderRepository;
         private readonly ShoppingCart _shoppingCart;
-        private readonly FeaturesConfiguration _featuresConfiguration;
+        private readonly FeaturesConfiguration _featuresConfiguration;      
+        private readonly IRuleProcessor _ruleProcessor;
 
-        public OrderController(IOrderRepository orderRepository, ShoppingCart shoppingCart, IOptions<FeaturesConfiguration> options)
+        public OrderController
+            (IOrderRepository orderRepository, 
+            ShoppingCart shoppingCart, 
+            IOptions<FeaturesConfiguration> options,          
+            IRuleProcessor ruleProcessor)
         {
             _orderRepository = orderRepository;
             _shoppingCart = shoppingCart;
-            _featuresConfiguration = options.Value;
+            _featuresConfiguration = options.Value;          
+            _ruleProcessor = ruleProcessor;
         }
         // GET: /<controller>/
         public IActionResult Checkout()
         {
-            if (_featuresConfiguration.EnableOrder)
+            var (passedRules, errors) = _ruleProcessor.PassesAllRules();          
+            if (passedRules)
             {
                 return View();
             }
