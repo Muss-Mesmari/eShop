@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace eShop.Infrastructure.Rule.GeneralRules
 {
-    public class RuleTwo : IPurchaseRule
+    public class RuleTwo : IRule
     {
         public RuleTwo()
         {

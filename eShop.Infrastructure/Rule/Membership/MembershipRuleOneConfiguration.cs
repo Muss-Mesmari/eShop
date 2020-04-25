@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eShop.Infrastructure.Rule.Membership
 { 
-    public class MembershipRuleOneConfiguration : IPurchaseRule
+    public class MembershipRuleOneConfiguration : IRule
     {
         private readonly MembershipRules _membership;
 

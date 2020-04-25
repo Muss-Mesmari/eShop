@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace eShop.Infrastructure.Rule.GeneralRules
 {
-    public class RuleOne : IPurchaseRule
+    public class RuleOne : IRule
     {
         public RuleOne()
         {            

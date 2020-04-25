@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace eShop.Infrastructure.Rule
 {
-    public interface IPurchaseRule
+    public interface IRule
     {
         bool CompliesWithRule();
         string ErrorMessage { get; }
     }
 
-    //public interface IScopedPurchaseRule : IPurchaseRule
-    //{
-    //}
+    public interface IScopedRule : IRule
+    {
+    }
 
-    //public interface ISingletonPurchaseRule : IPurchaseRule
-    //{
-    //}
+    public interface ISingletonRule : IRule
+    {
+    }
 }

@@ -9,9 +9,9 @@ namespace eShop.Infrastructure.Rule
 {
     public class RuleProcessor : IRuleProcessor
     {
-        private readonly IEnumerable<IPurchaseRule> _rules;
+        private readonly IEnumerable<IRule> _rules;
 
-        public RuleProcessor(IEnumerable<IPurchaseRule> rules)
+        public RuleProcessor(IEnumerable<IRule> rules)
         {
             _rules = rules;
         }

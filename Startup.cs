@@ -50,15 +50,8 @@ namespace eShop.Web
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
 
+            services.AddPurchaseRules();
 
-            services.AddScoped<IRuleProcessor, RuleProcessor>();
-            services.AddSingleton<IPurchaseRule, RuleOne>();
-            services.AddSingleton<IPurchaseRule, RuleTwo>();
-            services.AddScoped<IPurchaseRule, MembershipRuleOneConfiguration>();
-            services.AddScoped<IPurchaseRule, MembershipRuleTwoConfiguration>();
-            services.AddScoped<IPurchaseRule, MembershipRuleThreeConfiguration>();
-
-            services.TryAddSingleton<IMembershipRules>(sp => sp.GetRequiredService<IOptions<MembershipRules>>().Value);
             services.Configure<FeaturesConfiguration>(Configuration.GetSection("Features"));
             
 

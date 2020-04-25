@@ -12,6 +12,7 @@ using Microsoft.CodeAnalysis.Options;
 using eShop.Services;
 using Microsoft.Extensions.Options;
 using eShop.Infrastructure.Rule;
+using eShop.Presentation.ViewModels;
 
 namespace eShop.Web.Controllers
 {
@@ -21,13 +22,15 @@ namespace eShop.Web.Controllers
         private readonly IOrderRepository _orderRepository;
         private readonly ShoppingCart _shoppingCart;
         private readonly FeaturesConfiguration _featuresConfiguration;      
-        private readonly IRuleProcessor _ruleProcessor;
+        private IRuleProcessor _ruleProcessor;
 
         public OrderController
-            (IOrderRepository orderRepository, 
+            (
+            IOrderRepository orderRepository, 
             ShoppingCart shoppingCart, 
             IOptions<FeaturesConfiguration> options,          
-            IRuleProcessor ruleProcessor)
+            IRuleProcessor ruleProcessor
+            )
         {
             _orderRepository = orderRepository;
             _shoppingCart = shoppingCart;
