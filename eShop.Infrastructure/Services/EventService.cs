@@ -9,11 +9,11 @@ using System.Text;
 
 namespace eShop.Infrastructure.Services
 {
-    public class EventServices : IEventServices
+    public class EventService : IEventService
     {
         private readonly eShopDbContext _eShopDbContext;
 
-        public EventServices(eShopDbContext eShopDbContext)
+        public EventService(eShopDbContext eShopDbContext)
         {
             _eShopDbContext = eShopDbContext;
         }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace eShop.Infrastructure.Mock
 {
-    public class MockCategoryRepository : ICategoryServices
+    public class MockCategoryRepository : ICategoryService
     {
         public IEnumerable<Category> AllCategories => new List<Category>
         {

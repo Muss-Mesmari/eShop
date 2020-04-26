@@ -6,20 +6,20 @@ using eShop.Infrastructure;
 using eShop.Web.ViewModels;
 using eShop.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
-using eShop.Services;
+using eShop.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
 
 namespace eShop.Web.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        private readonly IEventServices _eventRepository;
+        private readonly IEventService _eventService;
         private readonly ShoppingCart _shoppingCart;
         private readonly FeaturesConfiguration _featuresConfiguration;
 
-        public ShoppingCartController(IEventServices eventRepository, ShoppingCart shoppingCart, IOptions<FeaturesConfiguration> options)
+        public ShoppingCartController(IEventService eventService, ShoppingCart shoppingCart, IOptions<FeaturesConfiguration> options)
         {
-            _eventRepository = eventRepository;
+            _eventService = eventService;
             _shoppingCart = shoppingCart;
             _featuresConfiguration = options.Value;
         }
@@ -48,7 +48,7 @@ namespace eShop.Web.Controllers
         {
             if (_featuresConfiguration.EnableOrder)
             {
-                var selectedEvent = _eventRepository.AllEvents.FirstOrDefault(e => e.EventId == eventId);
+                var selectedEvent = _eventService.AllEvents.FirstOrDefault(e => e.EventId == eventId);
 
                 if (selectedEvent != null)
                 {
@@ -60,7 +60,7 @@ namespace eShop.Web.Controllers
 
         public RedirectToActionResult RemoveFromShoppingCart(int eventId)
         {
-            var selectedEvent = _eventRepository.AllEvents.FirstOrDefault(e => e.EventId == eventId);
+            var selectedEvent = _eventService.AllEvents.FirstOrDefault(e => e.EventId == eventId);
 
             if (selectedEvent != null)
             {

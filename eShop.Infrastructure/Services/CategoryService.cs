@@ -9,12 +9,12 @@ using System.Text;
 
 namespace eShop.Infrastructure.Services
 {
-    public class CategoryServices : ICategoryServices
+    public class CategoryService : ICategoryService
     {
 
         private readonly eShopDbContext _eShopDbContext;
 
-        public CategoryServices(eShopDbContext eShopDbContext)
+        public CategoryService(eShopDbContext eShopDbContext)
         {
             _eShopDbContext = eShopDbContext;
         }

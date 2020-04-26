@@ -7,7 +7,7 @@ using System.Text;
 
 namespace eShop.Infrastructure.Services
 {
-    public interface ICategoryServices
+    public interface ICategoryService
     {
         IEnumerable<Category> AllCategories { get; }
       

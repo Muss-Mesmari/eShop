@@ -9,8 +9,8 @@ namespace eShop.Web.Components
 {
     public class CategoryMenu : ViewComponent
     {
-        private readonly ICategoryServices _categoryRepository;
-        public CategoryMenu(ICategoryServices categoryRepository)
+        private readonly ICategoryService _categoryRepository;
+        public CategoryMenu(ICategoryService categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }

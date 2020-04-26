@@ -6,7 +6,7 @@ using System.Text;
 
 namespace eShop.Infrastructure.Services
 {
-    public interface IEventServices
+    public interface IEventService
     {
         IEnumerable<Event> AllEvents { get; }
         IEnumerable<Event> IsHighlightedEvent { get; }

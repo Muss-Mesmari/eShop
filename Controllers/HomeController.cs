@@ -24,18 +24,18 @@ namespace eShop.Web.Controllers
         //     return View();
         //}
 
-        private readonly IEventServices _eventRepository;
+        private readonly IEventService _eventService;
 
-        public HomeController(IEventServices eventRepository)
+        public HomeController(IEventService eventService)
         {
-            _eventRepository = eventRepository;
+            _eventService = eventService;
         }
 
         public IActionResult Index()
         {
             var homeViewModel = new HomeViewModel
             {
-                IsHighlightedEvent = _eventRepository.IsHighlightedEvent
+                IsHighlightedEvent = _eventService.IsHighlightedEvent
             };
 
             return View(homeViewModel);

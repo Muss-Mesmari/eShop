@@ -8,7 +8,7 @@ using eShop.Entities.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Options;
-using eShop.Services;
+using eShop.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
 using eShop.Infrastructure.Rule;
 using eShop.Presentation.ViewModels;
@@ -18,20 +18,20 @@ namespace eShop.Web.Controllers
     [Authorize]
     public class OrderController : Controller
     {
-        private readonly IOrderServices _orderRepository;
+        private readonly IOrderService _orderService;
         private readonly ShoppingCart _shoppingCart;
         private readonly FeaturesConfiguration _featuresConfiguration;      
         private IRuleProcessor _ruleProcessor;
 
         public OrderController
             (
-            IOrderServices orderRepository, 
+            IOrderService orderService, 
             ShoppingCart shoppingCart, 
             IOptions<FeaturesConfiguration> options,          
             IRuleProcessor ruleProcessor
             )
         {
-            _orderRepository = orderRepository;
+            _orderService = orderService;
             _shoppingCart = shoppingCart;
             _featuresConfiguration = options.Value;          
             _ruleProcessor = ruleProcessor;
@@ -63,7 +63,7 @@ namespace eShop.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                _orderRepository.CreateOrder(order);
+                _orderService.CreateOrder(order);
                 _shoppingCart.ClearCart();
                 return RedirectToAction("CheckoutComplete");
             }

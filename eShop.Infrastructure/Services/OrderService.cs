@@ -6,12 +6,12 @@ using System.Text;
 
 namespace eShop.Infrastructure.Services
 {
-    public class OrderServices : IOrderServices
+    public class OrderService : IOrderService
     {
         private readonly ShoppingCart _shoppingCart;
         private readonly eShopDbContext _eShopDbContext;        
 
-        public OrderServices(eShopDbContext eShopDbContext, ShoppingCart shoppingCart)
+        public OrderService(eShopDbContext eShopDbContext, ShoppingCart shoppingCart)
         {
             _eShopDbContext = eShopDbContext;
             _shoppingCart = shoppingCart;

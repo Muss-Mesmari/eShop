@@ -5,7 +5,7 @@ using System.Text;
 
 namespace eShop.Infrastructure.Services
 {
-    public interface IOrderServices
+    public interface IOrderService
     {
         void CreateOrder(Order order);
     }

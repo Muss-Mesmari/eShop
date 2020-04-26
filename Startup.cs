@@ -15,13 +15,14 @@ using eShop.Infrastructure.Database;
 using eShop.Infrastructure;
 using eShop.Infrastructure.Services;
 using Microsoft.AspNetCore.Http.Features;
-using eShop.Services;
+using eShop.Infrastructure.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.Extensions.Options;
 using eShop.Infrastructure.Rule;
 using eShop.Infrastructure.Rule.GeneralRules;
 using eShop.Infrastructure.Rule.Membership;
+using eShop.Infrastructure.DependencyInjection;
 
 namespace eShop.Web
 {
@@ -44,14 +45,13 @@ namespace eShop.Web
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<eShopDbContext>();
 
-            services.AddScoped<ICategoryServices, CategoryServices>();
-            services.AddScoped<IEventServices, EventServices>();
-            services.AddScoped<IOrderServices, OrderServices>();
-            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IEventService, EventService>();
+            services.AddScoped<IOrderService, OrderService>();
 
-            services.AddPurchaseRules();
-
-            services.Configure<FeaturesConfiguration>(Configuration.GetSection("Features"));
+            services.AddConfiguration(Configuration);
+            services.AddShoppingCart();
+            services.AddRules();
             
 
             services.AddHttpContextAccessor();
