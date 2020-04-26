@@ -8,11 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace eShop.Infrastructure.DependencyInjection
 {
     public static class RulesServiceCollectionExtensions
     {
-        public static IServiceCollection AddPurchaseRules(this IServiceCollection services)
+        public static IServiceCollection AddRules(this IServiceCollection services)
         {
             services.AddScoped<IRuleProcessor, RuleProcessor>();
             services.AddSingleton<IRule, RuleOne>();

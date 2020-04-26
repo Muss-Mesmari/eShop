@@ -1,5 +1,5 @@
 ﻿using eShop.Infrastructure;
-using eShop.Infrastructure.Repository;
+using eShop.Infrastructure.Services;
 using eShop.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,23 +11,23 @@ namespace eShop.Web.Components
 {
     public class ShoppingCartSummary : ViewComponent
     {
-        private readonly ShoppingCart _shoppingCart;
+        private readonly ShoppingCartService _shoppingCartService;
 
-        public ShoppingCartSummary(ShoppingCart shoppingCart)
+        public ShoppingCartSummary(ShoppingCartService shoppingCartService)
         {
-            _shoppingCart = shoppingCart;
+            _shoppingCartService = shoppingCartService;
         }
 
         public IViewComponentResult Invoke()
         {
-            var items = _shoppingCart.GetShoppingCartItems();
-            _shoppingCart.ShoppingCartItems = items;
+            var items = _shoppingCartService.GetShoppingCartItems();
+            _shoppingCartService.ShoppingCartItems = items;
 
             var shoppingCartViewModel = new ShoppingCartViewModel
             {
-                ShoppingCart = _shoppingCart,
-                ShoppingCartTotalSEK = _shoppingCart.GetShoppingCartTotalSEK(),
-                ShoppingCartTotalEUR = _shoppingCart.GetShoppingCartTotalEUR()
+                ShoppingCartService = _shoppingCartService,
+                ShoppingCartTotalSEK = _shoppingCartService.GetShoppingCartTotalSEK(),
+                ShoppingCartTotalEUR = _shoppingCartService.GetShoppingCartTotalEUR()
             };
             return View(shoppingCartViewModel);
         }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using eShop.Infrastructure.IRepository;
+using eShop.Infrastructure.Services;
 using eShop.Web.ViewModels;
 using eShop.Presentation.ViewModels;
 
@@ -24,18 +24,18 @@ namespace eShop.Web.Controllers
         //     return View();
         //}
 
-        private readonly IEventRepository _eventRepository;
+        private readonly IEventService _eventService;
 
-        public HomeController(IEventRepository eventRepository)
+        public HomeController(IEventService eventService)
         {
-            _eventRepository = eventRepository;
+            _eventService = eventService;
         }
 
         public IActionResult Index()
         {
             var homeViewModel = new HomeViewModel
             {
-                IsHighlightedEvent = _eventRepository.IsHighlightedEvent
+                IsHighlightedEvent = _eventService.IsHighlightedEvent
             };
 
             return View(homeViewModel);

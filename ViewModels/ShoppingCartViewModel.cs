@@ -1,4 +1,4 @@
-﻿using eShop.Infrastructure.Repository;
+﻿using eShop.Infrastructure.Services;
 using eShop.Entities.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace eShop.Web.ViewModels
 {
     public class ShoppingCartViewModel
     {
-        public ShoppingCart ShoppingCart { get; set; }
+        public ShoppingCartService ShoppingCartService { get; set; }
         public decimal ShoppingCartTotalSEK { get; set; }        
         public decimal ShoppingCartTotalEUR { get; set; }
     }

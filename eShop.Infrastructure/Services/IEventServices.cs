@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace eShop.Infrastructure.IRepository
+namespace eShop.Infrastructure.Services
 {
-    public interface IEventRepository
+    public interface IEventService
     {
         IEnumerable<Event> AllEvents { get; }
         IEnumerable<Event> IsHighlightedEvent { get; }

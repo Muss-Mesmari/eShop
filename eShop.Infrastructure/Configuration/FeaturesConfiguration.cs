@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace eShop.Services
+namespace eShop.Infrastructure.Configuration
 {
     public class FeaturesConfiguration
     {

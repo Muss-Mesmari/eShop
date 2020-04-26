@@ -1,5 +1,4 @@
 ﻿using eShop.Infrastructure.Database;
-using eShop.Infrastructure.IRepository;
 using eShop.Entities.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
@@ -8,14 +7,14 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
 
-namespace eShop.Infrastructure.Repository
+namespace eShop.Infrastructure.Services
 {
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryService : ICategoryService
     {
 
         private readonly eShopDbContext _eShopDbContext;
 
-        public CategoryRepository(eShopDbContext eShopDbContext)
+        public CategoryService(eShopDbContext eShopDbContext)
         {
             _eShopDbContext = eShopDbContext;
         }

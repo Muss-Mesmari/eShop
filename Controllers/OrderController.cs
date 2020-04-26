@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eShop.Infrastructure;
-using eShop.Infrastructure.IRepository;
+using eShop.Infrastructure.Services;
 using eShop.Entities.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using eShop.Infrastructure.Repository;
 using Microsoft.CodeAnalysis.Options;
-using eShop.Services;
+using eShop.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
 using eShop.Infrastructure.Rule;
 using eShop.Presentation.ViewModels;
@@ -19,21 +18,21 @@ namespace eShop.Web.Controllers
     [Authorize]
     public class OrderController : Controller
     {
-        private readonly IOrderRepository _orderRepository;
-        private readonly ShoppingCart _shoppingCart;
+        private readonly IOrderService _orderService;
+        private readonly ShoppingCartService _shoppingCartService;
         private readonly FeaturesConfiguration _featuresConfiguration;      
         private IRuleProcessor _ruleProcessor;
 
         public OrderController
             (
-            IOrderRepository orderRepository, 
-            ShoppingCart shoppingCart, 
+            IOrderService orderService, 
+            ShoppingCartService shoppingCartService, 
             IOptions<FeaturesConfiguration> options,          
             IRuleProcessor ruleProcessor
             )
         {
-            _orderRepository = orderRepository;
-            _shoppingCart = shoppingCart;
+            _orderService = orderService;
+            _shoppingCartService = shoppingCartService;
             _featuresConfiguration = options.Value;          
             _ruleProcessor = ruleProcessor;
         }
@@ -54,18 +53,18 @@ namespace eShop.Web.Controllers
         [HttpPost]
         public IActionResult Checkout(Order order)
         {
-            var items = _shoppingCart.GetShoppingCartItems();
-            _shoppingCart.ShoppingCartItems = items;
+            var items = _shoppingCartService.GetShoppingCartItems();
+            _shoppingCartService.ShoppingCartItems = items;
 
-            if (_shoppingCart.ShoppingCartItems.Count == 0)
+            if (_shoppingCartService.ShoppingCartItems.Count == 0)
             {
                 ModelState.AddModelError("", "Your cart is empty.");
             }
 
             if (ModelState.IsValid)
             {
-                _orderRepository.CreateOrder(order);
-                _shoppingCart.ClearCart();
+                _orderService.CreateOrder(order);
+                _shoppingCartService.ClearCart();
                 return RedirectToAction("CheckoutComplete");
             }
             return View(order);

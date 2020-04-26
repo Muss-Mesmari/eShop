@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace eShop.Infrastructure
+namespace eShop.Infrastructure.Services
 {
-    public class ShoppingCart
+    public class ShoppingCartService
     {
         private readonly eShopDbContext _eShopDbContext;
 
-        private ShoppingCart(eShopDbContext eShopDbContext)
+        private ShoppingCartService(eShopDbContext eShopDbContext)
         {
             _eShopDbContext = eShopDbContext;
         }
@@ -27,7 +27,7 @@ namespace eShop.Infrastructure
 
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
-        public static ShoppingCart GetCart(IServiceProvider services)
+        public static ShoppingCartService GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?
                 .HttpContext.Session;
@@ -38,7 +38,7 @@ namespace eShop.Infrastructure
 
             session.SetString("CartId", cartId);
 
-            return new ShoppingCart(context) { ShoppingCartId = cartId };
+            return new ShoppingCartService(context) { ShoppingCartId = cartId };
         }
 
         public List<ShoppingCartItem> GetShoppingCartItems()

@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace eShop.Infrastructure.IRepository
+namespace eShop.Infrastructure.Services
 {
-    public interface IOrderRepository
+    public interface IOrderService
     {
         void CreateOrder(Order order);
     }

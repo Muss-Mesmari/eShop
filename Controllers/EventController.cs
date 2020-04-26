@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using eShop.Infrastructure.IRepository;
+using eShop.Infrastructure.Services;
 using eShop.Entities.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,13 +13,13 @@ namespace eShop.Web.Controllers
 {
     public class EventController : Controller
     {
-        private readonly IEventRepository _eventRepository;
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly IEventService _eventService;
+        private readonly ICategoryService _categoryService;
 
-        public EventController(IEventRepository eventRepository, ICategoryRepository categoryRepository)
+        public EventController(IEventService eventService, ICategoryService categoryService)
         {
-            _eventRepository = eventRepository;
-            _categoryRepository = categoryRepository;
+            _eventService = eventService;
+            _categoryService = categoryService;
         }
         // GET: Event
         public ActionResult Index(string category)
@@ -29,14 +29,14 @@ namespace eShop.Web.Controllers
 
             if (string.IsNullOrEmpty(category))
             {
-                events = _eventRepository.AllEvents.OrderBy(e => e.EventId);
+                events = _eventService.AllEvents.OrderBy(e => e.EventId);
                 currentCategory = "All events";
             }
             else
             {
-                events = _eventRepository.AllEvents.Where(p => p.Category.CategoryName == category)
+                events = _eventService.AllEvents.Where(p => p.Category.CategoryName == category)
                     .OrderBy(e => e.EventId);
-                currentCategory = _categoryRepository.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
+                currentCategory = _categoryService.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
             }
 
             return View(new EventsListViewModel
@@ -49,7 +49,7 @@ namespace eShop.Web.Controllers
         // GET: Event/Details/5
         public IActionResult Details(int id)
         {
-            var model = _eventRepository.GetEventById(id);
+            var model = _eventService.GetEventById(id);
             if (model == null)
             {
                 return View("NotFound");
@@ -62,7 +62,7 @@ namespace eShop.Web.Controllers
         {
             var viewModel = new EventCreateEditViewModel
             {
-                Categories = _categoryRepository.AllCategories.ToList()
+                Categories = _categoryService.AllCategories.ToList()
 
             };
             return View(viewModel);                       
@@ -75,8 +75,8 @@ namespace eShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {                
-                _eventRepository.CreateEvent(newEvent);
-                return RedirectToAction(nameof(Details), new { id = _eventRepository.AllEvents.Max(e => e.EventId) });  
+                _eventService.CreateEvent(newEvent);
+                return RedirectToAction(nameof(Details), new { id = _eventService.AllEvents.Max(e => e.EventId) });  
             }
             return View();
         }
@@ -94,8 +94,8 @@ namespace eShop.Web.Controllers
 
             var viewModel = new EventCreateEditViewModel
             {
-                Categories = _categoryRepository.AllCategories.ToList(),
-                Event = _eventRepository.GetEventById(id)
+                Categories = _categoryService.AllCategories.ToList(),
+                Event = _eventService.GetEventById(id)
             };
             if (viewModel == null)
             {
@@ -111,7 +111,7 @@ namespace eShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _eventRepository.UpdateEvent(newEvent);
+                _eventService.UpdateEvent(newEvent);
                 return RedirectToAction(nameof(Details), new { id = newEvent.Event.EventId });
             }
             return View();
@@ -120,7 +120,7 @@ namespace eShop.Web.Controllers
         // GET: Event/Delete/5
         public IActionResult Delete(int id)
         {
-            var model = _eventRepository.GetEventById(id);
+            var model = _eventService.GetEventById(id);
             if (model == null)
             {
                 return View("NotFound");
@@ -135,7 +135,7 @@ namespace eShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _eventRepository.DeleteEvent(id);              
+                _eventService.DeleteEvent(id);              
             }
             return RedirectToAction("Index");
         }
