@@ -64,8 +64,7 @@ namespace eShop.Web
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-            app.UseMiddleware<FeatureSwitchMiddleware>();
+    {            
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -82,6 +81,7 @@ namespace eShop.Web
         app.UseSession();
         app.UseRouting();
 
+        app.UseMiddleware<FeatureSwitchMiddleware>();
         app.UseAuthentication();
         app.UseAuthorization();
 
