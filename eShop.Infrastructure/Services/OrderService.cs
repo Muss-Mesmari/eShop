@@ -8,22 +8,24 @@ namespace eShop.Infrastructure.Services
 {
     public class OrderService : IOrderService
     {
-        private readonly ShoppingCart _shoppingCart;
+        private readonly ShoppingCartService _shoppingCartService;
         private readonly eShopDbContext _eShopDbContext;        
 
-        public OrderService(eShopDbContext eShopDbContext, ShoppingCart shoppingCart)
+        public OrderService
+            (eShopDbContext eShopDbContext, 
+            ShoppingCartService shoppingCartService)
         {
             _eShopDbContext = eShopDbContext;
-            _shoppingCart = shoppingCart;
+            _shoppingCartService = shoppingCartService;
         }
 
         public void CreateOrder(Order order)
         {
             order.OrderPlaced = DateTime.Now;
 
-            var shoppingCartItems = _shoppingCart.ShoppingCartItems;
-            order.OrderTotalSEK = _shoppingCart.GetShoppingCartTotalSEK();
-            order.OrderTotalEUR = _shoppingCart.GetShoppingCartTotalEUR();
+            var shoppingCartItems = _shoppingCartService.ShoppingCartItems;
+            order.OrderTotalSEK = _shoppingCartService.GetShoppingCartTotalSEK();
+            order.OrderTotalEUR = _shoppingCartService.GetShoppingCartTotalEUR();
 
             order.OrderDetails = new List<OrderDetail>();
             //adding the order with its details

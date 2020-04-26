@@ -19,20 +19,20 @@ namespace eShop.Web.Controllers
     public class OrderController : Controller
     {
         private readonly IOrderService _orderService;
-        private readonly ShoppingCart _shoppingCart;
+        private readonly ShoppingCartService _shoppingCartService;
         private readonly FeaturesConfiguration _featuresConfiguration;      
         private IRuleProcessor _ruleProcessor;
 
         public OrderController
             (
             IOrderService orderService, 
-            ShoppingCart shoppingCart, 
+            ShoppingCartService shoppingCartService, 
             IOptions<FeaturesConfiguration> options,          
             IRuleProcessor ruleProcessor
             )
         {
             _orderService = orderService;
-            _shoppingCart = shoppingCart;
+            _shoppingCartService = shoppingCartService;
             _featuresConfiguration = options.Value;          
             _ruleProcessor = ruleProcessor;
         }
@@ -53,10 +53,10 @@ namespace eShop.Web.Controllers
         [HttpPost]
         public IActionResult Checkout(Order order)
         {
-            var items = _shoppingCart.GetShoppingCartItems();
-            _shoppingCart.ShoppingCartItems = items;
+            var items = _shoppingCartService.GetShoppingCartItems();
+            _shoppingCartService.ShoppingCartItems = items;
 
-            if (_shoppingCart.ShoppingCartItems.Count == 0)
+            if (_shoppingCartService.ShoppingCartItems.Count == 0)
             {
                 ModelState.AddModelError("", "Your cart is empty.");
             }
@@ -64,7 +64,7 @@ namespace eShop.Web.Controllers
             if (ModelState.IsValid)
             {
                 _orderService.CreateOrder(order);
-                _shoppingCart.ClearCart();
+                _shoppingCartService.ClearCart();
                 return RedirectToAction("CheckoutComplete");
             }
             return View(order);

@@ -1,12 +1,12 @@
 ﻿@model eShop.Web.ViewModels.ShoppingCartViewModel
 
-@if (Model.ShoppingCart.ShoppingCartItems.Count > 0)
+@if (Model.ShoppingCartService.ShoppingCartItems.Count > 0)
 {
     <li>
         <a>
             <span class="glyphicon glyphicon-shopping-cart"></span>
             <span id="cart-status">
-                @Model.ShoppingCart.ShoppingCartItems.Count
+                @Model.ShoppingCartService.ShoppingCartItems.Count
             </span>
         </a>
     </li>

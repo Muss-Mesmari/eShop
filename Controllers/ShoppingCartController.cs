@@ -14,27 +14,30 @@ namespace eShop.Web.Controllers
     public class ShoppingCartController : Controller
     {
         private readonly IEventService _eventService;
-        private readonly ShoppingCart _shoppingCart;
+        private readonly ShoppingCartService _shoppingCartService;
         private readonly FeaturesConfiguration _featuresConfiguration;
 
-        public ShoppingCartController(IEventService eventService, ShoppingCart shoppingCart, IOptions<FeaturesConfiguration> options)
+        public ShoppingCartController
+            (IEventService eventService, 
+            ShoppingCartService shoppingCartService, 
+            IOptions<FeaturesConfiguration> options)
         {
             _eventService = eventService;
-            _shoppingCart = shoppingCart;
+            _shoppingCartService = shoppingCartService;
             _featuresConfiguration = options.Value;
         }
         public IActionResult Index()
         {
             if (_featuresConfiguration.EnableOrder)
             {
-                var items = _shoppingCart.GetShoppingCartItems();
-                _shoppingCart.ShoppingCartItems = items;
+                var items = _shoppingCartService.GetShoppingCartItems();
+                _shoppingCartService.ShoppingCartItems = items;
 
                 var shoppingCartViewModel = new ShoppingCartViewModel
                 {
-                    ShoppingCart = _shoppingCart,
-                    ShoppingCartTotalSEK = _shoppingCart.GetShoppingCartTotalSEK(),
-                    ShoppingCartTotalEUR = _shoppingCart.GetShoppingCartTotalEUR()
+                    ShoppingCartService = _shoppingCartService,
+                    ShoppingCartTotalSEK = _shoppingCartService.GetShoppingCartTotalSEK(),
+                    ShoppingCartTotalEUR = _shoppingCartService.GetShoppingCartTotalEUR()
                 };
 
                 return View(shoppingCartViewModel);
@@ -52,7 +55,7 @@ namespace eShop.Web.Controllers
 
                 if (selectedEvent != null)
                 {
-                    _shoppingCart.AddToCart(selectedEvent, 1);
+                    _shoppingCartService.AddToCart(selectedEvent, 1);
                 }                
             }
             return RedirectToAction("Index");
@@ -64,7 +67,7 @@ namespace eShop.Web.Controllers
 
             if (selectedEvent != null)
             {
-                _shoppingCart.RemoveFromCart(selectedEvent);
+                _shoppingCartService.RemoveFromCart(selectedEvent);
             }
             return RedirectToAction("Index");
         }
