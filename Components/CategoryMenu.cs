@@ -9,15 +9,15 @@ namespace eShop.Web.Components
 {
     public class CategoryMenu : ViewComponent
     {
-        private readonly ICategoryService _categoryRepository;
-        public CategoryMenu(ICategoryService categoryRepository)
+        private readonly ICategoryService _categoryService;
+        public CategoryMenu(ICategoryService categoryService)
         {
-            _categoryRepository = categoryRepository;
+            _categoryService = categoryService;
         }
 
         public IViewComponentResult Invoke()
         {
-            var categories = _categoryRepository.AllCategories.OrderBy(c => c.CategoryId);
+            var categories = _categoryService.AllCategories.OrderBy(c => c.CategoryId);
             return View(categories);
         }
     }
