@@ -1,6 +1,6 @@
 ﻿using eShop.Entities.Entities;
 using eShop.Infrastructure;
-using eShop.Infrastructure.IRepository;
+using eShop.Infrastructure.Services;
 using eShop.Infrastructure.Rule;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;

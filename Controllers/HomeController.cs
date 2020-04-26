@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using eShop.Infrastructure.IRepository;
+using eShop.Infrastructure.Services;
 using eShop.Web.ViewModels;
 using eShop.Presentation.ViewModels;
 
@@ -24,9 +24,9 @@ namespace eShop.Web.Controllers
         //     return View();
         //}
 
-        private readonly IEventRepository _eventRepository;
+        private readonly IEventServices _eventRepository;
 
-        public HomeController(IEventRepository eventRepository)
+        public HomeController(IEventServices eventRepository)
         {
             _eventRepository = eventRepository;
         }

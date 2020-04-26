@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using eShop.Infrastructure;
 using eShop.Web.ViewModels;
-using eShop.Infrastructure.Repository;
-using eShop.Infrastructure.IRepository;
+using eShop.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using eShop.Services;
 using Microsoft.Extensions.Options;
@@ -14,11 +13,11 @@ namespace eShop.Web.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        private readonly IEventRepository _eventRepository;
+        private readonly IEventServices _eventRepository;
         private readonly ShoppingCart _shoppingCart;
         private readonly FeaturesConfiguration _featuresConfiguration;
 
-        public ShoppingCartController(IEventRepository eventRepository, ShoppingCart shoppingCart, IOptions<FeaturesConfiguration> options)
+        public ShoppingCartController(IEventServices eventRepository, ShoppingCart shoppingCart, IOptions<FeaturesConfiguration> options)
         {
             _eventRepository = eventRepository;
             _shoppingCart = shoppingCart;

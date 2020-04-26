@@ -1,4 +1,4 @@
-﻿using eShop.Infrastructure.IRepository;
+﻿using eShop.Infrastructure.Services;
 using eShop.Entities.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -7,7 +7,7 @@ using System.Text;
 
 namespace eShop.Infrastructure.Mock
 {
-    public class MockCategoryRepository : ICategoryRepository
+    public class MockCategoryRepository : ICategoryServices
     {
         public IEnumerable<Category> AllCategories => new List<Category>
         {

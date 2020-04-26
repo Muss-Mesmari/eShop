@@ -1,4 +1,4 @@
-﻿using eShop.Infrastructure.IRepository;
+﻿using eShop.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,8 +9,8 @@ namespace eShop.Web.Components
 {
     public class CategoryMenu : ViewComponent
     {
-        private readonly ICategoryRepository _categoryRepository;
-        public CategoryMenu(ICategoryRepository categoryRepository)
+        private readonly ICategoryServices _categoryRepository;
+        public CategoryMenu(ICategoryServices categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }

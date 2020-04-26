@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eShop.Infrastructure;
-using eShop.Infrastructure.IRepository;
+using eShop.Infrastructure.Services;
 using eShop.Entities.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using eShop.Infrastructure.Repository;
 using Microsoft.CodeAnalysis.Options;
 using eShop.Services;
 using Microsoft.Extensions.Options;
@@ -19,14 +18,14 @@ namespace eShop.Web.Controllers
     [Authorize]
     public class OrderController : Controller
     {
-        private readonly IOrderRepository _orderRepository;
+        private readonly IOrderServices _orderRepository;
         private readonly ShoppingCart _shoppingCart;
         private readonly FeaturesConfiguration _featuresConfiguration;      
         private IRuleProcessor _ruleProcessor;
 
         public OrderController
             (
-            IOrderRepository orderRepository, 
+            IOrderServices orderRepository, 
             ShoppingCart shoppingCart, 
             IOptions<FeaturesConfiguration> options,          
             IRuleProcessor ruleProcessor

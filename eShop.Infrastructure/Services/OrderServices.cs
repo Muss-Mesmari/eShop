@@ -1,18 +1,17 @@
 ﻿using eShop.Infrastructure.Database;
-using eShop.Infrastructure.IRepository;
 using eShop.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace eShop.Infrastructure.Repository
+namespace eShop.Infrastructure.Services
 {
-    public class OrderRepository : IOrderRepository
+    public class OrderServices : IOrderServices
     {
         private readonly ShoppingCart _shoppingCart;
         private readonly eShopDbContext _eShopDbContext;        
 
-        public OrderRepository(eShopDbContext eShopDbContext, ShoppingCart shoppingCart)
+        public OrderServices(eShopDbContext eShopDbContext, ShoppingCart shoppingCart)
         {
             _eShopDbContext = eShopDbContext;
             _shoppingCart = shoppingCart;

@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace eShop.Infrastructure.IRepository
+namespace eShop.Infrastructure.Services
 {
-    public interface ICategoryRepository
+    public interface ICategoryServices
     {
         IEnumerable<Category> AllCategories { get; }
       

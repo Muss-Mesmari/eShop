@@ -1,5 +1,5 @@
 ﻿using eShop.Infrastructure;
-using eShop.Infrastructure.Repository;
+using eShop.Infrastructure.Services;
 using eShop.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;

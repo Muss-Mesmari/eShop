@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using eShop.Infrastructure.IRepository;
+using eShop.Infrastructure.Services;
 using eShop.Entities.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +13,10 @@ namespace eShop.Web.Controllers
 {
     public class EventController : Controller
     {
-        private readonly IEventRepository _eventRepository;
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly IEventServices _eventRepository;
+        private readonly ICategoryServices _categoryRepository;
 
-        public EventController(IEventRepository eventRepository, ICategoryRepository categoryRepository)
+        public EventController(IEventServices eventRepository, ICategoryServices categoryRepository)
         {
             _eventRepository = eventRepository;
             _categoryRepository = categoryRepository;

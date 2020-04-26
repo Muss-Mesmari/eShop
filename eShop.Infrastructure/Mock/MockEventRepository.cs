@@ -1,4 +1,4 @@
-﻿using eShop.Infrastructure.IRepository;
+﻿using eShop.Infrastructure.Services;
 using eShop.Entities.Entities;
 using eShop.Presentation.ViewModels;
 using System;
@@ -8,9 +8,9 @@ using System.Text;
 
 namespace eShop.Infrastructure.Mock
 {
-    public class MockEventRepository : IEventRepository
+    public class MockEventRepository : IEventServices
     {
-        private readonly ICategoryRepository _categoryRepository = new MockCategoryRepository();
+        private readonly ICategoryServices _categoryRepository = new MockCategoryRepository();
 
         public IEnumerable<Event> AllEvents =>
             new List<Event>
