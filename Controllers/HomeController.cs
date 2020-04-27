@@ -8,9 +8,11 @@ using Microsoft.Extensions.Logging;
 using eShop.Infrastructure.Services;
 using eShop.Web.ViewModels;
 using eShop.Presentation.ViewModels;
+using eShop.Infrastructure.Outage;
 
 namespace eShop.Web.Controllers
 {
+    [TypeFilter(typeof(OutageAuthorizationFilter))]
     public class HomeController : Controller
     {
         // private readonly ILogger<HomeController> _logger;
