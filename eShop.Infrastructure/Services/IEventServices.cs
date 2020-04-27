@@ -11,6 +11,7 @@ namespace eShop.Infrastructure.Services
         IEnumerable<Event> AllEvents { get; }
         IEnumerable<Event> IsHighlightedEvent { get; }
         Event GetEventById(int? eventId);
+        IEnumerable<Event> AllEventsByName(string searchedEvent = null);
         void CreateEvent(EventCreateEditViewModel newEvent);
         void UpdateEvent(EventCreateEditViewModel oldEvent);
         void DeleteEvent(int id);      

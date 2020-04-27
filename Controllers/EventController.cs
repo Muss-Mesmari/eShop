@@ -16,6 +16,9 @@ namespace eShop.Web.Controllers
         private readonly IEventService _eventService;
         private readonly ICategoryService _categoryService;
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchedEvent { get; set; }
+
         public EventController(IEventService eventService, ICategoryService categoryService)
         {
             _eventService = eventService;
@@ -29,12 +32,12 @@ namespace eShop.Web.Controllers
 
             if (string.IsNullOrEmpty(category))
             {
-                events = _eventService.AllEvents.OrderBy(e => e.EventId);
+                events = _eventService.AllEventsByName(SearchedEvent).OrderBy(e => e.EventId);
                 currentCategory = "All events";
             }
             else
             {
-                events = _eventService.AllEvents.Where(p => p.Category.CategoryName == category)
+                events = _eventService.AllEventsByName(SearchedEvent).Where(p => p.Category.CategoryName == category)
                     .OrderBy(e => e.EventId);
                 currentCategory = _categoryService.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
             }
@@ -42,7 +45,8 @@ namespace eShop.Web.Controllers
             return View(new EventsListViewModel
             {
                 Events = events,
-                CurrentCategory = currentCategory
+                CurrentCategory = currentCategory,
+                SearchedEvent = SearchedEvent
             });
         }
 

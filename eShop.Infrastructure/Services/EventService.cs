@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace eShop.Infrastructure.Services
 {
@@ -52,14 +53,14 @@ namespace eShop.Infrastructure.Services
                 InStock = newEvent.Event.InStock,
                 Category = newEvent.Event.Category,
                 CategoryId = newEvent.Event.CategoryId,
-                Currency = newEvent.Event.Currency                
+                Currency = newEvent.Event.Currency
             };
             _eShopDbContext.Events.Add(_newEvent);
             _eShopDbContext.SaveChanges();
         }
 
         public void UpdateEvent(EventCreateEditViewModel newEvent)
-        {            
+        {
             if (newEvent != null)
             {
                 newEvent.Event.Name = newEvent.Event.Name;
@@ -68,11 +69,11 @@ namespace eShop.Infrastructure.Services
                 newEvent.Event.Price = newEvent.Event.Price;
                 newEvent.Event.ImageUrl = newEvent.Event.ImageUrl;
                 newEvent.Event.IsHighlightedEvent = newEvent.Event.IsHighlightedEvent;
-                newEvent.Event.InStock = newEvent.Event.InStock;              
+                newEvent.Event.InStock = newEvent.Event.InStock;
                 newEvent.Event.CategoryId = newEvent.Event.CategoryId;
                 newEvent.Event.Currency = newEvent.Event.Currency;
             }
-            
+
             var entity = _eShopDbContext.Entry(newEvent.Event);
             entity.State = EntityState.Modified;
             _eShopDbContext.SaveChanges();
@@ -83,9 +84,14 @@ namespace eShop.Infrastructure.Services
             var removedEvent = GetEventById(id);
             if (removedEvent != null)
             {
-               _eShopDbContext.Remove(removedEvent);
+                _eShopDbContext.Remove(removedEvent);
                 _eShopDbContext.SaveChanges();
             }
+        }
+
+        public IEnumerable<Event> AllEventsByName(string searchedEvent = null)
+        {
+            return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.StartsWith(searchedEvent) || string.IsNullOrEmpty(searchedEvent));
         }
     }
 }

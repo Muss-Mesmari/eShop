@@ -1,5 +1,18 @@
 ﻿@model eShop.Presentation.ViewModels.EventsListViewModel
 
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control"
+                   asp-for="SearchedEvent" />
+            <span class="input-group-btn">
+                <button class="btn btn-default">
+                    <i class="glyphicon glyphicon-search">Search</i>
+                </button>
+            </span>
+        </div>
+    </div>
+</form>
 
 <h1>@Model.CurrentCategory</h1>
 

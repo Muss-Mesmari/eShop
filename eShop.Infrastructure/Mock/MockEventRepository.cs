@@ -23,6 +23,11 @@ namespace eShop.Infrastructure.Mock
 
         public IEnumerable<Event> IsHighlightedEvent { get; }
 
+        public IEnumerable<Event> AllEventsByName(string searchedEvent = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public void CreateEvent(EventCreateEditViewModel newEvent)
         {
             throw new NotImplementedException();
