@@ -91,7 +91,7 @@ namespace eShop.Infrastructure.Services
 
         public IEnumerable<Event> AllEventsByName(string searchedEvent = null)
         {
-            return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.StartsWith(searchedEvent) || string.IsNullOrEmpty(searchedEvent));
+            return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) || string.IsNullOrEmpty(searchedEvent));
         }
     }
 }
