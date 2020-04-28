@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.AspNetCore.Mvc;
 
 namespace eShop.Infrastructure.Services
 {
@@ -51,7 +52,6 @@ namespace eShop.Infrastructure.Services
                 ImageUrl = newEvent.Event.ImageUrl,
                 IsHighlightedEvent = newEvent.Event.IsHighlightedEvent,
                 InStock = newEvent.Event.InStock,
-                Category = newEvent.Event.Category,
                 CategoryId = newEvent.Event.CategoryId,
                 Currency = newEvent.Event.Currency
             };
