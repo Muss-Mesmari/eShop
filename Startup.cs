@@ -19,7 +19,7 @@ using eShop.Infrastructure.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.Extensions.Options;
-using eShop.Infrastructure.Rule;
+using eShop.Infrastructure.ModelBinding;
 using eShop.Infrastructure.Rule.GeneralRules;
 using eShop.Infrastructure.Rule.Membership;
 using eShop.Infrastructure.DependencyInjection;
@@ -45,6 +45,13 @@ namespace eShop.Web
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<eShopDbContext>();
+
+            services.AddMvc(options =>
+            {
+                options.ModelBinderProviders.Insert(0, new CSVModelBinderProvider());
+            })
+                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
+
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IEventService, EventService>();
