@@ -62,6 +62,7 @@ namespace eShop.Web.Controllers
         }
 
         // GET: Event/Create
+        [Route("/Create-an-event", Name = "Create an event")]
         public IActionResult Create()
         {
             var viewModel = new EventCreateEditViewModel

@@ -23,6 +23,7 @@ using eShop.Infrastructure.Rule;
 using eShop.Infrastructure.Rule.GeneralRules;
 using eShop.Infrastructure.Rule.Membership;
 using eShop.Infrastructure.DependencyInjection;
+using eShop.Infrastructure.Middleware;
 
 namespace eShop.Web
 {
@@ -63,7 +64,7 @@ namespace eShop.Web
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
+    {            
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -80,6 +81,7 @@ namespace eShop.Web
         app.UseSession();
         app.UseRouting();
 
+        app.UseMiddleware<FeatureSwitchMiddleware>();
         app.UseAuthentication();
         app.UseAuthorization();
 
