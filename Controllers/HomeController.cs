@@ -8,11 +8,14 @@ using Microsoft.Extensions.Logging;
 using eShop.Infrastructure.Services;
 using eShop.Web.ViewModels;
 using eShop.Presentation.ViewModels;
-using eShop.Infrastructure.Outage;
+using eShop.Infrastructure.Filters;
 
 namespace eShop.Web.Controllers
 {
-    [TypeFilter(typeof(OutageAuthorizationFilter))]
+  // [TypeFilter(typeof(OutageAuthorizationFilter))]
+
+  //  [MobileRedirectActionFilter(Action ="ActionName", Controller ="Home")]
+  //   To target the action name that we want to be generated for mobile phones
     public class HomeController : Controller
     {
         // private readonly ILogger<HomeController> _logger;

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace eShop.Infrastructure.Outage
+namespace eShop.Infrastructure.Filters
 {
     public class OutageAuthorizationFilter : Attribute, IAuthorizationFilter
     {
