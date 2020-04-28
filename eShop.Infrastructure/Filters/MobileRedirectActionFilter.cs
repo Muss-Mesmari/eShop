@@ -7,6 +7,11 @@ using System.Text;
 
 namespace eShop.Infrastructure.Filters
 {
+    // This filter for redircting URLs throught targeting actions
+    // by decorating thier actions with the class Attribute
+
+    //  [MobileRedirectActionFilter(Action ="ActionName", Controller ="Home")]
+    //  To target the action name that we want to be generated for mobile phones
     public class MobileRedirectActionFilter : Attribute, IActionFilter
     {
         public string Controller { get; set; }

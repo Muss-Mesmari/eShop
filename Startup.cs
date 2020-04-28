@@ -46,6 +46,7 @@ namespace eShop.Web
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<eShopDbContext>();
 
+            // This filter is for binding that date that is coming .CSV files
             services.AddMvc(options =>
             {
                 options.ModelBinderProviders.Insert(0, new CSVModelBinderProvider());

@@ -9,6 +9,8 @@ namespace eShop.Infrastructure.ModelBinding
 {
     public class CSVModelBinder : IModelBinder
     {
+        // This filter for binding that date that is coming .CSV files
+        // check the startup.cs class, in the ConfigureServices method
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
             var rawCSV = bindingContext.ValueProvider.GetValue("csv").ToString();

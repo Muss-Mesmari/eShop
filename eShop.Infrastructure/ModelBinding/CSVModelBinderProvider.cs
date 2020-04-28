@@ -6,6 +6,8 @@ using System.Text;
 
 namespace eShop.Infrastructure.ModelBinding
 {
+    // This filter for binding that date that is coming .CSV files
+    // check the startup.cs class, in the ConfigureServices method
     public class CSVModelBinderProvider : IModelBinderProvider
     {
         public IModelBinder GetBinder(ModelBinderProviderContext context)

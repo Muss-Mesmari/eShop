@@ -8,6 +8,9 @@ using System.Text;
 
 namespace eShop.Infrastructure.Filters
 {
+    // This filter for turning off and on pages through
+    // decorating thier actions with the class Attribute
+    // [TypeFilter(typeof(OutageAuthorizationFilter))]
     public class OutageAuthorizationFilter : Attribute, IAuthorizationFilter
     {
         private IConfiguration _config;

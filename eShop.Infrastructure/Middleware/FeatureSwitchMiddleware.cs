@@ -14,6 +14,9 @@ namespace eShop.Infrastructure.Middleware
 {
     public  class FeatureSwitchMiddleware
     {
+        // This middleware for turning off and on features
+        // that are mentioned in the appsettings.json file
+        //   "FeatureSwitches": {"FeatureExample": true,}
         private readonly RequestDelegate _next;
 
         public FeatureSwitchMiddleware(RequestDelegate next)
