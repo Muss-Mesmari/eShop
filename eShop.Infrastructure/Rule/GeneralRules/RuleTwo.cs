@@ -15,7 +15,7 @@ namespace eShop.Infrastructure.Rule.GeneralRules
 
         public bool CompliesWithRule()
         {
-            return false;
+            return true;
         }
     }
 }

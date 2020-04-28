@@ -27,7 +27,7 @@ namespace eShop.Infrastructure.Rule.Membership
             int purchase = 0;
             if (purchase == _membership.MembershipRuleOne)
             {
-                return false;
+                return true;
             }
             return true;
          

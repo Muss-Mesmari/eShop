@@ -12,7 +12,7 @@ namespace eShop.Infrastructure.DependencyInjection
     {
         public static IServiceCollection AddConfiguration(this IServiceCollection services, IConfiguration config)
         {
-            services.Configure<FeaturesConfiguration>(config.GetSection("Features"));
+            services.Configure<FeaturesConfiguration>(config.GetSection("FeatureSwitches"));
             return services;
         }
     }
