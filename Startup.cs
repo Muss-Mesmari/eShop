@@ -19,10 +19,11 @@ using eShop.Infrastructure.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.Extensions.Options;
-using eShop.Infrastructure.Rule;
+using eShop.Infrastructure.ModelBinding;
 using eShop.Infrastructure.Rule.GeneralRules;
 using eShop.Infrastructure.Rule.Membership;
 using eShop.Infrastructure.DependencyInjection;
+using eShop.Infrastructure.Middleware;
 
 namespace eShop.Web
 {
@@ -45,6 +46,14 @@ namespace eShop.Web
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<eShopDbContext>();
 
+            // This filter is for binding that date that is coming .CSV files
+            services.AddMvc(options =>
+            {
+                options.ModelBinderProviders.Insert(0, new CSVModelBinderProvider());
+            })
+                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
+
+
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<IOrderService, OrderService>();
@@ -63,7 +72,7 @@ namespace eShop.Web
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
+    {            
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -80,6 +89,7 @@ namespace eShop.Web
         app.UseSession();
         app.UseRouting();
 
+        app.UseMiddleware<FeatureSwitchMiddleware>();
         app.UseAuthentication();
         app.UseAuthorization();
 

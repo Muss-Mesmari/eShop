@@ -13,6 +13,7 @@ namespace eShop.Web.Controllers
 {
     public class EventController : Controller
     {
+       // [TypeFilter(typeof(KillSwitchAuthorizationFilter))]
         private readonly IEventService _eventService;
         private readonly ICategoryService _categoryService;
 
@@ -62,6 +63,7 @@ namespace eShop.Web.Controllers
         }
 
         // GET: Event/Create
+        [Route("/Create-an-event", Name = "Create an event")]
         public IActionResult Create()
         {
             var viewModel = new EventCreateEditViewModel
@@ -142,6 +144,12 @@ namespace eShop.Web.Controllers
                 _eventService.DeleteEvent(id);              
             }
             return RedirectToAction("Index");
+        }
+
+        // POST: Event/ImportEvents
+        public IActionResult ImportEvents(List<Event> importedEvents)
+        {
+            return Content("The events has been imported");
         }
     }
 }
