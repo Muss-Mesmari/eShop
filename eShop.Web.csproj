@@ -15,7 +15,6 @@
     <Compile Remove="eShop.Presentation\**" />
     <Compile Remove="eShop.Services\**" />
     <Compile Remove="eShop.ShoppingCart\**" />
-    <Compile Remove="wwwroot\lib\bootstrap\fonts\**" />
     <Content Remove="eShop.Entities\**" />
     <Content Remove="eShop.Identity\**" />
     <Content Remove="eShop.Infrastructure\**" />
@@ -23,7 +22,6 @@
     <Content Remove="eShop.Presentation\**" />
     <Content Remove="eShop.Services\**" />
     <Content Remove="eShop.ShoppingCart\**" />
-    <Content Remove="wwwroot\lib\bootstrap\fonts\**" />
     <EmbeddedResource Remove="eShop.Entities\**" />
     <EmbeddedResource Remove="eShop.Identity\**" />
     <EmbeddedResource Remove="eShop.Infrastructure\**" />
@@ -31,7 +29,6 @@
     <EmbeddedResource Remove="eShop.Presentation\**" />
     <EmbeddedResource Remove="eShop.Services\**" />
     <EmbeddedResource Remove="eShop.ShoppingCart\**" />
-    <EmbeddedResource Remove="wwwroot\lib\bootstrap\fonts\**" />
     <None Remove="eShop.Entities\**" />
     <None Remove="eShop.Identity\**" />
     <None Remove="eShop.Infrastructure\**" />
@@ -39,7 +36,6 @@
     <None Remove="eShop.Presentation\**" />
     <None Remove="eShop.Services\**" />
     <None Remove="eShop.ShoppingCart\**" />
-    <None Remove="wwwroot\lib\bootstrap\fonts\**" />
   </ItemGroup>
 
 
