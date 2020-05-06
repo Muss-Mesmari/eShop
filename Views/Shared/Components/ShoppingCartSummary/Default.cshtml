@@ -2,12 +2,17 @@
 
 @if (Model.ShoppingCartService.ShoppingCartItems.Count > 0)
 {
-    <li>
-        <a>
-            <span class="glyphicon glyphicon-shopping-cart"></span>
-            <span id="cart-status">
-                @Model.ShoppingCartService.ShoppingCartItems.Count
-            </span>
-        </a>
-    </li>
+    <a>
+        <span class="fas fa-shopping-cart"></span>
+        <span>
+            @Model.ShoppingCartService.ShoppingCartItems.Count
+        </span>
+    </a>
+}
+
+else
+{
+    <a>
+        <span class="fas fa-shopping-cart"></span>
+    </a>
 }
