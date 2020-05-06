@@ -47,7 +47,7 @@ namespace eShop.Infrastructure.Services
             {
                 newCategory.CategoryName = newCategory.CategoryName;
                 newCategory.Description = newCategory.Description;
-               // newCategory.Events = newCategory.Events;
+                newCategory.Events = newCategory.Events;
             }
 
             var entity = _eShopDbContext.Entry(newCategory);
@@ -64,5 +64,6 @@ namespace eShop.Infrastructure.Services
                 _eShopDbContext.SaveChanges();
             }
         }
+
     }
 }

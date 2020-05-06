@@ -65,9 +65,20 @@ namespace eShop.Web.Controllers
         }
 
         // GET: Categories/Edit/5
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(int id)
         {
-            return View();
+            var viewModel = new Category
+            {
+                CategoryId = id,
+                CategoryName = _categoryService.GetCategoryById(id).CategoryName,
+                Description = _categoryService.GetCategoryById(id).Description,
+                Events = _categoryService.GetCategoryById(id).Events
+            };
+            if (viewModel == null)
+            {
+                return View("NotFound");
+            }
+            return View(viewModel);
         }
 
         // POST: Categories/Edit/5

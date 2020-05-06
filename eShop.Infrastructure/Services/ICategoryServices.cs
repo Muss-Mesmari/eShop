@@ -15,6 +15,5 @@ namespace eShop.Infrastructure.Services
         void CreateCategory(Category newCategory);
         void UpdateCategory(Category newCategory);
         void DeleteCategory(int id);
-
     }
 }
