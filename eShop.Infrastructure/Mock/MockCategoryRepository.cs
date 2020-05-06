@@ -15,5 +15,25 @@ namespace eShop.Infrastructure.Mock
                 new Category{CategoryId=2, CategoryName="Category Two", Description="All events of category two"},
                 new Category{CategoryId=3, CategoryName="Category Three", Description="All events of category three"}
         };
+
+        public void CreateCategory(Category newCategory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCategory(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Category GetCategoryById(int? eventId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCategory(Category newCategory)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -47,11 +47,11 @@ namespace eShop.Web
                 .AddEntityFrameworkStores<eShopDbContext>();
 
             // This filter is for binding that date that is coming .CSV files
-            services.AddMvc(options =>
-            {
-                options.ModelBinderProviders.Insert(0, new CSVModelBinderProvider());
-            })
-                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
+            //services.AddMvc(options =>
+            //{
+            //    options.ModelBinderProviders.Insert(0, new CSVModelBinderProvider());
+            //})
+            //    .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
 
 
             services.AddScoped<ICategoryService, CategoryService>();
