@@ -2,10 +2,18 @@
 
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "eShop";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <a>More info will follow soon.</a>
+<div class="text-center pb-3">
+    <h1>Events of the week</h1>
+    <p>Here are the highlighted events</p>
+</div>
+<div class="row">
+
+    @foreach (var highlightedevent in Model.IsHighlightedEvent)
+    {
+        <partial name="_EventCard" model="highlightedevent" />
+    }
+
 </div>
