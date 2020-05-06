@@ -9,5 +9,6 @@ namespace eShop.Presentation.ViewModels
     public class HomeViewModel
     {
         public IEnumerable<Event> IsHighlightedEvent { get; set; }
+        public IEnumerable<Category> AllCategories { get; set; }
     }
 }

@@ -30,17 +30,20 @@ namespace eShop.Web.Controllers
         //}
 
         private readonly IEventService _eventService;
+        private readonly ICategoryService _categoryService;
 
-        public HomeController(IEventService eventService)
+        public HomeController(IEventService eventService, ICategoryService categoryService)
         {
             _eventService = eventService;
+            _categoryService = categoryService;
         }
 
         public IActionResult Index()
         {
             var homeViewModel = new HomeViewModel
             {
-                IsHighlightedEvent = _eventService.IsHighlightedEvent
+                IsHighlightedEvent = _eventService.IsHighlightedEvent,
+                AllCategories = _categoryService.AllCategories
             };
 
             return View(homeViewModel);

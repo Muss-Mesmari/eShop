@@ -1,0 +1,26 @@
+﻿@model eShop.Entities.Entities.Category
+
+
+<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+    <div class="card m-0 my-3 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">
+                <a asp-controller="Event" asp-action="Index" asp-route-category="@Model.CategoryName">
+                    @Model.CategoryName
+                </a>
+            </h4>
+        </div>
+        <a asp-controller="Event" asp-action="Index" asp-route-category="@Model.CategoryName">
+            <img class="card-img-top" src="" alt="@Model.CategoryName">
+        </a>
+        <div class="card-body">
+            <p class="card-subtitle mb-2 text-muted">@Model.Description.</p>
+            <a asp-controller="Event"
+               asp-action="Index"
+               asp-route-category="@Model.CategoryName"
+               role="button" class="btn btn-lg btn-block btn-danger text-nowrap">
+                See more!
+            </a>
+        </div>
+    </div>
+</div>
