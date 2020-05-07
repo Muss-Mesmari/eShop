@@ -1,13 +1,11 @@
 ﻿@model eShop.Entities.Entities.Category
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create a category";
 }
 
-<h1>Create</h1>
+<h1>Create a category</h1>
 
-<h4>Category</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -23,7 +21,7 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-danger text-nowrap" />
             </div>
         </form>
     </div>
