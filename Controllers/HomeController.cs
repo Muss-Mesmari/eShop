@@ -9,6 +9,8 @@ using eShop.Infrastructure.Services;
 using eShop.Web.ViewModels;
 using eShop.Presentation.ViewModels;
 using eShop.Infrastructure.Filters;
+using eShop.Infrastructure.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace eShop.Web.Controllers
 {
@@ -31,11 +33,16 @@ namespace eShop.Web.Controllers
 
         private readonly IEventService _eventService;
         private readonly ICategoryService _categoryService;
+        private readonly FeaturesConfiguration _featuresConfiguration;
 
-        public HomeController(IEventService eventService, ICategoryService categoryService)
+        public HomeController
+            (IEventService eventService, 
+            ICategoryService categoryService,
+            IOptions<FeaturesConfiguration> options)
         {
             _eventService = eventService;
             _categoryService = categoryService;
+            _featuresConfiguration = options.Value;
         }
 
         public IActionResult Index()
@@ -43,7 +50,10 @@ namespace eShop.Web.Controllers
             var homeViewModel = new HomeViewModel
             {
                 IsHighlightedEvent = _eventService.IsHighlightedEvent,
-                AllCategories = _categoryService.AllCategories
+                AllCategories = _categoryService.AllCategories,
+                HomepageCategorySection = _featuresConfiguration.HomepageCategorySection,
+                HomepageFeaturedEventsSection = _featuresConfiguration.HomepageFeaturedEventsSection
+
             };
 
             return View(homeViewModel);
