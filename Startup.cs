@@ -43,8 +43,14 @@ namespace eShop.Web
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<eShopDbContext>();
+
+           
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = true;
+            }).AddDefaultUI().AddDefaultTokenProviders().AddEntityFrameworkStores<eShopDbContext>();
+
+
 
             // This filter is for binding that date that is coming .CSV files
             //services.AddMvc(options =>

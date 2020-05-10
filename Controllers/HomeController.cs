@@ -11,6 +11,7 @@ using eShop.Presentation.ViewModels;
 using eShop.Infrastructure.Filters;
 using eShop.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eShop.Web.Controllers
 {
@@ -45,6 +46,7 @@ namespace eShop.Web.Controllers
             _featuresConfiguration = options.Value;
         }
 
+        //[Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var homeViewModel = new HomeViewModel
@@ -68,6 +70,11 @@ namespace eShop.Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
