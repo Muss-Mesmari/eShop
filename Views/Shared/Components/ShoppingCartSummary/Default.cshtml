@@ -1,18 +1,19 @@
 ﻿@model eShop.Web.ViewModels.ShoppingCartViewModel
 
+
 @if (Model.ShoppingCartService.ShoppingCartItems.Count > 0)
 {
-    <a>
-        <span class="fas fa-shopping-cart"></span>
+    <a class="nav-link text-white text-nowrap" asp-area="" asp-controller="ShoppingCart" asp-action="Index">
+        <span class="fas fa-shopping-cart fa-2x"></span>
         <span>
             @Model.ShoppingCartService.ShoppingCartItems.Count
-        </span>
+        </span>        
     </a>
 }
 
 else
 {
-    <a>
-        <span class="fas fa-shopping-cart"></span>
-    </a>
+<a class="nav-link text-white text-nowrap" asp-area="" asp-controller="ShoppingCart" asp-action="Index">
+    <span class="fas fa-shopping-cart fa-2x"></span>
+</a>
 }

@@ -4,55 +4,138 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - eShop</title>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/site.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <script src="~/lib/jquery/jquery.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/jquery/jquery.js"></script>
     <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
 </head>
 <body>
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">eShop</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        @await Component.InvokeAsync("ShoppingCartSummary")
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                @await Component.InvokeAsync("CategoryMenu")
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Create">Create Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Create">Create Categories</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>*@
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
+
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">eShop</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    @await Component.InvokeAsync("ShoppingCartSummary")
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        @await Component.InvokeAsync("CategoryMenu")
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Create">Create Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Create">Create Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
-                    </li>
-                </ul>
+
+                <div class="collapse navbar-collapse" id="navbarsExample02">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white fab fa-facebook fa-1x" href="#"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fab fa-instagram fa-1x" href="#"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fab fa-youtube fa-1x" href="#"></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            @await Component.InvokeAsync("ShoppingCartSummary")
+                        </li>
+                        <li class="nav-item avatar dropdown">
+                            <partial name="_LoginPartial" />
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
-    </header>
-    <div>
-        <main class="container flex-column" role="main">
-            @RenderBody()
-        </main>
-        <footer class="pt-4 my-md-5 pt-md-5 border-top text-muted">
-            <div class="container">
-                By Muss Mesmari &copy; 2020 - eShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom shadow-sm mb-3">
+            <div class="container-fluid">
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample04">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link text-nowrap" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            @await Component.InvokeAsync("CategoryMenu")
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark text-nowrap disabled" href="#" tabindex="-1" aria-disabled="true">Contact us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark text-nowrap disabled" href="#" tabindex="-1" aria-disabled="true">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Event" asp-action="Create">Create Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Category" asp-action="Create">Create Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-nowrap dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown03">
+                                <a class="dropdown-item text-nowrap" href="#">Action</a>
+                                <a class="dropdown-item text-nowrap" href="#">Another action</a>
+                                <a class="dropdown-item text-nowrap" href="#">Something else here</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-md-0">
+                        <input class="form-control" type="text" placeholder="Search">
+                    </form>
+                </div>
             </div>
-        </footer>
-    </div>
+        </nav>
+
+    </header>
+
+    <main class="container flex-column" role="main">
+        @RenderBody()
+    </main>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top text-muted">
+        <div class="container">
+            By Muss Mesmari &copy; 2020 - eShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery/jquery.slim.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>

@@ -3,17 +3,35 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
-      "library": "twitter-bootstrap@4.4.0",
+      "library": "twitter-bootstrap@4.4.1",
       "destination": "wwwroot/lib/bootstrap/"
     },
     {
-      "library": "jquery@3.5.0",
+      "library": "jquery@3.5.1",
       "destination": "wwwroot/lib/jquery/"
     }
   ,
 {
   "library": "font-awesome@5.13.0",
   "destination": "wwwroot/lib/font-awesome/"
+}
+,
+{
+  "library": "jquery@3.5.1",
+  "destination": "wwwroot/lib/jquery/",
+  "files": [
+    "jquery.min.js",
+    "jquery.js",
+    "jquery.min.map",
+    "jquery.slim.min.js",
+    "jquery.slim.js",
+    "jquery.slim.min.map"
+  ]
+}
+,
+{
+  "library": "jquery@3.5.1",
+  "destination": "wwwroot/lib/jquery/"
 }
 ]
 }
