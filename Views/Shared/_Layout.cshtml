@@ -44,31 +44,30 @@
             </nav>
         </header>*@
     <header>
-
         <nav class="navbar navbar-expand navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">eShop</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand fa-2x font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">eShop</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggleNavigationOff" aria-controls="toggleNavigationOff" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarsExample02">
+                <div class="collapse navbar-collapse" id="toggleNavigationOff">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white fab fa-facebook fa-1x" href="#"></a>
+                            <a class="nav-link text-white fab fa-facebook fa-1x mt-2" href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white fab fa-instagram fa-1x" href="#"></a>
+                            <a class="nav-link text-white fab fa-instagram fa-1x mt-2" href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white fab fa-youtube fa-1x" href="#"></a>
+                            <a class="nav-link text-white fab fa-youtube fa-1x mt-2" href="#"></a>
                         </li>
                     </ul>
                     <ul class="navbar-nav nav-flex-icons">
                         <li class="nav-item">
                             @await Component.InvokeAsync("ShoppingCartSummary")
                         </li>
-                        <li class="nav-item avatar dropdown">
+                        <li class="nav-item avatar dropdown pr-3">
                             <partial name="_LoginPartial" />
                         </li>
                     </ul>
@@ -79,11 +78,11 @@
         <nav class="navbar navbar-expand-sm navbar-light border-bottom shadow-sm mb-3">
             <div class="container-fluid">
                 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggleNavigationMainMenuOn" aria-controls="toggleNavigationMainMenuOn" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarsExample04">
+                <div class="collapse navbar-collapse" id="toggleNavigationMainMenuOn">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link text-nowrap" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -91,40 +90,35 @@
                         <li class="nav-item">
                             @await Component.InvokeAsync("CategoryMenu")
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark text-nowrap dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                <a class="text-dark text-nowrap dropdown-item" asp-area="" asp-controller="Category" asp-action="Create">Create Categories</a>
+                                <a class="text-dark text-nowrap dropdown-item" asp-area="" asp-controller="Event" asp-action="Create">Create Events</a>
+                                <a class="text-dark text-nowrap dropdown-item" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
+                            </div>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark text-nowrap disabled" href="#" tabindex="-1" aria-disabled="true">Contact us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark text-nowrap disabled" href="#" tabindex="-1" aria-disabled="true">About us</a>
                         </li>
+                    </ul>
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Event" asp-action="Create">Create Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Category" asp-action="Create">Create Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link text-nowrap dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown03">
-                                <a class="dropdown-item text-nowrap" href="#">Action</a>
-                                <a class="dropdown-item text-nowrap" href="#">Another action</a>
-                                <a class="dropdown-item text-nowrap" href="#">Something else here</a>
-                            </div>
+                            <form class="form-inline my-2 my-md-0">
+                                <input class="form-control" type="text" placeholder="Search">
+                            </form>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-md-0">
-                        <input class="form-control" type="text" placeholder="Search">
-                    </form>
+
                 </div>
             </div>
         </nav>
-
     </header>
 
-    <main class="container flex-column" role="main">
+    <main class="container" role="main">
         @RenderBody()
     </main>
     <footer class="pt-4 my-md-5 pt-md-5 border-top text-muted">

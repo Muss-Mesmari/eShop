@@ -5,7 +5,7 @@
 {
     <a class="nav-link text-white text-nowrap" asp-area="" asp-controller="ShoppingCart" asp-action="Index">
         <span class="fas fa-shopping-cart fa-2x"></span>
-        <span>
+        <span class="text-danger font-weight-bold">
             @Model.ShoppingCartService.ShoppingCartItems.Count
         </span>        
     </a>

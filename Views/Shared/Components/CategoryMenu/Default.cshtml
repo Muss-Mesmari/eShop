@@ -1,19 +1,19 @@
 ﻿@model IEnumerable<eShop.Entities.Entities.Category>
 
-<li class="dropdown">
+<li class="nav-item dropdown">
     <a asp-controller="Event" asp-action="Index"
-       class="dropdown-toggle nav-link text-dark" data-toggle="dropdown">Events<b class="caret"></b></a>
+       class="nav-link text-dark text-nowrap dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
     <ul class="dropdown-menu">
         @foreach (var category in Model)
          {
             <li>
-                <a class="nav-link text-dark" asp-controller="Event" asp-action="Index"
+                <a class=" text-dark text-nowrap dropdown-item" asp-controller="Event" asp-action="Index"
                   asp-route-category="@category.CategoryName">@category.CategoryName</a>
             </li>
          }
         <li class="dropdown-divider"></li>
         <li>
-            <a class="nav-link text-dark" asp-controller="Event" asp-action="Index" asp-route-Category="">View all categoryies</a>
+            <a class="text-dark text-nowrap dropdown-item" asp-controller="Event" asp-action="Index" asp-route-Category="">View all categoryies</a>
         </li>
     </ul>
 </li>
