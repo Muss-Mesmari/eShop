@@ -1,79 +1,78 @@
 ﻿@model eShop.Entities.Entities.Order
+<form asp-action="Checkout" method="post" class="form-horizontal" role="form">
+    <h4>You're just one step away.</h4>
 
-    <form asp-action="Checkout" method="post" class="form-horizontal" role="form">
-        <h4>You're just one step away.</h4>
+    <div asp-validation-summary="All" class="text-danger"></div>
 
-        <div asp-validation-summary="All" class="text-danger"></div>
-
-        <div class="form-group">
-            <label asp-for="FirstName" class="col-md-2 control-label"></label>
-            <div class="col-md-5">
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
+    <div class="form-group">
+        <label asp-for="FirstName" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
         </div>
-
-        <div class="form-group">
-            <label asp-for="LastName" class="col-md-2 control-label"></label>
-            <div class="col-md-5">
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="DanceRole" class="col-md-2 control-label"></label>
-            <div class="col-md-5">
-                <select asp-for="DanceRole" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DanceRole))))">
-                    <option value="">Select a dance role</option>
-                </select>
-                <span asp-validation-for="DanceRole" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="DanceLevel" class="col-md-2 control-label"></label>
-            <div class="col-md-5">
-                <select asp-for="DanceLevel" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DanceLevel))))">
-                    <option value="">Select a dance level</option>
-                </select>
-                
-                <span asp-validation-for="DanceLevel" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Country" class="col-md-2 control-label"></label>
-            <div class="col-md-5">
-                <input asp-for="Country" class="form-control" />
-                <span asp-validation-for="Country" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
-            <div class="col-md-5">
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Email" class="col-md-2 control-label"></label>
-            <div class="col-md-5">
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-5">
-                <input id="btn" type="submit" class="btn btn-danger text-nowrap btn-block" value="Complete order" />
-            </div>
-        </div>
-    </form>
-
-    <div>
-        <a asp-controller="ShoppingCart" asp-action="Index">Back to Shopping Cart</a>
     </div>
+
+    <div class="form-group">
+        <label asp-for="LastName" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DanceRole" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <select asp-for="DanceRole" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DanceRole))))">
+                <option value="">Select a dance role</option>
+            </select>
+            <span asp-validation-for="DanceRole" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DanceLevel" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <select asp-for="DanceLevel" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DanceLevel))))">
+                <option value="">Select a dance level</option>
+            </select>
+
+            <span asp-validation-for="DanceLevel" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Country" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Country" class="form-control" />
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input id="btn" type="submit" class="btn btn-danger text-nowrap btn-block" value="Complete order" />
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-controller="ShoppingCart" asp-action="Index">Back to Shopping Cart</a>
+</div>
 

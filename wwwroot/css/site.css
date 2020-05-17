@@ -1,6 +1,31 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+
+/* Go to top button */
+#goToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 150px;
+    right: 30px;
+    z-index: 99;
+    cursor: pointer; /* Add a mouse pointer on hover */
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+#goToTopBtn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+/* -------------- */
+
+
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -60,7 +85,7 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 0px;
 }
 
 .footer {
@@ -70,3 +95,5 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+

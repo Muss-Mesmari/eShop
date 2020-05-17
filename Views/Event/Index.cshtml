@@ -1,6 +1,67 @@
 ﻿@model eShop.Presentation.ViewModels.EventsListViewModel
 
-<form method="get">
+
+    <div class="container-fluid bg-transparent ">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-2 pt-3">
+                <div class="form-group ">
+                    <select id="inputState " class="form-control">
+                        <option selected>Type of dance</option>
+                        <option>Samba de Gafieira</option>
+                        <option>Forro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 pt-3">
+                <div class="form-group">
+                    <select id="inputState" class="form-control">
+                        <option selected>Type of event</option>
+                        <option>Classes</option>
+                        <option>Workshops</option>
+                        <option>Parties</option>
+                        <option>Festivals</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 pt-3">
+                <div class="form-group">
+                    <select id="inputState" class="form-control">
+                        <option selected>Budget</option>
+                        <option>BMW</option>
+                        <option>Audi</option>
+                        <option>Maruti</option>
+                        <option>Tesla</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 pt-3">
+                <div class="form-group">
+                    <select id="inputState" class="form-control">
+                        <option selected>Month</option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger btn-block">Search</button>
+            </div>
+        </div>
+    </div>
+
+
+
+@*<form method="get">
     <div class="input-group md-form form-sm form-2 pl-0">
         <input class="form-control my-0 py-1 amber-border" type="search" asp-for="SearchedEvent" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
@@ -10,7 +71,7 @@
             </span>
         </div>
     </div>
-</form>
+</form>*@
 
 
 <h1 class="text-center text-capitalize text-nowrap">@Model.CurrentCategory</h1>
