@@ -1,11 +1,11 @@
 ﻿/* Card hover */
-.eventCard:hover {
+.event-card:hover {
     transform: scale(1.05);
 }
 /* -------------- */
 
 /* Card hover */
-.categoryCard:hover {
+.category-card:hover {
     transform: scale(1.05);
 }
 /* -------------- */

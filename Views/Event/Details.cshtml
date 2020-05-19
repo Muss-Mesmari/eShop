@@ -8,20 +8,22 @@
 <div class="row">
 
     <!-- the side scroll spy menu -->
-    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 fixedMenu">
-        <h1 class="mt-4">@Model.Name</h1>
-        <div id="side-menu-list" class=" sticky list-group">
-            <a href="#about-the-event" class="list-group-item list-group-item-action active">About the event</a>
-            <a href="#schedule" class="list-group-item list-group-item-action">Schedule</a>
-            <a href="#prices" class="list-group-item list-group-item-action">Prices</a>
-            <a href="#location" class="list-group-item list-group-item-action">Location</a>
-            <a href="#teachers" class="list-group-item list-group-item-action">Teachers</a>
-            <a href="#how-to-go" class="list-group-item list-group-item-action">How to go</a>
-            <a asp-controller="ShoppingCart"
-               asp-action="AddToShoppingCart"
-               asp-route-eventId="@Model.EventId" class="btn bg-danger btn-lg my-3 text-white">
-                <i class="fas fa-shopping-cart"></i>Add to cart
-            </a>
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+        <div class="sticky">
+            <h1 class="mt-4">@Model.Name</h1>
+            <div id="side-menu-list" class="list-group">
+                <a href="#about-the-event" class="list-group-item list-group-item-action active">About the event</a>
+                <a href="#schedule" class="list-group-item list-group-item-action">Schedule</a>
+                <a href="#prices" class="list-group-item list-group-item-action">Prices</a>
+                <a href="#location" class="list-group-item list-group-item-action">Location</a>
+                <a href="#teachers" class="list-group-item list-group-item-action">Teachers</a>
+                <a href="#how-to-go" class="list-group-item list-group-item-action">How to go</a>
+                <a asp-controller="ShoppingCart"
+                   asp-action="AddToShoppingCart"
+                   asp-route-eventId="@Model.EventId" class="btn bg-danger btn-lg my-3 text-white">
+                    <i class="fas fa-shopping-cart"></i>Add to cart
+                </a>
+            </div>
         </div>
     </div>
 

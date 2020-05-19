@@ -26,19 +26,20 @@ namespace eShop.Web.Controllers
             _categoryService = categoryService;
         }
         // GET: Event
-        public ActionResult Index(string category)
+        public ActionResult Index(string category, string searchedEvent )
         {
             IEnumerable<Event> events;
             string currentCategory;
+            searchedEvent = SearchedEvent;
 
             if (string.IsNullOrEmpty(category))
             {
-                events = _eventService.AllEventsByName(SearchedEvent).OrderBy(e => e.EventId);
+                events = _eventService.AllEventsByName(searchedEvent).OrderBy(e => e.EventId);
                 currentCategory = "All events";
             }
             else
             {
-                events = _eventService.AllEventsByName(SearchedEvent).Where(p => p.Category.CategoryName == category)
+                events = _eventService.AllEventsByName(searchedEvent).Where(p => p.Category.CategoryName == category)
                     .OrderBy(e => e.EventId);
                 currentCategory = _categoryService.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
             }
@@ -47,7 +48,7 @@ namespace eShop.Web.Controllers
             {
                 Events = events,
                 CurrentCategory = currentCategory,
-                SearchedEvent = SearchedEvent
+                SearchedEvent = searchedEvent
             });
         }
 

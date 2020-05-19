@@ -3,7 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 
 
 /* Go to top button */
-#goToTopBtn {
+#go-to-top-btn {
     display: none;
     position: fixed;
     bottom: 150px;
@@ -14,7 +14,7 @@ for details on configuring this project to bundle and minify static web assets. 
     color: white;
 }
 
-#goToTopBtn:hover {
+#go-to-top-btn:hover {
     background: rgba(0, 0, 0, 0.8);
 }
 /* -------------- */

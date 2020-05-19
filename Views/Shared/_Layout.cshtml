@@ -10,45 +10,13 @@
     <script src="~/lib/jquery/jquery.js"></script>
     <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
-    <link href="~/css/eventCard.css" rel="stylesheet" />
-    <link href="~/css/eventDetails.css" rel="stylesheet" />
+    <link href="~/css/card.css" rel="stylesheet" />
+    <link href="~/css/event-details.css" rel="stylesheet" />
     <style>
     </style>
 </head>
 <body>
-    @*<header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">eShop</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
-                        @await Component.InvokeAsync("ShoppingCartSummary")
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                @await Component.InvokeAsync("CategoryMenu")
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Create">Create Events</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Create">Create Categories</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>*@
-    <header >
+    <header>
         <nav class="navbar navbar-expand navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand fa-2x font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">eShop</a>
@@ -112,14 +80,7 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <div class="input-group">
-                                <input class="form-control py-2" type="search" value="search" id="example-search-input">
-                                <span class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
+                            @await Component.InvokeAsync("SearchField")
                         </li>
                     </ul>
 
@@ -129,7 +90,7 @@
     </header>
 
     <main class="container" role="main">
-        <a onclick="topFunction()" id="goToTopBtn" class="btn btn-lg text-white back-to-top" role="button" title="Go to top"><span class="fas fa-chevron-up"></span></a>
+        <a onclick="topFunction()" id="go-to-top-btn" class="btn btn-lg text-white back-to-top" role="button" title="Go to top"><span class="fas fa-chevron-up"></span></a>
         @RenderBody()
     </main>
     <footer class="mt-4 border-top text-muted">
