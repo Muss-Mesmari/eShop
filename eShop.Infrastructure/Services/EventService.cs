@@ -95,10 +95,15 @@ namespace eShop.Infrastructure.Services
             {
                 return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) || string.IsNullOrEmpty(searchedEvent));
             }
-            else 
+            else
             {
                 return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) && e.Category.CategoryName == searchedCategory || string.IsNullOrEmpty(searchedEvent));
-            }           
+            }
+        }
+
+        public IEnumerable<Event> GetEventsByContent(string searchedEvent)
+        {
+            return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) || e.LongDescription.Contains(searchedEvent) || e.ShortDescription.Contains(searchedEvent) || e.Category.CategoryName.Contains(searchedEvent));
         }
     }
 }

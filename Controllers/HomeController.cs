@@ -12,6 +12,7 @@ using eShop.Infrastructure.Filters;
 using eShop.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authorization;
+using eShop.Entities.Entities;
 
 namespace eShop.Web.Controllers
 {
@@ -36,6 +37,9 @@ namespace eShop.Web.Controllers
         private readonly ICategoryService _categoryService;
         private readonly FeaturesConfiguration _featuresConfiguration;
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchedEventBar { get; set; }
+
         public HomeController
             (IEventService eventService, 
             ICategoryService categoryService,
@@ -55,10 +59,21 @@ namespace eShop.Web.Controllers
                 AllCategories = _categoryService.AllCategories,
                 HomepageCategorySection = _featuresConfiguration.HomepageCategorySection,
                 HomepageFeaturedEventsSection = _featuresConfiguration.HomepageFeaturedEventsSection
-
             };
 
             return View(homeViewModel);
+        }
+
+        public ActionResult Search()
+        {
+            IEnumerable<Event> events = _eventService.GetEventsByContent(SearchedEventBar).OrderBy(e => e.EventId);
+
+            return View(new HomeViewModel
+            {
+                Events = events,
+                SearchedEventBar = SearchedEventBar,
+                NotFoundSearchedBarMessage = "Nothing was found that matched your search",
+            });
         }
 
         public IActionResult Privacy()

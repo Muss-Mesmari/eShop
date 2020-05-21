@@ -48,5 +48,10 @@ namespace eShop.Infrastructure.Mock
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Event> GetEventsByContent(string searchedEvent)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

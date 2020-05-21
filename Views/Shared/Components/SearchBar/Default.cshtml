@@ -1,0 +1,12 @@
+﻿@model eShop.Presentation.ViewModels.HomeViewModel
+
+<form asp-controller="Home" asp-action="Search" method="get" role="form">
+    <div class="input-group">
+        <input class="form-control py-2" type="text" asp-for="SearchedEventBar" placeholder="Search">
+        <span class="input-group-append">
+            <a class="btn btn-outline-secondary" value="Submit">
+                <i class="fa fa-search"></i>
+            </a>
+        </span>
+    </div>
+</form>

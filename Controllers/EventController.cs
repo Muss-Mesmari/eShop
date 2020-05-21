@@ -65,19 +65,6 @@ namespace eShop.Web.Controllers
             });
         }
 
-        public ActionResult Search()
-        {
-            IEnumerable<Event> events = _eventService.GetEvents(SearchedEvent, SearchedCategory).OrderBy(e => e.EventId);
-
-            return View(new EventsListViewModel
-            {
-                Events = events,
-                SearchedEvent = SearchedEvent,
-                SearchedCategory = SearchedCategory,
-                Categories = _categoryService.AllCategories.ToList()
-            });
-        }
-
         // GET: Event/Details/5
         public IActionResult Details(int id)
         {

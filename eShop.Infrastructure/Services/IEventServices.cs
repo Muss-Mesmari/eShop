@@ -12,8 +12,9 @@ namespace eShop.Infrastructure.Services
         IEnumerable<Event> IsHighlightedEvent { get; }
         Event GetEventById(int? eventId);
         IEnumerable<Event> GetEvents(string searchedEvent = null, string searchedCategory = null);
+        IEnumerable<Event> GetEventsByContent(string searchedEvent);
         void CreateEvent(EventCreateEditViewModel newEvent);
         void UpdateEvent(EventCreateEditViewModel oldEvent);
-        void DeleteEvent(int id);      
+        void DeleteEvent(int id);
     }
 }

@@ -13,7 +13,7 @@ namespace eShop.Presentation.ViewModels
         public IEnumerable<Event> Events { get; set; }
         public bool HomepageCategorySection { get; set; }
         public bool HomepageFeaturedEventsSection { get; set; }
-        public string SearchedEvent { get; set; }
-        public string SearchedCategory { get; set; }
+        public string SearchedEventBar { get; set; }
+        public string NotFoundSearchedBarMessage { get; set; }
     }
 }
