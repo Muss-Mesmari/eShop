@@ -1,7 +1,10 @@
 ﻿@model eShop.Presentation.ViewModels.EventsListViewModel
 
+
+
 <form asp-controller="Event" method="get" role="form">
     <div class="input-group">
+        @*<input class="form-control py-2" type="text" asp-for="SearchedEvent" placeholder="Search">*@
         <input class="form-control py-2" type="text" asp-for="SearchedEvent" placeholder="Search">
         <span class="input-group-append">
             <a class="btn btn-outline-secondary" value="Submit">

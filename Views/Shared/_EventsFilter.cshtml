@@ -1,0 +1,35 @@
+﻿@model eShop.Presentation.ViewModels.EventsListViewModel
+
+<form asp-controller="Event" asp-action="Index" method="get" role="form">
+
+    <div class="container-fluid bg-transparent">
+        <div class="form-row m-3 align-items-center justify-content-center">
+
+            <div class="col-md-3 pt-3">
+                <select asp-for="SearchedCategory" class="form-control" asp-items="@(new SelectList(Model.Categories, "CategoryName", "CategoryName"))">
+                    <option value="">Select a category</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 pt-3">
+                <select id="inputState" class="form-control">
+                    <option selected>Type of event</option>
+                    <option>Classes</option>
+                    <option>Workshops</option>
+                    <option>Parties</option>
+                    <option>Festivals</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 pt-3">
+                <input class="form-control" type="text" asp-for="SearchedEvent" placeholder="Search">
+            </div>
+
+            <div class="col-md-3 pt-3">
+                <input type="submit" class="btn btn-danger text-nowrap btn-block" value="Search" />
+            </div>
+
+        </div>
+    </div>
+</form>
+

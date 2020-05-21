@@ -1,0 +1,11 @@
+﻿@model eShop.Presentation.ViewModels.EventsListViewModel
+
+
+    <partial name="_EventsFilter" />
+
+<div class="card-deck">
+    @foreach (var item in Model.Events)
+    {
+        <partial name="_EventCard" model="item" />
+    }
+</div>

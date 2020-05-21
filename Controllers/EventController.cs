@@ -13,42 +13,68 @@ namespace eShop.Web.Controllers
 {
     public class EventController : Controller
     {
-       // [TypeFilter(typeof(KillSwitchAuthorizationFilter))]
+        // [TypeFilter(typeof(KillSwitchAuthorizationFilter))]
         private readonly IEventService _eventService;
         private readonly ICategoryService _categoryService;
 
         [BindProperty(SupportsGet = true)]
         public string SearchedEvent { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchedCategory { get; set; }
+
         public EventController(IEventService eventService, ICategoryService categoryService)
         {
             _eventService = eventService;
             _categoryService = categoryService;
         }
+
         // GET: Event
-        public ActionResult Index(string category, string searchedEvent )
+        public ActionResult Index(string category)
         {
             IEnumerable<Event> events;
             string currentCategory;
-            searchedEvent = SearchedEvent;
 
             if (string.IsNullOrEmpty(category))
             {
-                events = _eventService.AllEventsByName(searchedEvent).OrderBy(e => e.EventId);
-                currentCategory = "All events";
+                events = _eventService.GetEvents(SearchedEvent, SearchedCategory).OrderBy(e => e.EventId);
+                if (SearchedEvent != null)
+                {
+                    currentCategory = SearchedCategory;                    
+                }
+                else
+                {
+                    currentCategory = "All events";                 
+                }
             }
             else
             {
-                events = _eventService.AllEventsByName(searchedEvent).Where(p => p.Category.CategoryName == category)
+                events = _eventService.GetEvents(SearchedEvent, SearchedCategory).Where(p => p.Category.CategoryName == category)
                     .OrderBy(e => e.EventId);
-                currentCategory = _categoryService.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
+                currentCategory = _categoryService.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;                
             }
 
             return View(new EventsListViewModel
             {
                 Events = events,
                 CurrentCategory = currentCategory,
-                SearchedEvent = searchedEvent
+                SearchedEvent = SearchedEvent,
+                SearchedCategory = SearchedCategory,
+                NotFoundSearchedEventMessage = "No events were found that matched your criteria",
+                Categories = _categoryService.AllCategories.ToList()
+            });
+        }
+
+        public ActionResult Search()
+        {
+            IEnumerable<Event> events = _eventService.GetEvents(SearchedEvent, SearchedCategory).OrderBy(e => e.EventId);
+
+            return View(new EventsListViewModel
+            {
+                Events = events,
+                SearchedEvent = SearchedEvent,
+                SearchedCategory = SearchedCategory,
+                Categories = _categoryService.AllCategories.ToList()
             });
         }
 
@@ -72,7 +98,7 @@ namespace eShop.Web.Controllers
                 Categories = _categoryService.AllCategories.ToList()
 
             };
-            return View(viewModel);                       
+            return View(viewModel);
         }
 
         // POST: Event/Create
@@ -81,9 +107,9 @@ namespace eShop.Web.Controllers
         public IActionResult Create(EventCreateEditViewModel newEvent)
         {
             if (ModelState.IsValid)
-            {                
+            {
                 _eventService.CreateEvent(newEvent);
-                return RedirectToAction(nameof(Details), new { id = _eventService.AllEvents.Max(e => e.EventId) });  
+                return RedirectToAction(nameof(Details), new { id = _eventService.AllEvents.Max(e => e.EventId) });
             }
             return View();
         }
@@ -142,7 +168,7 @@ namespace eShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _eventService.DeleteEvent(id);              
+                _eventService.DeleteEvent(id);
             }
             return RedirectToAction("Index");
         }

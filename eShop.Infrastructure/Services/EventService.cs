@@ -89,9 +89,16 @@ namespace eShop.Infrastructure.Services
             }
         }
 
-        public IEnumerable<Event> AllEventsByName(string searchedEvent = null)
+        public IEnumerable<Event> GetEvents(string searchedEvent = null, string searchedCategory = null)
         {
-            return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) || string.IsNullOrEmpty(searchedEvent));
+            if (searchedCategory == null)
+            {
+                return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) || string.IsNullOrEmpty(searchedEvent));
+            }
+            else 
+            {
+                return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) && e.Category.CategoryName == searchedCategory || string.IsNullOrEmpty(searchedEvent));
+            }           
         }
     }
 }

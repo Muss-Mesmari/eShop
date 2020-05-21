@@ -23,10 +23,6 @@ namespace eShop.Infrastructure.Mock
 
         public IEnumerable<Event> IsHighlightedEvent { get; }
 
-        public IEnumerable<Event> AllEventsByName(string searchedEvent = null)
-        {
-            throw new NotImplementedException();
-        }
 
         public void CreateEvent(EventCreateEditViewModel newEvent)
         {
@@ -34,6 +30,11 @@ namespace eShop.Infrastructure.Mock
         }
 
         public void DeleteEvent(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Event> GetEvents(string searchedEvent = null, string searchedCategory = null)
         {
             throw new NotImplementedException();
         }

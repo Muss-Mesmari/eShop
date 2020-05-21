@@ -1,64 +1,37 @@
 ﻿@model eShop.Presentation.ViewModels.EventsListViewModel
 
 
-<div class="container-fluid bg-transparent ">
-    <div class="row align-items-center justify-content-center">
+<partial name="_EventsFilter" />
 
-        <div class="col-md-3 pt-3">
-            <div class="form-group">
-                <select id="inputState" class="form-control">
-                    <option selected>Type of dance</option>
-                    <option>Samba de Gafieira</option>
-                    <option>Forro</option>
-                </select>
-            </div>
+@*<form asp-controller="Event" method="get" role="form">
+        <div class="input-group">
+            <input class="form-control py-2" type="text" asp-for="SearchedEvent" placeholder="Search">
+            <input class="form-control py-2" type="text" asp-for="SearchedEvent" placeholder="Search">
+            <span class="input-group-append">
+                <a class="btn btn-outline-secondary" value="Submit">
+                    <i class="fa fa-search"></i>
+                </a>
+            </span>
         </div>
-
-        <div class="col-md-3 pt-3">
-            <div class="form-group">
-                <select id="inputState" class="form-control">
-                    <option selected>Type of event</option>
-                    <option>Classes</option>
-                    <option>Workshops</option>
-                    <option>Parties</option>
-                    <option>Festivals</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="col-md-3 pt-3">
-            <div class="form-group">
-                <select id="inputState" class="form-control">
-                    <option selected>Month</option>
-                    <option>January</option>
-                    <option>February</option>
-                    <option>March</option>
-                    <option>April</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>August</option>
-                    <option>September</option>
-                    <option>October</option>
-                    <option>November</option>
-                    <option>December</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="col-md-2">
-            <button type="button" class="btn btn-danger btn-block">Search</button>
-        </div>
-    </div>
-</div>
-
-
+    </form>*@
 
 <h1 class="text-center text-capitalize text-nowrap">@Model.CurrentCategory</h1>
-
-<div class="card-deck">
-    @foreach (var item in Model.Events)
+@{
+    if (@Model.Events.Any())
     {
-        <partial name="_EventCard" model="item" />
+        <div class="card-deck">
+            @foreach (var item in Model.Events)
+            {
+                <partial name="_EventCard" model="item" />
+            }
+        </div>
     }
-</div>
+    else
+    {
+        <div class="container-fluid">
+            <p class="text-danger text-center"> @Model.NotFoundSearchedEventMessage</p>
+        </div>
+    }
+}
+
+

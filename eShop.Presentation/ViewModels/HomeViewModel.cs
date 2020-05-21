@@ -10,8 +10,10 @@ namespace eShop.Presentation.ViewModels
     {
         public IEnumerable<Event> IsHighlightedEvent { get; set; }
         public IEnumerable<Category> AllCategories { get; set; }
+        public IEnumerable<Event> Events { get; set; }
         public bool HomepageCategorySection { get; set; }
         public bool HomepageFeaturedEventsSection { get; set; }
-        
+        public string SearchedEvent { get; set; }
+        public string SearchedCategory { get; set; }
     }
 }
