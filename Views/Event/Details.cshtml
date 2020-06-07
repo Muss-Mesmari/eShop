@@ -1,4 +1,4 @@
-﻿@model eShop.Entities.Entities.Event
+﻿@model eShop.Presentation.ViewModels.DetailsViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -10,7 +10,7 @@
     <!-- the side scroll spy menu -->
     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
         <div class="sticky">
-            <h1 class="mt-4">@Model.Name</h1>
+            <h1 class="mt-4">@Model.Event.Name</h1>
             <div id="side-menu-list" class="list-group">
                 <a href="#about-the-event" class="list-group-item list-group-item-action active">About the event</a>
                 <a href="#schedule" class="list-group-item list-group-item-action">Schedule</a>
@@ -20,7 +20,7 @@
                 <a href="#how-to-go" class="list-group-item list-group-item-action">How to go</a>
                 <a asp-controller="ShoppingCart"
                    asp-action="AddToShoppingCart"
-                   asp-route-eventId="@Model.EventId" class="btn bg-danger btn-lg my-3 text-white">
+                   asp-route-eventId="@Model.Event.EventId" class="btn bg-danger btn-lg my-3 text-white">
                     <i class="fas fa-shopping-cart"></i>Add to cart
                 </a>
             </div>
@@ -34,41 +34,37 @@
             <!-- the "about the event" Card >> content of the side scroll spy menu -->
             <div class="card w-100 m-0 my-4 shadow-sm">
                 <div class="thumbnail">
-                    <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.EventId">
-                        <img class="card-img-top" src="@Model.ImageUrl" alt="@Model.Name">
+                    <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.Event.EventId">
+                        <img class="card-img-top" src="@Model.Event.ImageUrl" alt="@Model.Event.Name">
                     </a>
                 </div>
 
                 <div class="card-body" id="about-the-event">
-                    <h5 class="card-title"> <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.EventId" class="text-decoration-none">@Model.Name</a></h5>
-                    <h6 class="card-subtitle mb-2 text-muted">@Model.ShortDescription.</h6>
-                    <p class="card-text text-muted">@Model.LongDescription</p>
+                    <h5 class="card-title"> <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.Event.EventId" class="text-decoration-none">@Model.Event.Name</a></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@Model.Event.ShortDescription.</h6>
+                    <p class="card-text text-muted">@Model.Event.LongDescription</p>
                     <div class=" d-flex justify-content-between align-items-center">
                         <div class="price text-success">
                             <h5 class="mt-4 text-nowrap">
-                                @Model.Price <small class="text-muted"> @Model.Currency</small>
+                                @Model.Event.Price <small class="text-muted"> @Model.Event.Currency</small>
                             </h5>
                         </div>
                         <a asp-controller="ShoppingCart"
                            asp-action="AddToShoppingCart"
-                           asp-route-eventId="@Model.EventId" role="button" class="btn btn-danger mt-3 text-nowrap">
+                           asp-route-eventId="@Model.Event.EventId" role="button" class="btn btn-danger mt-3 text-nowrap">
                             <i class="fas fa-shopping-cart"></i>Add to cart
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- the "Schedule" Card >> content of the side scroll spy menu -->
+            <!-- the "Schedule" Card >> the content of the side scroll spy menu -->
             <div class="card card-outline-secondary my-4" id="schedule">
                 <div class="card-header">
                     Schedule
                 </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                    <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                    <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <partial name="_EventSchedule"/> 
                 </div>
             </div>
 
@@ -78,11 +74,11 @@
                     Prices
                 </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.Sequi mollitia, necessitatibus quae sint natus.</p>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
                 </div>
             </div>
 
@@ -92,11 +88,11 @@
                     Location
                 </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.Sequi mollitia, necessitatibus quae sint natus.</p>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
                 </div>
             </div>
 
@@ -106,11 +102,11 @@
                     Teachers
                 </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.Sequi mollitia, necessitatibus quae sint natus.</p>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
                 </div>
             </div>
 
@@ -120,65 +116,65 @@
                     How to go
                 </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.Sequi mollitia, necessitatibus quae sint natus.</p>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
                 </div>
             </div>
         </div>
         <h3 class="mt-4">FAQ</h3>
         <div id="accordion">
-            <div class="card">
-                <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                        <button class="btn btn-block text-left" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Question no. #1
-                        </button>
-                    </h5>
-                </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </div>
+            < div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-block text-left" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Question no. #1
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                 </div>
             </div>
+        </div>
 
-            <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                        <button class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Question no. #2
-                        </button>
-                    </h5>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Question no. #2
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                 </div>
             </div>
+        </div>
 
-            <div class="card">
-                <div class="card-header" id="headingThree">
-                    <h5 class="mb-0">
-                        <button class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Question no. #3
-                        </button>
-                    </h5>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Question no. #3
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index"> Back to List</a>
 </div>
 
 @*<div>

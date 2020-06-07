@@ -14,7 +14,6 @@ namespace eShop.Presentation.ViewModels
         public string SearchedEvent { get; set; }
         public string SearchedCategory { get; set; }
         public string NotFoundSearchedEventMessage { get; set; }
-        public Event Event { get; set; }
-        
+
     }
 }

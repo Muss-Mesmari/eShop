@@ -59,10 +59,11 @@ namespace eShop.Web
             //})
             //    .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
 
-
+            services.AddScoped<IScheduleService, ScheduleService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<IOrderService, OrderService>();
+            
 
             services.AddConfiguration(Configuration);
             services.AddShoppingCart();

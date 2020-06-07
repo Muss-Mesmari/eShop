@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eShop.Infrastructure.Database;
 
-namespace eShop.Infrastructure.Database.Migrations
+namespace eShop.Infrastructure.Migrations
 {
     [DbContext(typeof(eShopDbContext))]
-    [Migration("20200428190916_6thCreateAddDbContextPool")]
-    partial class _6thCreateAddDbContextPool
+    [Migration("20200531205045_3rdCreate")]
+    partial class _3rdCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -164,12 +164,10 @@ namespace eShop.Infrastructure.Database.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -206,12 +204,10 @@ namespace eShop.Infrastructure.Database.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -256,6 +252,168 @@ namespace eShop.Infrastructure.Database.Migrations
                         });
                 });
 
+            modelBuilder.Entity("eShop.Entities.Entities.Day", b =>
+                {
+                    b.Property<int>("DayId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DayOfWeek")
+                        .HasColumnType("int");
+
+                    b.HasKey("DayId");
+
+                    b.ToTable("Day");
+
+                    b.HasData(
+                        new
+                        {
+                            DayId = 1,
+                            DayOfWeek = 1
+                        },
+                        new
+                        {
+                            DayId = 2,
+                            DayOfWeek = 1
+                        },
+                        new
+                        {
+                            DayId = 3,
+                            DayOfWeek = 1
+                        },
+                        new
+                        {
+                            DayId = 4,
+                            DayOfWeek = 1
+                        },
+                        new
+                        {
+                            DayId = 5,
+                            DayOfWeek = 1
+                        },
+                        new
+                        {
+                            DayId = 6,
+                            DayOfWeek = 1
+                        },
+                        new
+                        {
+                            DayId = 7,
+                            DayOfWeek = 1
+                        },
+                        new
+                        {
+                            DayId = 8,
+                            DayOfWeek = 1
+                        },
+                        new
+                        {
+                            DayId = 9,
+                            DayOfWeek = 1
+                        },
+                        new
+                        {
+                            DayId = 10,
+                            DayOfWeek = 1
+                        },
+                        new
+                        {
+                            DayId = 11,
+                            DayOfWeek = 1
+                        });
+                });
+
+            modelBuilder.Entity("eShop.Entities.Entities.Days", b =>
+                {
+                    b.Property<int>("DaysId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DayId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ScheduleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DaysId");
+
+                    b.HasIndex("DayId");
+
+                    b.HasIndex("ScheduleId");
+
+                    b.ToTable("Days");
+
+                    b.HasData(
+                        new
+                        {
+                            DaysId = 1,
+                            DayId = 1,
+                            ScheduleId = 1
+                        },
+                        new
+                        {
+                            DaysId = 2,
+                            DayId = 2,
+                            ScheduleId = 2
+                        },
+                        new
+                        {
+                            DaysId = 3,
+                            DayId = 3,
+                            ScheduleId = 3
+                        },
+                        new
+                        {
+                            DaysId = 4,
+                            DayId = 4,
+                            ScheduleId = 4
+                        },
+                        new
+                        {
+                            DaysId = 5,
+                            DayId = 5,
+                            ScheduleId = 5
+                        },
+                        new
+                        {
+                            DaysId = 6,
+                            DayId = 6,
+                            ScheduleId = 6
+                        },
+                        new
+                        {
+                            DaysId = 7,
+                            DayId = 7,
+                            ScheduleId = 7
+                        },
+                        new
+                        {
+                            DaysId = 8,
+                            DayId = 8,
+                            ScheduleId = 8
+                        },
+                        new
+                        {
+                            DaysId = 9,
+                            DayId = 9,
+                            ScheduleId = 9
+                        },
+                        new
+                        {
+                            DaysId = 10,
+                            DayId = 10,
+                            ScheduleId = 10
+                        },
+                        new
+                        {
+                            DaysId = 11,
+                            DayId = 11,
+                            ScheduleId = 11
+                        });
+                });
+
             modelBuilder.Entity("eShop.Entities.Entities.Event", b =>
                 {
                     b.Property<int>("EventId")
@@ -269,6 +427,9 @@ namespace eShop.Infrastructure.Database.Migrations
                     b.Property<int>("Currency")
                         .HasColumnType("int");
 
+                    b.Property<string>("HowToGo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
@@ -277,6 +438,9 @@ namespace eShop.Infrastructure.Database.Migrations
 
                     b.Property<bool>("IsHighlightedEvent")
                         .HasColumnType("bit");
+
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LongDescription")
                         .HasColumnType("nvarchar(max)");
@@ -290,9 +454,16 @@ namespace eShop.Infrastructure.Database.Migrations
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TeachersId")
+                        .HasColumnType("int");
+
                     b.HasKey("EventId");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("TeachersId");
 
                     b.ToTable("Events");
 
@@ -302,143 +473,304 @@ namespace eShop.Infrastructure.Database.Migrations
                             EventId = 1,
                             CategoryId = 1,
                             Currency = 0,
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
+                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
                             InStock = true,
                             IsHighlightedEvent = true,
+                            LocationId = 1,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event One",
                             Price = 12.95m,
-                            ShortDescription = "Lorem Ipsum"
+                            ShortDescription = "Lorem Ipsum",
+                            TeachersId = 1
                         },
                         new
                         {
                             EventId = 2,
                             CategoryId = 1,
                             Currency = 0,
+                            HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
                             ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
                             InStock = true,
                             IsHighlightedEvent = true,
+                            LocationId = 2,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Two",
                             Price = 12.95m,
-                            ShortDescription = "Lorem Ipsum"
+                            ShortDescription = "Lorem Ipsum",
+                            TeachersId = 2
                         },
                         new
                         {
                             EventId = 3,
                             CategoryId = 1,
                             Currency = 0,
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
+                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
                             InStock = true,
                             IsHighlightedEvent = false,
+                            LocationId = 3,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Three",
                             Price = 12.95m,
-                            ShortDescription = "Lorem Ipsum"
+                            ShortDescription = "Lorem Ipsum",
+                            TeachersId = 2
                         },
                         new
                         {
                             EventId = 4,
                             CategoryId = 2,
                             Currency = 0,
+                            HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
                             ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
                             InStock = true,
                             IsHighlightedEvent = true,
+                            LocationId = 4,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Four",
                             Price = 12.95m,
-                            ShortDescription = "Lorem Ipsum"
+                            ShortDescription = "Lorem Ipsum",
+                            TeachersId = 2
                         },
                         new
                         {
                             EventId = 5,
                             CategoryId = 1,
                             Currency = 0,
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
+                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
                             InStock = true,
                             IsHighlightedEvent = false,
+                            LocationId = 5,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Five",
                             Price = 12.95m,
-                            ShortDescription = "Lorem Ipsum"
+                            ShortDescription = "Lorem Ipsum",
+                            TeachersId = 2
                         },
                         new
                         {
                             EventId = 6,
                             CategoryId = 1,
                             Currency = 0,
+                            HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
                             ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
                             InStock = true,
                             IsHighlightedEvent = false,
+                            LocationId = 6,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Six",
                             Price = 12.95m,
-                            ShortDescription = "Lorem Ipsum"
+                            ShortDescription = "Lorem Ipsum",
+                            TeachersId = 3
                         },
                         new
                         {
                             EventId = 7,
                             CategoryId = 1,
                             Currency = 0,
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
+                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
                             InStock = true,
                             IsHighlightedEvent = false,
+                            LocationId = 7,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Seven",
                             Price = 12.95m,
-                            ShortDescription = "Lorem Ipsum"
+                            ShortDescription = "Lorem Ipsum",
+                            TeachersId = 3
                         },
                         new
                         {
                             EventId = 8,
                             CategoryId = 1,
                             Currency = 0,
+                            HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
                             ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
                             InStock = true,
                             IsHighlightedEvent = false,
+                            LocationId = 8,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Eight",
                             Price = 12.95m,
-                            ShortDescription = "Lorem Ipsum"
+                            ShortDescription = "Lorem Ipsum",
+                            TeachersId = 3
                         },
                         new
                         {
                             EventId = 9,
                             CategoryId = 1,
                             Currency = 0,
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
+                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
                             InStock = true,
                             IsHighlightedEvent = true,
+                            LocationId = 9,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Nine",
                             Price = 12.95m,
-                            ShortDescription = "Lorem Ipsum"
+                            ShortDescription = "Lorem Ipsum",
+                            TeachersId = 3
                         },
                         new
                         {
                             EventId = 10,
                             CategoryId = 1,
                             Currency = 0,
+                            HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
                             ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
                             InStock = true,
                             IsHighlightedEvent = false,
+                            LocationId = 10,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Ten",
                             Price = 12.95m,
-                            ShortDescription = "Lorem Ipsum"
+                            ShortDescription = "Lorem Ipsum",
+                            TeachersId = 3
                         },
                         new
                         {
                             EventId = 11,
                             CategoryId = 1,
                             Currency = 0,
+                            HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
                             ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
                             InStock = true,
                             IsHighlightedEvent = true,
+                            LocationId = 11,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Eleven",
                             Price = 12.95m,
-                            ShortDescription = "Lorem Ipsum"
+                            ShortDescription = "Lorem Ipsum",
+                            TeachersId = 3
+                        });
+                });
+
+            modelBuilder.Entity("eShop.Entities.Entities.Location", b =>
+                {
+                    b.Property<int>("LocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Street")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StreetNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ZipCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("LocationId");
+
+                    b.ToTable("Location");
+
+                    b.HasData(
+                        new
+                        {
+                            LocationId = 1,
+                            City = "Stockholm län",
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 1,
+                            ZipCode = 12345
+                        },
+                        new
+                        {
+                            LocationId = 2,
+                            City = "Stockholm län",
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 2,
+                            ZipCode = 12346
+                        },
+                        new
+                        {
+                            LocationId = 3,
+                            City = "Stockholm län",
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 3,
+                            ZipCode = 12347
+                        },
+                        new
+                        {
+                            LocationId = 4,
+                            City = "Stockholm län",
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 4,
+                            ZipCode = 12348
+                        },
+                        new
+                        {
+                            LocationId = 5,
+                            City = "Stockholm län",
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 5,
+                            ZipCode = 12349
+                        },
+                        new
+                        {
+                            LocationId = 6,
+                            City = "Stockholm län",
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 6,
+                            ZipCode = 12350
+                        },
+                        new
+                        {
+                            LocationId = 7,
+                            City = "Stockholm län",
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 7,
+                            ZipCode = 12351
+                        },
+                        new
+                        {
+                            LocationId = 8,
+                            City = "Stockholm län",
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 8,
+                            ZipCode = 12352
+                        },
+                        new
+                        {
+                            LocationId = 9,
+                            City = "Stockholm län",
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 9,
+                            ZipCode = 12353
+                        },
+                        new
+                        {
+                            LocationId = 10,
+                            City = "Stockholm län",
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 10,
+                            ZipCode = 12354
+                        },
+                        new
+                        {
+                            LocationId = 11,
+                            City = "Stockholm län",
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 11,
+                            ZipCode = 12355
                         });
                 });
 
@@ -522,6 +854,80 @@ namespace eShop.Infrastructure.Database.Migrations
                     b.ToTable("OrderDetails");
                 });
 
+            modelBuilder.Entity("eShop.Entities.Entities.Schedule", b =>
+                {
+                    b.Property<int>("ScheduleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ScheduleId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Schedule");
+
+                    b.HasData(
+                        new
+                        {
+                            ScheduleId = 1,
+                            EventId = 1
+                        },
+                        new
+                        {
+                            ScheduleId = 2,
+                            EventId = 2
+                        },
+                        new
+                        {
+                            ScheduleId = 3,
+                            EventId = 3
+                        },
+                        new
+                        {
+                            ScheduleId = 4,
+                            EventId = 4
+                        },
+                        new
+                        {
+                            ScheduleId = 5,
+                            EventId = 5
+                        },
+                        new
+                        {
+                            ScheduleId = 6,
+                            EventId = 6
+                        },
+                        new
+                        {
+                            ScheduleId = 7,
+                            EventId = 7
+                        },
+                        new
+                        {
+                            ScheduleId = 8,
+                            EventId = 8
+                        },
+                        new
+                        {
+                            ScheduleId = 9,
+                            EventId = 9
+                        },
+                        new
+                        {
+                            ScheduleId = 10,
+                            EventId = 10
+                        },
+                        new
+                        {
+                            ScheduleId = 11,
+                            EventId = 11
+                        });
+                });
+
             modelBuilder.Entity("eShop.Entities.Entities.ShoppingCartItem", b =>
                 {
                     b.Property<int>("ShoppingCartItemId")
@@ -543,6 +949,146 @@ namespace eShop.Infrastructure.Database.Migrations
                     b.HasIndex("EventId");
 
                     b.ToTable("ShoppingCartItems");
+                });
+
+            modelBuilder.Entity("eShop.Entities.Entities.Teachers", b =>
+                {
+                    b.Property<int>("TeachersId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("TeacherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeachingAssistantName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TeachersId");
+
+                    b.ToTable("Teachers");
+
+                    b.HasData(
+                        new
+                        {
+                            TeachersId = 1,
+                            TeacherName = "Teacher One",
+                            TeachingAssistantName = "Teaching Assistant One"
+                        },
+                        new
+                        {
+                            TeachersId = 2,
+                            TeacherName = "Teacher Two",
+                            TeachingAssistantName = "Teaching Assistant Two"
+                        },
+                        new
+                        {
+                            TeachersId = 3,
+                            TeacherName = "Teacher Three",
+                            TeachingAssistantName = "Teaching Assistant Three"
+                        });
+                });
+
+            modelBuilder.Entity("eShop.Entities.Entities.Times", b =>
+                {
+                    b.Property<int>("TimesId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DayId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TimeEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TimeStart")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("TimesId");
+
+                    b.HasIndex("DayId");
+
+                    b.ToTable("Times");
+
+                    b.HasData(
+                        new
+                        {
+                            TimesId = 1,
+                            DayId = 1,
+                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 854, DateTimeKind.Local).AddTicks(9961),
+                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 852, DateTimeKind.Local).AddTicks(1661)
+                        },
+                        new
+                        {
+                            TimesId = 2,
+                            DayId = 2,
+                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1653),
+                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1626)
+                        },
+                        new
+                        {
+                            TimesId = 3,
+                            DayId = 3,
+                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1710),
+                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1705)
+                        },
+                        new
+                        {
+                            TimesId = 4,
+                            DayId = 4,
+                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1740),
+                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1736)
+                        },
+                        new
+                        {
+                            TimesId = 5,
+                            DayId = 5,
+                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1768),
+                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1765)
+                        },
+                        new
+                        {
+                            TimesId = 6,
+                            DayId = 6,
+                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1801),
+                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1797)
+                        },
+                        new
+                        {
+                            TimesId = 7,
+                            DayId = 7,
+                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1829),
+                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1826)
+                        },
+                        new
+                        {
+                            TimesId = 8,
+                            DayId = 8,
+                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1857),
+                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1853)
+                        },
+                        new
+                        {
+                            TimesId = 9,
+                            DayId = 9,
+                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1885),
+                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1881)
+                        },
+                        new
+                        {
+                            TimesId = 10,
+                            DayId = 10,
+                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1914),
+                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1910)
+                        },
+                        new
+                        {
+                            TimesId = 11,
+                            DayId = 11,
+                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1942),
+                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1938)
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -596,11 +1142,38 @@ namespace eShop.Infrastructure.Database.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("eShop.Entities.Entities.Days", b =>
+                {
+                    b.HasOne("eShop.Entities.Entities.Day", "Day")
+                        .WithMany("Days")
+                        .HasForeignKey("DayId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eShop.Entities.Entities.Schedule", "Schedule")
+                        .WithMany("Days")
+                        .HasForeignKey("ScheduleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("eShop.Entities.Entities.Event", b =>
                 {
                     b.HasOne("eShop.Entities.Entities.Category", "Category")
                         .WithMany("Events")
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eShop.Entities.Entities.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eShop.Entities.Entities.Teachers", "Teachers")
+                        .WithMany()
+                        .HasForeignKey("TeachersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -620,11 +1193,29 @@ namespace eShop.Infrastructure.Database.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("eShop.Entities.Entities.Schedule", b =>
+                {
+                    b.HasOne("eShop.Entities.Entities.Event", "Event")
+                        .WithMany("Schedule")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("eShop.Entities.Entities.ShoppingCartItem", b =>
                 {
                     b.HasOne("eShop.Entities.Entities.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId");
+                });
+
+            modelBuilder.Entity("eShop.Entities.Entities.Times", b =>
+                {
+                    b.HasOne("eShop.Entities.Entities.Day", "Day")
+                        .WithMany("Times")
+                        .HasForeignKey("DayId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

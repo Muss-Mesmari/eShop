@@ -105,5 +105,6 @@ namespace eShop.Infrastructure.Services
         {
             return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) || e.LongDescription.Contains(searchedEvent) || e.ShortDescription.Contains(searchedEvent) || e.Category.CategoryName.Contains(searchedEvent));
         }
+
     }
 }

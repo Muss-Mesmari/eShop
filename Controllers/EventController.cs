@@ -16,6 +16,7 @@ namespace eShop.Web.Controllers
         // [TypeFilter(typeof(KillSwitchAuthorizationFilter))]
         private readonly IEventService _eventService;
         private readonly ICategoryService _categoryService;
+        private readonly IScheduleService _scheduleService;        
 
         [BindProperty(SupportsGet = true)]
         public string SearchedEvent { get; set; }
@@ -23,8 +24,14 @@ namespace eShop.Web.Controllers
         [BindProperty(SupportsGet = true)]
         public string SearchedCategory { get; set; }
 
-        public EventController(IEventService eventService, ICategoryService categoryService)
+        public EventController
+            (
+            IEventService eventService, 
+            ICategoryService categoryService,
+            IScheduleService scheduleService
+            )
         {
+            _scheduleService = scheduleService;
             _eventService = eventService;
             _categoryService = categoryService;
         }
@@ -68,12 +75,20 @@ namespace eShop.Web.Controllers
         // GET: Event/Details/5
         public IActionResult Details(int id)
         {
-            var model = _eventService.GetEventById(id);
-            if (model == null)
+            var eventDetails = _eventService.GetEventById(id);
+            var day = _scheduleService.GetEventDays(id);
+            var eventSchedule = _scheduleService.GetEventTimes(id);
+
+            if (eventDetails == null)
             {
                 return View("NotFound");
             }
-            return View(model);
+            return View(new DetailsViewModel
+            {
+                Event = eventDetails,
+                Day = day,
+                EventSchedule = eventSchedule
+            });
         }
 
         // GET: Event/Create
@@ -83,7 +98,6 @@ namespace eShop.Web.Controllers
             var viewModel = new EventCreateEditViewModel
             {
                 Categories = _categoryService.AllCategories.ToList()
-
             };
             return View(viewModel);
         }
