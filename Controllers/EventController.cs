@@ -16,7 +16,9 @@ namespace eShop.Web.Controllers
         // [TypeFilter(typeof(KillSwitchAuthorizationFilter))]
         private readonly IEventService _eventService;
         private readonly ICategoryService _categoryService;
-        private readonly IScheduleService _scheduleService;        
+        private readonly IScheduleService _scheduleService;
+        private readonly ILocationService _locationService;
+        private readonly ITeachersService _teachersService;
 
         [BindProperty(SupportsGet = true)]
         public string SearchedEvent { get; set; }
@@ -28,12 +30,16 @@ namespace eShop.Web.Controllers
             (
             IEventService eventService, 
             ICategoryService categoryService,
-            IScheduleService scheduleService
+            IScheduleService scheduleService,
+            ILocationService locationService,
+            ITeachersService teachersService
             )
         {
             _scheduleService = scheduleService;
             _eventService = eventService;
             _categoryService = categoryService;
+            _locationService = locationService;
+            _teachersService = teachersService;
         }
 
         // GET: Event
@@ -78,6 +84,8 @@ namespace eShop.Web.Controllers
             var eventDetails = _eventService.GetEventById(id);
             var day = _scheduleService.GetEventDays(id);
             var eventSchedule = _scheduleService.GetEventTimes(id);
+            var location = _locationService.GetLocationById(id);
+            var teachers = _teachersService.GetTeachersById(id);
 
             if (eventDetails == null)
             {
@@ -87,12 +95,15 @@ namespace eShop.Web.Controllers
             {
                 Event = eventDetails,
                 Day = day,
-                EventSchedule = eventSchedule
+                EventSchedule = eventSchedule,
+                Location = location,
+                Teachers = teachers
             });
         }
 
         // GET: Event/Create
-        [Route("/Create-an-event", Name = "Create an event")]
+        // [Route("/Create-an-event", Name = "Create an event")]
+       // [HttpGet]
         public IActionResult Create()
         {
             var viewModel = new EventCreateEditViewModel
@@ -109,7 +120,11 @@ namespace eShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                _teachersService.CreateTeachers(newEvent);
+                _locationService.CreateLocation(newEvent);
                 _eventService.CreateEvent(newEvent);
+                _scheduleService.CreateSchedule(newEvent);
+                
                 return RedirectToAction(nameof(Details), new { id = _eventService.AllEvents.Max(e => e.EventId) });
             }
             return View();
@@ -125,9 +140,10 @@ namespace eShop.Web.Controllers
             //    return View("NotFound");
             //}
             //return View(model);
-
+           
             var viewModel = new EventCreateEditViewModel
             {
+                Location = _locationService.GetLocationById(id),
                 Categories = _categoryService.AllCategories.ToList(),
                 Event = _eventService.GetEventById(id)
             };
@@ -145,7 +161,8 @@ namespace eShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _eventService.UpdateEvent(newEvent);
+                _locationService.UpdateLocation(newEvent);
+                _eventService.UpdateEvent(newEvent);                
                 return RedirectToAction(nameof(Details), new { id = newEvent.Event.EventId });
             }
             return View();

@@ -330,18 +330,18 @@ namespace eShop.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Days",
+                name: "Week",
                 columns: table => new
                 {
-                    DaysId = table.Column<int>(nullable: false)
+                    WeekId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ScheduleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Days", x => x.DaysId);
+                    table.PrimaryKey("PK_Week", x => x.WeekId);
                     table.ForeignKey(
-                        name: "FK_Days_Schedule_ScheduleId",
+                        name: "FK_Week_Schedule_ScheduleId",
                         column: x => x.ScheduleId,
                         principalTable: "Schedule",
                         principalColumn: "ScheduleId",
@@ -354,23 +354,17 @@ namespace eShop.Infrastructure.Migrations
                 {
                     DayId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DayOfWeekOne = table.Column<int>(nullable: false),
-                    DayOfWeekTwo = table.Column<int>(nullable: false),
-                    DayOfWeekThree = table.Column<int>(nullable: false),
-                    DayOfWeekFour = table.Column<int>(nullable: false),
-                    DayOfWeekFive = table.Column<int>(nullable: false),
-                    DayOfWeekSix = table.Column<int>(nullable: false),
-                    DayOfWeekSeven = table.Column<int>(nullable: false),
-                    DaysId = table.Column<int>(nullable: false)
+                    DayOfWeek = table.Column<int>(nullable: false),
+                    WeekId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Day", x => x.DayId);
                     table.ForeignKey(
-                        name: "FK_Day_Days_DaysId",
-                        column: x => x.DaysId,
-                        principalTable: "Days",
-                        principalColumn: "DaysId",
+                        name: "FK_Day_Week_WeekId",
+                        column: x => x.WeekId,
+                        principalTable: "Week",
+                        principalColumn: "WeekId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -438,17 +432,17 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "EventId", "CategoryId", "Currency", "HowToGo", "ImageUrl", "InStock", "IsHighlightedEvent", "LocationId", "LongDescription", "Name", "Price", "ShortDescription", "TeachersId" },
                 values: new object[,]
                 {
-                    { 1, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png", true, true, 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event One", 12.95m, "Lorem Ipsum", 1 },
-                    { 2, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png", true, true, 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Two", 12.95m, "Lorem Ipsum", 2 },
-                    { 3, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png", true, false, 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Three", 12.95m, "Lorem Ipsum", 2 },
-                    { 4, 2, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png", true, true, 4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Four", 12.95m, "Lorem Ipsum", 2 },
-                    { 5, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png", true, false, 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Five", 12.95m, "Lorem Ipsum", 2 },
-                    { 6, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png", true, false, 6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Six", 12.95m, "Lorem Ipsum", 3 },
-                    { 7, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png", true, false, 7, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Seven", 12.95m, "Lorem Ipsum", 3 },
-                    { 8, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png", true, false, 8, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eight", 12.95m, "Lorem Ipsum", 3 },
-                    { 9, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png", true, true, 9, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Nine", 12.95m, "Lorem Ipsum", 3 },
-                    { 10, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png", true, false, 10, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Ten", 12.95m, "Lorem Ipsum", 3 },
-                    { 11, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png", true, true, 11, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eleven", 12.95m, "Lorem Ipsum", 3 }
+                    { 1, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event One", 12.95m, "Lorem Ipsum", 1 },
+                    { 2, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, true, 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Two", 12.95m, "Lorem Ipsum", 2 },
+                    { 3, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Three", 12.95m, "Lorem Ipsum", 2 },
+                    { 4, 2, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, true, 4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Four", 12.95m, "Lorem Ipsum", 2 },
+                    { 5, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Five", 12.95m, "Lorem Ipsum", 2 },
+                    { 6, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Six", 12.95m, "Lorem Ipsum", 3 },
+                    { 7, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 7, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Seven", 12.95m, "Lorem Ipsum", 3 },
+                    { 8, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 8, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eight", 12.95m, "Lorem Ipsum", 3 },
+                    { 9, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, 9, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Nine", 12.95m, "Lorem Ipsum", 3 },
+                    { 10, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 10, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Ten", 12.95m, "Lorem Ipsum", 3 },
+                    { 11, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, 11, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eleven", 12.95m, "Lorem Ipsum", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -470,8 +464,8 @@ namespace eShop.Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Days",
-                columns: new[] { "DaysId", "ScheduleId" },
+                table: "Week",
+                columns: new[] { "WeekId", "ScheduleId" },
                 values: new object[,]
                 {
                     { 1, 1 },
@@ -489,20 +483,20 @@ namespace eShop.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Day",
-                columns: new[] { "DayId", "DayOfWeekFive", "DayOfWeekFour", "DayOfWeekOne", "DayOfWeekSeven", "DayOfWeekSix", "DayOfWeekThree", "DayOfWeekTwo", "DaysId" },
+                columns: new[] { "DayId", "DayOfWeek", "WeekId" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                    { 11, 1, 1, 1, 1, 1, 1, 1, 1 },
-                    { 2, 1, 1, 1, 1, 1, 1, 1, 2 },
-                    { 3, 1, 1, 1, 1, 1, 1, 1, 3 },
-                    { 4, 1, 1, 1, 1, 1, 1, 1, 4 },
-                    { 5, 1, 1, 1, 1, 1, 1, 1, 5 },
-                    { 6, 1, 1, 1, 1, 1, 1, 1, 6 },
-                    { 7, 1, 1, 1, 1, 1, 1, 1, 7 },
-                    { 8, 1, 1, 1, 1, 1, 1, 1, 8 },
-                    { 9, 1, 1, 1, 1, 1, 1, 1, 9 },
-                    { 10, 1, 1, 1, 1, 1, 1, 1, 10 }
+                    { 1, 1, 1 },
+                    { 2, 1, 2 },
+                    { 3, 1, 3 },
+                    { 4, 1, 4 },
+                    { 5, 1, 5 },
+                    { 6, 1, 6 },
+                    { 7, 1, 7 },
+                    { 8, 1, 8 },
+                    { 9, 1, 9 },
+                    { 10, 1, 10 },
+                    { 11, 1, 11 }
                 });
 
             migrationBuilder.InsertData(
@@ -510,17 +504,17 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TimesId", "DayId", "TimeEnd", "TimeStart" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2020, 5, 31, 23, 1, 21, 810, DateTimeKind.Local).AddTicks(4366), new DateTime(2020, 5, 31, 21, 1, 21, 807, DateTimeKind.Local).AddTicks(5078) },
-                    { 11, 11, new DateTime(2020, 5, 31, 23, 1, 21, 810, DateTimeKind.Local).AddTicks(6405), new DateTime(2020, 5, 31, 21, 1, 21, 810, DateTimeKind.Local).AddTicks(6401) },
-                    { 2, 2, new DateTime(2020, 5, 31, 23, 1, 21, 810, DateTimeKind.Local).AddTicks(6094), new DateTime(2020, 5, 31, 21, 1, 21, 810, DateTimeKind.Local).AddTicks(6069) },
-                    { 3, 3, new DateTime(2020, 5, 31, 23, 1, 21, 810, DateTimeKind.Local).AddTicks(6151), new DateTime(2020, 5, 31, 21, 1, 21, 810, DateTimeKind.Local).AddTicks(6146) },
-                    { 4, 4, new DateTime(2020, 5, 31, 23, 1, 21, 810, DateTimeKind.Local).AddTicks(6180), new DateTime(2020, 5, 31, 21, 1, 21, 810, DateTimeKind.Local).AddTicks(6176) },
-                    { 5, 5, new DateTime(2020, 5, 31, 23, 1, 21, 810, DateTimeKind.Local).AddTicks(6210), new DateTime(2020, 5, 31, 21, 1, 21, 810, DateTimeKind.Local).AddTicks(6206) },
-                    { 6, 6, new DateTime(2020, 5, 31, 23, 1, 21, 810, DateTimeKind.Local).AddTicks(6257), new DateTime(2020, 5, 31, 21, 1, 21, 810, DateTimeKind.Local).AddTicks(6253) },
-                    { 7, 7, new DateTime(2020, 5, 31, 23, 1, 21, 810, DateTimeKind.Local).AddTicks(6287), new DateTime(2020, 5, 31, 21, 1, 21, 810, DateTimeKind.Local).AddTicks(6283) },
-                    { 8, 8, new DateTime(2020, 5, 31, 23, 1, 21, 810, DateTimeKind.Local).AddTicks(6317), new DateTime(2020, 5, 31, 21, 1, 21, 810, DateTimeKind.Local).AddTicks(6313) },
-                    { 9, 9, new DateTime(2020, 5, 31, 23, 1, 21, 810, DateTimeKind.Local).AddTicks(6346), new DateTime(2020, 5, 31, 21, 1, 21, 810, DateTimeKind.Local).AddTicks(6342) },
-                    { 10, 10, new DateTime(2020, 5, 31, 23, 1, 21, 810, DateTimeKind.Local).AddTicks(6376), new DateTime(2020, 5, 31, 21, 1, 21, 810, DateTimeKind.Local).AddTicks(6372) }
+                    { 1, 1, new DateTime(2020, 6, 14, 19, 51, 41, 733, DateTimeKind.Local).AddTicks(7452), new DateTime(2020, 6, 14, 17, 51, 41, 726, DateTimeKind.Local).AddTicks(9787) },
+                    { 2, 2, new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(693), new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(638) },
+                    { 3, 3, new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(813), new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(804) },
+                    { 4, 4, new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(873), new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(865) },
+                    { 5, 5, new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(929), new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(921) },
+                    { 6, 6, new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(993), new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(985) },
+                    { 7, 7, new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1049), new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1041) },
+                    { 8, 8, new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1107), new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1099) },
+                    { 9, 9, new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1164), new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1156) },
+                    { 10, 10, new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1223), new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1215) },
+                    { 11, 11, new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1280), new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1271) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -563,14 +557,9 @@ namespace eShop.Infrastructure.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Day_DaysId",
+                name: "IX_Day_WeekId",
                 table: "Day",
-                column: "DaysId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Days_ScheduleId",
-                table: "Days",
-                column: "ScheduleId");
+                column: "WeekId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Events_CategoryId",
@@ -611,6 +600,11 @@ namespace eShop.Infrastructure.Migrations
                 name: "IX_Times_DayId",
                 table: "Times",
                 column: "DayId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Week_ScheduleId",
+                table: "Week",
+                column: "ScheduleId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -652,7 +646,7 @@ namespace eShop.Infrastructure.Migrations
                 name: "Day");
 
             migrationBuilder.DropTable(
-                name: "Days");
+                name: "Week");
 
             migrationBuilder.DropTable(
                 name: "Schedule");

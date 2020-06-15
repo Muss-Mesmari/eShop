@@ -63,7 +63,9 @@ namespace eShop.Web
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<IOrderService, OrderService>();
-            
+            services.AddScoped<ILocationService, LocationService>();
+            services.AddScoped<ITeachersService, TeachersService>();
+
 
             services.AddConfiguration(Configuration);
             services.AddShoppingCart();

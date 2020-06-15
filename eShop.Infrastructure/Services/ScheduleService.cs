@@ -1,5 +1,7 @@
 ﻿using eShop.Entities.Entities;
 using eShop.Infrastructure.Database;
+using eShop.Presentation.ViewModels;
+using FluentAssertions;
 using FluentAssertions.Extensions;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System;
@@ -52,6 +54,40 @@ namespace eShop.Infrastructure.Services
             }
 
             return AlltimesOfEachDaySorted;
+        }
+
+        public void CreateSchedule(EventCreateEditViewModel newEvent)
+        {
+            var weekId = _eShopDbContext.Week.Select(w => w.WeekId).ToList().Last() + 1;
+            int dayId = _eShopDbContext.Day.Select(d => d.DayId).ToList().Last() + 1;
+            int scheduleId = _eShopDbContext.Schedule.Select(sh => sh.ScheduleId).ToList().Last();
+
+            var _newDay = new Day()
+            {
+                DayOfWeek = newEvent.Day.DayOfWeek,
+                WeekId = weekId
+            };
+
+            var _newTimes = new Times()
+            {
+                TimeStart = newEvent.Times.TimeStart,
+                TimeEnd = newEvent.Times.TimeEnd,
+                DayId = dayId
+            };
+
+            var _newWeek = new Week()
+            {
+                ScheduleId = scheduleId                
+            };
+
+            _eShopDbContext.Week.Add(_newWeek);
+            _eShopDbContext.SaveChanges();
+
+            _eShopDbContext.Day.Add(_newDay);
+            _eShopDbContext.SaveChanges();
+
+            _eShopDbContext.Times.Add(_newTimes);
+            _eShopDbContext.SaveChanges();
         }
     }
 }

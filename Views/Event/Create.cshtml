@@ -35,11 +35,14 @@
                 <select asp-for="Event.Currency" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(Currency)), "Select a currency"))"></select>
                 <span asp-validation-for="Event.Currency" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Event.ImageUrl" class="control-label"></label>
                 <input asp-for="Event.ImageUrl" class="form-control" />
                 <span asp-validation-for="Event.ImageUrl" class="text-danger"></span>
             </div>
+
+
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Event.IsHighlightedEvent" /> @Html.DisplayNameFor(model => model.Event.IsHighlightedEvent)
@@ -51,11 +54,68 @@
                     <span asp-validation-for="Event.InStock" class="text-danger"></span>
                 </label>
             </div>
+
             <div class="form-group">
                 <label asp-for="Event.CategoryId" class="control-label"></label>
                 <select asp-for="Event.CategoryId" class="form-control" asp-items="@(new SelectList(Model.Categories, "CategoryId", "CategoryName"))"></select>
                 <span asp-validation-for="Event.CategoryId" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Day.DayOfWeek" class="control-label"></label>
+                <select asp-for="Day.DayOfWeek" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DayOfWeek)), "Choose days"))"></select>
+                <span asp-validation-for="Day.DayOfWeek" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Times.TimeStart" class="control-label"></label>
+                <input asp-for="Times.TimeStart" class="form-control" />
+                <span asp-validation-for="Times.TimeStart" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Times.TimeEnd" class="control-label"></label>
+                <input asp-for="Times.TimeEnd" class="form-control" />
+                <span asp-validation-for="Times.TimeEnd" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Location.Street" class="control-label"></label>
+                <input asp-for="Location.Street" class="form-control" />
+                <span asp-validation-for="Location.Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location.StreetNumber" class="control-label"></label>
+                <input asp-for="Location.StreetNumber" class="form-control" />
+                <span asp-validation-for="Location.StreetNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location.City" class="control-label"></label>
+                <input asp-for="Location.City" class="form-control" />
+                <span asp-validation-for="Location.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location.State" class="control-label"></label>
+                <input asp-for="Location.State" class="form-control" />
+                <span asp-validation-for="Location.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location.ZipCode" class="control-label"></label>
+                <input asp-for="Location.ZipCode" class="form-control" />
+                <span asp-validation-for="Location.ZipCode" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Teachers.TeacherName" class="control-label"></label>
+                <input asp-for="Teachers.TeacherName" class="form-control" />
+                <span asp-validation-for="Teachers.TeacherName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teachers.TeachingAssistantName" class="control-label"></label>
+                <input asp-for="Teachers.TeachingAssistantName" class="form-control" />
+                <span asp-validation-for="Teachers.TeachingAssistantName" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-danger text-nowrap btn-block" />
             </div>
@@ -63,7 +123,14 @@
     </div>
 </div>
 
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
+
+@*<div class="form-group">
+        <label asp-for="Day.EventDay" class="control-label"></label>
+        <input asp-for="Day.EventDay" class="form-control" />
+        <span asp-validation-for="Day.EventDay" class="text-danger"></span>
+    </div>*@

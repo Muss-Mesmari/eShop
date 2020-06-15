@@ -398,7 +398,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
                             LocationId = 1,
@@ -414,7 +414,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
                             LocationId = 2,
@@ -430,7 +430,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 3,
@@ -446,7 +446,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 2,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
                             LocationId = 4,
@@ -462,7 +462,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 5,
@@ -478,7 +478,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 6,
@@ -494,7 +494,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 7,
@@ -510,7 +510,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 8,
@@ -526,7 +526,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
                             LocationId = 9,
@@ -542,7 +542,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 10,
@@ -558,7 +558,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
                             LocationId = 11,
@@ -940,78 +940,78 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TimesId = 1,
                             DayId = 1,
-                            TimeEnd = new DateTime(2020, 6, 4, 23, 41, 15, 711, DateTimeKind.Local).AddTicks(7881),
-                            TimeStart = new DateTime(2020, 6, 4, 21, 41, 15, 706, DateTimeKind.Local).AddTicks(8573)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 733, DateTimeKind.Local).AddTicks(7452),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 726, DateTimeKind.Local).AddTicks(9787)
                         },
                         new
                         {
                             TimesId = 2,
                             DayId = 2,
-                            TimeEnd = new DateTime(2020, 6, 4, 23, 41, 15, 712, DateTimeKind.Local).AddTicks(969),
-                            TimeStart = new DateTime(2020, 6, 4, 21, 41, 15, 712, DateTimeKind.Local).AddTicks(923)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(693),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(638)
                         },
                         new
                         {
                             TimesId = 3,
                             DayId = 3,
-                            TimeEnd = new DateTime(2020, 6, 4, 23, 41, 15, 712, DateTimeKind.Local).AddTicks(1123),
-                            TimeStart = new DateTime(2020, 6, 4, 21, 41, 15, 712, DateTimeKind.Local).AddTicks(1105)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(813),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(804)
                         },
                         new
                         {
                             TimesId = 4,
                             DayId = 4,
-                            TimeEnd = new DateTime(2020, 6, 4, 23, 41, 15, 712, DateTimeKind.Local).AddTicks(1202),
-                            TimeStart = new DateTime(2020, 6, 4, 21, 41, 15, 712, DateTimeKind.Local).AddTicks(1186)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(873),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(865)
                         },
                         new
                         {
                             TimesId = 5,
                             DayId = 5,
-                            TimeEnd = new DateTime(2020, 6, 4, 23, 41, 15, 712, DateTimeKind.Local).AddTicks(1276),
-                            TimeStart = new DateTime(2020, 6, 4, 21, 41, 15, 712, DateTimeKind.Local).AddTicks(1268)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(929),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(921)
                         },
                         new
                         {
                             TimesId = 6,
                             DayId = 6,
-                            TimeEnd = new DateTime(2020, 6, 4, 23, 41, 15, 712, DateTimeKind.Local).AddTicks(1331),
-                            TimeStart = new DateTime(2020, 6, 4, 21, 41, 15, 712, DateTimeKind.Local).AddTicks(1325)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(993),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(985)
                         },
                         new
                         {
                             TimesId = 7,
                             DayId = 7,
-                            TimeEnd = new DateTime(2020, 6, 4, 23, 41, 15, 712, DateTimeKind.Local).AddTicks(1394),
-                            TimeStart = new DateTime(2020, 6, 4, 21, 41, 15, 712, DateTimeKind.Local).AddTicks(1383)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1049),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1041)
                         },
                         new
                         {
                             TimesId = 8,
                             DayId = 8,
-                            TimeEnd = new DateTime(2020, 6, 4, 23, 41, 15, 712, DateTimeKind.Local).AddTicks(1477),
-                            TimeStart = new DateTime(2020, 6, 4, 21, 41, 15, 712, DateTimeKind.Local).AddTicks(1466)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1107),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1099)
                         },
                         new
                         {
                             TimesId = 9,
                             DayId = 9,
-                            TimeEnd = new DateTime(2020, 6, 4, 23, 41, 15, 712, DateTimeKind.Local).AddTicks(1560),
-                            TimeStart = new DateTime(2020, 6, 4, 21, 41, 15, 712, DateTimeKind.Local).AddTicks(1547)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1164),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1156)
                         },
                         new
                         {
                             TimesId = 10,
                             DayId = 10,
-                            TimeEnd = new DateTime(2020, 6, 4, 23, 41, 15, 712, DateTimeKind.Local).AddTicks(1643),
-                            TimeStart = new DateTime(2020, 6, 4, 21, 41, 15, 712, DateTimeKind.Local).AddTicks(1633)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1223),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1215)
                         },
                         new
                         {
                             TimesId = 11,
                             DayId = 11,
-                            TimeEnd = new DateTime(2020, 6, 4, 23, 41, 15, 712, DateTimeKind.Local).AddTicks(1725),
-                            TimeStart = new DateTime(2020, 6, 4, 21, 41, 15, 712, DateTimeKind.Local).AddTicks(1714)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1280),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1271)
                         });
                 });
 

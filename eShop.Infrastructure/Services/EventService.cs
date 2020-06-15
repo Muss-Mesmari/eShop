@@ -43,6 +43,8 @@ namespace eShop.Infrastructure.Services
 
         public void CreateEvent(EventCreateEditViewModel newEvent)
         {
+            int locationId = _eShopDbContext.Location.Select(l => l.LocationId).ToList().Last();
+            int teachersId = _eShopDbContext.Teachers.Select(t => t.TeachersId).ToList().Last();
             var _newEvent = new Event()
             {
                 Name = newEvent.Event.Name,
@@ -53,14 +55,27 @@ namespace eShop.Infrastructure.Services
                 IsHighlightedEvent = newEvent.Event.IsHighlightedEvent,
                 InStock = newEvent.Event.InStock,
                 CategoryId = newEvent.Event.CategoryId,
-                Currency = newEvent.Event.Currency
+                Currency = newEvent.Event.Currency,
+                LocationId = locationId,
+                TeachersId = teachersId
             };
+            _eShopDbContext.SaveChanges();
+
+            int eventId = _eShopDbContext.Events.Select(e => e.EventId).ToList().Last() + 1;
+            var _newSchedule = new Schedule()
+            {
+                EventId = eventId,
+            };
+            _eShopDbContext.Schedule.Add(_newSchedule);
+
             _eShopDbContext.Events.Add(_newEvent);
             _eShopDbContext.SaveChanges();
         }
 
         public void UpdateEvent(EventCreateEditViewModel newEvent)
         {
+            //var eventId = newEvent.Event.EventId;
+           // var locationId = _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId).LocationId;
             if (newEvent != null)
             {
                 newEvent.Event.Name = newEvent.Event.Name;
@@ -73,7 +88,7 @@ namespace eShop.Infrastructure.Services
                 newEvent.Event.CategoryId = newEvent.Event.CategoryId;
                 newEvent.Event.Currency = newEvent.Event.Currency;
             }
-
+          //  Event _newEvent = newEvent.Event;
             var entity = _eShopDbContext.Entry(newEvent.Event);
             entity.State = EntityState.Modified;
             _eShopDbContext.SaveChanges();

@@ -10,8 +10,8 @@ using eShop.Infrastructure.Database;
 namespace eShop.Infrastructure.Migrations
 {
     [DbContext(typeof(eShopDbContext))]
-    [Migration("20200531205045_3rdCreate")]
-    partial class _3rdCreate
+    [Migration("20200614155142_1stCreate")]
+    partial class _1stCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -262,7 +262,12 @@ namespace eShop.Infrastructure.Migrations
                     b.Property<int>("DayOfWeek")
                         .HasColumnType("int");
 
+                    b.Property<int>("WeekId")
+                        .HasColumnType("int");
+
                     b.HasKey("DayId");
+
+                    b.HasIndex("WeekId");
 
                     b.ToTable("Day");
 
@@ -270,147 +275,68 @@ namespace eShop.Infrastructure.Migrations
                         new
                         {
                             DayId = 1,
-                            DayOfWeek = 1
+                            DayOfWeek = 1,
+                            WeekId = 1
                         },
                         new
                         {
                             DayId = 2,
-                            DayOfWeek = 1
+                            DayOfWeek = 1,
+                            WeekId = 2
                         },
                         new
                         {
                             DayId = 3,
-                            DayOfWeek = 1
+                            DayOfWeek = 1,
+                            WeekId = 3
                         },
                         new
                         {
                             DayId = 4,
-                            DayOfWeek = 1
+                            DayOfWeek = 1,
+                            WeekId = 4
                         },
                         new
                         {
                             DayId = 5,
-                            DayOfWeek = 1
+                            DayOfWeek = 1,
+                            WeekId = 5
                         },
                         new
                         {
                             DayId = 6,
-                            DayOfWeek = 1
+                            DayOfWeek = 1,
+                            WeekId = 6
                         },
                         new
                         {
                             DayId = 7,
-                            DayOfWeek = 1
+                            DayOfWeek = 1,
+                            WeekId = 7
                         },
                         new
                         {
                             DayId = 8,
-                            DayOfWeek = 1
+                            DayOfWeek = 1,
+                            WeekId = 8
                         },
                         new
                         {
                             DayId = 9,
-                            DayOfWeek = 1
+                            DayOfWeek = 1,
+                            WeekId = 9
                         },
                         new
                         {
                             DayId = 10,
-                            DayOfWeek = 1
+                            DayOfWeek = 1,
+                            WeekId = 10
                         },
                         new
                         {
                             DayId = 11,
-                            DayOfWeek = 1
-                        });
-                });
-
-            modelBuilder.Entity("eShop.Entities.Entities.Days", b =>
-                {
-                    b.Property<int>("DaysId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("DayId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ScheduleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("DaysId");
-
-                    b.HasIndex("DayId");
-
-                    b.HasIndex("ScheduleId");
-
-                    b.ToTable("Days");
-
-                    b.HasData(
-                        new
-                        {
-                            DaysId = 1,
-                            DayId = 1,
-                            ScheduleId = 1
-                        },
-                        new
-                        {
-                            DaysId = 2,
-                            DayId = 2,
-                            ScheduleId = 2
-                        },
-                        new
-                        {
-                            DaysId = 3,
-                            DayId = 3,
-                            ScheduleId = 3
-                        },
-                        new
-                        {
-                            DaysId = 4,
-                            DayId = 4,
-                            ScheduleId = 4
-                        },
-                        new
-                        {
-                            DaysId = 5,
-                            DayId = 5,
-                            ScheduleId = 5
-                        },
-                        new
-                        {
-                            DaysId = 6,
-                            DayId = 6,
-                            ScheduleId = 6
-                        },
-                        new
-                        {
-                            DaysId = 7,
-                            DayId = 7,
-                            ScheduleId = 7
-                        },
-                        new
-                        {
-                            DaysId = 8,
-                            DayId = 8,
-                            ScheduleId = 8
-                        },
-                        new
-                        {
-                            DaysId = 9,
-                            DayId = 9,
-                            ScheduleId = 9
-                        },
-                        new
-                        {
-                            DaysId = 10,
-                            DayId = 10,
-                            ScheduleId = 10
-                        },
-                        new
-                        {
-                            DaysId = 11,
-                            DayId = 11,
-                            ScheduleId = 11
+                            DayOfWeek = 1,
+                            WeekId = 11
                         });
                 });
 
@@ -474,7 +400,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
                             LocationId = 1,
@@ -490,7 +416,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
                             LocationId = 2,
@@ -506,7 +432,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 3,
@@ -522,7 +448,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 2,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
                             LocationId = 4,
@@ -538,7 +464,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 5,
@@ -554,7 +480,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 6,
@@ -570,7 +496,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 7,
@@ -586,7 +512,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 8,
@@ -602,7 +528,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://cdn.pixabay.com/photo/2016/06/29/21/11/calendar-icon-1487803_960_720.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
                             LocationId = 9,
@@ -618,7 +544,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
                             LocationId = 10,
@@ -634,7 +560,7 @@ namespace eShop.Infrastructure.Migrations
                             CategoryId = 1,
                             Currency = 0,
                             HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                            ImageUrl = "https://knowpathology.com.au/app/uploads/2018/07/Happy-Test-Screen-01-825x510.png",
+                            ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
                             LocationId = 11,
@@ -1016,78 +942,152 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TimesId = 1,
                             DayId = 1,
-                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 854, DateTimeKind.Local).AddTicks(9961),
-                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 852, DateTimeKind.Local).AddTicks(1661)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 733, DateTimeKind.Local).AddTicks(7452),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 726, DateTimeKind.Local).AddTicks(9787)
                         },
                         new
                         {
                             TimesId = 2,
                             DayId = 2,
-                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1653),
-                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1626)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(693),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(638)
                         },
                         new
                         {
                             TimesId = 3,
                             DayId = 3,
-                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1710),
-                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1705)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(813),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(804)
                         },
                         new
                         {
                             TimesId = 4,
                             DayId = 4,
-                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1740),
-                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1736)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(873),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(865)
                         },
                         new
                         {
                             TimesId = 5,
                             DayId = 5,
-                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1768),
-                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1765)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(929),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(921)
                         },
                         new
                         {
                             TimesId = 6,
                             DayId = 6,
-                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1801),
-                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1797)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(993),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(985)
                         },
                         new
                         {
                             TimesId = 7,
                             DayId = 7,
-                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1829),
-                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1826)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1049),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1041)
                         },
                         new
                         {
                             TimesId = 8,
                             DayId = 8,
-                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1857),
-                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1853)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1107),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1099)
                         },
                         new
                         {
                             TimesId = 9,
                             DayId = 9,
-                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1885),
-                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1881)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1164),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1156)
                         },
                         new
                         {
                             TimesId = 10,
                             DayId = 10,
-                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1914),
-                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1910)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1223),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1215)
                         },
                         new
                         {
                             TimesId = 11,
                             DayId = 11,
-                            TimeEnd = new DateTime(2020, 6, 1, 0, 50, 44, 855, DateTimeKind.Local).AddTicks(1942),
-                            TimeStart = new DateTime(2020, 5, 31, 22, 50, 44, 855, DateTimeKind.Local).AddTicks(1938)
+                            TimeEnd = new DateTime(2020, 6, 14, 19, 51, 41, 734, DateTimeKind.Local).AddTicks(1280),
+                            TimeStart = new DateTime(2020, 6, 14, 17, 51, 41, 734, DateTimeKind.Local).AddTicks(1271)
+                        });
+                });
+
+            modelBuilder.Entity("eShop.Entities.Entities.Week", b =>
+                {
+                    b.Property<int>("WeekId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ScheduleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("WeekId");
+
+                    b.HasIndex("ScheduleId");
+
+                    b.ToTable("Week");
+
+                    b.HasData(
+                        new
+                        {
+                            WeekId = 1,
+                            ScheduleId = 1
+                        },
+                        new
+                        {
+                            WeekId = 2,
+                            ScheduleId = 2
+                        },
+                        new
+                        {
+                            WeekId = 3,
+                            ScheduleId = 3
+                        },
+                        new
+                        {
+                            WeekId = 4,
+                            ScheduleId = 4
+                        },
+                        new
+                        {
+                            WeekId = 5,
+                            ScheduleId = 5
+                        },
+                        new
+                        {
+                            WeekId = 6,
+                            ScheduleId = 6
+                        },
+                        new
+                        {
+                            WeekId = 7,
+                            ScheduleId = 7
+                        },
+                        new
+                        {
+                            WeekId = 8,
+                            ScheduleId = 8
+                        },
+                        new
+                        {
+                            WeekId = 9,
+                            ScheduleId = 9
+                        },
+                        new
+                        {
+                            WeekId = 10,
+                            ScheduleId = 10
+                        },
+                        new
+                        {
+                            WeekId = 11,
+                            ScheduleId = 11
                         });
                 });
 
@@ -1142,17 +1142,11 @@ namespace eShop.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("eShop.Entities.Entities.Days", b =>
+            modelBuilder.Entity("eShop.Entities.Entities.Day", b =>
                 {
-                    b.HasOne("eShop.Entities.Entities.Day", "Day")
-                        .WithMany("Days")
-                        .HasForeignKey("DayId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eShop.Entities.Entities.Schedule", "Schedule")
-                        .WithMany("Days")
-                        .HasForeignKey("ScheduleId")
+                    b.HasOne("eShop.Entities.Entities.Week", "Week")
+                        .WithMany("Day")
+                        .HasForeignKey("WeekId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1214,6 +1208,15 @@ namespace eShop.Infrastructure.Migrations
                     b.HasOne("eShop.Entities.Entities.Day", "Day")
                         .WithMany("Times")
                         .HasForeignKey("DayId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eShop.Entities.Entities.Week", b =>
+                {
+                    b.HasOne("eShop.Entities.Entities.Schedule", "Schedule")
+                        .WithMany("Week")
+                        .HasForeignKey("ScheduleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
