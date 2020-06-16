@@ -11,6 +11,6 @@ namespace eShop.Infrastructure.Services
         void CreateTeachers(EventCreateEditViewModel newEvent);
         void DeleteTeachers(int id);
         Teachers GetTeachersById(int? eventId);
-        void UpdateTeachers(Teachers newTeachers);
+        void UpdateTeachers(EventCreateEditViewModel newEvent);
     }
 }

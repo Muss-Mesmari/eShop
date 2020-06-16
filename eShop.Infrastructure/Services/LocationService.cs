@@ -27,7 +27,12 @@ namespace eShop.Infrastructure.Services
         public Location GetLocationById(int? eventId)
         {
             var locationId = _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId).LocationId;
-            return _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == locationId);
+            var location = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == locationId);
+
+            var entity = _eShopDbContext.Entry(location);
+            entity.State = EntityState.Detached;
+
+            return location;
         }
 
         public void CreateLocation(EventCreateEditViewModel newEvent)
@@ -47,11 +52,12 @@ namespace eShop.Infrastructure.Services
         public void UpdateLocation(EventCreateEditViewModel newEvent)
         {
             var eventId = newEvent.Event.EventId;
-            var locationId = _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId).LocationId;
+            var location = GetLocationById(eventId);
+
             var newLocation = newEvent.Location;
             if (newLocation != null)
             {
-                newLocation.LocationId = locationId;
+                newLocation.LocationId = location.LocationId;
                 newLocation.Street = newLocation.Street;
                 newLocation.StreetNumber = newLocation.StreetNumber;
                 newLocation.City = newLocation.City;

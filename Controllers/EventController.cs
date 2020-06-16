@@ -132,17 +132,10 @@ namespace eShop.Web.Controllers
 
         // GET: Event/Edit/5
         public IActionResult Edit(int id)
-        {
-
-            //var model = _eventRepository.GetEventById(id);
-            //if (model == null)
-            //{
-            //    return View("NotFound");
-            //}
-            //return View(model);
-           
+        {          
             var viewModel = new EventCreateEditViewModel
             {
+                Teachers = _teachersService.GetTeachersById(id),
                 Location = _locationService.GetLocationById(id),
                 Categories = _categoryService.AllCategories.ToList(),
                 Event = _eventService.GetEventById(id)
@@ -158,11 +151,13 @@ namespace eShop.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, EventCreateEditViewModel newEvent)
-        {
+        {         
             if (ModelState.IsValid)
-            {
+            {                
+                _eventService.UpdateEvent(newEvent);
                 _locationService.UpdateLocation(newEvent);
-                _eventService.UpdateEvent(newEvent);                
+                _teachersService.UpdateTeachers(newEvent);
+
                 return RedirectToAction(nameof(Details), new { id = newEvent.Event.EventId });
             }
             return View();

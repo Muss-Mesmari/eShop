@@ -84,6 +84,16 @@
                 <span asp-validation-for="Location.State" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Teachers.TeacherName" class="control-label"></label>
+                <input asp-for="Teachers.TeacherName" class="form-control" />
+                <span asp-validation-for="Teachers.TeacherName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teachers.TeachingAssistantName" class="control-label"></label>
+                <input asp-for="Teachers.TeachingAssistantName" class="form-control" />
+                <span asp-validation-for="Teachers.TeachingAssistantName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-danger text-nowrap btn-block" />
             </div>
         </form>

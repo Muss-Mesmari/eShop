@@ -60,11 +60,11 @@ namespace eShop.Web
             //    .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
 
             services.AddScoped<IScheduleService, ScheduleService>();
+            services.AddScoped<ILocationService, LocationService>();
+            services.AddScoped<ITeachersService, TeachersService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<ILocationService, LocationService>();
-            services.AddScoped<ITeachersService, TeachersService>();
 
 
             services.AddConfiguration(Configuration);

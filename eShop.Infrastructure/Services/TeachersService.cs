@@ -23,28 +23,35 @@ namespace eShop.Infrastructure.Services
         }
 
         public IEnumerable<Teachers> AllTeachers => _eShopDbContext.Teachers;
-
         public Teachers GetTeachersById(int? eventId)
         {
             var teachersId = _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId).TeachersId;
-            return _eShopDbContext.Teachers.FirstOrDefault(t => t.TeachersId == teachersId);
-        }
+            var teachers = _eShopDbContext.Teachers.FirstOrDefault(t => t.TeachersId == teachersId);
 
+            var entity = _eShopDbContext.Entry(teachers);
+            entity.State = EntityState.Detached;
+
+            return teachers;
+        }
         public void CreateTeachers(EventCreateEditViewModel newEvent)
         {
-            var _newTeachers = new Teachers()
+            var newTeachers = new Teachers()
             {
                 TeacherName = newEvent.Teachers.TeacherName,
                 TeachingAssistantName = newEvent.Teachers.TeachingAssistantName
             };
-            _eShopDbContext.Teachers.Add(_newTeachers);
+            _eShopDbContext.Teachers.Add(newTeachers);
             _eShopDbContext.SaveChanges();
         }
-
-        public void UpdateTeachers(Teachers newTeachers)
+        public void UpdateTeachers(EventCreateEditViewModel newEvent)
         {
+            var eventId = newEvent.Event.EventId;
+            var teachers = GetTeachersById(eventId);
+
+            var newTeachers = newEvent.Teachers;
             if (newTeachers != null)
             {
+                newTeachers.TeachersId = teachers.TeachersId;
                 newTeachers.TeacherName = newTeachers.TeacherName;
                 newTeachers.TeachingAssistantName = newTeachers.TeachingAssistantName;
             }
@@ -53,7 +60,6 @@ namespace eShop.Infrastructure.Services
             entity.State = EntityState.Modified;
             _eShopDbContext.SaveChanges();
         }
-
         public void DeleteTeachers(int id)
         {
             var removedTeachers = GetTeachersById(id);
