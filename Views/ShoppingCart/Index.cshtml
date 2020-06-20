@@ -15,7 +15,21 @@
         @foreach (var line in Model.ShoppingCartService.ShoppingCartItems)
         {
             <tr>
-                <td class="text-center">@line.Amount</td>
+                <td class="text-center">
+                    <form asp-controller="ShoppingCart"
+                          asp-action="AddToShoppingCart"
+                          asp-route-eventId="@line.Event.EventId" method="post" role="form">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <input class="form-control" type="number" asp-for="@Model.Amount">
+                                <input type="submit" class="mt-2 btn btn-danger text-nowrap btn-block" value="Add / remove items" />
+                            </div>
+                            <div class="text-success">
+                                @line.Amount
+                            </div>
+                        </div>
+                    </form>                   
+                </td>
                 <td class="text-left">@line.Event.Name</td>
                 <td class="text-right">@line.Event.Price @line.Event.Currency</td>
                 <td class="text-right">

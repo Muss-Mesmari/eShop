@@ -18,6 +18,7 @@
                             @Model.Price <small class="text-muted"> @Model.Currency</small>
                         </h5>
                     </div>
+
                     <a asp-controller="ShoppingCart"
                        asp-action="AddToShoppingCart"
                        asp-route-eventId="@Model.EventId" role="button" class="btn btn-danger mt-3 text-nowrap">

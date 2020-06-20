@@ -17,9 +17,13 @@ namespace eShop.Web.Controllers
         private readonly ShoppingCartService _shoppingCartService;
         private readonly FeaturesConfiguration _featuresConfiguration;
 
+
+        [BindProperty(SupportsGet = true)]
+        public int Amount { get; set; }
+
         public ShoppingCartController
-            (IEventService eventService, 
-            ShoppingCartService shoppingCartService, 
+            (IEventService eventService,
+            ShoppingCartService shoppingCartService,
             IOptions<FeaturesConfiguration> options)
         {
             _eventService = eventService;
@@ -55,8 +59,8 @@ namespace eShop.Web.Controllers
 
                 if (selectedEvent != null)
                 {
-                    _shoppingCartService.AddToCart(selectedEvent, 1);
-                }                
+                    _shoppingCartService.AddToCart(selectedEvent, Amount);
+                }
             }
             return RedirectToAction("Index");
         }

@@ -83,7 +83,7 @@ namespace eShop.Infrastructure.Services
             }
             else
             {
-                shoppingCartItem.Amount++;
+                shoppingCartItem.Amount = amount;
             }
             _eShopDbContext.SaveChanges();
         }
@@ -126,4 +126,4 @@ namespace eShop.Infrastructure.Services
         }
 
     }
-} 
+}
