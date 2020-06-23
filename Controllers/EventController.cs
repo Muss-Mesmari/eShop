@@ -19,6 +19,7 @@ namespace eShop.Web.Controllers
         private readonly IScheduleService _scheduleService;
         private readonly ILocationService _locationService;
         private readonly ITeachersService _teachersService;
+        private readonly ShoppingCartService _shoppingCartService;
 
         [BindProperty(SupportsGet = true)]
         public string SearchedEvent { get; set; }
@@ -26,13 +27,16 @@ namespace eShop.Web.Controllers
         [BindProperty(SupportsGet = true)]
         public string SearchedCategory { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public int Amount { get; set; }
         public EventController
             (
-            IEventService eventService, 
+            IEventService eventService,
             ICategoryService categoryService,
             IScheduleService scheduleService,
             ILocationService locationService,
-            ITeachersService teachersService
+            ITeachersService teachersService,
+            ShoppingCartService shoppingCartService
             )
         {
             _scheduleService = scheduleService;
@@ -40,6 +44,7 @@ namespace eShop.Web.Controllers
             _categoryService = categoryService;
             _locationService = locationService;
             _teachersService = teachersService;
+            _shoppingCartService = shoppingCartService;
         }
 
         // GET: Event
@@ -53,18 +58,18 @@ namespace eShop.Web.Controllers
                 events = _eventService.GetEvents(SearchedEvent, SearchedCategory).OrderBy(e => e.EventId);
                 if (SearchedEvent != null)
                 {
-                    currentCategory = SearchedCategory;                    
+                    currentCategory = SearchedCategory;
                 }
                 else
                 {
-                    currentCategory = "All events";                 
+                    currentCategory = "All events";
                 }
             }
             else
             {
                 events = _eventService.GetEvents(SearchedEvent, SearchedCategory).Where(p => p.Category.CategoryName == category)
                     .OrderBy(e => e.EventId);
-                currentCategory = _categoryService.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;                
+                currentCategory = _categoryService.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
             }
 
             return View(new EventsListViewModel
@@ -86,13 +91,24 @@ namespace eShop.Web.Controllers
             var eventSchedule = _scheduleService.GetEventTimes(id);
             var location = _locationService.GetLocationById(id);
             var teachers = _teachersService.GetTeachersById(id);
+            var amount = _shoppingCartService.GetShoppingCartItemAmount(id);
+
+            if (amount == 0)
+            {
+                amount = 1;
+            }
+
 
             if (eventDetails == null)
             {
                 return View("NotFound");
             }
+
             return View(new DetailsViewModel
             {
+                ShoppingCartItemTotalSEK = _shoppingCartService.GetShoppingCartItemTotalSEK(id),
+                ShoppingCartItemTotalEUR = _shoppingCartService.GetShoppingCartItemTotalEUR(id),
+                Amount = amount,
                 Event = eventDetails,
                 Day = day,
                 EventSchedule = eventSchedule,
@@ -101,9 +117,20 @@ namespace eShop.Web.Controllers
             });
         }
 
+        public RedirectResult AddToShoppingCart(int eventId)
+        {
+            var selectedEvent = _eventService.GetEventById(eventId);
+
+            if (selectedEvent != null)
+            {
+                _shoppingCartService.AddToCart(selectedEvent, Amount, true);
+            }            
+            return Redirect($"/Event/Details/{eventId}#prices");              
+        }
+
         // GET: Event/Create
         // [Route("/Create-an-event", Name = "Create an event")]
-       // [HttpGet]
+        // [HttpGet]
         public IActionResult Create()
         {
             var viewModel = new EventCreateEditViewModel
@@ -124,7 +151,7 @@ namespace eShop.Web.Controllers
                 _locationService.CreateLocation(newEvent);
                 _eventService.CreateEvent(newEvent);
                 _scheduleService.CreateSchedule(newEvent);
-                
+
                 return RedirectToAction(nameof(Details), new { id = _eventService.AllEvents.Max(e => e.EventId) });
             }
             return View();
@@ -132,7 +159,7 @@ namespace eShop.Web.Controllers
 
         // GET: Event/Edit/5
         public IActionResult Edit(int id)
-        {          
+        {
             var viewModel = new EventCreateEditViewModel
             {
                 Teachers = _teachersService.GetTeachersById(id),
@@ -151,9 +178,9 @@ namespace eShop.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, EventCreateEditViewModel newEvent)
-        {         
+        {
             if (ModelState.IsValid)
-            {                
+            {
                 _eventService.UpdateEvent(newEvent);
                 _locationService.UpdateLocation(newEvent);
                 _teachersService.UpdateTeachers(newEvent);

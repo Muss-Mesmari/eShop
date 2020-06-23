@@ -504,17 +504,17 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TimesId", "DayId", "TimeEnd", "TimeStart" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2020, 6, 17, 0, 13, 2, 507, DateTimeKind.Local).AddTicks(6389), new DateTime(2020, 6, 16, 22, 13, 2, 499, DateTimeKind.Local).AddTicks(5131) },
-                    { 2, 2, new DateTime(2020, 6, 17, 0, 13, 2, 507, DateTimeKind.Local).AddTicks(8824), new DateTime(2020, 6, 16, 22, 13, 2, 507, DateTimeKind.Local).AddTicks(8780) },
-                    { 3, 3, new DateTime(2020, 6, 17, 0, 13, 2, 507, DateTimeKind.Local).AddTicks(8955), new DateTime(2020, 6, 16, 22, 13, 2, 507, DateTimeKind.Local).AddTicks(8945) },
-                    { 4, 4, new DateTime(2020, 6, 17, 0, 13, 2, 507, DateTimeKind.Local).AddTicks(9031), new DateTime(2020, 6, 16, 22, 13, 2, 507, DateTimeKind.Local).AddTicks(9023) },
-                    { 5, 5, new DateTime(2020, 6, 17, 0, 13, 2, 507, DateTimeKind.Local).AddTicks(9099), new DateTime(2020, 6, 16, 22, 13, 2, 507, DateTimeKind.Local).AddTicks(9091) },
-                    { 6, 6, new DateTime(2020, 6, 17, 0, 13, 2, 507, DateTimeKind.Local).AddTicks(9170), new DateTime(2020, 6, 16, 22, 13, 2, 507, DateTimeKind.Local).AddTicks(9162) },
-                    { 7, 7, new DateTime(2020, 6, 17, 0, 13, 2, 507, DateTimeKind.Local).AddTicks(9240), new DateTime(2020, 6, 16, 22, 13, 2, 507, DateTimeKind.Local).AddTicks(9232) },
-                    { 8, 8, new DateTime(2020, 6, 17, 0, 13, 2, 507, DateTimeKind.Local).AddTicks(9308), new DateTime(2020, 6, 16, 22, 13, 2, 507, DateTimeKind.Local).AddTicks(9301) },
-                    { 9, 9, new DateTime(2020, 6, 17, 0, 13, 2, 507, DateTimeKind.Local).AddTicks(9376), new DateTime(2020, 6, 16, 22, 13, 2, 507, DateTimeKind.Local).AddTicks(9368) },
-                    { 10, 10, new DateTime(2020, 6, 17, 0, 13, 2, 507, DateTimeKind.Local).AddTicks(9451), new DateTime(2020, 6, 16, 22, 13, 2, 507, DateTimeKind.Local).AddTicks(9442) },
-                    { 11, 11, new DateTime(2020, 6, 17, 0, 13, 2, 507, DateTimeKind.Local).AddTicks(9520), new DateTime(2020, 6, 16, 22, 13, 2, 507, DateTimeKind.Local).AddTicks(9512) }
+                    { 1, 1, new DateTime(2020, 6, 21, 23, 2, 11, 534, DateTimeKind.Local).AddTicks(765), new DateTime(2020, 6, 21, 21, 2, 11, 527, DateTimeKind.Local).AddTicks(9260) },
+                    { 2, 2, new DateTime(2020, 6, 21, 23, 2, 11, 534, DateTimeKind.Local).AddTicks(2626), new DateTime(2020, 6, 21, 21, 2, 11, 534, DateTimeKind.Local).AddTicks(2594) },
+                    { 3, 3, new DateTime(2020, 6, 21, 23, 2, 11, 534, DateTimeKind.Local).AddTicks(2687), new DateTime(2020, 6, 21, 21, 2, 11, 534, DateTimeKind.Local).AddTicks(2682) },
+                    { 4, 4, new DateTime(2020, 6, 21, 23, 2, 11, 534, DateTimeKind.Local).AddTicks(2719), new DateTime(2020, 6, 21, 21, 2, 11, 534, DateTimeKind.Local).AddTicks(2715) },
+                    { 5, 5, new DateTime(2020, 6, 21, 23, 2, 11, 534, DateTimeKind.Local).AddTicks(2750), new DateTime(2020, 6, 21, 21, 2, 11, 534, DateTimeKind.Local).AddTicks(2746) },
+                    { 6, 6, new DateTime(2020, 6, 21, 23, 2, 11, 534, DateTimeKind.Local).AddTicks(2784), new DateTime(2020, 6, 21, 21, 2, 11, 534, DateTimeKind.Local).AddTicks(2780) },
+                    { 7, 7, new DateTime(2020, 6, 21, 23, 2, 11, 534, DateTimeKind.Local).AddTicks(2812), new DateTime(2020, 6, 21, 21, 2, 11, 534, DateTimeKind.Local).AddTicks(2808) },
+                    { 8, 8, new DateTime(2020, 6, 21, 23, 2, 11, 534, DateTimeKind.Local).AddTicks(2842), new DateTime(2020, 6, 21, 21, 2, 11, 534, DateTimeKind.Local).AddTicks(2838) },
+                    { 9, 9, new DateTime(2020, 6, 21, 23, 2, 11, 534, DateTimeKind.Local).AddTicks(2871), new DateTime(2020, 6, 21, 21, 2, 11, 534, DateTimeKind.Local).AddTicks(2867) },
+                    { 10, 10, new DateTime(2020, 6, 21, 23, 2, 11, 534, DateTimeKind.Local).AddTicks(2903), new DateTime(2020, 6, 21, 21, 2, 11, 534, DateTimeKind.Local).AddTicks(2898) },
+                    { 11, 11, new DateTime(2020, 6, 21, 23, 2, 11, 534, DateTimeKind.Local).AddTicks(2931), new DateTime(2020, 6, 21, 21, 2, 11, 534, DateTimeKind.Local).AddTicks(2927) }
                 });
 
             migrationBuilder.CreateIndex(

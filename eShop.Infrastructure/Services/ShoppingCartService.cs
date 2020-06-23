@@ -50,6 +50,29 @@ namespace eShop.Infrastructure.Services
                            .ToList());
         }
 
+        public int GetShoppingCartItemAmount(int eventId)
+        {
+            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.EventId == eventId)
+    .Select(e => e.Amount).FirstOrDefault();
+
+            return total; 
+
+        }
+
+        public decimal GetShoppingCartItemTotalSEK(int eventId)
+        {
+            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency == SEK && c.Event.EventId == eventId)
+    .Select(e => e.Event.Price * e.Amount).Sum();
+            return total;
+        }
+
+        public decimal GetShoppingCartItemTotalEUR(int eventId)
+        {
+            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency != SEK && c.Event.EventId == eventId)
+    .Select(e => e.Event.Price * e.Amount).Sum();
+            return total;
+        }
+
         public decimal GetShoppingCartTotalSEK()
         {
             var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency == SEK)
@@ -64,27 +87,57 @@ namespace eShop.Infrastructure.Services
             return total;
         }
 
-        public void AddToCart(Event purchasedEvent, int amount)
+        public void AddToCart(Event purchasedEvent, int amount, bool isDetailesPage)
         {
             var shoppingCartItem =
                     _eShopDbContext.ShoppingCartItems.SingleOrDefault(
                         e => e.Event.EventId == purchasedEvent.EventId && e.ShoppingCartId == ShoppingCartId);
+            
+            var oldAmount = GetShoppingCartItemAmount(purchasedEvent.EventId);
 
-            if (shoppingCartItem == null)
+            if (isDetailesPage is false)
             {
-                shoppingCartItem = new ShoppingCartItem
+                if (amount == 0)
                 {
-                    ShoppingCartId = ShoppingCartId,
-                    Event = purchasedEvent,
-                    Amount = 1
-                };
+                    amount = oldAmount;
+                }
 
-                _eShopDbContext.ShoppingCartItems.Add(shoppingCartItem);
+
+                if (shoppingCartItem == null)
+                {
+                    shoppingCartItem = new ShoppingCartItem
+                    {
+                        ShoppingCartId = ShoppingCartId,
+                        Event = purchasedEvent,
+                        Amount = 1
+                    };
+
+                    _eShopDbContext.ShoppingCartItems.Add(shoppingCartItem);
+                }
+                else
+                {
+                    shoppingCartItem.Amount = amount;
+                }
             }
             else
             {
-                shoppingCartItem.Amount = amount;
+                if (shoppingCartItem == null)
+                {
+                    shoppingCartItem = new ShoppingCartItem
+                    {
+                        ShoppingCartId = ShoppingCartId,
+                        Event = purchasedEvent,
+                        Amount = amount
+                    };
+
+                    _eShopDbContext.ShoppingCartItems.Add(shoppingCartItem);
+                }
+                else
+                {
+                    shoppingCartItem.Amount = amount;
+                }
             }
+
             _eShopDbContext.SaveChanges();
         }
 

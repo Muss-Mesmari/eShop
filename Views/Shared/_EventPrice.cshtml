@@ -1,0 +1,48 @@
+﻿@model eShop.Presentation.ViewModels.DetailsViewModel
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Selected amount</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center">
+                <form asp-controller="Event"
+                      asp-action="AddToShoppingCart"
+                      asp-route-eventId="@Model.Event.EventId" method="post" role="form">
+
+                    <div class="text-center">
+                        <div>
+                            <input class="form-control text-center" type="number" asp-for="@Model.Amount">
+                            <input type="submit" class="mt-2 btn btn-danger text-nowrap btn-block" value="Add / remove items" />
+                        </div>
+                    </div>
+                </form>
+            </td>
+            <td class="text-center">@Model.Event.Price @Model.Event.Currency</td>
+
+            @if (@Model.ShoppingCartItemTotalSEK != 0)
+            {
+                <td class="text-center">
+                    @String.Format("{0:0.00}", @Model.ShoppingCartItemTotalSEK)
+                </td>
+            }
+            @if (@Model.ShoppingCartItemTotalEUR != 0)
+            {
+                <td class="text-center">
+                    @String.Format("{0:0.00}", Model.ShoppingCartItemTotalEUR)
+                </td>
+            }
+            @if (@Model.ShoppingCartItemTotalEUR == 0 && @Model.ShoppingCartItemTotalSEK == 0)
+            {
+                <td class="text-center">
+                    @String.Format("{0:0.00}", @Model.Event.Price)
+                </td>
+            }
+        </tr>
+    </tbody>
+</table>

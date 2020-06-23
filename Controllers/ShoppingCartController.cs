@@ -59,7 +59,7 @@ namespace eShop.Web.Controllers
 
                 if (selectedEvent != null)
                 {
-                    _shoppingCartService.AddToCart(selectedEvent, Amount);
+                    _shoppingCartService.AddToCart(selectedEvent, Amount, false);
                 }
             }
             return RedirectToAction("Index");
