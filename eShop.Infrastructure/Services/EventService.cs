@@ -41,7 +41,7 @@ namespace eShop.Infrastructure.Services
             return _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId);
         }
 
-        public void CreateEvent(EventCreateEditViewModel newEvent)
+        public void CreateEvent(EventCreateViewModel newEvent)
         {
             int locationId = _eShopDbContext.Location.Select(l => l.LocationId).ToList().Last();
             int teachersId = _eShopDbContext.Teachers.Select(t => t.TeachersId).ToList().Last();         
@@ -65,7 +65,7 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext.SaveChanges();
         }
 
-        public void UpdateEvent(EventCreateEditViewModel newEvent)
+        public void UpdateEvent(EventEditViewModel newEvent)
         {
             var eventId = newEvent.Event.EventId;
             var locationId = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == eventId).LocationId;

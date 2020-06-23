@@ -7,9 +7,9 @@ namespace eShop.Infrastructure.Services
     public interface ILocationService
     {
         IEnumerable<Location> AllLocations { get; }
-        void CreateLocation(EventCreateEditViewModel newEvent);
+        void CreateLocation(EventCreateViewModel newEvent);
         void DeleteLocation(int id);
         Location GetLocationById(int? eventId);
-        void UpdateLocation(EventCreateEditViewModel newEvent);
+        void UpdateLocation(EventEditViewModel newEvent);
     }
 }

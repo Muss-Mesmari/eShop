@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eShop.Presentation.ViewModels
 {
-    public class EventCreateEditViewModel
+    public class EventCreateViewModel
     {   
         public Event Event { get; set; }
         public Day Day { get; set; }

@@ -9,6 +9,6 @@ namespace eShop.Infrastructure.Services
     {
         public IEnumerable<Day> GetEventDays(int eventId);
         public List<List<KeyValuePair<string, string>>> GetEventTimes(int eventId);
-        public void CreateSchedule(EventCreateEditViewModel newEvent);
+        public void CreateSchedule(EventCreateViewModel newEvent);
     }
 }

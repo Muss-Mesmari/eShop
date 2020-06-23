@@ -35,13 +35,13 @@ namespace eShop.Web.Controllers
             if (_featuresConfiguration.EnableOrder)
             {
                 var items = _shoppingCartService.GetShoppingCartItems();
-                _shoppingCartService.ShoppingCartItems = items;
+                _shoppingCartService.ShoppingCartItems = items;       
 
                 var shoppingCartViewModel = new ShoppingCartViewModel
                 {
                     ShoppingCartService = _shoppingCartService,
                     ShoppingCartTotalSEK = _shoppingCartService.GetShoppingCartTotalSEK(),
-                    ShoppingCartTotalEUR = _shoppingCartService.GetShoppingCartTotalEUR()
+                    ShoppingCartTotalEUR = _shoppingCartService.GetShoppingCartTotalEUR(),
                 };
 
                 return View(shoppingCartViewModel);
@@ -59,7 +59,7 @@ namespace eShop.Web.Controllers
 
                 if (selectedEvent != null)
                 {
-                    _shoppingCartService.AddToCart(selectedEvent, Amount, false);
+                    _shoppingCartService.AddToCart(selectedEvent, Amount, false);                  
                 }
             }
             return RedirectToAction("Index");

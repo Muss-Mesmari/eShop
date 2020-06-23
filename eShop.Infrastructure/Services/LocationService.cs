@@ -35,7 +35,7 @@ namespace eShop.Infrastructure.Services
             return location;
         }
 
-        public void CreateLocation(EventCreateEditViewModel newEvent)
+        public void CreateLocation(EventCreateViewModel newEvent)
         {
             var _newLocation = new Location()
             {
@@ -49,7 +49,7 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext.SaveChanges();
         }
 
-        public void UpdateLocation(EventCreateEditViewModel newEvent)
+        public void UpdateLocation(EventEditViewModel newEvent)
         {
             var eventId = newEvent.Event.EventId;
             var location = GetLocationById(eventId);

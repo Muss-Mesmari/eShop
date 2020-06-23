@@ -54,7 +54,7 @@ namespace eShop.Infrastructure.Services
             return AlltimesOfEachDaySorted;
         }
 
-        public void CreateSchedule(EventCreateEditViewModel newEvent)
+        public void CreateSchedule(EventCreateViewModel newEvent)
         {
             int eventId = _eShopDbContext.Events.Select(e => e.EventId).ToList().Last();
             var _newSchedule = new Schedule()

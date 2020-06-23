@@ -98,7 +98,6 @@ namespace eShop.Web.Controllers
                 amount = 1;
             }
 
-
             if (eventDetails == null)
             {
                 return View("NotFound");
@@ -133,7 +132,7 @@ namespace eShop.Web.Controllers
         // [HttpGet]
         public IActionResult Create()
         {
-            var viewModel = new EventCreateEditViewModel
+            var viewModel = new EventCreateViewModel
             {
                 Categories = _categoryService.AllCategories.ToList()
             };
@@ -143,7 +142,7 @@ namespace eShop.Web.Controllers
         // POST: Event/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(EventCreateEditViewModel newEvent)
+        public IActionResult Create(EventCreateViewModel newEvent)
         {
             if (ModelState.IsValid)
             {
@@ -160,7 +159,7 @@ namespace eShop.Web.Controllers
         // GET: Event/Edit/5
         public IActionResult Edit(int id)
         {
-            var viewModel = new EventCreateEditViewModel
+            var viewModel = new EventEditViewModel
             {
                 Teachers = _teachersService.GetTeachersById(id),
                 Location = _locationService.GetLocationById(id),
@@ -177,7 +176,7 @@ namespace eShop.Web.Controllers
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, EventCreateEditViewModel newEvent)
+        public IActionResult Edit(int id, EventEditViewModel newEvent)
         {
             if (ModelState.IsValid)
             {

@@ -15,6 +15,7 @@
     <Compile Remove="eShop.Presentation\**" />
     <Compile Remove="eShop.Services\**" />
     <Compile Remove="eShop.ShoppingCart\**" />
+    <Compile Remove="Models\**" />
     <Content Remove="eShop.Entities\**" />
     <Content Remove="eShop.Identity\**" />
     <Content Remove="eShop.Infrastructure\**" />
@@ -22,6 +23,7 @@
     <Content Remove="eShop.Presentation\**" />
     <Content Remove="eShop.Services\**" />
     <Content Remove="eShop.ShoppingCart\**" />
+    <Content Remove="Models\**" />
     <EmbeddedResource Remove="eShop.Entities\**" />
     <EmbeddedResource Remove="eShop.Identity\**" />
     <EmbeddedResource Remove="eShop.Infrastructure\**" />
@@ -29,6 +31,7 @@
     <EmbeddedResource Remove="eShop.Presentation\**" />
     <EmbeddedResource Remove="eShop.Services\**" />
     <EmbeddedResource Remove="eShop.ShoppingCart\**" />
+    <EmbeddedResource Remove="Models\**" />
     <None Remove="eShop.Entities\**" />
     <None Remove="eShop.Identity\**" />
     <None Remove="eShop.Infrastructure\**" />
@@ -36,6 +39,7 @@
     <None Remove="eShop.Presentation\**" />
     <None Remove="eShop.Services\**" />
     <None Remove="eShop.ShoppingCart\**" />
+    <None Remove="Models\**" />
   </ItemGroup>
 
 
@@ -59,10 +63,6 @@
     <ProjectReference Include="eShop.Infrastructure\eShop.Infrastructure.csproj" />
     <ProjectReference Include="eShop.Presentation\eShop.Presentation.csproj" />
     <ProjectReference Include="eShop.Services\eShop.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

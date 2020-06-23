@@ -33,7 +33,7 @@ namespace eShop.Infrastructure.Services
 
             return teachers;
         }
-        public void CreateTeachers(EventCreateEditViewModel newEvent)
+        public void CreateTeachers(EventCreateViewModel newEvent)
         {
             var newTeachers = new Teachers()
             {
@@ -43,7 +43,7 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext.Teachers.Add(newTeachers);
             _eShopDbContext.SaveChanges();
         }
-        public void UpdateTeachers(EventCreateEditViewModel newEvent)
+        public void UpdateTeachers(EventEditViewModel newEvent)
         {
             var eventId = newEvent.Event.EventId;
             var teachers = GetTeachersById(eventId);
