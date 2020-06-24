@@ -24,5 +24,6 @@ namespace eShop.Entities.Entities
         public bool InStock { get; set; }        
         public Category Category { get; set; }
         public int CategoryId { get; set; }
+        public List<Ticket> Tickets { get; set; }
     }
 }

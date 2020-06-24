@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eShop.Infrastructure.Database;
 
 namespace eShop.Infrastructure.Migrations
 {
     [DbContext(typeof(eShopDbContext))]
-    partial class eShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200623220946_2Create")]
+    partial class _2Create
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -929,8 +931,8 @@ namespace eShop.Infrastructure.Migrations
                     b.Property<string>("TicketName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("TicketPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("TicketPrice")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TotalAvailableTicket")
                         .HasColumnType("int");
@@ -940,224 +942,6 @@ namespace eShop.Infrastructure.Migrations
                     b.HasIndex("EventId");
 
                     b.ToTable("Ticket");
-
-                    b.HasData(
-                        new
-                        {
-                            TicketId = 1,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 1,
-                            TicketName = "Ticket One",
-                            TicketPrice = 50m,
-                            TotalAvailableTicket = 10
-                        },
-                        new
-                        {
-                            TicketId = 2,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 1,
-                            TicketName = "Ticket Two",
-                            TicketPrice = 100m,
-                            TotalAvailableTicket = 20
-                        },
-                        new
-                        {
-                            TicketId = 3,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 1,
-                            TicketName = "Ticket Three",
-                            TicketPrice = 150m,
-                            TotalAvailableTicket = 15
-                        },
-                        new
-                        {
-                            TicketId = 4,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 2,
-                            TicketName = "Ticket One",
-                            TicketPrice = 50m,
-                            TotalAvailableTicket = 10
-                        },
-                        new
-                        {
-                            TicketId = 5,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 2,
-                            TicketName = "Ticket Two",
-                            TicketPrice = 100m,
-                            TotalAvailableTicket = 20
-                        },
-                        new
-                        {
-                            TicketId = 6,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 3,
-                            TicketName = "Ticket Three",
-                            TicketPrice = 150m,
-                            TotalAvailableTicket = 15
-                        },
-                        new
-                        {
-                            TicketId = 7,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 3,
-                            TicketName = "Ticket One",
-                            TicketPrice = 50m,
-                            TotalAvailableTicket = 10
-                        },
-                        new
-                        {
-                            TicketId = 8,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 4,
-                            TicketName = "Ticket Two",
-                            TicketPrice = 100m,
-                            TotalAvailableTicket = 20
-                        },
-                        new
-                        {
-                            TicketId = 9,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 4,
-                            TicketName = "Ticket Three",
-                            TicketPrice = 150m,
-                            TotalAvailableTicket = 15
-                        },
-                        new
-                        {
-                            TicketId = 10,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 5,
-                            TicketName = "Ticket One",
-                            TicketPrice = 50m,
-                            TotalAvailableTicket = 10
-                        },
-                        new
-                        {
-                            TicketId = 11,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 5,
-                            TicketName = "Ticket Two",
-                            TicketPrice = 100m,
-                            TotalAvailableTicket = 20
-                        },
-                        new
-                        {
-                            TicketId = 12,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 5,
-                            TicketName = "Ticket Three",
-                            TicketPrice = 150m,
-                            TotalAvailableTicket = 15
-                        },
-                        new
-                        {
-                            TicketId = 13,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 6,
-                            TicketName = "Ticket One",
-                            TicketPrice = 50m,
-                            TotalAvailableTicket = 10
-                        },
-                        new
-                        {
-                            TicketId = 14,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 6,
-                            TicketName = "Ticket Two",
-                            TicketPrice = 100m,
-                            TotalAvailableTicket = 20
-                        },
-                        new
-                        {
-                            TicketId = 15,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 7,
-                            TicketName = "Ticket Three",
-                            TicketPrice = 150m,
-                            TotalAvailableTicket = 15
-                        },
-                        new
-                        {
-                            TicketId = 16,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 7,
-                            TicketName = "Ticket One",
-                            TicketPrice = 50m,
-                            TotalAvailableTicket = 10
-                        },
-                        new
-                        {
-                            TicketId = 17,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 8,
-                            TicketName = "Ticket Two",
-                            TicketPrice = 100m,
-                            TotalAvailableTicket = 20
-                        },
-                        new
-                        {
-                            TicketId = 18,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 8,
-                            TicketName = "Ticket Three",
-                            TicketPrice = 150m,
-                            TotalAvailableTicket = 15
-                        },
-                        new
-                        {
-                            TicketId = 19,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 9,
-                            TicketName = "Ticket One",
-                            TicketPrice = 50m,
-                            TotalAvailableTicket = 10
-                        },
-                        new
-                        {
-                            TicketId = 20,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 9,
-                            TicketName = "Ticket Two",
-                            TicketPrice = 100m,
-                            TotalAvailableTicket = 20
-                        },
-                        new
-                        {
-                            TicketId = 21,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 10,
-                            TicketName = "Ticket Three",
-                            TicketPrice = 150m,
-                            TotalAvailableTicket = 15
-                        },
-                        new
-                        {
-                            TicketId = 22,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 10,
-                            TicketName = "Ticket One",
-                            TicketPrice = 50m,
-                            TotalAvailableTicket = 10
-                        },
-                        new
-                        {
-                            TicketId = 23,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 11,
-                            TicketName = "Ticket Two",
-                            TicketPrice = 100m,
-                            TotalAvailableTicket = 20
-                        },
-                        new
-                        {
-                            TicketId = 24,
-                            Description = "Omnis et enim aperiam inventore",
-                            EventId = 11,
-                            TicketName = "Ticket Three",
-                            TicketPrice = 150m,
-                            TotalAvailableTicket = 15
-                        });
                 });
 
             modelBuilder.Entity("eShop.Entities.Entities.Times", b =>
@@ -1187,78 +971,78 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TimesId = 1,
                             DayId = 1,
-                            TimeEnd = new DateTime(2020, 6, 24, 2, 27, 33, 138, DateTimeKind.Local).AddTicks(9312),
-                            TimeStart = new DateTime(2020, 6, 24, 0, 27, 33, 135, DateTimeKind.Local).AddTicks(8092)
+                            TimeEnd = new DateTime(2020, 6, 24, 2, 9, 46, 58, DateTimeKind.Local).AddTicks(2701),
+                            TimeStart = new DateTime(2020, 6, 24, 0, 9, 46, 55, DateTimeKind.Local).AddTicks(4832)
                         },
                         new
                         {
                             TimesId = 2,
                             DayId = 2,
-                            TimeEnd = new DateTime(2020, 6, 24, 2, 27, 33, 139, DateTimeKind.Local).AddTicks(1321),
-                            TimeStart = new DateTime(2020, 6, 24, 0, 27, 33, 139, DateTimeKind.Local).AddTicks(1290)
+                            TimeEnd = new DateTime(2020, 6, 24, 2, 9, 46, 58, DateTimeKind.Local).AddTicks(5994),
+                            TimeStart = new DateTime(2020, 6, 24, 0, 9, 46, 58, DateTimeKind.Local).AddTicks(5936)
                         },
                         new
                         {
                             TimesId = 3,
                             DayId = 3,
-                            TimeEnd = new DateTime(2020, 6, 24, 2, 27, 33, 139, DateTimeKind.Local).AddTicks(1380),
-                            TimeStart = new DateTime(2020, 6, 24, 0, 27, 33, 139, DateTimeKind.Local).AddTicks(1376)
+                            TimeEnd = new DateTime(2020, 6, 24, 2, 9, 46, 58, DateTimeKind.Local).AddTicks(6167),
+                            TimeStart = new DateTime(2020, 6, 24, 0, 9, 46, 58, DateTimeKind.Local).AddTicks(6148)
                         },
                         new
                         {
                             TimesId = 4,
                             DayId = 4,
-                            TimeEnd = new DateTime(2020, 6, 24, 2, 27, 33, 139, DateTimeKind.Local).AddTicks(1412),
-                            TimeStart = new DateTime(2020, 6, 24, 0, 27, 33, 139, DateTimeKind.Local).AddTicks(1408)
+                            TimeEnd = new DateTime(2020, 6, 24, 2, 9, 46, 58, DateTimeKind.Local).AddTicks(6276),
+                            TimeStart = new DateTime(2020, 6, 24, 0, 9, 46, 58, DateTimeKind.Local).AddTicks(6258)
                         },
                         new
                         {
                             TimesId = 5,
                             DayId = 5,
-                            TimeEnd = new DateTime(2020, 6, 24, 2, 27, 33, 139, DateTimeKind.Local).AddTicks(1442),
-                            TimeStart = new DateTime(2020, 6, 24, 0, 27, 33, 139, DateTimeKind.Local).AddTicks(1439)
+                            TimeEnd = new DateTime(2020, 6, 24, 2, 9, 46, 58, DateTimeKind.Local).AddTicks(6383),
+                            TimeStart = new DateTime(2020, 6, 24, 0, 9, 46, 58, DateTimeKind.Local).AddTicks(6371)
                         },
                         new
                         {
                             TimesId = 6,
                             DayId = 6,
-                            TimeEnd = new DateTime(2020, 6, 24, 2, 27, 33, 139, DateTimeKind.Local).AddTicks(1477),
-                            TimeStart = new DateTime(2020, 6, 24, 0, 27, 33, 139, DateTimeKind.Local).AddTicks(1473)
+                            TimeEnd = new DateTime(2020, 6, 24, 2, 9, 46, 58, DateTimeKind.Local).AddTicks(6492),
+                            TimeStart = new DateTime(2020, 6, 24, 0, 9, 46, 58, DateTimeKind.Local).AddTicks(6476)
                         },
                         new
                         {
                             TimesId = 7,
                             DayId = 7,
-                            TimeEnd = new DateTime(2020, 6, 24, 2, 27, 33, 139, DateTimeKind.Local).AddTicks(1507),
-                            TimeStart = new DateTime(2020, 6, 24, 0, 27, 33, 139, DateTimeKind.Local).AddTicks(1503)
+                            TimeEnd = new DateTime(2020, 6, 24, 2, 9, 46, 58, DateTimeKind.Local).AddTicks(6585),
+                            TimeStart = new DateTime(2020, 6, 24, 0, 9, 46, 58, DateTimeKind.Local).AddTicks(6567)
                         },
                         new
                         {
                             TimesId = 8,
                             DayId = 8,
-                            TimeEnd = new DateTime(2020, 6, 24, 2, 27, 33, 139, DateTimeKind.Local).AddTicks(1536),
-                            TimeStart = new DateTime(2020, 6, 24, 0, 27, 33, 139, DateTimeKind.Local).AddTicks(1532)
+                            TimeEnd = new DateTime(2020, 6, 24, 2, 9, 46, 58, DateTimeKind.Local).AddTicks(6689),
+                            TimeStart = new DateTime(2020, 6, 24, 0, 9, 46, 58, DateTimeKind.Local).AddTicks(6678)
                         },
                         new
                         {
                             TimesId = 9,
                             DayId = 9,
-                            TimeEnd = new DateTime(2020, 6, 24, 2, 27, 33, 139, DateTimeKind.Local).AddTicks(1565),
-                            TimeStart = new DateTime(2020, 6, 24, 0, 27, 33, 139, DateTimeKind.Local).AddTicks(1562)
+                            TimeEnd = new DateTime(2020, 6, 24, 2, 9, 46, 58, DateTimeKind.Local).AddTicks(6792),
+                            TimeStart = new DateTime(2020, 6, 24, 0, 9, 46, 58, DateTimeKind.Local).AddTicks(6775)
                         },
                         new
                         {
                             TimesId = 10,
                             DayId = 10,
-                            TimeEnd = new DateTime(2020, 6, 24, 2, 27, 33, 139, DateTimeKind.Local).AddTicks(1597),
-                            TimeStart = new DateTime(2020, 6, 24, 0, 27, 33, 139, DateTimeKind.Local).AddTicks(1593)
+                            TimeEnd = new DateTime(2020, 6, 24, 2, 9, 46, 58, DateTimeKind.Local).AddTicks(6995),
+                            TimeStart = new DateTime(2020, 6, 24, 0, 9, 46, 58, DateTimeKind.Local).AddTicks(6978)
                         },
                         new
                         {
                             TimesId = 11,
                             DayId = 11,
-                            TimeEnd = new DateTime(2020, 6, 24, 2, 27, 33, 139, DateTimeKind.Local).AddTicks(1626),
-                            TimeStart = new DateTime(2020, 6, 24, 0, 27, 33, 139, DateTimeKind.Local).AddTicks(1622)
+                            TimeEnd = new DateTime(2020, 6, 24, 2, 9, 46, 58, DateTimeKind.Local).AddTicks(7095),
+                            TimeStart = new DateTime(2020, 6, 24, 0, 9, 46, 58, DateTimeKind.Local).AddTicks(7077)
                         });
                 });
 

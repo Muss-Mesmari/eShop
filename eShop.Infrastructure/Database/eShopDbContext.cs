@@ -14,6 +14,7 @@ namespace eShop.Infrastructure.Database
         {
         }
 
+        public DbSet<Ticket> Ticket { get; set; }
         public DbSet<Teachers> Teachers { get; set; }
         public DbSet<Location> Location { get; set; }
         public DbSet<Day> Day { get; set; }
@@ -229,8 +230,33 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 2, CategoryName = "Category Two" });
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 3, CategoryName = "Category Three" });
 
-            //seed events
+            //seed tickets
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 1, TicketName = "Ticket One", TicketPrice = 50, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 10, EventId = 1 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 2, TicketName = "Ticket Two", TicketPrice = 100, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 20, EventId = 1 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 3, TicketName = "Ticket Three", TicketPrice = 150, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 15, EventId = 1 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 4, TicketName = "Ticket One", TicketPrice = 50, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 10, EventId = 2 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 5, TicketName = "Ticket Two", TicketPrice = 100, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 20, EventId = 2 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 6, TicketName = "Ticket Three", TicketPrice = 150, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 15, EventId = 3 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 7, TicketName = "Ticket One", TicketPrice = 50, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 10, EventId = 3 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 8, TicketName = "Ticket Two", TicketPrice = 100, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 20, EventId = 4 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 9, TicketName = "Ticket Three", TicketPrice = 150, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 15, EventId = 4 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 10, TicketName = "Ticket One", TicketPrice = 50, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 10, EventId = 5 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 11, TicketName = "Ticket Two", TicketPrice = 100, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 20, EventId = 5 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 12, TicketName = "Ticket Three", TicketPrice = 150, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 15, EventId = 5 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 13, TicketName = "Ticket One", TicketPrice = 50, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 10, EventId = 6 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 14, TicketName = "Ticket Two", TicketPrice = 100, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 20, EventId = 6 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 15, TicketName = "Ticket Three", TicketPrice = 150, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 15, EventId = 7 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 16, TicketName = "Ticket One", TicketPrice = 50, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 10, EventId = 7 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 17, TicketName = "Ticket Two", TicketPrice = 100, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 20, EventId = 8 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 18, TicketName = "Ticket Three", TicketPrice = 150, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 15, EventId = 8 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 19, TicketName = "Ticket One", TicketPrice = 50, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 10, EventId = 9 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 20, TicketName = "Ticket Two", TicketPrice = 100, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 20, EventId = 9 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 21, TicketName = "Ticket Three", TicketPrice = 150, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 15, EventId = 10 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 22, TicketName = "Ticket One", TicketPrice = 50, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 10, EventId = 10 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 23, TicketName = "Ticket Two", TicketPrice = 100, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 20, EventId = 11 });
+            modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 24, TicketName = "Ticket Three", TicketPrice = 150, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 15, EventId = 11 });
 
+            //seed events
             modelBuilder.Entity<Event>().HasData(new Event
             {
                 EventId = 1,

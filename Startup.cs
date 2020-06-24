@@ -59,6 +59,7 @@ namespace eShop.Web
             //})
             //    .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
 
+            services.AddScoped<ITicketService, TicketService>();
             services.AddScoped<IScheduleService, ScheduleService>();
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ITeachersService, TeachersService>();

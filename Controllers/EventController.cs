@@ -19,6 +19,7 @@ namespace eShop.Web.Controllers
         private readonly IScheduleService _scheduleService;
         private readonly ILocationService _locationService;
         private readonly ITeachersService _teachersService;
+        private readonly ITicketService _ticketService;
         private readonly ShoppingCartService _shoppingCartService;
 
         [BindProperty(SupportsGet = true)]
@@ -36,6 +37,7 @@ namespace eShop.Web.Controllers
             IScheduleService scheduleService,
             ILocationService locationService,
             ITeachersService teachersService,
+            ITicketService ticketService,
             ShoppingCartService shoppingCartService
             )
         {
@@ -44,6 +46,7 @@ namespace eShop.Web.Controllers
             _categoryService = categoryService;
             _locationService = locationService;
             _teachersService = teachersService;
+            _ticketService = ticketService;
             _shoppingCartService = shoppingCartService;
         }
 
@@ -92,6 +95,7 @@ namespace eShop.Web.Controllers
             var location = _locationService.GetLocationById(id);
             var teachers = _teachersService.GetTeachersById(id);
             var amount = _shoppingCartService.GetShoppingCartItemAmount(id);
+            var tickets = _ticketService.GetTicketById(id);
 
             if (amount == 0)
             {
@@ -112,7 +116,8 @@ namespace eShop.Web.Controllers
                 Day = day,
                 EventSchedule = eventSchedule,
                 Location = location,
-                Teachers = teachers
+                Teachers = teachers,
+                Tickets = tickets
             });
         }
 
