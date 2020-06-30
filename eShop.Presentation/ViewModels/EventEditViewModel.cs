@@ -14,5 +14,7 @@ namespace eShop.Presentation.ViewModels
         public Location Location { get; set; }
         public Teachers Teachers { get; set; }
         public IEnumerable<Category> Categories { get; set; }
+        public IList<Ticket> Tickets { get; set; }
+        public Ticket Ticket { get; set; }
     }
 }

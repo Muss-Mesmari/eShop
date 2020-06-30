@@ -24,47 +24,57 @@ namespace eShop.Infrastructure.Services
 
         public IEnumerable<Ticket> AllTickets => _eShopDbContext.Ticket;
 
-        public IEnumerable<Ticket> GetTicketById(int? eventId)
+        public IList<Ticket> GetTicketById(int? eventId)
         {
             var tickets = _eShopDbContext.Ticket.Where(e => e.EventId == eventId).ToList();
+            foreach (var ticket in tickets)
+            {
+                var entity = _eShopDbContext.Entry(ticket);
+                entity.State = EntityState.Detached;
+            }
+
             return tickets;
         }
 
-        //public void CreateTicket(EventCreateViewModel newEvent)
-        //{
-        //    var _newTicket = new Ticket()
-        //    {
-        //        TicketName = newEvent.
-        //        Street = newEvent.Location.Street,
-        //        StreetNumber = newEvent.Location.StreetNumber,
-        //        City = newEvent.Location.City,
-        //        State = newEvent.Location.State,
-        //        ZipCode = newEvent.Location.ZipCode
-        //    };
-        //    _eShopDbContext.Tickets.Add(_newTicket);
-        //    _eShopDbContext.SaveChanges();
-        //}
+        public void CreateTicket(int eventId, EventEditViewModel newEvent)
+        {           
+            var _newTicket = new Ticket()
+            {
+                EventId = eventId,
+                TicketName = newEvent.Ticket.TicketName,
+                Description = newEvent.Ticket.Description,
+                TicketPrice = newEvent.Ticket.TicketPrice,
+                TotalAvailableTicket = newEvent.Ticket.TotalAvailableTicket
+            };
+            _eShopDbContext.Ticket.Add(_newTicket);
+            _eShopDbContext.SaveChanges();
+        }
 
-        //public void UpdateLocation(EventEditViewModel newEvent)
-        //{
-        //    var eventId = newEvent.Event.EventId;
-        //    var location = GetLocationById(eventId);
+        public void UpdateTicket(int eventId, IList<Ticket> newTickets)
+        {
+            var oldTickets = GetTicketById(eventId);
+            var oldTicketsIds = oldTickets.Select(t => t.TicketId).ToList();
 
-        //    var newLocation = newEvent.Location;
-        //    if (newLocation != null)
-        //    {
-        //        newLocation.LocationId = location.LocationId;
-        //        newLocation.Street = newLocation.Street;
-        //        newLocation.StreetNumber = newLocation.StreetNumber;
-        //        newLocation.City = newLocation.City;
-        //        newLocation.State = newLocation.State;
-        //        newLocation.ZipCode = newLocation.ZipCode;
-        //    }
+            var i = 0;
+            foreach (var newTicket in newTickets)
+            {
+                if (newTicket != null)
+                {
+                    newTicket.EventId = eventId;
+                    newTicket.TicketId = oldTicketsIds[i];
+                    newTicket.TicketName = newTicket.TicketName;
+                    newTicket.Description = newTicket.Description;
+                    newTicket.TicketPrice = newTicket.TicketPrice;
+                    newTicket.TotalAvailableTicket = newTicket.TotalAvailableTicket;
+                    i++;
+                }
 
-        //    var entity = _eShopDbContext.Entry(newLocation);
-        //    entity.State = EntityState.Modified;
-        //    _eShopDbContext.SaveChanges();
-        //}
+                var entity = _eShopDbContext.Entry(newTicket);
+                entity.State = EntityState.Modified;
+                _eShopDbContext.SaveChanges();
+                entity.State = EntityState.Detached;
+            }
+        }
 
         //public void DeleteLocation(int id)
         //{

@@ -38,7 +38,12 @@ namespace eShop.Infrastructure.Services
 
         public Event GetEventById(int? eventId)
         {
-            return _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId);
+            var eventById = _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId);
+
+            var entity = _eShopDbContext.Entry(eventById);
+            entity.State = EntityState.Detached;
+
+            return eventById;
         }
 
         public void CreateEvent(EventCreateViewModel newEvent)
@@ -68,8 +73,19 @@ namespace eShop.Infrastructure.Services
         public void UpdateEvent(EventEditViewModel newEvent)
         {
             var eventId = newEvent.Event.EventId;
-            var locationId = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == eventId).LocationId;
-           // var teachersId = _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId).TeachersId;
+
+
+            var location = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == eventId);
+            var locationId = location.LocationId;
+            var entityLocation = _eShopDbContext.Entry(location);
+            entityLocation.State = EntityState.Detached;
+
+
+            var teachers = _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId);
+            var teachersId = teachers.TeachersId;
+            var entityTeachers = _eShopDbContext.Entry(teachers);
+            entityTeachers.State = EntityState.Detached;
+
 
             if (newEvent != null)
             {
@@ -83,7 +99,7 @@ namespace eShop.Infrastructure.Services
                 newEvent.Event.CategoryId = newEvent.Event.CategoryId;
                 newEvent.Event.Currency = newEvent.Event.Currency;
                 newEvent.Event.LocationId = locationId;
-                newEvent.Event.TeachersId = 1;
+                newEvent.Event.TeachersId = teachersId;
             }
 
             var entity = _eShopDbContext.Entry(newEvent.Event);

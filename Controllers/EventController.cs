@@ -128,8 +128,8 @@ namespace eShop.Web.Controllers
             if (selectedEvent != null)
             {
                 _shoppingCartService.AddToCart(selectedEvent, Amount, true);
-            }            
-            return Redirect($"/Event/Details/{eventId}#prices");              
+            }
+            return Redirect($"/Event/Details/{eventId}#tickets");
         }
 
         // GET: Event/Create
@@ -155,8 +155,23 @@ namespace eShop.Web.Controllers
                 _locationService.CreateLocation(newEvent);
                 _eventService.CreateEvent(newEvent);
                 _scheduleService.CreateSchedule(newEvent);
+               //_ticketService.CreateTicket(_eventService.AllEvents.Max(e => e.EventId), newEvent);
 
                 return RedirectToAction(nameof(Details), new { id = _eventService.AllEvents.Max(e => e.EventId) });
+            }
+            return View();
+        }
+
+        // POST: Event/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateTicket(EventEditViewModel newEvent)
+        {
+            if (ModelState.IsValid)
+            {
+                _ticketService.CreateTicket( 1/*_eventService.AllEvents.Max(e => e.EventId)*/, newEvent);
+
+                
             }
             return View();
         }
@@ -169,7 +184,8 @@ namespace eShop.Web.Controllers
                 Teachers = _teachersService.GetTeachersById(id),
                 Location = _locationService.GetLocationById(id),
                 Categories = _categoryService.AllCategories.ToList(),
-                Event = _eventService.GetEventById(id)
+                Event = _eventService.GetEventById(id),
+                Tickets = _ticketService.GetTicketById(id),
             };
             if (viewModel == null)
             {
@@ -181,14 +197,16 @@ namespace eShop.Web.Controllers
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, EventEditViewModel newEvent)
+        public IActionResult Edit(int id, EventEditViewModel newEvent, IList<Ticket> tickets)
         {
             if (ModelState.IsValid)
             {
                 _eventService.UpdateEvent(newEvent);
                 _locationService.UpdateLocation(newEvent);
                 _teachersService.UpdateTeachers(newEvent);
+                _ticketService.UpdateTicket(id, tickets);
 
+                //return Redirect($"/Event/Edit/{id}#tickets");
                 return RedirectToAction(nameof(Details), new { id = newEvent.Event.EventId });
             }
             return View();
