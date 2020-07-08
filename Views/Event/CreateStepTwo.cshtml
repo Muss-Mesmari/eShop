@@ -24,7 +24,6 @@
 
     <!-- the contents of the side scroll spy menu -->
     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
-
         <div data-spy="scroll" data-target="side-menu-list" data-offset="0" class="scrollspy">
 
             <!-- the "Schedule" Card >> the content of the side scroll spy menu-->
@@ -38,16 +37,15 @@
                 </div>
                 <div id="collapseSchedule" class="collapse show" aria-labelledby="headingSchedule" data-parent="">
                     <div class="card-body">
-
                         <div class="container-fluid bg-transparent">
                             <div class="form-row m-3 align-items-center justify-content-center">
 
                                 <form asp-action="CreateStepTwo" class="needs-validation" novalidate>
                                     @{ if (Model.Days.Any())
-                                        {
+                                       {
                                             <partial name="_EventSchedule" />
                                             <hr />
-                                        }
+                                       }
                                     }
                                     <div class="form-row">
                                         <partial name="_CreateSchedule">
@@ -59,12 +57,12 @@
 
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
 
         </div>
+
         <div class="d-flex flex-row-reverse">
             <a asp-controller="Event"
                asp-action="CreateStepThree"

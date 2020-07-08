@@ -1,34 +1,28 @@
 ﻿@model eShop.Presentation.ViewModels.EventCreateEditViewModel
 
 <div class="col-md-4 pt-3">
-
     <label asp-for="Day.DayOfWeek" class="@*control-label*@"></label>
     <select asp-for="Day.DayOfWeek" class="form-control mb-2 mr-sm-2" asp-items="@(new SelectList(Enum.GetValues(typeof(DayOfWeek))))"><option>Choose days</option></select>
     <span asp-validation-for="Day.DayOfWeek" class="text-danger"></span>
     <div class="invalid-tooltip">
         Please provide a day.
     </div>
-
 </div>
 
 <div class="col-md-4 pt-3">
-
     <label asp-for="Times.TimeStart" class="@*control-label*@"></label>
     <input asp-for="Times.TimeStart" class="form-control mb-2 mr-sm-2" value="Mark" required />
     <span asp-validation-for="Times.TimeStart" class="text-danger"></span>
     <div class="invalid-tooltip">
         Please provide a start time.
     </div>
-
 </div>
 
 <div class="col-md-4 pt-3">
-
     <label asp-for="Times.TimeEnd" class="@*control-label*@"></label>
     <input asp-for="Times.TimeEnd" class="form-control mb-2 mr-sm-2" value="Mark" required />
     <span asp-validation-for="Times.TimeEnd" class="text-danger"></span>
     <div class="invalid-tooltip">
         Please provide an end time.
     </div>
-
 </div>

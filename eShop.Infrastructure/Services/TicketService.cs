@@ -32,7 +32,6 @@ namespace eShop.Infrastructure.Services
                 var entity = _eShopDbContext.Entry(ticket);
                 entity.State = EntityState.Detached;
             }
-
             return tickets;
         }
 

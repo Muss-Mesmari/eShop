@@ -19,6 +19,7 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext = eShopDbContext;
         }
 
+        // Try int? eventId instead of bool isNewEvent
         public IEnumerable<Day> GetEventDays(int eventId, bool isNewEvent)
         {
             List<Day> days = new List<Day>();
@@ -31,10 +32,8 @@ namespace eShop.Infrastructure.Services
                 {
                     days.Add(_eShopDbContext.Day.Where(d => d.WeekId == weekId).FirstOrDefault());
                 }
-
             }
             return days;
-
         }
 
         public List<List<KeyValuePair<string, string>>> GetEventTimes(int eventId, bool isNewEvent)
@@ -74,8 +73,7 @@ namespace eShop.Infrastructure.Services
             else
             {
                 return new List<List<KeyValuePair<string, string>>>();
-            }         
-
+            }     
         }
 
         public void CreateSchedule(EventCreateEditViewModel newEvent)
@@ -88,13 +86,10 @@ namespace eShop.Infrastructure.Services
             {
                 EventId = eventId
             };
-
             _eShopDbContext.Schedule.Add(_newSchedule);
             _eShopDbContext.SaveChanges();
 
-
             int scheduleId = _newSchedule.ScheduleId;
-
             if (scheduleId != eventId)
             {
                 scheduleId = eventId;

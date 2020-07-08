@@ -108,7 +108,6 @@ namespace eShop.Web.Controllers
             }
 
             return View(new EventCreateEditViewModel
-            /*DetailsViewModel*/
             {
                 ShoppingCartItemTotalSEK = _shoppingCartService.GetShoppingCartItemTotalSEK(id),
                 ShoppingCartItemTotalEUR = _shoppingCartService.GetShoppingCartItemTotalEUR(id),
@@ -133,9 +132,9 @@ namespace eShop.Web.Controllers
             return Redirect($"/Event/Details/{eventId}#tickets");
         }
 
-        // GET: Event/Create
-        //[Route("/Event/Create-Step-One")]
-        //[HttpGet]
+        // GET: Event/CreateStepOne
+        // [Route("/Event/Create-Step-One")]
+        // [HttpGet]
         public IActionResult CreateStepOne()
         {
             var viewModel = new EventCreateEditViewModel
@@ -145,7 +144,7 @@ namespace eShop.Web.Controllers
             return View(viewModel);
         }
 
-        // POST: Event/Create
+        // POST: Event/CreateStepOne
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult CreateStepOne(EventCreateEditViewModel newEvent)
@@ -162,20 +161,21 @@ namespace eShop.Web.Controllers
             return View();
         }
 
-        //GET: Event/Create
+        // GET: Event/CreateStepTwo
         // [Route("/Event/Create-Step-Two")]
-        //[HttpGet]
+        // [HttpGet]
         public IActionResult CreateStepTwo(int id, bool isNewEvent)
         {
             var viewModel = new EventCreateEditViewModel
             {
+                EventId = id,
                 Days = _scheduleService.GetEventDays(id, isNewEvent),
                 EventSchedule = _scheduleService.GetEventTimes(id, isNewEvent)
             };
             return View(viewModel);
         }
 
-        // POST: Event/Create
+        // POST: Event/CreateStepTwo
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult CreateStepTwo(EventCreateEditViewModel newEvent)
@@ -183,55 +183,39 @@ namespace eShop.Web.Controllers
             if (ModelState.IsValid)
             {
                 _scheduleService.CreateSchedule(newEvent);
-
                 var eventId = _eventService.AllEvents.Max(e => e.EventId);
-                //return RedirectToAction(nameof(CreateStepThree));
+              // int eventId = _eventService.AllEvents.Select(e => e.EventId).Last();
                 return RedirectToAction(nameof(CreateStepTwo), new { id = eventId });
             }
             return View();
         }
 
-        // GET: Event/Create
+        // GET: Event/CreateStepThree
         //[Route("/Event/Create-Step-Three")]
         //[HttpGet]
         public IActionResult CreateStepThree(int id)
         {            
-            // return View();
             var viewModel = new EventCreateEditViewModel
             {
-                Tickets = _ticketService.GetTicketById(id),
-                EventId = id
+                EventId = id,
+                Tickets = _ticketService.GetTicketById(id)
             };
             return View(viewModel);
         }
 
-        // POST: Event/Create
+        // POST: Event/CreateStepThree
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateStepThree(EventCreateEditViewModel newEvent)
+        public IActionResult CreateStepThree(int id, EventCreateEditViewModel newEvent)
         {
             if (ModelState.IsValid)
             {
                 _ticketService.CreateTicket(_eventService.AllEvents.Max(e => e.EventId), newEvent);
-
                 var eventId = _eventService.AllEvents.Max(e => e.EventId);
                 return RedirectToAction(nameof(CreateStepThree), new { id = eventId });
-                //return RedirectToAction(nameof(Details), new { id = eventId });
             }
             return View();
         }
-
-        //// POST: Event/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult CreateTicket(EventCreateEditViewModel newEvent)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _ticketService.CreateTicket( 1/*_eventService.AllEvents.Max(e => e.EventId)*/, newEvent);                
-        //    }
-        //    return View();
-        //}
 
         // GET: Event/Edit/5
         public IActionResult Edit(int id)
