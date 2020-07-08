@@ -36,7 +36,7 @@ namespace eShop.Infrastructure.Services
             return tickets;
         }
 
-        public void CreateTicket(int eventId, EventEditViewModel newEvent)
+        public void CreateTicket(int eventId, EventCreateEditViewModel newEvent)
         {           
             var _newTicket = new Ticket()
             {

@@ -7,8 +7,8 @@ namespace eShop.Infrastructure.Services
 {
     public interface IScheduleService
     {
-        public IEnumerable<Day> GetEventDays(int eventId);
-        public List<List<KeyValuePair<string, string>>> GetEventTimes(int eventId);
-        public void CreateSchedule(EventCreateViewModel newEvent);
+        public IEnumerable<Day> GetEventDays(int eventId, bool isNewEvent);
+        public List<List<KeyValuePair<string, string>>> GetEventTimes(int eventId, bool isNewEvent);
+        public void CreateSchedule(EventCreateEditViewModel newEvent);
     }
 }

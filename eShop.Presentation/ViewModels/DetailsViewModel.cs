@@ -9,7 +9,7 @@ namespace eShop.Presentation.ViewModels
     public class DetailsViewModel
     {
         public Event Event { get; set; }
-        public IEnumerable<Day> Day { get; set; }
+        public IEnumerable<Day> Days { get; set; }
         public Location Location { get; set; }
         public Teachers Teachers { get; set; }
         public IEnumerable<Ticket> Tickets { get; set; }

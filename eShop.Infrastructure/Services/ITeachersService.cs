@@ -8,9 +8,9 @@ namespace eShop.Infrastructure.Services
     {
         IEnumerable<Teachers> AllTeachers { get; }
 
-        void CreateTeachers(EventCreateViewModel newEvent);
+        void CreateTeachers(EventCreateEditViewModel newEvent);
         void DeleteTeachers(int id);
         Teachers GetTeachersById(int? eventId);
-        void UpdateTeachers(EventEditViewModel newEvent);
+        void UpdateTeachers(EventCreateEditViewModel newEvent);
     }
 }

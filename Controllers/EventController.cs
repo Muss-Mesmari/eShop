@@ -90,8 +90,8 @@ namespace eShop.Web.Controllers
         public IActionResult Details(int id)
         {
             var eventDetails = _eventService.GetEventById(id);
-            var day = _scheduleService.GetEventDays(id);
-            var eventSchedule = _scheduleService.GetEventTimes(id);
+            var days = _scheduleService.GetEventDays(id, false);
+            var eventSchedule = _scheduleService.GetEventTimes(id, false);
             var location = _locationService.GetLocationById(id);
             var teachers = _teachersService.GetTeachersById(id);
             var amount = _shoppingCartService.GetShoppingCartItemAmount(id);
@@ -107,13 +107,14 @@ namespace eShop.Web.Controllers
                 return View("NotFound");
             }
 
-            return View(new DetailsViewModel
+            return View(new EventCreateEditViewModel
+            /*DetailsViewModel*/
             {
                 ShoppingCartItemTotalSEK = _shoppingCartService.GetShoppingCartItemTotalSEK(id),
                 ShoppingCartItemTotalEUR = _shoppingCartService.GetShoppingCartItemTotalEUR(id),
                 Amount = amount,
                 Event = eventDetails,
-                Day = day,
+                Days = days,
                 EventSchedule = eventSchedule,
                 Location = location,
                 Teachers = teachers,
@@ -133,11 +134,11 @@ namespace eShop.Web.Controllers
         }
 
         // GET: Event/Create
-        // [Route("/Create-an-event", Name = "Create an event")]
-        // [HttpGet]
-        public IActionResult Create()
+        //[Route("/Event/Create-Step-One")]
+        //[HttpGet]
+        public IActionResult CreateStepOne()
         {
-            var viewModel = new EventCreateViewModel
+            var viewModel = new EventCreateEditViewModel
             {
                 Categories = _categoryService.AllCategories.ToList()
             };
@@ -147,39 +148,88 @@ namespace eShop.Web.Controllers
         // POST: Event/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(EventCreateViewModel newEvent)
+        public IActionResult CreateStepOne(EventCreateEditViewModel newEvent)
         {
             if (ModelState.IsValid)
             {
                 _teachersService.CreateTeachers(newEvent);
                 _locationService.CreateLocation(newEvent);
                 _eventService.CreateEvent(newEvent);
-                _scheduleService.CreateSchedule(newEvent);
-               //_ticketService.CreateTicket(_eventService.AllEvents.Max(e => e.EventId), newEvent);
 
-                return RedirectToAction(nameof(Details), new { id = _eventService.AllEvents.Max(e => e.EventId) });
+                var eventId = _eventService.AllEvents.Max(e => e.EventId);
+                return RedirectToAction(nameof(CreateStepTwo), new { id = eventId, isNewEvent = true });
             }
+            return View();
+        }
+
+        //GET: Event/Create
+        // [Route("/Event/Create-Step-Two")]
+        //[HttpGet]
+        public IActionResult CreateStepTwo(int id, bool isNewEvent)
+        {
+            var viewModel = new EventCreateEditViewModel
+            {
+                Days = _scheduleService.GetEventDays(id, isNewEvent),
+                EventSchedule = _scheduleService.GetEventTimes(id, isNewEvent)
+            };
+            return View(viewModel);
+        }
+
+        // POST: Event/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateStepTwo(EventCreateEditViewModel newEvent)
+        {
+            if (ModelState.IsValid)
+            {
+                _scheduleService.CreateSchedule(newEvent);
+
+                var eventId = _eventService.AllEvents.Max(e => e.EventId);
+                //return RedirectToAction(nameof(CreateStepThree));
+                return RedirectToAction(nameof(CreateStepTwo), new { id = eventId });
+            }
+            return View();
+        }
+
+        // GET: Event/Create
+        //[Route("/Event/Create-Step-Three")]
+        //[HttpGet]
+        public IActionResult CreateStepThree(int id)
+        {
             return View();
         }
 
         // POST: Event/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateTicket(EventEditViewModel newEvent)
+        public IActionResult CreateStepThree(EventCreateEditViewModel newEvent)
         {
             if (ModelState.IsValid)
             {
-                _ticketService.CreateTicket( 1/*_eventService.AllEvents.Max(e => e.EventId)*/, newEvent);
+                _ticketService.CreateTicket(_eventService.AllEvents.Max(e => e.EventId), newEvent);
 
-                
+                var eventId = _eventService.AllEvents.Max(e => e.EventId);
+                return RedirectToAction(nameof(Details), new { id = eventId });
             }
             return View();
         }
 
+        //// POST: Event/Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult CreateTicket(EventCreateEditViewModel newEvent)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _ticketService.CreateTicket( 1/*_eventService.AllEvents.Max(e => e.EventId)*/, newEvent);                
+        //    }
+        //    return View();
+        //}
+
         // GET: Event/Edit/5
         public IActionResult Edit(int id)
         {
-            var viewModel = new EventEditViewModel
+            var viewModel = new EventCreateEditViewModel
             {
                 Teachers = _teachersService.GetTeachersById(id),
                 Location = _locationService.GetLocationById(id),
@@ -197,7 +247,7 @@ namespace eShop.Web.Controllers
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, EventEditViewModel newEvent, IList<Ticket> tickets)
+        public IActionResult Edit(int id, EventCreateEditViewModel newEvent, IList<Ticket> tickets)
         {
             if (ModelState.IsValid)
             {
