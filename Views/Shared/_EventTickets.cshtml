@@ -8,11 +8,11 @@
                 <div id="accordion">
                     <div class="card">
                         <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse_@i" aria-expanded="true" aria-controls="collapse_@i">
-                                    @Model.Tickets.ToList()[i].TicketName | @Model.Tickets.ToList()[i].TicketPrice
-                                </button>
-                            </h5>
+                                    <h5 class="mb-0">
+                                        <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse_@i" aria-expanded="true" aria-controls="collapse_@i">
+                                            @Model.Tickets.ToList()[i].TicketName | @Model.Tickets.ToList()[i].TicketPrice
+                                        </a>
+                                    </h5>
                         </div>
                         <div id="collapse_@i" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
@@ -25,7 +25,7 @@
         }
     </div>
 
-        <table class="table table-bordered table-striped">
+        @*<table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Selected amount</th>
@@ -39,7 +39,7 @@
                         <form asp-controller="Event"
                               asp-action="AddToShoppingCart"
                               asp-route-eventId="@Model.Event.EventId" method="post" role="form">
-
+                        
                             <div class="text-center">
                                 <div>
                                     <input class="form-control text-center" type="number" asp-for="@Model.Amount">
@@ -70,4 +70,4 @@
                     }
                 </tr>
             </tbody>
-        </table>
+        </table>*@

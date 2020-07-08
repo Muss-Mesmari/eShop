@@ -8,6 +8,7 @@ namespace eShop.Presentation.ViewModels
 {
     public class EventCreateEditViewModel
     {   
+        public int EventId { get; set; }
         public Event Event { get; set; }
         public Day Day { get; set; }
         public Times Times { get; set; }

@@ -37,7 +37,7 @@
 
                 <!-- the "Basic info" Card >> content of the side scroll spy menu -->
                 <div class="card card-outline-secondary my-4" id="basic-info">
-                    <div id="accordion">
+                    <div id="">
                         <div class="card-header" id="headingBasicInfo">
                             <h5 class="mb-0">
                                 <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapseBasicInfo" aria-expanded="true" aria-controls="collapseBasicInfo">
@@ -46,7 +46,7 @@
                             </h5>
                         </div>
 
-                        <div id="collapseBasicInfo" class="collapse show" aria-labelledby="headingBasicInfo" data-parent="#accordion">
+                        <div id="collapseBasicInfo" class="collapse show" aria-labelledby="headingBasicInfo" data-parent="">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label asp-for="Event.Name" class="control-label"></label>
@@ -73,7 +73,7 @@
                         </h5>
                     </div>
 
-                    <div id="collapseAboutTheEvent" class="collapse show" aria-labelledby="headingAboutTheEvent" data-parent="#accordion">
+                    <div id="collapseAboutTheEvent" class="collapse show" aria-labelledby="headingAboutTheEvent" data-parent="">
                         <div class="card-body">
                             <div class="form-group">
                                 <label asp-for="Event.ImageUrl" class="control-label"></label>
@@ -105,7 +105,7 @@
                         </h5>
                     </div>
 
-                    <div id="collapseLocation" class="collapse show" aria-labelledby="headingLocation" data-parent="#accordion">
+                    <div id="collapseLocation" class="collapse show" aria-labelledby="headingLocation" data-parent="">
                         <div class="card-body">
                             <div class="form-group">
                                 <label asp-for="Location.Street" class="control-label"></label>
@@ -147,7 +147,7 @@
                             </h5>
                         </div>
 
-                        <div id="collapseTeachers" class="collapse show" aria-labelledby="headingTeachers" data-parent="#accordion">
+                        <div id="collapseTeachers" class="collapse show" aria-labelledby="headingTeachers" data-parent="">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label asp-for="Teachers.TeacherName" class="control-label"></label>
@@ -174,7 +174,7 @@
                         </h5>
                     </div>
 
-                    <div id="collapseSettings" class="collapse show" aria-labelledby="headingSettings" data-parent="#accordion">
+                    <div id="collapseSettings" class="collapse show" aria-labelledby="headingSettings" data-parent="">
                         <div class="card-body">
                             <div class="form-group">
                                 <label asp-for="Event.Price" class="control-label"></label>
@@ -211,7 +211,7 @@
                         </h5>
                     </div>
 
-                    <div id="collapseFaq" class="collapse show" aria-labelledby="headingFaq" data-parent="#accordion">
+                    <div id="collapseFaq" class="collapse show" aria-labelledby="headingFaq" data-parent="">
                         <div class="card-body">
                             <div id="accordion">
                                 <div class="card">

@@ -36,7 +36,7 @@
                         </a>
                     </h5>
                 </div>
-                <div id="collapseSchedule" class="collapse show" aria-labelledby="headingSchedule" data-parent="#accordion">
+                <div id="collapseSchedule" class="collapse show" aria-labelledby="headingSchedule" data-parent="">
                     <div class="card-body">
 
                         <div class="container-fluid bg-transparent">
@@ -51,7 +51,7 @@
                                     }
                                     <div class="form-row">
                                         <partial name="_CreateSchedule">
-                                            <div class="mt-4 pt-4">
+                                            <div class="mt-3 pt-3">
                                                 <button type="submit" class="btn btn-danger"><i class="fa fa-plus text-white"></i></button>
                                             </div>
                                     </div>
@@ -65,7 +65,7 @@
             </div>
 
         </div>
-        <div class="col-md-3 pt-3">
+        <div class="d-flex flex-row-reverse">
             <a asp-controller="Event"
                asp-action="CreateStepThree"
                role="button" class="btn btn-lg btn-danger text-nowrap w-50">

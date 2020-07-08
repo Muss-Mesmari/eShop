@@ -195,8 +195,14 @@ namespace eShop.Web.Controllers
         //[Route("/Event/Create-Step-Three")]
         //[HttpGet]
         public IActionResult CreateStepThree(int id)
-        {
-            return View();
+        {            
+            // return View();
+            var viewModel = new EventCreateEditViewModel
+            {
+                Tickets = _ticketService.GetTicketById(id),
+                EventId = id
+            };
+            return View(viewModel);
         }
 
         // POST: Event/Create
@@ -209,7 +215,8 @@ namespace eShop.Web.Controllers
                 _ticketService.CreateTicket(_eventService.AllEvents.Max(e => e.EventId), newEvent);
 
                 var eventId = _eventService.AllEvents.Max(e => e.EventId);
-                return RedirectToAction(nameof(Details), new { id = eventId });
+                return RedirectToAction(nameof(CreateStepThree), new { id = eventId });
+                //return RedirectToAction(nameof(Details), new { id = eventId });
             }
             return View();
         }
