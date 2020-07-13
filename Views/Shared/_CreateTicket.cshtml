@@ -1,37 +1,37 @@
 ﻿@model eShop.Presentation.ViewModels.EventCreateEditViewModel
-
-<div class="col-md-4 pt-3">
-    <label asp-for="Ticket.TicketName" class="control-label"></label>
-    <input asp-for="Ticket.TicketName" class="form-control" />
-    <span asp-validation-for="Ticket.TicketName" class="text-danger"></span>
-    <div class="invalid-tooltip">
-        Please provide a ticket name.
+    <div class="form-row">
+        <div class="col-md-6 pt-3">
+            <label asp-for="Ticket.TicketName" class="control-label"></label>
+            <input asp-for="Ticket.TicketName" class="form-control" required/>
+            <span asp-validation-for="Ticket.TicketName" class="text-danger"></span>
+            <div class="invalid-tooltip">
+                Please provide a ticket name.
+            </div>
+        </div>
+        <div class="col-md-6 pt-3">
+            <label asp-for="Ticket.Description" class="control-label"></label>
+            <input asp-for="Ticket.Description" class="form-control" required/>
+            <span asp-validation-for="Ticket.Description" class="text-danger"></span>
+            <div class="invalid-tooltip">
+                Please provide a description.
+            </div>
+        </div>
     </div>
-</div>
-
-<div class="col-md-4 pt-3">
-    <label asp-for="Ticket.Description" class="control-label"></label>
-    <input asp-for="Ticket.Description" class="form-control" />
-    <span asp-validation-for="Ticket.Description" class="text-danger"></span>
-    <div class="invalid-tooltip">
-        Please provide a description.
+    <div class="form-row">
+        <div class="col-md-6 pt-3">
+            <label asp-for="Ticket.TicketPrice" class="control-label"></label>
+            <input asp-for="Ticket.TicketPrice" class="form-control" required/>
+            <span asp-validation-for="Ticket.TicketPrice" class="text-danger"></span>
+            <div class="invalid-tooltip">
+                Please provide a price.
+            </div>
+        </div>
+        <div class="col-md-6 pt-3">
+            <label asp-for="Ticket.TotalAvailableTicket" class="control-label"></label>
+            <input asp-for="Ticket.TotalAvailableTicket" class="form-control"  required/>
+            <span asp-validation-for="Ticket.TotalAvailableTicket" class="text-danger"></span>
+            <div class="invalid-tooltip">
+                Please provide a number of tickets.
+            </div>
+        </div>
     </div>
-</div>
-
-<div class="col-md-4 pt-3">
-    <label asp-for="Ticket.TicketPrice" class="control-label"></label>
-    <input asp-for="Ticket.TicketPrice" class="form-control" />
-    <span asp-validation-for="Ticket.TicketPrice" class="text-danger"></span>
-    <div class="invalid-tooltip">
-        Please provide a price.
-    </div>
-</div>
-
-<div class="col-md-4 pt-3">
-    <label asp-for="Ticket.TotalAvailableTicket" class="control-label"></label>
-    <input asp-for="Ticket.TotalAvailableTicket" class="form-control" />
-    <span asp-validation-for="Ticket.TotalAvailableTicket" class="text-danger"></span>
-    <div class="invalid-tooltip">
-        Please provide a number of tickets.
-    </div>
-</div>

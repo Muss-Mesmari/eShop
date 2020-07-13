@@ -74,18 +74,15 @@ namespace eShop.Infrastructure.Services
         {
             var eventId = newEvent.Event.EventId;
 
-
             var location = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == eventId);
             var locationId = location.LocationId;
             var entityLocation = _eShopDbContext.Entry(location);
             entityLocation.State = EntityState.Detached;
 
-
             var teachers = _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId);
             var teachersId = teachers.TeachersId;
             var entityTeachers = _eShopDbContext.Entry(teachers);
             entityTeachers.State = EntityState.Detached;
-
 
             if (newEvent != null)
             {

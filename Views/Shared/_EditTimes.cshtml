@@ -1,0 +1,84 @@
+﻿@*@model eShop.Presentation.ViewModels.EventCreateEditViewModel*@
+@model List<List<KeyValuePair<string, string>>>
+
+<div class="tab-content" id="nav-tabContent">
+    @{for (int i = 0; i < @Model.Count(); i++)
+        {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">From</th>
+                        <th scope="col">To</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <table class="table m-0">
+                                <tr>
+                                    <td scope="row">
+                                        @{foreach (var dayTimeStart in @Model[i])
+                                            {
+                                                <table class="table table-borderless table-hover m-0">
+                                                    <tr>
+                                                        <td scope="row">
+
+                                                            <div class="form-row">
+                                                                <div class="col-md-6 pt-3">
+                                                                    <label asp-for="@dayTimeStart.Key" class="control-label"></label>
+                                                                    <input asp-for="@dayTimeStart.Key" class="form-control" required />
+                                                                    <span asp-validation-for=" @dayTimeStart.Key" class="text-danger"></span>
+                                                                    <div class="invalid-tooltip">
+                                                                        Please provide a ticket name.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+
+                        <td>
+                            <table class="table m-0">
+                                <tr>
+                                    <td scope="row">
+                                        @{foreach (var dayTimeEnd in @Model[i])
+                                            {
+                                                <table class="table table-borderless table-hover m-0">
+                                                    <tr>
+                                                        <td scope="row">
+                                                            <div class="form-row">
+                                                                <div class="col-md-6 pt-3">
+                                                                    <label asp-for="@dayTimeEnd.Value" class="control-label"></label>
+                                                                    <input asp-for="@dayTimeEnd.Value" class="form-control" required />
+                                                                    <span asp-validation-for=" @dayTimeEnd.Value" class="text-danger"></span>
+                                                                    <div class="invalid-tooltip">
+                                                                        Please provide a ticket name.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+    }
+</div>
+
+

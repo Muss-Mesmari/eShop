@@ -3,24 +3,60 @@
 
 @for (int i = 0; i < Model.Count(); i++)
 {
-    <div class="form-group">
-        <label asp-for="@Model[i].TicketName" class="control-label"></label>
-        <input asp-for="@Model[i].TicketName)" class="form-control" />
-        <span asp-validation-for="@Model[i].TicketName)" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model[i].Description" class="control-label"></label>
-        <input asp-for="@Model[i].Description)" class="form-control" />
-        <span asp-validation-for="@Model[i].Description)" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model[i].TicketPrice" class="control-label"></label>
-        <input asp-for="@Model[i].TicketPrice)" class="form-control" />
-        <span asp-validation-for="@Model[i].TicketPrice)" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model[i].TotalAvailableTicket" class="control-label"></label>
-        <input asp-for="@Model[i].TotalAvailableTicket)" class="form-control" />
-        <span asp-validation-for="@Model[i].TotalAvailableTicket)" class="text-danger"></span>
+
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse_@i" aria-expanded="true" aria-controls="collapse_@i">
+                        @Model[i].TicketName
+                    </a>
+                </h5>
+            </div>
+            <div id="collapse_@i" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+
+
+                    <div class="form-row">
+                        <div class="col-md-6 pt-3">
+                            <label asp-for="@Model[i].TicketName" class="control-label"></label>
+                            <input asp-for="@Model[i].TicketName" class="form-control" required />
+                            <span asp-validation-for="@Model[i].TicketName" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a ticket name.
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-3">
+                            <label asp-for="@Model[i].Description" class="control-label"></label>
+                            <input asp-for="@Model[i].Description" class="form-control" required />
+                            <span asp-validation-for="@Model[i].Description" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a description.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 pt-3">
+                            <label asp-for="@Model[i].TicketPrice" class="control-label"></label>
+                            <input asp-for="@Model[i].TicketPrice" class="form-control" required />
+                            <span asp-validation-for="@Model[i].TicketPrice" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a price.
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-3">
+                            <label asp-for="@Model[i].TotalAvailableTicket" class="control-label"></label>
+                            <input asp-for="@Model[i].TotalAvailableTicket" class="form-control" required />
+                            <span asp-validation-for="@Model[i].TotalAvailableTicket" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a number of tickets.
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
     </div>
 }

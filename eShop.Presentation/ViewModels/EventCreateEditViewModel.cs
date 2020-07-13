@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace eShop.Presentation.ViewModels
 {
     public class EventCreateEditViewModel
-    {   
+    {
         public int EventId { get; set; }
         public Event Event { get; set; }
         public Day Day { get; set; }
@@ -15,13 +15,15 @@ namespace eShop.Presentation.ViewModels
         public Location Location { get; set; }
         public Teachers Teachers { get; set; }
         public IEnumerable<Category> Categories { get; set; }
-        public IEnumerable<Day> Days { get; set; }
-        public List<List<KeyValuePair<string, string>>> EventSchedule { get; set; }
+        public List<List<KeyValuePair<string, string>>> EventTimes { get; set; }            
+        public List<string> EventTimesBindedKey { get; set; }
+        public List<string> EventTimesBindedValue { get; set; }
+        public IList<Day> Days { get; set; }
         public IList<Ticket> Tickets { get; set; }
         public Ticket Ticket { get; set; }
-
         public decimal ShoppingCartItemTotalEUR { get; set; }
         public decimal ShoppingCartItemTotalSEK { get; set; }
         public int Amount { get; set; }
+
     }
 }

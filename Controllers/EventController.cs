@@ -91,7 +91,7 @@ namespace eShop.Web.Controllers
         {
             var eventDetails = _eventService.GetEventById(id);
             var days = _scheduleService.GetEventDays(id, false);
-            var eventSchedule = _scheduleService.GetEventTimes(id, false);
+            var eventTimes = _scheduleService.GetEventTimes(id, false);
             var location = _locationService.GetLocationById(id);
             var teachers = _teachersService.GetTeachersById(id);
             var amount = _shoppingCartService.GetShoppingCartItemAmount(id);
@@ -114,7 +114,7 @@ namespace eShop.Web.Controllers
                 Amount = amount,
                 Event = eventDetails,
                 Days = days,
-                EventSchedule = eventSchedule,
+                EventTimes = eventTimes,
                 Location = location,
                 Teachers = teachers,
                 Tickets = tickets
@@ -170,7 +170,7 @@ namespace eShop.Web.Controllers
             {
                 EventId = id,
                 Days = _scheduleService.GetEventDays(id, isNewEvent),
-                EventSchedule = _scheduleService.GetEventTimes(id, isNewEvent)
+                EventTimes = _scheduleService.GetEventTimes(id, isNewEvent)
             };
             return View(viewModel);
         }
@@ -227,7 +227,9 @@ namespace eShop.Web.Controllers
                 Categories = _categoryService.AllCategories.ToList(),
                 Event = _eventService.GetEventById(id),
                 Tickets = _ticketService.GetTicketById(id),
-            };
+                Days = _scheduleService.GetEventDays(id, false),
+                EventTimes = _scheduleService.GetEventTimes(id, false),
+        };
             if (viewModel == null)
             {
                 return View("NotFound");
@@ -238,7 +240,7 @@ namespace eShop.Web.Controllers
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, EventCreateEditViewModel newEvent, IList<Ticket> tickets)
+        public IActionResult Edit(int id, EventCreateEditViewModel newEvent, IList<Ticket> tickets, IList<Day> days, List<string> eventTimesBindedKey, List<string> eventTimesBindedValue)
         {
             if (ModelState.IsValid)
             {
@@ -246,6 +248,8 @@ namespace eShop.Web.Controllers
                 _locationService.UpdateLocation(newEvent);
                 _teachersService.UpdateTeachers(newEvent);
                 _ticketService.UpdateTicket(id, tickets);
+                _scheduleService.UpdateDays(id, days);
+                _scheduleService.UpdateTimes(id, eventTimesBindedKey, eventTimesBindedValue);
 
                 //return Redirect($"/Event/Edit/{id}#tickets");
                 return RedirectToAction(nameof(Details), new { id = newEvent.Event.EventId });
@@ -269,9 +273,16 @@ namespace eShop.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id, Event removedEvent)
         {
+            int locationId = _locationService.GetLocationById(id).LocationId;
+            int teachersId = _teachersService.GetTeachersById(id).TeachersId;
+
             if (ModelState.IsValid)
             {
+                _ticketService.DeleteTickets(id);
+                _scheduleService.DeleteSchedule(id);
                 _eventService.DeleteEvent(id);
+                _locationService.DeleteLocation(locationId);
+                _teachersService.DeleteTeachers(teachersId);
             }
             return RedirectToAction("Index");
         }

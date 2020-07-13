@@ -70,9 +70,12 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext.SaveChanges();
         }
 
-        public void DeleteLocation(int id)
+        public void DeleteLocation(int locationId)
         {
-            var removedLocation = GetLocationById(id);
+            //var removedLocation = GetLocationById(id);
+           
+            var removedLocation = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == locationId);
+
             if (removedLocation != null)
             {
                 _eShopDbContext.Remove(removedLocation);

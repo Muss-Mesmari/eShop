@@ -60,9 +60,10 @@ namespace eShop.Infrastructure.Services
             entity.State = EntityState.Modified;
             _eShopDbContext.SaveChanges();
         }
-        public void DeleteTeachers(int id)
+        public void DeleteTeachers(int teachersId)
         {
-            var removedTeachers = GetTeachersById(id);
+            //  var removedTeachers = GetTeachersById(id);
+            var removedTeachers = _eShopDbContext.Teachers.FirstOrDefault(t => t.TeachersId == teachersId);
             if (removedTeachers != null)
             {
                 _eShopDbContext.Remove(removedTeachers);

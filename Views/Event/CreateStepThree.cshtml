@@ -9,7 +9,7 @@
 <div class="progress">
     <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
 </div>
-
+<hr />
 <!-- Page Content -->
 <div class="row">
     <!-- the side scroll spy menu -->
@@ -40,23 +40,26 @@
                     <div id="collapseTickets" class="collapse show" aria-labelledby="headingTickets" data-parent="">
                         <div class="card-body">
                             <div class="container-fluid bg-transparent">
-                                <div class="form-row m-3 align-items-center justify-content-center">
-
-                                    <form asp-action="CreateStepThree" class="needs-validation" novalidate>
-                                        @{ if (Model.Tickets.Any())
-                                           {
-                                                <partial name="_EventTickets" />
-                                                <hr />
-                                           }
+                                <div class="align-items-center justify-content-center">
+                                    @{ if (Model.Tickets.Any())
+                                        {
+                                            <partial name="_EventTickets" />
                                         }
-                                        <div class="form-row">
-                                            <partial name="_CreateTicket" />
-                                            <div class="mt-3 pt-3">
-                                                <button type="submit" class="btn btn-danger"><i class="fa fa-plus text-white"></i></button>
+                                        else
+                                        {
+                                            <div class="alert alert-danger" role="alert">
+                                                <h4 class="alert-heading">Warning!</h4>
+                                                <p>There are no tickets have been added to the event yet. Tickets will appear here after adding them.</p>
                                             </div>
+                                        }
+                                    }
+                                    <hr />
+                                    <form asp-action="CreateStepThree" class="needs-validation" novalidate>
+                                        <partial name="_CreateTicket" />
+                                        <div class="mt-3 pt-3">
+                                            <button type="submit" class="btn btn-danger w-25">Add Ticket <i class="fa fa-plus text-white"></i></button>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                         </div>
@@ -73,7 +76,7 @@
                 </a>
             </div>
 
-        </div>       
+        </div>
     </div>
 </div>
 

@@ -20,7 +20,8 @@
                 <a href="#how-to-go" class="list-group-item list-group-item-action">How to go</a>
                 <a asp-controller="ShoppingCart"
                    asp-action="AddToShoppingCart"
-                   asp-route-eventId="@Model.Event.EventId" class="btn bg-danger btn-lg my-3 text-white">
+                   asp-route-eventId="@Model.Event.EventId"
+                   asp-route-ticketId="@Model.Tickets[0].TicketId" class="btn bg-danger btn-lg my-3 text-white">
                     <i class="fas fa-shopping-cart"></i>Add to cart
                 </a>
             </div>
@@ -46,7 +47,7 @@
                     <div class=" d-flex justify-content-between align-items-center">
                         <div class="price text-success">
                             <h5 class="mt-4 text-nowrap">
-                                @Model.Event.Price <small class="text-muted"> @Model.Event.Currency</small>
+                                @Model.Tickets[0].TicketPrice <small class="text-muted"> @Model.Event.Currency</small>
                             </h5>
                         </div>
                         <a asp-controller="ShoppingCart"
@@ -87,7 +88,7 @@
                     <address>
                         <p>@Model.Location.Street  @Model.Location.StreetNumber</p>
                         <p>@Model.Location.City</p>
-                        <p> @Model.Location.State, @Model.Location.ZipCode</p>
+                        <p> @Model.Location.ZipCode, @Model.Location.State</p>
                     </address>
                 </div>
             </div>
