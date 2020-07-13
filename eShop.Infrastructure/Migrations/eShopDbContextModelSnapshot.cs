@@ -438,7 +438,7 @@ namespace eShop.Infrastructure.Migrations
                             Name = "Event Three",
                             Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
-                            TeachersId = 2
+                            TeachersId = 3
                         },
                         new
                         {
@@ -454,7 +454,7 @@ namespace eShop.Infrastructure.Migrations
                             Name = "Event Four",
                             Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
-                            TeachersId = 2
+                            TeachersId = 4
                         },
                         new
                         {
@@ -470,7 +470,7 @@ namespace eShop.Infrastructure.Migrations
                             Name = "Event Five",
                             Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
-                            TeachersId = 2
+                            TeachersId = 5
                         },
                         new
                         {
@@ -486,7 +486,7 @@ namespace eShop.Infrastructure.Migrations
                             Name = "Event Six",
                             Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
-                            TeachersId = 3
+                            TeachersId = 6
                         },
                         new
                         {
@@ -502,7 +502,7 @@ namespace eShop.Infrastructure.Migrations
                             Name = "Event Seven",
                             Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
-                            TeachersId = 3
+                            TeachersId = 7
                         },
                         new
                         {
@@ -518,7 +518,7 @@ namespace eShop.Infrastructure.Migrations
                             Name = "Event Eight",
                             Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
-                            TeachersId = 3
+                            TeachersId = 8
                         },
                         new
                         {
@@ -534,7 +534,7 @@ namespace eShop.Infrastructure.Migrations
                             Name = "Event Nine",
                             Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
-                            TeachersId = 3
+                            TeachersId = 9
                         },
                         new
                         {
@@ -550,7 +550,7 @@ namespace eShop.Infrastructure.Migrations
                             Name = "Event Ten",
                             Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
-                            TeachersId = 3
+                            TeachersId = 10
                         },
                         new
                         {
@@ -566,7 +566,7 @@ namespace eShop.Infrastructure.Migrations
                             Name = "Event Eleven",
                             Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
-                            TeachersId = 3
+                            TeachersId = 11
                         });
                 });
 
@@ -910,6 +910,54 @@ namespace eShop.Infrastructure.Migrations
                             TeachersId = 3,
                             TeacherName = "Teacher Three",
                             TeachingAssistantName = "Teaching Assistant Three"
+                        },
+                        new
+                        {
+                            TeachersId = 4,
+                            TeacherName = "Teacher One",
+                            TeachingAssistantName = "Teaching Assistant One"
+                        },
+                        new
+                        {
+                            TeachersId = 5,
+                            TeacherName = "Teacher Two",
+                            TeachingAssistantName = "Teaching Assistant Two"
+                        },
+                        new
+                        {
+                            TeachersId = 6,
+                            TeacherName = "Teacher Three",
+                            TeachingAssistantName = "Teaching Assistant Three"
+                        },
+                        new
+                        {
+                            TeachersId = 7,
+                            TeacherName = "Teacher Two",
+                            TeachingAssistantName = "Teaching Assistant Two"
+                        },
+                        new
+                        {
+                            TeachersId = 8,
+                            TeacherName = "Teacher Three",
+                            TeachingAssistantName = "Teaching Assistant Three"
+                        },
+                        new
+                        {
+                            TeachersId = 9,
+                            TeacherName = "Teacher One",
+                            TeachingAssistantName = "Teaching Assistant One"
+                        },
+                        new
+                        {
+                            TeachersId = 10,
+                            TeacherName = "Teacher Two",
+                            TeachingAssistantName = "Teaching Assistant Two"
+                        },
+                        new
+                        {
+                            TeachersId = 11,
+                            TeacherName = "Teacher Three",
+                            TeachingAssistantName = "Teaching Assistant Three"
                         });
                 });
 
@@ -973,7 +1021,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 4,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 2,
+                            EventId = 1,
                             TicketName = "Ticket One",
                             TicketPrice = 50m,
                             TotalAvailableTicket = 10
@@ -991,7 +1039,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 6,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 3,
+                            EventId = 2,
                             TicketName = "Ticket Three",
                             TicketPrice = 150m,
                             TotalAvailableTicket = 15
@@ -1000,7 +1048,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 7,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 3,
+                            EventId = 2,
                             TicketName = "Ticket One",
                             TicketPrice = 50m,
                             TotalAvailableTicket = 10
@@ -1009,7 +1057,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 8,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 4,
+                            EventId = 3,
                             TicketName = "Ticket Two",
                             TicketPrice = 100m,
                             TotalAvailableTicket = 20
@@ -1018,7 +1066,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 9,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 4,
+                            EventId = 3,
                             TicketName = "Ticket Three",
                             TicketPrice = 150m,
                             TotalAvailableTicket = 15
@@ -1027,7 +1075,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 10,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 5,
+                            EventId = 3,
                             TicketName = "Ticket One",
                             TicketPrice = 50m,
                             TotalAvailableTicket = 10
@@ -1036,7 +1084,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 11,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 5,
+                            EventId = 4,
                             TicketName = "Ticket Two",
                             TicketPrice = 100m,
                             TotalAvailableTicket = 20
@@ -1045,7 +1093,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 12,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 5,
+                            EventId = 4,
                             TicketName = "Ticket Three",
                             TicketPrice = 150m,
                             TotalAvailableTicket = 15
@@ -1054,7 +1102,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 13,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 6,
+                            EventId = 4,
                             TicketName = "Ticket One",
                             TicketPrice = 50m,
                             TotalAvailableTicket = 10
@@ -1063,7 +1111,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 14,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 6,
+                            EventId = 5,
                             TicketName = "Ticket Two",
                             TicketPrice = 100m,
                             TotalAvailableTicket = 20
@@ -1072,7 +1120,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 15,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 7,
+                            EventId = 5,
                             TicketName = "Ticket Three",
                             TicketPrice = 150m,
                             TotalAvailableTicket = 15
@@ -1081,7 +1129,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 16,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 7,
+                            EventId = 5,
                             TicketName = "Ticket One",
                             TicketPrice = 50m,
                             TotalAvailableTicket = 10
@@ -1090,7 +1138,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 17,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 8,
+                            EventId = 6,
                             TicketName = "Ticket Two",
                             TicketPrice = 100m,
                             TotalAvailableTicket = 20
@@ -1099,7 +1147,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 18,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 8,
+                            EventId = 6,
                             TicketName = "Ticket Three",
                             TicketPrice = 150m,
                             TotalAvailableTicket = 15
@@ -1108,7 +1156,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 19,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 9,
+                            EventId = 6,
                             TicketName = "Ticket One",
                             TicketPrice = 50m,
                             TotalAvailableTicket = 10
@@ -1117,7 +1165,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 20,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 9,
+                            EventId = 7,
                             TicketName = "Ticket Two",
                             TicketPrice = 100m,
                             TotalAvailableTicket = 20
@@ -1126,7 +1174,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 21,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 10,
+                            EventId = 7,
                             TicketName = "Ticket Three",
                             TicketPrice = 150m,
                             TotalAvailableTicket = 15
@@ -1135,7 +1183,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 22,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 10,
+                            EventId = 7,
                             TicketName = "Ticket One",
                             TicketPrice = 50m,
                             TotalAvailableTicket = 10
@@ -1144,7 +1192,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TicketId = 23,
                             Description = "Omnis et enim aperiam inventore",
-                            EventId = 11,
+                            EventId = 8,
                             TicketName = "Ticket Two",
                             TicketPrice = 100m,
                             TotalAvailableTicket = 20
@@ -1152,6 +1200,96 @@ namespace eShop.Infrastructure.Migrations
                         new
                         {
                             TicketId = 24,
+                            Description = "Omnis et enim aperiam inventore",
+                            EventId = 8,
+                            TicketName = "Ticket Three",
+                            TicketPrice = 150m,
+                            TotalAvailableTicket = 15
+                        },
+                        new
+                        {
+                            TicketId = 25,
+                            Description = "Omnis et enim aperiam inventore",
+                            EventId = 8,
+                            TicketName = "Ticket Two",
+                            TicketPrice = 100m,
+                            TotalAvailableTicket = 20
+                        },
+                        new
+                        {
+                            TicketId = 26,
+                            Description = "Omnis et enim aperiam inventore",
+                            EventId = 9,
+                            TicketName = "Ticket Three",
+                            TicketPrice = 150m,
+                            TotalAvailableTicket = 15
+                        },
+                        new
+                        {
+                            TicketId = 27,
+                            Description = "Omnis et enim aperiam inventore",
+                            EventId = 9,
+                            TicketName = "Ticket One",
+                            TicketPrice = 50m,
+                            TotalAvailableTicket = 10
+                        },
+                        new
+                        {
+                            TicketId = 28,
+                            Description = "Omnis et enim aperiam inventore",
+                            EventId = 9,
+                            TicketName = "Ticket Two",
+                            TicketPrice = 100m,
+                            TotalAvailableTicket = 20
+                        },
+                        new
+                        {
+                            TicketId = 29,
+                            Description = "Omnis et enim aperiam inventore",
+                            EventId = 10,
+                            TicketName = "Ticket Three",
+                            TicketPrice = 150m,
+                            TotalAvailableTicket = 15
+                        },
+                        new
+                        {
+                            TicketId = 30,
+                            Description = "Omnis et enim aperiam inventore",
+                            EventId = 10,
+                            TicketName = "Ticket Two",
+                            TicketPrice = 100m,
+                            TotalAvailableTicket = 20
+                        },
+                        new
+                        {
+                            TicketId = 31,
+                            Description = "Omnis et enim aperiam inventore",
+                            EventId = 10,
+                            TicketName = "Ticket Three",
+                            TicketPrice = 150m,
+                            TotalAvailableTicket = 15
+                        },
+                        new
+                        {
+                            TicketId = 32,
+                            Description = "Omnis et enim aperiam inventore",
+                            EventId = 11,
+                            TicketName = "Ticket One",
+                            TicketPrice = 50m,
+                            TotalAvailableTicket = 10
+                        },
+                        new
+                        {
+                            TicketId = 33,
+                            Description = "Omnis et enim aperiam inventore",
+                            EventId = 11,
+                            TicketName = "Ticket Two",
+                            TicketPrice = 100m,
+                            TotalAvailableTicket = 20
+                        },
+                        new
+                        {
+                            TicketId = 34,
                             Description = "Omnis et enim aperiam inventore",
                             EventId = 11,
                             TicketName = "Ticket Three",
@@ -1187,78 +1325,78 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TimesId = 1,
                             DayId = 1,
-                            TimeEnd = new DateTime(2020, 7, 9, 23, 4, 13, 632, DateTimeKind.Local).AddTicks(8093),
-                            TimeStart = new DateTime(2020, 7, 9, 21, 4, 13, 629, DateTimeKind.Local).AddTicks(7728)
+                            TimeEnd = new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(524),
+                            TimeStart = new DateTime(2020, 7, 14, 1, 50, 31, 849, DateTimeKind.Local).AddTicks(6102)
                         },
                         new
                         {
                             TimesId = 2,
                             DayId = 2,
-                            TimeEnd = new DateTime(2020, 7, 9, 23, 4, 13, 632, DateTimeKind.Local).AddTicks(9895),
-                            TimeStart = new DateTime(2020, 7, 9, 21, 4, 13, 632, DateTimeKind.Local).AddTicks(9868)
+                            TimeEnd = new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3271),
+                            TimeStart = new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3220)
                         },
                         new
                         {
                             TimesId = 3,
                             DayId = 3,
-                            TimeEnd = new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(85),
-                            TimeStart = new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(79)
+                            TimeEnd = new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3333),
+                            TimeStart = new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3328)
                         },
                         new
                         {
                             TimesId = 4,
                             DayId = 4,
-                            TimeEnd = new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(123),
-                            TimeStart = new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(118)
+                            TimeEnd = new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3364),
+                            TimeStart = new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3361)
                         },
                         new
                         {
                             TimesId = 5,
                             DayId = 5,
-                            TimeEnd = new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(153),
-                            TimeStart = new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(148)
+                            TimeEnd = new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3395),
+                            TimeStart = new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3391)
                         },
                         new
                         {
                             TimesId = 6,
                             DayId = 6,
-                            TimeEnd = new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(186),
-                            TimeStart = new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(181)
+                            TimeEnd = new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3429),
+                            TimeStart = new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3425)
                         },
                         new
                         {
                             TimesId = 7,
                             DayId = 7,
-                            TimeEnd = new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(218),
-                            TimeStart = new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(214)
+                            TimeEnd = new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3458),
+                            TimeStart = new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3454)
                         },
                         new
                         {
                             TimesId = 8,
                             DayId = 8,
-                            TimeEnd = new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(248),
-                            TimeStart = new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(244)
+                            TimeEnd = new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3487),
+                            TimeStart = new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3482)
                         },
                         new
                         {
                             TimesId = 9,
                             DayId = 9,
-                            TimeEnd = new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(277),
-                            TimeStart = new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(273)
+                            TimeEnd = new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3515),
+                            TimeStart = new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3511)
                         },
                         new
                         {
                             TimesId = 10,
                             DayId = 10,
-                            TimeEnd = new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(309),
-                            TimeStart = new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(304)
+                            TimeEnd = new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3546),
+                            TimeStart = new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3542)
                         },
                         new
                         {
                             TimesId = 11,
                             DayId = 11,
-                            TimeEnd = new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(337),
-                            TimeStart = new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(333)
+                            TimeEnd = new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3574),
+                            TimeStart = new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3570)
                         });
                 });
 

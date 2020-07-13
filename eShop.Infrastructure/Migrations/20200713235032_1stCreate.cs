@@ -428,16 +428,16 @@ namespace eShop.Infrastructure.Migrations
                 values: new object[,]
                 {
                     { 11, "Stockholm län", "Stockholm", "vägen", 11, 12355 },
-                    { 10, "Stockholm län", "Stockholm", "vägen", 10, 12354 },
                     { 9, "Stockholm län", "Stockholm", "vägen", 9, 12353 },
                     { 8, "Stockholm län", "Stockholm", "vägen", 8, 12352 },
                     { 7, "Stockholm län", "Stockholm", "vägen", 7, 12351 },
                     { 6, "Stockholm län", "Stockholm", "vägen", 6, 12350 },
-                    { 5, "Stockholm län", "Stockholm", "vägen", 5, 12349 },
+                    { 10, "Stockholm län", "Stockholm", "vägen", 10, 12354 },
                     { 4, "Stockholm län", "Stockholm", "vägen", 4, 12348 },
                     { 3, "Stockholm län", "Stockholm", "vägen", 3, 12347 },
                     { 2, "Stockholm län", "Stockholm", "vägen", 2, 12346 },
-                    { 1, "Stockholm län", "Stockholm", "vägen", 1, 12345 }
+                    { 1, "Stockholm län", "Stockholm", "vägen", 1, 12345 },
+                    { 5, "Stockholm län", "Stockholm", "vägen", 5, 12349 }
                 });
 
             migrationBuilder.InsertData(
@@ -445,9 +445,17 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TeachersId", "TeacherName", "TeachingAssistantName" },
                 values: new object[,]
                 {
+                    { 10, "Teacher Two", "Teaching Assistant Two" },
                     { 1, "Teacher One", "Teaching Assistant One" },
                     { 2, "Teacher Two", "Teaching Assistant Two" },
-                    { 3, "Teacher Three", "Teaching Assistant Three" }
+                    { 3, "Teacher Three", "Teaching Assistant Three" },
+                    { 4, "Teacher One", "Teaching Assistant One" },
+                    { 5, "Teacher Two", "Teaching Assistant Two" },
+                    { 6, "Teacher Three", "Teaching Assistant Three" },
+                    { 7, "Teacher Two", "Teaching Assistant Two" },
+                    { 8, "Teacher Three", "Teaching Assistant Three" },
+                    { 9, "Teacher One", "Teaching Assistant One" },
+                    { 11, "Teacher Three", "Teaching Assistant Three" }
                 });
 
             migrationBuilder.InsertData(
@@ -457,15 +465,15 @@ namespace eShop.Infrastructure.Migrations
                 {
                     { 1, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event One", 12.95m, "Lorem Ipsum", 1 },
                     { 2, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, true, 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Two", 12.95m, "Lorem Ipsum", 2 },
-                    { 3, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Three", 12.95m, "Lorem Ipsum", 2 },
-                    { 4, 2, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, true, 4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Four", 12.95m, "Lorem Ipsum", 2 },
-                    { 5, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Five", 12.95m, "Lorem Ipsum", 2 },
-                    { 6, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Six", 12.95m, "Lorem Ipsum", 3 },
-                    { 7, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 7, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Seven", 12.95m, "Lorem Ipsum", 3 },
-                    { 8, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 8, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eight", 12.95m, "Lorem Ipsum", 3 },
-                    { 9, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, 9, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Nine", 12.95m, "Lorem Ipsum", 3 },
-                    { 10, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 10, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Ten", 12.95m, "Lorem Ipsum", 3 },
-                    { 11, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, 11, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eleven", 12.95m, "Lorem Ipsum", 3 }
+                    { 3, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Three", 12.95m, "Lorem Ipsum", 3 },
+                    { 4, 2, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, true, 4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Four", 12.95m, "Lorem Ipsum", 4 },
+                    { 5, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Five", 12.95m, "Lorem Ipsum", 5 },
+                    { 6, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Six", 12.95m, "Lorem Ipsum", 6 },
+                    { 7, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 7, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Seven", 12.95m, "Lorem Ipsum", 7 },
+                    { 8, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 8, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eight", 12.95m, "Lorem Ipsum", 8 },
+                    { 9, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, 9, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Nine", 12.95m, "Lorem Ipsum", 9 },
+                    { 10, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 10, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Ten", 12.95m, "Lorem Ipsum", 10 },
+                    { 11, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, 11, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eleven", 12.95m, "Lorem Ipsum", 11 }
                 });
 
             migrationBuilder.InsertData(
@@ -474,16 +482,16 @@ namespace eShop.Infrastructure.Migrations
                 values: new object[,]
                 {
                     { 1, 1 },
-                    { 11, 11 },
-                    { 10, 10 },
-                    { 9, 9 },
+                    { 6, 6 },
                     { 8, 8 },
-                    { 7, 7 },
                     { 5, 5 },
                     { 4, 4 },
-                    { 6, 6 },
+                    { 9, 9 },
                     { 3, 3 },
-                    { 2, 2 }
+                    { 7, 7 },
+                    { 2, 2 },
+                    { 11, 11 },
+                    { 10, 10 }
                 });
 
             migrationBuilder.InsertData(
@@ -491,30 +499,40 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TicketId", "Description", "EventId", "TicketName", "TicketPrice", "TotalAvailableTicket" },
                 values: new object[,]
                 {
-                    { 7, "Omnis et enim aperiam inventore", 3, "Ticket One", 50m, 10 },
+                    { 28, "Omnis et enim aperiam inventore", 9, "Ticket Two", 100m, 20 },
+                    { 29, "Omnis et enim aperiam inventore", 10, "Ticket Three", 150m, 15 },
+                    { 27, "Omnis et enim aperiam inventore", 9, "Ticket One", 50m, 10 },
+                    { 20, "Omnis et enim aperiam inventore", 7, "Ticket Two", 100m, 20 },
+                    { 30, "Omnis et enim aperiam inventore", 10, "Ticket Two", 100m, 20 },
+                    { 25, "Omnis et enim aperiam inventore", 8, "Ticket Two", 100m, 20 },
+                    { 24, "Omnis et enim aperiam inventore", 8, "Ticket Three", 150m, 15 },
+                    { 23, "Omnis et enim aperiam inventore", 8, "Ticket Two", 100m, 20 },
+                    { 31, "Omnis et enim aperiam inventore", 10, "Ticket Three", 150m, 15 },
+                    { 22, "Omnis et enim aperiam inventore", 7, "Ticket One", 50m, 10 },
+                    { 21, "Omnis et enim aperiam inventore", 7, "Ticket Three", 150m, 15 },
+                    { 32, "Omnis et enim aperiam inventore", 11, "Ticket One", 50m, 10 },
+                    { 26, "Omnis et enim aperiam inventore", 9, "Ticket Three", 150m, 15 },
+                    { 17, "Omnis et enim aperiam inventore", 6, "Ticket Two", 100m, 20 },
+                    { 18, "Omnis et enim aperiam inventore", 6, "Ticket Three", 150m, 15 },
                     { 1, "Omnis et enim aperiam inventore", 1, "Ticket One", 50m, 10 },
-                    { 22, "Omnis et enim aperiam inventore", 10, "Ticket One", 50m, 10 },
-                    { 21, "Omnis et enim aperiam inventore", 10, "Ticket Three", 150m, 15 },
                     { 2, "Omnis et enim aperiam inventore", 1, "Ticket Two", 100m, 20 },
-                    { 20, "Omnis et enim aperiam inventore", 9, "Ticket Two", 100m, 20 },
-                    { 19, "Omnis et enim aperiam inventore", 9, "Ticket One", 50m, 10 },
                     { 3, "Omnis et enim aperiam inventore", 1, "Ticket Three", 150m, 15 },
-                    { 18, "Omnis et enim aperiam inventore", 8, "Ticket Three", 150m, 15 },
-                    { 17, "Omnis et enim aperiam inventore", 8, "Ticket Two", 100m, 20 },
-                    { 16, "Omnis et enim aperiam inventore", 7, "Ticket One", 50m, 10 },
-                    { 15, "Omnis et enim aperiam inventore", 7, "Ticket Three", 150m, 15 },
-                    { 4, "Omnis et enim aperiam inventore", 2, "Ticket One", 50m, 10 },
-                    { 14, "Omnis et enim aperiam inventore", 6, "Ticket Two", 100m, 20 },
-                    { 13, "Omnis et enim aperiam inventore", 6, "Ticket One", 50m, 10 },
-                    { 23, "Omnis et enim aperiam inventore", 11, "Ticket Two", 100m, 20 },
-                    { 12, "Omnis et enim aperiam inventore", 5, "Ticket Three", 150m, 15 },
-                    { 11, "Omnis et enim aperiam inventore", 5, "Ticket Two", 100m, 20 },
-                    { 10, "Omnis et enim aperiam inventore", 5, "Ticket One", 50m, 10 },
+                    { 4, "Omnis et enim aperiam inventore", 1, "Ticket One", 50m, 10 },
                     { 5, "Omnis et enim aperiam inventore", 2, "Ticket Two", 100m, 20 },
-                    { 9, "Omnis et enim aperiam inventore", 4, "Ticket Three", 150m, 15 },
-                    { 8, "Omnis et enim aperiam inventore", 4, "Ticket Two", 100m, 20 },
-                    { 6, "Omnis et enim aperiam inventore", 3, "Ticket Three", 150m, 15 },
-                    { 24, "Omnis et enim aperiam inventore", 11, "Ticket Three", 150m, 15 }
+                    { 6, "Omnis et enim aperiam inventore", 2, "Ticket Three", 150m, 15 },
+                    { 7, "Omnis et enim aperiam inventore", 2, "Ticket One", 50m, 10 },
+                    { 8, "Omnis et enim aperiam inventore", 3, "Ticket Two", 100m, 20 },
+                    { 9, "Omnis et enim aperiam inventore", 3, "Ticket Three", 150m, 15 },
+                    { 10, "Omnis et enim aperiam inventore", 3, "Ticket One", 50m, 10 },
+                    { 11, "Omnis et enim aperiam inventore", 4, "Ticket Two", 100m, 20 },
+                    { 12, "Omnis et enim aperiam inventore", 4, "Ticket Three", 150m, 15 },
+                    { 13, "Omnis et enim aperiam inventore", 4, "Ticket One", 50m, 10 },
+                    { 14, "Omnis et enim aperiam inventore", 5, "Ticket Two", 100m, 20 },
+                    { 15, "Omnis et enim aperiam inventore", 5, "Ticket Three", 150m, 15 },
+                    { 16, "Omnis et enim aperiam inventore", 5, "Ticket One", 50m, 10 },
+                    { 33, "Omnis et enim aperiam inventore", 11, "Ticket Two", 100m, 20 },
+                    { 19, "Omnis et enim aperiam inventore", 6, "Ticket One", 50m, 10 },
+                    { 34, "Omnis et enim aperiam inventore", 11, "Ticket Three", 150m, 15 }
                 });
 
             migrationBuilder.InsertData(
@@ -558,17 +576,17 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TimesId", "DayId", "TimeEnd", "TimeStart" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2020, 7, 9, 23, 4, 13, 632, DateTimeKind.Local).AddTicks(8093), new DateTime(2020, 7, 9, 21, 4, 13, 629, DateTimeKind.Local).AddTicks(7728) },
-                    { 2, 2, new DateTime(2020, 7, 9, 23, 4, 13, 632, DateTimeKind.Local).AddTicks(9895), new DateTime(2020, 7, 9, 21, 4, 13, 632, DateTimeKind.Local).AddTicks(9868) },
-                    { 3, 3, new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(85), new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(79) },
-                    { 4, 4, new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(123), new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(118) },
-                    { 5, 5, new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(153), new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(148) },
-                    { 6, 6, new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(186), new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(181) },
-                    { 7, 7, new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(218), new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(214) },
-                    { 8, 8, new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(248), new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(244) },
-                    { 9, 9, new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(277), new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(273) },
-                    { 10, 10, new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(309), new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(304) },
-                    { 11, 11, new DateTime(2020, 7, 9, 23, 4, 13, 633, DateTimeKind.Local).AddTicks(337), new DateTime(2020, 7, 9, 21, 4, 13, 633, DateTimeKind.Local).AddTicks(333) }
+                    { 1, 1, new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(524), new DateTime(2020, 7, 14, 1, 50, 31, 849, DateTimeKind.Local).AddTicks(6102) },
+                    { 2, 2, new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3271), new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3220) },
+                    { 3, 3, new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3333), new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3328) },
+                    { 4, 4, new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3364), new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3361) },
+                    { 5, 5, new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3395), new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3391) },
+                    { 6, 6, new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3429), new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3425) },
+                    { 7, 7, new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3458), new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3454) },
+                    { 8, 8, new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3487), new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3482) },
+                    { 9, 9, new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3515), new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3511) },
+                    { 10, 10, new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3546), new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3542) },
+                    { 11, 11, new DateTime(2020, 7, 14, 3, 50, 31, 853, DateTimeKind.Local).AddTicks(3574), new DateTime(2020, 7, 14, 1, 50, 31, 853, DateTimeKind.Local).AddTicks(3570) }
                 });
 
             migrationBuilder.CreateIndex(
