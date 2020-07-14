@@ -1,14 +1,70 @@
 ﻿@model IList<eShop.Entities.Entities.Ticket>
 
 
-@for (int i = 0; i < Model.Count(); i++)
-{
+<div id="accordion">
+    <div class="card mb-1">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse_0" aria-expanded="true" aria-controls="collapse_0">
+                    @Model[0].TicketName
+                </a>
+            </h5>
+        </div>
+        <div id="collapse_0" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
 
+                <div class="form-row">
+                    <div class="col pt-3">
+                        <label asp-for="@Model[0].TicketName" class="control-label"></label>
+                        <input asp-for="@Model[0].TicketName" class="form-control" required />
+                        <span asp-validation-for="@Model[0].TicketName" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a ticket name.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 pt-3">
+                        <label asp-for="@Model[0].TicketPrice" class="control-label"></label>
+                        <input asp-for="@Model[0].TicketPrice" class="form-control" required />
+                        <span asp-validation-for="@Model[0].TicketPrice" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a price.
+                        </div>
+                    </div>
+                    <div class="col-md-6 pt-3">
+                        <label asp-for="@Model[0].TotalAvailableTicket" class="control-label"></label>
+                        <input asp-for="@Model[0].TotalAvailableTicket" class="form-control" required />
+                        <span asp-validation-for="@Model[0].TotalAvailableTicket" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a number of tickets.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col pt-3">
+                        <label asp-for="@Model[0].Description" class="control-label"></label>
+                        <textarea asp-for="@Model[0].Description" class="form-control" row="3" required></textarea>
+                        <span asp-validation-for="@Model[0].Description" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a description.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@for (int i = 1; i < Model.Count(); i++)
+{
     <div id="accordion">
-        <div class="card">
+        <div class="card mb-1">
             <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
-                    <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse_@i" aria-expanded="true" aria-controls="collapse_@i">
+                    <a class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapse_@i" aria-expanded="false" aria-controls="collapse_@i">
                         @Model[i].TicketName
                     </a>
                 </h5>
@@ -16,22 +72,13 @@
             <div id="collapse_@i" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
 
-
                     <div class="form-row">
-                        <div class="col-md-6 pt-3">
+                        <div class="col pt-3">
                             <label asp-for="@Model[i].TicketName" class="control-label"></label>
                             <input asp-for="@Model[i].TicketName" class="form-control" required />
                             <span asp-validation-for="@Model[i].TicketName" class="text-danger"></span>
                             <div class="invalid-tooltip">
                                 Please provide a ticket name.
-                            </div>
-                        </div>
-                        <div class="col-md-6 pt-3">
-                            <label asp-for="@Model[i].Description" class="control-label"></label>
-                            <input asp-for="@Model[i].Description" class="form-control" required />
-                            <span asp-validation-for="@Model[i].Description" class="text-danger"></span>
-                            <div class="invalid-tooltip">
-                                Please provide a description.
                             </div>
                         </div>
                     </div>
@@ -53,10 +100,22 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="form-row">
+                        <div class="col pt-3">
+                            <label asp-for="@Model[i].Description" class="control-label"></label>
+                            <textarea asp-for="@Model[i].Description" class="form-control" row="3" required></textarea>
+                            <span asp-validation-for="@Model[i].Description" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a description.
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
 }
+<div class="alert alert-danger mt-3" role="alert">
+    <strong>P.S.</strong> Click on each ticket to edit it!
+</div>

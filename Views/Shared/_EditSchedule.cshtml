@@ -22,10 +22,21 @@
             <div class="col">
                 @{for (int i = 0; i < @Model.EventTimes.Count(); i++)
                     {
-
                         <div class="collapse multi-collapse" id="tab-@i">
                             <div class="card card-body mb-3">
+
                                 <h5 class="card-title"> @DaysOfWeek[i] Schedule:</h5>
+
+                                <div class="form-row">
+                                    <label asp-for="@Model.Days[i].DayOfWeek" class="control-label"></label>
+                                    <select asp-for="@Model.Days[i].DayOfWeek" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DayOfWeek))))"><option>Choose days</option></select>
+                                    <span asp-validation-for="@Model.Days[i].DayOfWeek" class="text-danger"></span>
+                                    <div class="invalid-tooltip">
+                                        Please provide a ticket name.
+                                    </div>
+                                </div>
+
+
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
