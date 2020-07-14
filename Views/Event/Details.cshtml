@@ -1,5 +1,5 @@
-﻿@model eShop.Presentation.ViewModels.EventCreateEditViewModel 
- @*DetailsViewModel*@
+﻿@model eShop.Presentation.ViewModels.EventCreateEditViewModel
+@*DetailsViewModel*@
 
 @{
     ViewData["Title"] = "Details";
@@ -18,12 +18,12 @@
                 <a href="#teachers" class="list-group-item list-group-item-action">Teachers</a>
                 <a href="#tickets" class="list-group-item list-group-item-action">Tickets</a>
                 <a href="#how-to-go" class="list-group-item list-group-item-action">How to go</a>
-                <a asp-controller="ShoppingCart"
-                   asp-action="AddToShoppingCart"
-                   asp-route-eventId="@Model.Event.EventId"
-                   asp-route-ticketId="@Model.Tickets[0].TicketId" class="btn bg-danger btn-lg my-3 text-white">
-                    <i class="fas fa-shopping-cart"></i>Add to cart
-                </a>
+
+                <!-- Button Shopping Cart Modal -->
+                <button type="button" class="btn btn-lg btn-danger my-3 text-white" data-toggle="modal" data-target="#shoppingCartModalCenter">
+                    <i class="fas fa-shopping-cart"></i> Add To Cart
+                </button>
+
             </div>
         </div>
     </div>
@@ -50,11 +50,37 @@
                                 @Model.Tickets[0].TicketPrice <small class="text-muted"> @Model.Event.Currency</small>
                             </h5>
                         </div>
-                        <a asp-controller="ShoppingCart"
-                           asp-action="AddToShoppingCart"
-                           asp-route-eventId="@Model.Event.EventId" role="button" class="btn btn-danger mt-3 text-nowrap">
-                            <i class="fas fa-shopping-cart"></i>Add to cart
-                        </a>
+
+                        <!-- Button Shopping Cart Modal -->
+                        <button type="button" class="btn btn-danger mt-3 text-nowrap" data-toggle="modal" data-target="#shoppingCartModalCenter">
+                            <i class="fas fa-shopping-cart"></i> Add to cart
+                        </button>
+
+                        <!-- Shopping Cart Modal -->
+                        <div class="modal fade" id="shoppingCartModalCenter" tabindex="-1" role="dialog" aria-labelledby="shoppingCartModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="shoppingCartModalCenterTitle">Add To Shopping Cart</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <partial name="_AddTicketsToCart" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <a asp-controller="ShoppingCart"
+                                           asp-action="AddToShoppingCart"
+                                           asp-route-eventId="@Model.Event.EventId" role="button" class="btn btn-danger text-nowrap">
+                                            <i class="fas fa-shopping-cart"></i> Add To Cart
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

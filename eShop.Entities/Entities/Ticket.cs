@@ -12,6 +12,6 @@ namespace eShop.Entities.Entities
         public string TicketName { get; set; }
         public decimal TicketPrice { get; set; }
         public string Description { get; set; }
-        public int TotalAvailableTicket { get; set; }
+        public int TotalAvailableTicket { get; set; }        
     }
 }
