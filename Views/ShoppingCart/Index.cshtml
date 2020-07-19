@@ -5,8 +5,7 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>Selected amount</th>
-            <th>Ticket</th>
+            <th class="text-center">Purchaed amount and Ticket</th>
             <th>Event</th>
             <th class="text-right">Price</th>
             <th class="text-right">Subtotal</th>
@@ -17,54 +16,55 @@
             int i = 0;
             @foreach (var line in Model.ShoppingCartService.ShoppingCartItems)
             {
-        <tr>
-            <td class="text-center">
-                <form asp-controller="ShoppingCart"
-                      asp-action="AddToShoppingCart"
-                      asp-route-eventId="@line.Event.EventId"
-                      asp-route-isDetailesPage="@false"
-                      method="post" role="form">
-                    <div class="d-flex align-items-center justify-content-around">
+                    <tr>
+                        <td class="text-center">
+                            <form asp-controller="ShoppingCart"
+                                asp-action="AddToShoppingCart"
+                                asp-route-eventId="@line.Event.EventId"
+                                asp-route-isDetailesPage="@false"
+                                method="post" role="form">
+                                <div class="d-flex align-items-center justify-content-around">
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input class="form-control text-center" type="number" asp-for="@Model.Amount" value="@line.Amount">
 
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="submit">Edit</button>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control text-center" type="number" asp-for="@Model.Amount" value="@line.Amount">
+
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="submit">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <select asp-for="@Model.SelectedTicketId" class="custom-select form-control" asp-items="@(new SelectList(Model.Tickets, "TicketId", "TicketName"))">
+                                                <option value="@line.Ticket.TicketId">@line.Ticket.TicketName</option>
+                                            </select>
+
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="submit">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
-                            </div>
-                        </div>
+                            </form>
+                        </td>
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <select asp-for="@Model.SelectedTicketId" class="form-control" asp-items="@(new SelectList(Model.Tickets, "TicketId", "TicketName"))">
-                                    <option value="@line.Ticket.TicketId">@line.Ticket.TicketName</option> 
-                                </select>
-                              
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="submit">Edit</button>
-                                </div>
-                            </div>
-                        </div>                       
-
-                    </div>
-                </form>
-            </td>
-                       
-            <td class="text-right">@line.Ticket.TicketName</td>
-            <td class="text-left">
-                <a asp-controller="Event" asp-action="Details" asp-route-id="@line.Event.EventId" class="text-decoration-none">@line.Event.Name</a>
-            </td>
-            <td class="text-right">@line.Ticket.TicketPrice  @line.Event.Currency</td>
-            <td class="text-right">
-                @(line.Amount * line.Ticket.TicketPrice) @(line.Event.Currency)
-            </td>
-        </tr>
+                        <td class="text-left">
+                            <a asp-controller="Event" asp-action="Details" asp-route-id="@line.Event.EventId" class="text-decoration-none">@line.Event.Name</a>
+                        </td>
+                        <td class="text-right">@line.Ticket.TicketPrice  @line.Event.Currency</td>
+                        <td class="text-right">
+                            @(line.Amount * line.Ticket.TicketPrice) @(line.Event.Currency)
+                        </td>
+                    </tr>               
             }
             i++;
         }
     </tbody>
+
     <tfoot>
         @if (@Model.ShoppingCartTotalSEK != 0)
         {
