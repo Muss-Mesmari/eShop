@@ -309,27 +309,6 @@ namespace eShop.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ShoppingCartItems",
-                columns: table => new
-                {
-                    ShoppingCartItemId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EventId = table.Column<int>(nullable: true),
-                    Amount = table.Column<int>(nullable: false),
-                    ShoppingCartId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ShoppingCartItems", x => x.ShoppingCartItemId);
-                    table.ForeignKey(
-                        name: "FK_ShoppingCartItems_Events_EventId",
-                        column: x => x.EventId,
-                        principalTable: "Events",
-                        principalColumn: "EventId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Ticket",
                 columns: table => new
                 {
@@ -369,6 +348,34 @@ namespace eShop.Infrastructure.Migrations
                         principalTable: "Schedule",
                         principalColumn: "ScheduleId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ShoppingCartItems",
+                columns: table => new
+                {
+                    ShoppingCartItemId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EventId = table.Column<int>(nullable: true),
+                    Amount = table.Column<int>(nullable: false),
+                    ShoppingCartId = table.Column<string>(nullable: true),
+                    TicketId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ShoppingCartItems", x => x.ShoppingCartItemId);
+                    table.ForeignKey(
+                        name: "FK_ShoppingCartItems_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "EventId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ShoppingCartItems_Ticket_TicketId",
+                        column: x => x.TicketId,
+                        principalTable: "Ticket",
+                        principalColumn: "TicketId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -576,17 +583,17 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TimesId", "DayId", "TimeEnd", "TimeStart" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(2525), new DateTime(2020, 7, 14, 23, 25, 39, 682, DateTimeKind.Local).AddTicks(4932) },
-                    { 2, 2, new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4241), new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4211) },
-                    { 3, 3, new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4299), new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4294) },
-                    { 4, 4, new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4330), new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4326) },
-                    { 5, 5, new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4364), new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4361) },
-                    { 6, 6, new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4400), new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4395) },
-                    { 7, 7, new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4432), new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4428) },
-                    { 8, 8, new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4462), new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4458) },
-                    { 9, 9, new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4493), new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4488) },
-                    { 10, 10, new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4524), new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4520) },
-                    { 11, 11, new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4555), new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4551) }
+                    { 1, 1, new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(5845), new DateTime(2020, 7, 17, 1, 32, 7, 223, DateTimeKind.Local).AddTicks(5131) },
+                    { 2, 2, new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9006), new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(8947) },
+                    { 3, 3, new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9121), new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9114) },
+                    { 4, 4, new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9174), new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9167) },
+                    { 5, 5, new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9223), new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9216) },
+                    { 6, 6, new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9280), new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9273) },
+                    { 7, 7, new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9330), new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9323) },
+                    { 8, 8, new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9382), new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9375) },
+                    { 9, 9, new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9430), new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9423) },
+                    { 10, 10, new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9500), new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9492) },
+                    { 11, 11, new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9550), new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9544) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -669,6 +676,11 @@ namespace eShop.Infrastructure.Migrations
                 column: "EventId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ShoppingCartItems_TicketId",
+                table: "ShoppingCartItems",
+                column: "TicketId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Ticket_EventId",
                 table: "Ticket",
                 column: "EventId");
@@ -708,9 +720,6 @@ namespace eShop.Infrastructure.Migrations
                 name: "ShoppingCartItems");
 
             migrationBuilder.DropTable(
-                name: "Ticket");
-
-            migrationBuilder.DropTable(
                 name: "Times");
 
             migrationBuilder.DropTable(
@@ -721,6 +730,9 @@ namespace eShop.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Ticket");
 
             migrationBuilder.DropTable(
                 name: "Day");

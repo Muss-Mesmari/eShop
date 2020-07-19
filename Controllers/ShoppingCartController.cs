@@ -8,11 +8,13 @@ using eShop.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using eShop.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
+using eShop.Entities.Entities;
 
 namespace eShop.Web.Controllers
 {
     public class ShoppingCartController : Controller
     {
+        private readonly ITicketService _ticketService;
         private readonly IEventService _eventService;
         private readonly ShoppingCartService _shoppingCartService;
         private readonly FeaturesConfiguration _featuresConfiguration;
@@ -21,11 +23,18 @@ namespace eShop.Web.Controllers
         [BindProperty(SupportsGet = true)]
         public int Amount { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public int SelectedTicketId { get; set; }
+
         public ShoppingCartController
-            (IEventService eventService,
+        (
+            ITicketService ticketService,
+            IEventService eventService,
             ShoppingCartService shoppingCartService,
-            IOptions<FeaturesConfiguration> options)
+            IOptions<FeaturesConfiguration> options
+        )
         {
+            _ticketService = ticketService;
             _eventService = eventService;
             _shoppingCartService = shoppingCartService;
             _featuresConfiguration = options.Value;
@@ -35,10 +44,11 @@ namespace eShop.Web.Controllers
             if (_featuresConfiguration.EnableOrder)
             {
                 var items = _shoppingCartService.GetShoppingCartItems();
-                _shoppingCartService.ShoppingCartItems = items;       
+                _shoppingCartService.ShoppingCartItems = items;
 
                 var shoppingCartViewModel = new ShoppingCartViewModel
-                {
+                {                    
+                    Tickets = _shoppingCartService.GetTickets(),                               
                     ShoppingCartService = _shoppingCartService,
                     ShoppingCartTotalSEK = _shoppingCartService.GetShoppingCartTotalSEK(),
                     ShoppingCartTotalEUR = _shoppingCartService.GetShoppingCartTotalEUR(),
@@ -51,18 +61,19 @@ namespace eShop.Web.Controllers
                 return View("_BlockedPage");
             }
         }
-        public RedirectToActionResult AddToShoppingCart(int eventId)
+        public RedirectToActionResult AddToShoppingCart(int eventId, bool isDetailesPage)
         {
             if (_featuresConfiguration.EnableOrder)
             {
                 var selectedEvent = _eventService.AllEvents.FirstOrDefault(e => e.EventId == eventId);
-
+                var SelectedTicket = _ticketService.AllTickets.FirstOrDefault(t => t.TicketId == SelectedTicketId);
+                
                 if (selectedEvent != null)
                 {
-                    _shoppingCartService.AddToCart(selectedEvent, Amount, false);                  
+                    _shoppingCartService.AddToCart(selectedEvent, SelectedTicket, Amount, isDetailesPage);
                 }
             }
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         public RedirectToActionResult RemoveFromShoppingCart(int eventId)

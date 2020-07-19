@@ -24,7 +24,7 @@ namespace eShop.Infrastructure.Services
 
         public IEnumerable<Ticket> AllTickets => _eShopDbContext.Ticket;
 
-        public IList<Ticket> GetTicketById(int eventId)
+        public IList<Ticket> GetTicketById(int? eventId)
         {
             var tickets = _eShopDbContext.Ticket.Where(e => e.EventId == eventId).ToList();
             foreach (var ticket in tickets)

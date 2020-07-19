@@ -10,5 +10,6 @@ namespace eShop.Entities.Entities
         public Event Event { get; set; }
         public int Amount { get; set; }
         public string ShoppingCartId { get; set; }
+        public Ticket Ticket { get; set; }          
     }
 }

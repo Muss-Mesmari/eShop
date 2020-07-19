@@ -10,7 +10,7 @@ using eShop.Infrastructure.Database;
 namespace eShop.Infrastructure.Migrations
 {
     [DbContext(typeof(eShopDbContext))]
-    [Migration("20200714212540_1stCreate")]
+    [Migration("20200716233208_1stCreate")]
     partial class _1stCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -870,9 +870,14 @@ namespace eShop.Infrastructure.Migrations
                     b.Property<string>("ShoppingCartId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TicketId")
+                        .HasColumnType("int");
+
                     b.HasKey("ShoppingCartItemId");
 
                     b.HasIndex("EventId");
+
+                    b.HasIndex("TicketId");
 
                     b.ToTable("ShoppingCartItems");
                 });
@@ -1327,78 +1332,78 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TimesId = 1,
                             DayId = 1,
-                            TimeEnd = new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(2525),
-                            TimeStart = new DateTime(2020, 7, 14, 23, 25, 39, 682, DateTimeKind.Local).AddTicks(4932)
+                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(5845),
+                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 223, DateTimeKind.Local).AddTicks(5131)
                         },
                         new
                         {
                             TimesId = 2,
                             DayId = 2,
-                            TimeEnd = new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4241),
-                            TimeStart = new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4211)
+                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9006),
+                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(8947)
                         },
                         new
                         {
                             TimesId = 3,
                             DayId = 3,
-                            TimeEnd = new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4299),
-                            TimeStart = new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4294)
+                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9121),
+                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9114)
                         },
                         new
                         {
                             TimesId = 4,
                             DayId = 4,
-                            TimeEnd = new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4330),
-                            TimeStart = new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4326)
+                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9174),
+                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9167)
                         },
                         new
                         {
                             TimesId = 5,
                             DayId = 5,
-                            TimeEnd = new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4364),
-                            TimeStart = new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4361)
+                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9223),
+                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9216)
                         },
                         new
                         {
                             TimesId = 6,
                             DayId = 6,
-                            TimeEnd = new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4400),
-                            TimeStart = new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4395)
+                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9280),
+                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9273)
                         },
                         new
                         {
                             TimesId = 7,
                             DayId = 7,
-                            TimeEnd = new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4432),
-                            TimeStart = new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4428)
+                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9330),
+                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9323)
                         },
                         new
                         {
                             TimesId = 8,
                             DayId = 8,
-                            TimeEnd = new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4462),
-                            TimeStart = new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4458)
+                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9382),
+                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9375)
                         },
                         new
                         {
                             TimesId = 9,
                             DayId = 9,
-                            TimeEnd = new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4493),
-                            TimeStart = new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4488)
+                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9430),
+                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9423)
                         },
                         new
                         {
                             TimesId = 10,
                             DayId = 10,
-                            TimeEnd = new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4524),
-                            TimeStart = new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4520)
+                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9500),
+                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9492)
                         },
                         new
                         {
                             TimesId = 11,
                             DayId = 11,
-                            TimeEnd = new DateTime(2020, 7, 15, 1, 25, 39, 685, DateTimeKind.Local).AddTicks(4555),
-                            TimeStart = new DateTime(2020, 7, 14, 23, 25, 39, 685, DateTimeKind.Local).AddTicks(4551)
+                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9550),
+                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9544)
                         });
                 });
 
@@ -1586,6 +1591,10 @@ namespace eShop.Infrastructure.Migrations
                     b.HasOne("eShop.Entities.Entities.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId");
+
+                    b.HasOne("eShop.Entities.Entities.Ticket", "Ticket")
+                        .WithMany()
+                        .HasForeignKey("TicketId");
                 });
 
             modelBuilder.Entity("eShop.Entities.Entities.Ticket", b =>

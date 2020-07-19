@@ -8,7 +8,7 @@ namespace eShop.Infrastructure.Services
     {
         IEnumerable<Ticket> AllTickets { get; }
         void CreateTicket(int eventId, EventCreateEditViewModel newEvent);        
-        IList<Ticket> GetTicketById(int eventId);
+        IList<Ticket> GetTicketById(int? eventId);
         void UpdateTicket(int eventId, IList<Ticket> newTickets);
         void DeleteTickets(int id);
     }

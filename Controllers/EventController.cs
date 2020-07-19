@@ -28,8 +28,6 @@ namespace eShop.Web.Controllers
         [BindProperty(SupportsGet = true)]
         public string SearchedCategory { get; set; }
 
-        [BindProperty(SupportsGet = true)]
-        public int Amount { get; set; }
         public EventController
             (
             IEventService eventService,
@@ -94,7 +92,7 @@ namespace eShop.Web.Controllers
             var eventTimes = _scheduleService.GetEventTimes(id, false);
             var location = _locationService.GetLocationById(id);
             var teachers = _teachersService.GetTeachersById(id);
-            var amount = _shoppingCartService.GetShoppingCartItemAmount(id);
+            var amount = _shoppingCartService.GetShoppingCartItemAmount(id);         
             var tickets = _ticketService.GetTicketById(id);
 
             if (amount == 0)
@@ -117,20 +115,10 @@ namespace eShop.Web.Controllers
                 EventTimes = eventTimes,
                 Location = location,
                 Teachers = teachers,
-                Tickets = tickets
+                Tickets = tickets,               
             });
         }
 
-        public RedirectResult AddToShoppingCart(int eventId)
-        {
-            var selectedEvent = _eventService.GetEventById(eventId);
-
-            if (selectedEvent != null)
-            {
-                _shoppingCartService.AddToCart(selectedEvent, Amount, true);
-            }
-            return Redirect($"/Event/Details/{eventId}#tickets");
-        }
 
         // GET: Event/CreateStepOne
         // [Route("/Event/Create-Step-One")]

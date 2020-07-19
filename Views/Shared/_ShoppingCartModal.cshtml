@@ -1,0 +1,49 @@
+﻿@model eShop.Presentation.ViewModels.EventCreateEditViewModel
+
+<!-- Button Shopping Cart Modal -->
+<button type="button" class="btn btn-danger mt-3 text-nowrap" data-toggle="modal" data-target="#shoppingCartModalCenter">
+    <i class="fas fa-shopping-cart"></i> Add to cart
+</button>
+
+<!-- Shopping Cart Modal -->
+<div class="modal fade" id="shoppingCartModalCenter" tabindex="-1" role="dialog" aria-labelledby="shoppingCartModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="shoppingCartModalCenterTitle">Add To Shopping Cart</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="ShoppingCart"
+                      asp-action="AddToShoppingCart"
+                      asp-route-eventId="@Model.Event.EventId"
+                      asp-route-isDetailesPage="@true"
+                      class="needs-validation" novalidate>
+
+                    <div class="form-row">                      
+                        <div class="form-group col-md-6">
+                            <label asp-for="@Model.SelectedTicketId" class="control-label"></label>
+                            <select asp-for="@Model.SelectedTicketId" class="form-control" asp-items="@(new SelectList(Model.Tickets, "TicketId", "TicketName"))">
+                                <option value="">Choose a ticket</option>
+                            </select>
+                            <span asp-validation-for="@Model.SelectedTicketId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="@Model.Amount" class="control-label"></label>
+                            <input data-val="true" class="form-control text-center" type="number" asp-for="@Model.Amount" value="">
+                            <span asp-validation-for="@Model.Amount" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger text-nowrap"><i class="fas fa-shopping-cart"></i> Add To Cart</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
