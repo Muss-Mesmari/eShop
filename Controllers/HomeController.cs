@@ -34,6 +34,8 @@ namespace eShop.Web.Controllers
         //}
 
         private readonly IEventService _eventService;
+        private readonly ITicketService _ticketService;
+        private readonly IScheduleService _scheduleService;
         private readonly ICategoryService _categoryService;
         private readonly FeaturesConfiguration _featuresConfiguration;
 
@@ -41,10 +43,16 @@ namespace eShop.Web.Controllers
         public string SearchedEventBar { get; set; }
 
         public HomeController
-            (IEventService eventService, 
+        (
+            ITicketService ticketService,
+            IScheduleService scheduleService,
+            IEventService eventService, 
             ICategoryService categoryService,
-            IOptions<FeaturesConfiguration> options)
+            IOptions<FeaturesConfiguration> options
+        )
         {
+            _ticketService = ticketService;
+            _scheduleService = scheduleService;
             _eventService = eventService;
             _categoryService = categoryService;
             _featuresConfiguration = options.Value;

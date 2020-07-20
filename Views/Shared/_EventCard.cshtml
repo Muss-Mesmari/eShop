@@ -19,12 +19,11 @@
                         </h5>
                     </div>
 
-                    <a asp-controller="ShoppingCart"
-                       asp-action="AddToShoppingCart"
-                       asp-route-eventId="@Model.EventId"
-                       asp-route-isDetailesPage="@false"   
+                    <a asp-controller="Event"
+                       asp-action="Details"
+                       asp-route-id="@Model.EventId" 
                         role="button" class="btn btn-danger mt-3 text-nowrap">
-                        <i class="fas fa-shopping-cart"></i> Add to cart
+                        Read more
                     </a>
                 </div>
             </div>
