@@ -2,13 +2,20 @@
 
 <h2>Your shopping cart</h2>
 <h4>Here are the events in your shopping cart.</h4>
-<table class="table table-bordered table-striped">
+
+<table class="table">
     <thead>
         <tr>
-            <th class="text-center">Purchaed amount and Ticket</th>
-            <th>Event</th>
-            <th class="text-right">Price</th>
-            <th class="text-right">Subtotal</th>
+            <th scope="col">Event</th>
+            <th scope="col" class="px-0">
+                <div class="d-flex justify-content-around align-items-center">
+                    <div class="col text-center">Ticket</div>
+                    <div class="col-8 text-center">Qty</div>
+                </div>
+            </th>
+            <th scope="col" class="text-center">Price</th>
+            <th scope="col" class="text-center">Total</th>
+            <th scope="col" class="text-center">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -16,80 +23,102 @@
             int i = 0;
             @foreach (var line in Model.ShoppingCartService.ShoppingCartItems)
             {
-                    <tr>
-                        <td class="text-center">
-                            <form asp-controller="ShoppingCart"
-                                asp-action="AddToShoppingCart"
-                                asp-route-eventId="@line.Event.EventId"
-                                asp-route-isDetailesPage="@false"
-                                method="post" role="form">
-                                <div class="d-flex align-items-center justify-content-around">
+                <tr>
+                    <td class="w-25 pt-3 pb-1">
+                        <a asp-controller="Event" asp-action="Details" asp-route-id="@line.Event.EventId"><h5 class="text-decoration-none text-nowrap">@line.Event.Name</h5></a>
+                    </td>
+                    <td class="pt-3 pb-1">
+                        <form asp-controller="ShoppingCart"
+                              asp-action="AddToShoppingCart"
+                              asp-route-eventId="@line.Event.EventId"
+                              asp-route-isDetailesPage="@false"
+                              method="post" role="form">
 
+                            <div class="d-flex justify-content-around align-items-center">
 
-                                    <div class="form-group">
+                                <div class="d-flex justify-content-center">
+                                    <div class="form-group col">
                                         <div class="input-group">
-                                            <input class="form-control text-center" type="number" asp-for="@Model.Amount" value="@line.Amount">
-
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="submit">Edit</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <select asp-for="@Model.SelectedTicketId" class="custom-select form-control" asp-items="@(new SelectList(Model.Tickets, "TicketId", "TicketName"))">
+                                            <select asp-for="@Model.SelectedTicketId" class="custom-select form-control text-center w-auto" asp-items="@(new SelectList(Model.Tickets, "TicketId", "TicketName"))">
                                                 <option value="@line.Ticket.TicketId">@line.Ticket.TicketName</option>
                                             </select>
 
                                             <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="submit">Edit</button>
+                                                <button class="btn btn-sm btn-outline-secondary" type="submit">Edit</button>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-                            </form>
-                        </td>
 
-                        <td class="text-left">
-                            <a asp-controller="Event" asp-action="Details" asp-route-id="@line.Event.EventId" class="text-decoration-none">@line.Event.Name</a>
-                        </td>
-                        <td class="text-right">@line.Ticket.TicketPrice  @line.Event.Currency</td>
-                        <td class="text-right">
-                            @(line.Amount * line.Ticket.TicketPrice) @(line.Event.Currency)
-                        </td>
-                    </tr>               
+                                <div class="d-flex justify-content-center">
+                                    <div class="form-group col-8">
+                                        <div class="input-group">
+                                            <input class="form-control text-center" type="number" asp-for="@Model.Amount" value="@line.Amount">
+
+                                            <div class="input-group-append">
+                                                <button class="btn btn-sm btn-outline-secondary" type="submit">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </td>
+                    <td class="pt-3 pb-1 text-center">@line.Ticket.TicketPrice  @line.Event.Currency</td>
+                    <td class="pt-3 pb-1 text-center">@(line.Amount * line.Ticket.TicketPrice) @(line.Event.Currency)</td>
+                    <td class="pt-3 pb-1 d-flex justify-content-center">
+                        <a asp-controller="ShoppingCart"
+                           asp-action="RemoveFromShoppingCart"
+                           asp-route-eventId="@line.Event.EventId"
+                           class="btn btn-danger btn-sm">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </td>
+                </tr>
             }
             i++;
         }
     </tbody>
-
     <tfoot>
         @if (@Model.ShoppingCartTotalSEK != 0)
         {
             <tr>
-                <td colspan="3" class="text-right font-weight-bold">Total SEK:</td>
-                <td class="text-right">
-                    @String.Format("{0:0.00}", @Model.ShoppingCartTotalSEK)
+                <td colspan="3"><h5 class="text-right font-weight-bold">Total:</h5></td>
+                <td colspan="2">
+                    <h5 class="price text-success text-center">@String.Format("{0:0.00}", @Model.ShoppingCartTotalSEK) SEK</h5>
                 </td>
             </tr>
         }
         @if (@Model.ShoppingCartTotalEUR != 0)
         {
             <tr>
-                <td colspan="3" class="text-right font-weight-bold">Total EUR:</td>
-                <td class="text-right">
-                    @String.Format("{0:0.00}", Model.ShoppingCartTotalEUR)
+                <td colspan="3"><h5 class="text-center font-weight-bold">Total:</h5></td>
+                <td colspan="2">
+                    <h5 class="price text-success text-center">@String.Format("{0:0.00}", Model.ShoppingCartTotalEUR) EUR</h5>
                 </td>
             </tr>
         }
     </tfoot>
 </table>
 
-<div class="text-center">
-    <a class="btn btn-danger text-nowrap" asp-controller="Order" asp-action="Checkout">Check out now!</a>
-</div>
+
+
+@{
+    if (Model.ShoppingCartService.ShoppingCartItems.Count() != 0 )
+    {
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-lg btn-danger w-25 text-center text-nowrap" asp-controller="Order" asp-action="Checkout">Check out now!</a>
+        </div>
+    }
+    else
+    {
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-lg btn-danger w-25 disabled text-center text-nowrap" asp-controller="Order" asp-action="Checkout">Check out now!</a>
+        </div>
+    }
+}
+
 <div>
     <a asp-controller="Home" asp-action="Index">Go to Homepage</a>
 </div>

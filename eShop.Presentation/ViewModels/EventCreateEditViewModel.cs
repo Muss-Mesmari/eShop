@@ -24,15 +24,16 @@ namespace eShop.Presentation.ViewModels
         public Ticket Ticket { get; set; }
         public decimal ShoppingCartItemTotalEUR { get; set; }
         public decimal ShoppingCartItemTotalSEK { get; set; }
+        public decimal GetTicketTotalPrice { get; set; }
 
         [Required]
         [UIHint("Number")]       
-        [Display(Name = "Amount of classes", Prompt = "Enter an number")]       
+        [Display(Name = "")]       
         public int Amount { get; set; }
 
         [Required]
         [UIHint("Number")]
-        [Display(Name = "Type of ticket", Prompt = "Choose a ticket")]
+        [Display(Name = "", Prompt = "Choose a ticket")]
         public int SelectedTicketId { get; set; }        
 
     }

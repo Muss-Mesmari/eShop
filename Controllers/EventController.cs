@@ -93,7 +93,7 @@ namespace eShop.Web.Controllers
             var location = _locationService.GetLocationById(id);
             var teachers = _teachersService.GetTeachersById(id);
             var amount = _shoppingCartService.GetShoppingCartItemAmount(id);         
-            var tickets = _ticketService.GetTicketById(id);
+            var tickets = _ticketService.GetTicketById(id);         
 
             if (amount == 0)
             {

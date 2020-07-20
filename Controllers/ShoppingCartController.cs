@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using eShop.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
 using eShop.Entities.Entities;
+using eShop.Presentation.ViewModels;
 
 namespace eShop.Web.Controllers
 {
@@ -47,8 +48,8 @@ namespace eShop.Web.Controllers
                 _shoppingCartService.ShoppingCartItems = items;
 
                 var shoppingCartViewModel = new ShoppingCartViewModel
-                {                    
-                    Tickets = _shoppingCartService.GetTickets(),                               
+                {
+                    Tickets = _shoppingCartService.GetTickets(),
                     ShoppingCartService = _shoppingCartService,
                     ShoppingCartTotalSEK = _shoppingCartService.GetShoppingCartTotalSEK(),
                     ShoppingCartTotalEUR = _shoppingCartService.GetShoppingCartTotalEUR(),
@@ -61,13 +62,14 @@ namespace eShop.Web.Controllers
                 return View("_BlockedPage");
             }
         }
+
         public RedirectToActionResult AddToShoppingCart(int eventId, bool isDetailesPage)
         {
             if (_featuresConfiguration.EnableOrder)
             {
                 var selectedEvent = _eventService.AllEvents.FirstOrDefault(e => e.EventId == eventId);
                 var SelectedTicket = _ticketService.AllTickets.FirstOrDefault(t => t.TicketId == SelectedTicketId);
-                
+
                 if (selectedEvent != null)
                 {
                     _shoppingCartService.AddToCart(selectedEvent, SelectedTicket, Amount, isDetailesPage);

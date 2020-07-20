@@ -91,6 +91,7 @@ namespace eShop.Infrastructure.Services
             return total;
         }
 
+
         public decimal GetShoppingCartItemTotalEUR(int eventId)
         {
             var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency != SEK && c.Event.EventId == eventId)
@@ -109,6 +110,12 @@ namespace eShop.Infrastructure.Services
         {
             var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency != SEK)
     .Select(t => t.Ticket.TicketPrice * t.Amount).Sum();
+            return total;
+        }
+
+        public decimal GetTicketTotalPrice(int ticketId, int amount)
+        {
+            var total = _eShopDbContext.Ticket.Where(t => t.TicketId == ticketId).Select(t => t.TicketPrice * amount).Sum();
             return total;
         }
 
@@ -197,15 +204,16 @@ namespace eShop.Infrastructure.Services
 
             if (shoppingCartItem != null)
             {
-                if (shoppingCartItem.Amount > 1)
-                {
-                    shoppingCartItem.Amount--;
-                    localAmount = shoppingCartItem.Amount;
-                }
-                else
-                {
-                    _eShopDbContext.ShoppingCartItems.Remove(shoppingCartItem);
-                }
+                _eShopDbContext.ShoppingCartItems.Remove(shoppingCartItem);
+                //if (shoppingCartItem.Amount > 1)
+                //{
+                //    shoppingCartItem.Amount--;
+                //    localAmount = shoppingCartItem.Amount;
+                //}
+                //else
+                //{
+                //    _eShopDbContext.ShoppingCartItems.Remove(shoppingCartItem);
+                //}
             }
 
             _eShopDbContext.SaveChanges();
