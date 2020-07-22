@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using eShop.Web.ViewModels;
 using eShop.Presentation.ViewModels;
+using eShop.Infrastructure.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace eShop.Web.Controllers
 {
@@ -21,6 +23,10 @@ namespace eShop.Web.Controllers
         private readonly ITeachersService _teachersService;
         private readonly ITicketService _ticketService;
         private readonly ShoppingCartService _shoppingCartService;
+        private readonly FeaturesConfiguration _featuresConfiguration;
+
+        [BindProperty(SupportsGet = true)]
+        public string SearchedEventBar { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public string SearchedEvent { get; set; }
@@ -36,7 +42,8 @@ namespace eShop.Web.Controllers
             ILocationService locationService,
             ITeachersService teachersService,
             ITicketService ticketService,
-            ShoppingCartService shoppingCartService
+            ShoppingCartService shoppingCartService,
+            IOptions<FeaturesConfiguration> options
             )
         {
             _scheduleService = scheduleService;
@@ -46,17 +53,23 @@ namespace eShop.Web.Controllers
             _teachersService = teachersService;
             _ticketService = ticketService;
             _shoppingCartService = shoppingCartService;
+            _featuresConfiguration = options.Value;
         }
 
         // GET: Event
         public ActionResult Index(string category)
         {
             IEnumerable<Event> events;
+
+            var days = _scheduleService.AllDaysList;
+            var eventTimes = _scheduleService.GetEventTimesList();
+            
             string currentCategory;
 
             if (string.IsNullOrEmpty(category))
             {
-                events = _eventService.GetEvents(SearchedEvent, SearchedCategory).OrderBy(e => e.EventId);
+                events = _eventService.GetEvents(SearchedEvent, SearchedCategory).OrderBy(e => e.EventId);                
+
                 if (SearchedEvent != null)
                 {
                     currentCategory = SearchedCategory;
@@ -72,9 +85,17 @@ namespace eShop.Web.Controllers
                     .OrderBy(e => e.EventId);
                 currentCategory = _categoryService.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
             }
+            
 
             return View(new EventsListViewModel
             {
+                IsHighlightedEvent = _eventService.IsHighlightedEvent,
+                AllCategories = _categoryService.AllCategories,
+                HomepageCategorySection = _featuresConfiguration.HomepageCategorySection,
+                HomepageFeaturedEventsSection = _featuresConfiguration.HomepageFeaturedEventsSection,
+
+                Days = days,
+                EventTimes = eventTimes,
                 Events = events,
                 CurrentCategory = currentCategory,
                 SearchedEvent = SearchedEvent,
@@ -92,8 +113,8 @@ namespace eShop.Web.Controllers
             var eventTimes = _scheduleService.GetEventTimes(id, false);
             var location = _locationService.GetLocationById(id);
             var teachers = _teachersService.GetTeachersById(id);
-            var amount = _shoppingCartService.GetShoppingCartItemAmount(id);         
-            var tickets = _ticketService.GetTicketById(id);         
+            var amount = _shoppingCartService.GetShoppingCartItemAmount(id);
+            var tickets = _ticketService.GetTicketById(id);
 
             if (amount == 0)
             {
@@ -115,7 +136,7 @@ namespace eShop.Web.Controllers
                 EventTimes = eventTimes,
                 Location = location,
                 Teachers = teachers,
-                Tickets = tickets,               
+                Tickets = tickets,
             });
         }
 
@@ -172,7 +193,7 @@ namespace eShop.Web.Controllers
             {
                 _scheduleService.CreateSchedule(newEvent);
                 var eventId = _eventService.AllEvents.Max(e => e.EventId);
-              // int eventId = _eventService.AllEvents.Select(e => e.EventId).Last();
+                // int eventId = _eventService.AllEvents.Select(e => e.EventId).Last();
                 return RedirectToAction(nameof(CreateStepTwo), new { id = eventId });
             }
             return View();
@@ -182,7 +203,7 @@ namespace eShop.Web.Controllers
         //[Route("/Event/Create-Step-Three")]
         //[HttpGet]
         public IActionResult CreateStepThree(int id)
-        {            
+        {
             var viewModel = new EventCreateEditViewModel
             {
                 EventId = id,
@@ -217,7 +238,7 @@ namespace eShop.Web.Controllers
                 Tickets = _ticketService.GetTicketById(id),
                 Days = _scheduleService.GetEventDays(id, false),
                 EventTimes = _scheduleService.GetEventTimes(id, false),
-        };
+            };
             if (viewModel == null)
             {
                 return View("NotFound");

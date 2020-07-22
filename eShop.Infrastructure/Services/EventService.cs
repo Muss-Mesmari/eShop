@@ -24,7 +24,7 @@ namespace eShop.Infrastructure.Services
         {
             get
             {
-                return _eShopDbContext.Events.Include(c => c.Category);
+                return _eShopDbContext.Events.Include(c => c.Category).OrderBy(e => e.EventId);
             }
         }
 
@@ -32,7 +32,7 @@ namespace eShop.Infrastructure.Services
         {
             get
             {
-                return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.IsHighlightedEvent);
+                return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.IsHighlightedEvent).OrderBy(e => e.EventId);
             }
         }
 

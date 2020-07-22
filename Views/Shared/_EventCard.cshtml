@@ -1,32 +1,81 @@
-﻿@model eShop.Entities.Entities.Event
+﻿@model eShop.Presentation.ViewModels.EventsListViewModel
 
-
-<div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-    <div class="event-card">
-        <div class="card w-auto m-0 my-3 shadow-sm">
-            <div class="img-fluid">
-                <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.EventId">
-                    <img class="card-img-top" src="@Model.ImageUrl" alt="@Model.Name">
-                </a>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title"> <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.EventId" class="text-decoration-none">@Model.Name</a></h5>
-                <h6 class="card-subtitle mb-2 text-muted">@Model.ShortDescription.</h6>
-                <div class="buy d-flex justify-content-between align-items-center">
-                    <div class="price text-success">
-                        <h5 class="mt-4 text-nowrap">
-                            @Model.Price <small class="text-muted"> @Model.Currency</small>
-                        </h5>
+@{
+    int i = 0;
+    @foreach (var item in Model.Events)
+    {
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+            <div class="event-card">
+                <div class="card w-auto m-0 my-3 shadow-sm">
+                    <div class="img-fluid">
+                        <a asp-controller="Event" asp-action="Details" asp-route-id="@item.EventId">
+                            <img class="card-img-top" src="@item.ImageUrl" alt="@item.Name">
+                        </a>
                     </div>
+                    <div class="card-body">
+                        <h5 class="card-title"> <a asp-controller="Event" asp-action="Details" asp-route-id="@item.EventId" class="text-decoration-none">@item.Name</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@item.ShortDescription.</h6>
+                        <div class="buy d-flex justify-content-between align-items-center">
+                            @*<div class="price text-success">
+                                    <h5 class="mt-4 text-nowrap">
+                                        @item.Price <small class="text-muted"> @item.Currency</small>
+                                    </h5>
+                                </div>*@
+                            <div class="text-dark">
+                                <h5 class="mt-4 text-nowrap">
 
-                    <a asp-controller="Event"
-                       asp-action="Details"
-                       asp-route-id="@Model.EventId" 
-                        role="button" class="btn btn-danger mt-3 text-nowrap">
-                        Read more
-                    </a>
+                                    @Model.Days[i].DayOfWeek
+
+                                </h5>
+                            </div>
+
+                            <a asp-controller="Event"
+                               asp-action="Details"
+                               asp-route-id="@item.EventId"
+                               role="button" class="btn btn-danger mt-3 text-nowrap">
+                                Read more
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+        i++;
+    }
+}
+
+
+
+
+@*@model eShop.Entities.Entities.Event
+
+
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+        <div class="event-card">
+            <div class="card w-auto m-0 my-3 shadow-sm">
+                <div class="img-fluid">
+                    <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.EventId">
+                        <img class="card-img-top" src="@Model.ImageUrl" alt="@Model.Name">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.EventId" class="text-decoration-none">@Model.Name</a></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@Model.ShortDescription.</h6>
+                    <div class="buy d-flex justify-content-between align-items-center">
+                        <div class="price text-success">
+                            <h5 class="mt-4 text-nowrap">
+                                @Model.Price <small class="text-muted"> @Model.Currency</small>
+                            </h5>
+                        </div>
+
+                        <a asp-controller="Event"
+                           asp-action="Details"
+                           asp-route-id="@Model.EventId"
+                           role="button" class="btn btn-danger mt-3 text-nowrap">
+                            Read more
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@

@@ -8,6 +8,8 @@ namespace eShop.Presentation.ViewModels
 {
     public class HomeViewModel
     {
+        public List<List<KeyValuePair<string, string>>> EventTimes { get; set; }
+        public IList<Day> Days { get; set; }
         public IEnumerable<Event> IsHighlightedEvent { get; set; }
         public IEnumerable<Category> AllCategories { get; set; }
         public IEnumerable<Event> Events { get; set; }

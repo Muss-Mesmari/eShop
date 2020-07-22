@@ -61,8 +61,15 @@ namespace eShop.Web.Controllers
         //[Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
-            var homeViewModel = new HomeViewModel
+            var days = _scheduleService.AllDaysList;
+            var eventTimes = _scheduleService.GetEventTimesList();
+
+            // var homeViewModel = new HomeViewModel
+            var homeViewModel = new EventsListViewModel
             {
+                Events = _eventService.AllEvents,
+                Days = days,
+                EventTimes = eventTimes,
                 IsHighlightedEvent = _eventService.IsHighlightedEvent,
                 AllCategories = _categoryService.AllCategories,
                 HomepageCategorySection = _featuresConfiguration.HomepageCategorySection,
@@ -75,8 +82,9 @@ namespace eShop.Web.Controllers
         public ActionResult Search()
         {
             IEnumerable<Event> events = _eventService.GetEventsByContent(SearchedEventBar).OrderBy(e => e.EventId);
-
-            return View(new HomeViewModel
+                        
+            //return View(new HomeViewModel
+            return View(new EventsListViewModel
             {
                 Events = events,
                 SearchedEventBar = SearchedEventBar,

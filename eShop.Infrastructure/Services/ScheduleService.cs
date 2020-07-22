@@ -20,6 +20,47 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext = eShopDbContext;
         }
 
+        public IList<Day> AllDaysList => _eShopDbContext.Day.OrderBy(d => d.DayId).ToList();
+
+        public IList<Day> GetEventDaysList()
+        {
+            List<Day> days = new List<Day>();
+            List<int> weekIds = new List<int>();
+
+            foreach (var daysList in AllDaysList)
+            {
+              //  int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
+                weekIds = _eShopDbContext.Week.Where(d => d.WeekId == daysList.WeekId).Select(id => id.WeekId).ToList();
+            }
+          
+
+            foreach (var weekId in weekIds)
+            {
+                days.Add(_eShopDbContext.Day.Where(d => d.WeekId == weekId).FirstOrDefault());
+            }
+
+            return days;
+        }
+
+        public List<List<KeyValuePair<string, string>>> GetEventTimesList()
+        {
+            var AlltimesOfEachDaySorted = new List<List<KeyValuePair<string, string>>>();
+            for (int i = 0; i < AllDaysList.Count(); i++)
+            {
+                var timesOfEachDaySorted = new List<KeyValuePair<string, string>>();
+                var times = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimesId).ToList().Count();
+                for (int j = 0; j < times; j++)
+                {
+                    var timeStart = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimeStart.ToString("hh:mm")).ToList()[j];
+                    var timeEnd = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimeEnd.ToString("hh:mm")).ToList()[j];
+                    timesOfEachDaySorted.Insert(j, new KeyValuePair<string, string>(timeStart, timeEnd));
+                }
+                AlltimesOfEachDaySorted.Add(timesOfEachDaySorted);
+            }
+
+            return AlltimesOfEachDaySorted;
+        }
+
         // Try int? eventId instead of bool isNewEvent
         public IList<Day> GetEventDays(int eventId, bool isNewEvent)
         {
@@ -164,20 +205,20 @@ namespace eShop.Infrastructure.Services
             int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
             List<int> weekIds = _eShopDbContext.Week.Where(d => d.ScheduleId == scheduleId).Select(id => id.WeekId).ToList();
             List<int> dayIds = new List<int>();
-            
+
             foreach (var weekId in weekIds)
             {
                 var day = _eShopDbContext.Day.Where(w => w.WeekId == weekId).FirstOrDefault();
                 dayIds.Add(day.DayId);
                 var entity = _eShopDbContext.Entry(day);
-                entity.State = EntityState.Detached;               
+                entity.State = EntityState.Detached;
             }
             return dayIds;
         }
 
         private int GetScheduleId(int? eventId)
         {
-            var schedule =_eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault();
+            var schedule = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault();
             int scheduleId = schedule.ScheduleId;
             var entity = _eShopDbContext.Entry(schedule);
             entity.State = EntityState.Detached;
@@ -186,7 +227,7 @@ namespace eShop.Infrastructure.Services
 
         private Schedule GetScheduleById(int? eventId)
         {
-            var schedule = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault();           
+            var schedule = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault();
             var entity = _eShopDbContext.Entry(schedule);
             entity.State = EntityState.Detached;
             return schedule;
@@ -194,17 +235,17 @@ namespace eShop.Infrastructure.Services
         public void UpdateTimes(int eventId, List<string> eventTimesBindedKey, List<string> eventTimesBindedValue)
         {
             // Get the needed Ids
-            var dayIds = GetDaysIds(eventId);       
-           
+            var dayIds = GetDaysIds(eventId);
+
             if (dayIds != null)
             {
                 foreach (var dayId in dayIds)
-                {                 
+                {
                     var timesIds = _eShopDbContext.Times.Where(t => t.DayId == dayId).Select(t => t.TimesId).ToList();
 
-                    
+
                     for (int i = 0; i < timesIds.Count(); i++)
-                    {                       
+                    {
                         var newTimeStart = eventTimesBindedKey[i];
                         var newTimeEnd = eventTimesBindedValue[i];
 
@@ -220,10 +261,10 @@ namespace eShop.Infrastructure.Services
                         var entity = _eShopDbContext.Entry(newTimes);
                         entity.State = EntityState.Modified;
                         _eShopDbContext.SaveChanges();
-                        entity.State = EntityState.Detached;                        
-                    }                   
+                        entity.State = EntityState.Detached;
+                    }
                 }
-            } 
+            }
         }
 
         public void DeleteSchedule(int? id)

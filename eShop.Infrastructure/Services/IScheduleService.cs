@@ -7,7 +7,10 @@ namespace eShop.Infrastructure.Services
 {
     public interface IScheduleService
     {
-        IList<Day> GetEventDays(int eventId, bool isNewEvent); 
+        public List<List<KeyValuePair<string, string>>> GetEventTimesList();
+        IList<Day> AllDaysList { get; }
+
+        IList<Day> GetEventDays(int eventId, bool isNewEvent);
         List<List<KeyValuePair<string, string>>> GetEventTimes(int eventId, bool isNewEvent);
         void CreateSchedule(EventCreateEditViewModel newEvent);
         void UpdateDays(int eventId, IList<Day> newDays);
