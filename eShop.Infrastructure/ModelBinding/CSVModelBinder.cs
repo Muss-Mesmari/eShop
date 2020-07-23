@@ -26,7 +26,7 @@ namespace eShop.Infrastructure.ModelBinding
                     Name = eventValues[0],
                     ShortDescription = eventValues[1],
                     LongDescription = eventValues[2],
-                    Price = int.Parse(eventValues[3]),
+                 //   Price = int.Parse(eventValues[3]),
                     ImageUrl = eventValues[5],
                     IsHighlightedEvent = bool.Parse(eventValues[6]),
                     InStock = bool.Parse(eventValues[7]),

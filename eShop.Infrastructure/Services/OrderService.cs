@@ -10,13 +10,16 @@ namespace eShop.Infrastructure.Services
     {
         private readonly ShoppingCartService _shoppingCartService;
         private readonly eShopDbContext _eShopDbContext;
+      //  private readonly ITicketService _ticketService;
 
         public OrderService
             (
+          //  ITicketService ticketService,
             eShopDbContext eShopDbContext,
             ShoppingCartService shoppingCartService
             )
         {
+           // _ticketService = ticketService;
             _eShopDbContext = eShopDbContext;
             _shoppingCartService = shoppingCartService;
         }
@@ -37,7 +40,7 @@ namespace eShop.Infrastructure.Services
                 {
                     Amount = shoppingCartItem.Amount,
                     EventId = shoppingCartItem.Event.EventId,
-                    Price = shoppingCartItem.Event.Price
+                    Price = shoppingCartItem.Ticket.TicketPrice
                 };
 
                 order.OrderDetails.Add(orderDetail);

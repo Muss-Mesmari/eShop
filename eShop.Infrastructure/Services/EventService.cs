@@ -60,7 +60,7 @@ namespace eShop.Infrastructure.Services
                 Name = newEvent.Event.Name,
                 ShortDescription = newEvent.Event.ShortDescription,
                 LongDescription = newEvent.Event.LongDescription,
-                Price = newEvent.Event.Price,
+               // Price = newEvent.Event.Price,
                 ImageUrl = newEvent.Event.ImageUrl,
                 IsHighlightedEvent = newEvent.Event.IsHighlightedEvent,
                 InStock = newEvent.Event.InStock,
@@ -91,7 +91,7 @@ namespace eShop.Infrastructure.Services
                 newEvent.Event.Name = newEvent.Event.Name;
                 newEvent.Event.ShortDescription = newEvent.Event.ShortDescription;
                 newEvent.Event.LongDescription = newEvent.Event.LongDescription;
-                newEvent.Event.Price = newEvent.Event.Price;
+              //  newEvent.Event.Price = newEvent.Event.Price;
                 newEvent.Event.ImageUrl = newEvent.Event.ImageUrl;
                 newEvent.Event.IsHighlightedEvent = newEvent.Event.IsHighlightedEvent;
                 newEvent.Event.InStock = newEvent.Event.InStock;
