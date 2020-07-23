@@ -21,7 +21,7 @@ namespace eShop.Web.ViewModels
         [Required]
         [UIHint("Number")]
         [Display(Name = "Amount of classes", Prompt = "Enter an number")]
-        public int Amount { get; set; }
+        public int SelectedAmount { get; set; }
 
         [Required]
         [UIHint("Number")]

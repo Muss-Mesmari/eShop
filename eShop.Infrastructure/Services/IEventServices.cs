@@ -8,14 +8,12 @@ namespace eShop.Infrastructure.Services
 {
     public interface IEventService
     {
-        IEnumerable<Event> AllEvents { get; }
+        IEnumerable<Event> AllEvents(string searchedEvent = null, string searchedCategory = null);
         IEnumerable<Event> IsHighlightedEvent { get; }
-        Event GetEventById(int? eventId);
-        //IEnumerable<Schedule> GetSchedule(int eventId);
-        IEnumerable<Event> GetEvents(string searchedEvent = null, string searchedCategory = null);
-        IEnumerable<Event> GetEventsByContent(string searchedEvent);
-        void CreateEvent(EventCreateEditViewModel newEvent);
-        void UpdateEvent(EventCreateEditViewModel oldEvent);
+        Event GetEventById(int? eventId);      
+        IEnumerable<Event> GetSearchedEventsByContent(string searchedEvent);
+        void CreateEvent(EventViewModel newEvent);
+        void UpdateEvent(EventViewModel oldEvent);
         void DeleteEvent(int id);
     }
 }

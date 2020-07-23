@@ -1,4 +1,4 @@
-﻿@model eShop.Presentation.ViewModels.EventCreateEditViewModel
+﻿@model eShop.Presentation.ViewModels.EventViewModel
 @*DetailsViewModel*@
 
 @{
@@ -47,7 +47,7 @@
                     <div class=" d-flex justify-content-between align-items-center">
                         <div class="price text-success">
                             <h5 class="mt-4 text-nowrap">
-                                @Model.Tickets[0].TicketPrice <small class="text-muted"> @Model.Event.Currency</small>
+                                @Model.Tickets.ToList()[0].TicketPrice <small class="text-muted"> @Model.Event.Currency</small>
                             </h5>
                         </div>
                         <partial name="_ShoppingCartModal">    

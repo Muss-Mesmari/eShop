@@ -20,11 +20,15 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext = eShopDbContext;
         }
 
-        public IEnumerable<Event> AllEvents
+        public IEnumerable<Event> AllEvents(string searchedEvent = null, string searchedCategory = null)
         {
-            get
+            if (searchedCategory == null)
             {
-                return _eShopDbContext.Events.Include(c => c.Category).OrderBy(e => e.EventId);
+                return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) || string.IsNullOrEmpty(searchedEvent));
+            }
+            else
+            {
+                return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) && e.Category.CategoryName == searchedCategory || string.IsNullOrEmpty(searchedEvent));
             }
         }
 
@@ -46,7 +50,7 @@ namespace eShop.Infrastructure.Services
             return eventById;
         }
 
-        public void CreateEvent(EventCreateEditViewModel newEvent)
+        public void CreateEvent(EventViewModel newEvent)
         {
             int locationId = _eShopDbContext.Location.Select(l => l.LocationId).ToList().Last();
             int teachersId = _eShopDbContext.Teachers.Select(t => t.TeachersId).ToList().Last();         
@@ -70,17 +74,15 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext.SaveChanges();
         }
 
-        public void UpdateEvent(EventCreateEditViewModel newEvent)
+        public void UpdateEvent(EventViewModel newEvent)
         {
             var eventId = newEvent.Event.EventId;
 
             var location = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == eventId);
-            var locationId = location.LocationId;
             var entityLocation = _eShopDbContext.Entry(location);
             entityLocation.State = EntityState.Detached;
 
             var teachers = _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId);
-            var teachersId = teachers.TeachersId;
             var entityTeachers = _eShopDbContext.Entry(teachers);
             entityTeachers.State = EntityState.Detached;
 
@@ -95,8 +97,8 @@ namespace eShop.Infrastructure.Services
                 newEvent.Event.InStock = newEvent.Event.InStock;
                 newEvent.Event.CategoryId = newEvent.Event.CategoryId;
                 newEvent.Event.Currency = newEvent.Event.Currency;
-                newEvent.Event.LocationId = locationId;
-                newEvent.Event.TeachersId = teachersId;
+                newEvent.Event.LocationId = location.LocationId;
+                newEvent.Event.TeachersId = teachers.TeachersId;
             }
 
             var entity = _eShopDbContext.Entry(newEvent.Event);
@@ -114,19 +116,7 @@ namespace eShop.Infrastructure.Services
             }
         }
 
-        public IEnumerable<Event> GetEvents(string searchedEvent = null, string searchedCategory = null)
-        {
-            if (searchedCategory == null)
-            {
-                return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) || string.IsNullOrEmpty(searchedEvent));
-            }
-            else
-            {
-                return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) && e.Category.CategoryName == searchedCategory || string.IsNullOrEmpty(searchedEvent));
-            }
-        }
-
-        public IEnumerable<Event> GetEventsByContent(string searchedEvent)
+        public IEnumerable<Event> GetSearchedEventsByContent(string searchedEvent)
         {
             return _eShopDbContext.Events.Include(c => c.Category).Where(e => e.Name.Contains(searchedEvent) || e.LongDescription.Contains(searchedEvent) || e.ShortDescription.Contains(searchedEvent) || e.Category.CategoryName.Contains(searchedEvent));
         }

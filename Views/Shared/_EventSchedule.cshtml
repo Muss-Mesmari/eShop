@@ -1,4 +1,4 @@
-﻿@model eShop.Presentation.ViewModels.EventCreateEditViewModel
+﻿@model eShop.Presentation.ViewModels.EventViewModel
 
 @{
     List<string> DaysOfWeek = new List<string>();
@@ -10,7 +10,7 @@
                 {
                     DaysOfWeek.Add(@Model.Days.Select(d => d.DayOfWeek).ToList()[i].ToString());
                     <a class="btn btn-primary" data-toggle="collapse" href="#tab-@i" role="button" aria-expanded="false" aria-controls="tab-@i">
-                        @Model.Days.Select(d => d.DayOfWeek).ToList()[i] <span class="badge badge-light"> @Model.EventTimes[i].Count()</span> <span class="sr-only">unread messages</span>
+                        @Model.Days.Select(d => d.DayOfWeek).ToList()[i] <span class="badge badge-light"> @Model.Times[i].Count()</span> <span class="sr-only">unread messages</span>
                     </a>
                 }
             }
@@ -20,7 +20,7 @@
     <div class="row-8">
         <div class="row">
             <div class="col">
-                @{for (int i = 0; i < @Model.EventTimes.Count(); i++)
+                @{for (int i = 0; i < @Model.Times.Count(); i++)
                     {
 
                         <div class="collapse multi-collapse" id="tab-@i">
@@ -39,7 +39,7 @@
                                                 <table class="table m-0">
                                                     <tr>
                                                         <td scope="row">
-                                                            @{foreach (var dayTimeStart in @Model.EventTimes[i])
+                                                            @{foreach (var dayTimeStart in @Model.Times[i])
                                                                 {
                                                                     <table class="table table-borderless table-hover m-0">
                                                                         <tr>
@@ -59,7 +59,7 @@
                                                 <table class="table m-0">
                                                     <tr>
                                                         <td scope="row">
-                                                            @{foreach (var dayTimeEnd in @Model.EventTimes[i])
+                                                            @{foreach (var dayTimeEnd in @Model.Times[i])
                                                                 {
                                                                     <table class="table table-borderless table-hover m-0">
                                                                         <tr>

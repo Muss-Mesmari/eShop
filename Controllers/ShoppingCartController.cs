@@ -22,7 +22,7 @@ namespace eShop.Web.Controllers
 
 
         [BindProperty(SupportsGet = true)]
-        public int Amount { get; set; }
+        public int SelectedAmount { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public int SelectedTicketId { get; set; }
@@ -67,12 +67,12 @@ namespace eShop.Web.Controllers
         {
             if (_featuresConfiguration.EnableOrder)
             {
-                var selectedEvent = _eventService.AllEvents.FirstOrDefault(e => e.EventId == eventId);
+                var selectedEvent = _eventService.AllEvents().FirstOrDefault(e => e.EventId == eventId);
                 var SelectedTicket = _ticketService.AllTickets.FirstOrDefault(t => t.TicketId == SelectedTicketId);
 
                 if (selectedEvent != null)
                 {
-                    _shoppingCartService.AddToCart(selectedEvent, SelectedTicket, Amount, isDetailesPage);
+                    _shoppingCartService.AddToCart(selectedEvent, SelectedTicket, SelectedAmount, isDetailesPage);
                 }
             }
             return RedirectToAction(nameof(Index));
@@ -80,7 +80,7 @@ namespace eShop.Web.Controllers
 
         public RedirectToActionResult RemoveFromShoppingCart(int eventId)
         {
-            var selectedEvent = _eventService.AllEvents.FirstOrDefault(e => e.EventId == eventId);
+            var selectedEvent = _eventService.AllEvents().FirstOrDefault(e => e.EventId == eventId);
 
             if (selectedEvent != null)
             {

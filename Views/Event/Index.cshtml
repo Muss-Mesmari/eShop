@@ -1,4 +1,4 @@
-﻿@model eShop.Presentation.ViewModels.EventsListViewModel
+﻿@model eShop.Presentation.ViewModels.EventViewModel
 
 
 <partial name="_EventsFilter" />
@@ -8,20 +8,20 @@
 @{
     if (@Model.Events.Any())
     {
-    <div class="card-deck">
-        <partial name="_EventCard" />
+        <div class="card-deck">
+            <partial name="_EventCard" />
 
-        @*@for (int i = 0; i < @Model.Events.ToList().Count(); i++)
-        {
-            <partial name="_EventCard" model="@Model.Events.ToList()[i]" />
-        }*@
+            @*@for (int i = 0; i < @Model.Events.ToList().Count(); i++)
+                {
+                    <partial name="_EventCard" model="@Model.Events.ToList()[i]" />
+                }*@
 
-        @*@foreach (var item in Model.Events)
-        {
-            <partial name="_EventCard" model="item" />
-        }*@
+            @*@foreach (var item in Model.Events)
+                {
+                    <partial name="_EventCard" model="item" />
+                }*@
 
-    </div>
+        </div>
     }
     else
     {

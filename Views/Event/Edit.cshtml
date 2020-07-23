@@ -1,4 +1,4 @@
-﻿@model eShop.Presentation.ViewModels.EventCreateEditViewModel
+﻿@model eShop.Presentation.ViewModels.EventViewModel
 @{
     ViewData["Title"] = "Edit";
 }
@@ -29,7 +29,7 @@
     <!-- the contents of the side scroll spy menu -->
     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
 
-        <form asp-action="Edit">
+        <form asp-controller="Event" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Event.EventId" />
 
@@ -112,7 +112,7 @@
                                         <div class="card-header" id="headingOne">
                                             <h5 class="mb-0">
                                                 <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse_Schedule_@i" aria-expanded="true" aria-controls="collapse_Schedule_@i">
-                                                    @Model.Days[i].DayOfWeek
+                                                    @Model.Days.ToList()[i].DayOfWeek
                                                 </a>
                                             </h5>
                                         </div>
@@ -120,9 +120,9 @@
                                             <div class="card-body">
 
                                                 <div class="form-row">
-                                                    <label asp-for="@Model.Days[i].DayOfWeek" class="control-label"></label>
-                                                    <select asp-for="@Model.Days[i].DayOfWeek" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DayOfWeek))))"><option>Choose days</option></select>
-                                                    <span asp-validation-for="@Model.Days[i].DayOfWeek" class="text-danger"></span>
+                                                    <label asp-for="@Model.Days.ToList()[i].DayOfWeek" class="control-label"></label>
+                                                    <select asp-for="@Model.Days.ToList()[i].DayOfWeek" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DayOfWeek))))"><option>Choose days</option></select>
+                                                    <span asp-validation-for="@Model.Days.ToList()[i].DayOfWeek" class="text-danger"></span>
                                                     <div class="invalid-tooltip">
                                                         Please provide a ticket name.
                                                     </div>
@@ -130,7 +130,7 @@
 
                                                 <div class="form-group mt-3">
                                                     <div class="tab-content" id="nav-tabContent">
-                                                        @for (int j = 0; j < @Model.EventTimes[i].Count(); j++)
+                                                        @for (int j = 0; j < @Model.Times[i].Count(); j++)
                                                         {
                                                             <table class="table table-bordered">
                                                                 <thead>
@@ -149,19 +149,19 @@
                                                                                             <tr>
                                                                                                 <td scope="row">
                                                                                                     @{
-                                                                                                        List<string> EventTimesBindedKey = new List<string>();
+                                                                                                        List<string> SelectedStartTimesBinded = new List<string>();
 
-                                                                                                        foreach (var timeStart in @Model.EventTimes[j])
+                                                                                                        foreach (var timeStart in @Model.Times[j])
                                                                                                         {
-                                                                                                            EventTimesBindedKey.Add(timeStart.Key);
+                                                                                                            SelectedStartTimesBinded.Add(timeStart.Key);
                                                                                                         }
 
-                                                                                                        for (int index = 0; index < EventTimesBindedKey.Count(); index++)
+                                                                                                        for (int index = 0; index < SelectedStartTimesBinded.Count(); index++)
                                                                                                         {
                                                                                                             <div class="form-row">
                                                                                                                 <div class="col-md-6 pt-3">
-                                                                                                                    <input asp-for="@EventTimesBindedKey[index]" class="form-control" />
-                                                                                                                    <span asp-validation-for="@EventTimesBindedKey[index]" class="text-danger"></span>
+                                                                                                                    <input asp-for="@SelectedStartTimesBinded[index]" class="form-control" />
+                                                                                                                    <span asp-validation-for="@SelectedStartTimesBinded[index]" class="text-danger"></span>
                                                                                                                     <div class="invalid-tooltip">
                                                                                                                         Please provide a ticket name.
                                                                                                                     </div>
@@ -185,19 +185,19 @@
                                                                                             <tr>
                                                                                                 <td scope="row">
                                                                                                     @{
-                                                                                                        List<string> EventTimesBindedValue = new List<string>();
+                                                                                                        List<string> SelectedEndTimesBinded = new List<string>();
 
-                                                                                                        foreach (var timeEnd in @Model.EventTimes[j])
+                                                                                                        foreach (var timeEnd in @Model.Times[j])
                                                                                                         {
-                                                                                                            EventTimesBindedValue.Add(timeEnd.Value);
+                                                                                                            SelectedEndTimesBinded.Add(timeEnd.Value);
                                                                                                         }
 
-                                                                                                        for (int index = 0; index < EventTimesBindedValue.Count(); index++)
+                                                                                                        for (int index = 0; index < SelectedEndTimesBinded.Count(); index++)
                                                                                                         {
                                                                                                             <div class="form-row">
                                                                                                                 <div class="col-md-6 pt-3">
-                                                                                                                    <input asp-for="@EventTimesBindedValue[index]" class="form-control" />
-                                                                                                                    <span asp-validation-for="@EventTimesBindedValue[index]" class="text-danger"></span>
+                                                                                                                    <input asp-for="@SelectedEndTimesBinded[index]" class="form-control" />
+                                                                                                                    <span asp-validation-for="@SelectedEndTimesBinded[index]" class="text-danger"></span>
                                                                                                                     <div class="invalid-tooltip">
                                                                                                                         Please provide a ticket name.
                                                                                                                     </div>
@@ -216,92 +216,7 @@
                                                                 </tbody>
                                                             </table>
                                                         }
-                                                        @*@foreach (var time in @Model.EventTimes)
-                                                            {
-                                                                <table class="table table-bordered">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th scope="col">From</th>
-                                                                            <th scope="col">To</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td>
-                                                                                <table class="table m-0">
-                                                                                    <tr>
-                                                                                        <td scope="row">
-                                                                                            <table class="table table-borderless table-hover m-0">
-                                                                                                <tr>
-                                                                                                    <td scope="row">
-                                                                                                        @{
-                                                                                                            List<string> EventTimesBindedKey = new List<string>();
 
-                                                                                                            foreach (var timeStart in time)
-                                                                                                            {
-                                                                                                                EventTimesBindedKey.Add(timeStart.Key);
-                                                                                                            }
-
-                                                                                                            for (int index = 0; index < EventTimesBindedKey.Count(); index++)
-                                                                                                            {
-                                                                                                                <div class="form-row">
-                                                                                                                    <div class="col-md-6 pt-3">
-                                                                                                                        <input asp-for="@EventTimesBindedKey[index]" class="form-control" />
-                                                                                                                        <span asp-validation-for="@EventTimesBindedKey[index]" class="text-danger"></span>
-                                                                                                                        <div class="invalid-tooltip">
-                                                                                                                            Please provide a ticket name.
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            }
-                                                                                                        }
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </table>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </table>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <table class="table m-0">
-                                                                                    <tr>
-                                                                                        <td scope="row">
-                                                                                            <table class="table table-borderless table-hover m-0">
-                                                                                                <tr>
-                                                                                                    <td scope="row">
-                                                                                                        @{
-                                                                                                            List<string> EventTimesBindedValue = new List<string>();
-
-                                                                                                            foreach (var timeEnd in time)
-                                                                                                            {
-                                                                                                                EventTimesBindedValue.Add(timeEnd.Value);
-                                                                                                            }
-
-                                                                                                            for (int index = 0; index < EventTimesBindedValue.Count(); index++)
-                                                                                                            {
-                                                                                                                <div class="form-row">
-                                                                                                                    <div class="col-md-6 pt-3">
-                                                                                                                        <input asp-for="@EventTimesBindedValue[index]" class="form-control" />
-                                                                                                                        <span asp-validation-for="@EventTimesBindedValue[index]" class="text-danger"></span>
-                                                                                                                        <div class="invalid-tooltip">
-                                                                                                                            Please provide a ticket name.
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            }
-                                                                                                        }
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </table>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </table>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            }*@
                                                     </div>
                                                 </div>
                                             </div>

@@ -35,7 +35,6 @@ namespace eShop.Infrastructure.Services
             {
                 CategoryName = newCategory.CategoryName,
                 Description = newCategory.Description
-               // Events = newCategory.Events
             };
             _eShopDbContext.Categories.Add(_newCategory);
             _eShopDbContext.SaveChanges();

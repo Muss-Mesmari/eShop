@@ -35,7 +35,7 @@ namespace eShop.Infrastructure.Services
             return location;
         }
 
-        public void CreateLocation(EventCreateEditViewModel newEvent)
+        public void CreateLocation(EventViewModel newEvent)
         {
             var _newLocation = new Location()
             {
@@ -49,7 +49,7 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext.SaveChanges();
         }
 
-        public void UpdateLocation(EventCreateEditViewModel newEvent)
+        public void UpdateLocation(EventViewModel newEvent)
         {
             var eventId = newEvent.Event.EventId;
             var location = GetLocationById(eventId);
@@ -71,9 +71,7 @@ namespace eShop.Infrastructure.Services
         }
 
         public void DeleteLocation(int locationId)
-        {
-            //var removedLocation = GetLocationById(id);
-           
+        {                       
             var removedLocation = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == locationId);
 
             if (removedLocation != null)

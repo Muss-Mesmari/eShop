@@ -20,9 +20,9 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext = eShopDbContext;
         }
 
-        public IList<Day> AllDaysList => _eShopDbContext.Day.OrderBy(d => d.DayId).ToList();
-
-        public IList<Day> GetEventDaysList()
+        public IEnumerable<Day> AllDaysList => _eShopDbContext.Day.OrderBy(d => d.DayId).ToList();
+        
+        public IEnumerable<Day> GetAllEventsDays()
         {
             List<Day> days = new List<Day>();
             List<int> weekIds = new List<int>();
@@ -42,17 +42,17 @@ namespace eShop.Infrastructure.Services
             return days;
         }
 
-        public List<List<KeyValuePair<string, string>>> GetEventTimesList()
+        public List<List<KeyValuePair<string, string>>> GetAllEventsTimesList()
         {
             var AlltimesOfEachDaySorted = new List<List<KeyValuePair<string, string>>>();
             for (int i = 0; i < AllDaysList.Count(); i++)
             {
                 var timesOfEachDaySorted = new List<KeyValuePair<string, string>>();
-                var times = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimesId).ToList().Count();
+                var times = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList.ToList()[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimesId).ToList().Count();
                 for (int j = 0; j < times; j++)
                 {
-                    var timeStart = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimeStart.ToString("hh:mm")).ToList()[j];
-                    var timeEnd = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimeEnd.ToString("hh:mm")).ToList()[j];
+                    var timeStart = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList.ToList()[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimeStart.ToString("hh:mm")).ToList()[j];
+                    var timeEnd = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList.ToList()[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimeEnd.ToString("hh:mm")).ToList()[j];
                     timesOfEachDaySorted.Insert(j, new KeyValuePair<string, string>(timeStart, timeEnd));
                 }
                 AlltimesOfEachDaySorted.Add(timesOfEachDaySorted);
@@ -62,7 +62,7 @@ namespace eShop.Infrastructure.Services
         }
 
         // Try int? eventId instead of bool isNewEvent
-        public IList<Day> GetEventDays(int eventId, bool isNewEvent)
+        public IEnumerable<Day> GetEventDays(int eventId, bool isNewEvent)
         {
             List<Day> days = new List<Day>();
             if (!isNewEvent)
@@ -118,7 +118,7 @@ namespace eShop.Infrastructure.Services
             }
         }
 
-        public void CreateSchedule(EventCreateEditViewModel newEvent)
+        public void CreateSchedule(EventViewModel newEvent)
         {
             int eventId = _eShopDbContext.Events.Select(e => e.EventId).ToList().Last();
 
@@ -158,15 +158,15 @@ namespace eShop.Infrastructure.Services
             var dayId = newDay.DayId;
             var newTimes = new Times()
             {
-                TimeStart = newEvent.Times.TimeStart,
-                TimeEnd = newEvent.Times.TimeEnd,
+                TimeStart = newEvent.Time.TimeStart,
+                TimeEnd = newEvent.Time.TimeEnd,
                 DayId = dayId
             };
             _eShopDbContext.Times.Add(newTimes);
             _eShopDbContext.SaveChanges();
         }
 
-        public void UpdateDays(int eventId, IList<Day> newDays)
+        public void UpdateDays(int eventId, IEnumerable<Day> newDays)
         {
             // Get the needed Ids
             int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
@@ -232,7 +232,8 @@ namespace eShop.Infrastructure.Services
             entity.State = EntityState.Detached;
             return schedule;
         }
-        public void UpdateTimes(int eventId, List<string> eventTimesBindedKey, List<string> eventTimesBindedValue)
+
+        public void UpdateTimes(int eventId, List<string> selectedStartTimesBinded, List<string> selectedEndTimesBinded)
         {
             // Get the needed Ids
             var dayIds = GetDaysIds(eventId);
@@ -246,8 +247,8 @@ namespace eShop.Infrastructure.Services
 
                     for (int i = 0; i < timesIds.Count(); i++)
                     {
-                        var newTimeStart = eventTimesBindedKey[i];
-                        var newTimeEnd = eventTimesBindedValue[i];
+                        var newTimeStart = selectedStartTimesBinded[i];
+                        var newTimeEnd = selectedEndTimesBinded[i];
 
                         // update the times
                         var newTimes = new Times()

@@ -24,7 +24,7 @@ namespace eShop.Infrastructure.Services
 
         public IEnumerable<Ticket> AllTickets => _eShopDbContext.Ticket;
 
-        public IList<Ticket> GetTicketById(int? eventId)
+        public IEnumerable<Ticket> GetTicketById(int? eventId)
         {
             var tickets = _eShopDbContext.Ticket.Where(e => e.EventId == eventId).ToList();
             foreach (var ticket in tickets)
@@ -35,7 +35,7 @@ namespace eShop.Infrastructure.Services
             return tickets;
         }
 
-        public void CreateTicket(int eventId, EventCreateEditViewModel newEvent)
+        public void CreateTicket(int eventId, EventViewModel newEvent)
         {           
             var _newTicket = new Ticket()
             {
@@ -49,7 +49,7 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext.SaveChanges();
         }
 
-        public void UpdateTicket(int eventId, IList<Ticket> newTickets)
+        public void UpdateTicket(int eventId, IEnumerable<Ticket> newTickets)
         {
             var oldTickets = GetTicketById(eventId);
             var oldTicketsIds = oldTickets.Select(t => t.TicketId).ToList();

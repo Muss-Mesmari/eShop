@@ -62,13 +62,13 @@ namespace eShop.Web.Controllers
             IEnumerable<Event> events;
 
             var days = _scheduleService.AllDaysList;
-            var eventTimes = _scheduleService.GetEventTimesList();
+            var times = _scheduleService.GetAllEventsTimesList();
             
             string currentCategory;
 
             if (string.IsNullOrEmpty(category))
             {
-                events = _eventService.GetEvents(SearchedEvent, SearchedCategory).OrderBy(e => e.EventId);                
+                events = _eventService.AllEvents(SearchedEvent, SearchedCategory).OrderBy(e => e.EventId);                
 
                 if (SearchedEvent != null)
                 {
@@ -81,22 +81,15 @@ namespace eShop.Web.Controllers
             }
             else
             {
-                events = _eventService.GetEvents(SearchedEvent, SearchedCategory).Where(p => p.Category.CategoryName == category)
+                events = _eventService.AllEvents(SearchedEvent, SearchedCategory).Where(p => p.Category.CategoryName == category)
                     .OrderBy(e => e.EventId);
                 currentCategory = _categoryService.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
             }
-            
 
-            return View(new EventsListViewModel
+            return View(new EventViewModel
             {
-                IsHighlightedEvent = _eventService.IsHighlightedEvent,
-                AllCategories = _categoryService.AllCategories,
-                HomepageCategorySection = _featuresConfiguration.HomepageCategorySection,
-                HomepageFeaturedEventsSection = _featuresConfiguration.HomepageFeaturedEventsSection,
-
-                Days = days,
-                EventTimes = eventTimes,
                 Events = events,
+                Days = days,
                 CurrentCategory = currentCategory,
                 SearchedEvent = SearchedEvent,
                 SearchedCategory = SearchedCategory,
@@ -110,15 +103,15 @@ namespace eShop.Web.Controllers
         {
             var eventDetails = _eventService.GetEventById(id);
             var days = _scheduleService.GetEventDays(id, false);
-            var eventTimes = _scheduleService.GetEventTimes(id, false);
+            var times = _scheduleService.GetEventTimes(id, false);
             var location = _locationService.GetLocationById(id);
             var teachers = _teachersService.GetTeachersById(id);
-            var amount = _shoppingCartService.GetShoppingCartItemAmount(id);
+            var selectedAmount = _shoppingCartService.GetShoppingCartItemAmount(id);
             var tickets = _ticketService.GetTicketById(id);
 
-            if (amount == 0)
+            if (selectedAmount == 0)
             {
-                amount = 1;
+                selectedAmount = 1;
             }
 
             if (eventDetails == null)
@@ -126,14 +119,14 @@ namespace eShop.Web.Controllers
                 return View("NotFound");
             }
 
-            return View(new EventCreateEditViewModel
+            return View(new EventViewModel
             {
                 ShoppingCartItemTotalSEK = _shoppingCartService.GetShoppingCartItemTotalSEK(id),
                 ShoppingCartItemTotalEUR = _shoppingCartService.GetShoppingCartItemTotalEUR(id),
-                Amount = amount,
+                SelectedAmount = selectedAmount,
                 Event = eventDetails,
                 Days = days,
-                EventTimes = eventTimes,
+                Times = times,
                 Location = location,
                 Teachers = teachers,
                 Tickets = tickets,
@@ -146,7 +139,7 @@ namespace eShop.Web.Controllers
         // [HttpGet]
         public IActionResult CreateStepOne()
         {
-            var viewModel = new EventCreateEditViewModel
+            var viewModel = new EventViewModel
             {
                 Categories = _categoryService.AllCategories.ToList()
             };
@@ -156,7 +149,7 @@ namespace eShop.Web.Controllers
         // POST: Event/CreateStepOne
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateStepOne(EventCreateEditViewModel newEvent)
+        public IActionResult CreateStepOne(EventViewModel newEvent)
         {
             if (ModelState.IsValid)
             {
@@ -164,7 +157,7 @@ namespace eShop.Web.Controllers
                 _locationService.CreateLocation(newEvent);
                 _eventService.CreateEvent(newEvent);
 
-                var eventId = _eventService.AllEvents.Max(e => e.EventId);
+                var eventId = _eventService.AllEvents().Max(e => e.EventId);
                 return RedirectToAction(nameof(CreateStepTwo), new { id = eventId, isNewEvent = true });
             }
             return View();
@@ -175,11 +168,11 @@ namespace eShop.Web.Controllers
         // [HttpGet]
         public IActionResult CreateStepTwo(int id, bool isNewEvent)
         {
-            var viewModel = new EventCreateEditViewModel
+            var viewModel = new EventViewModel
             {
                 EventId = id,
                 Days = _scheduleService.GetEventDays(id, isNewEvent),
-                EventTimes = _scheduleService.GetEventTimes(id, isNewEvent)
+                Times = _scheduleService.GetEventTimes(id, isNewEvent)
             };
             return View(viewModel);
         }
@@ -187,13 +180,12 @@ namespace eShop.Web.Controllers
         // POST: Event/CreateStepTwo
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateStepTwo(EventCreateEditViewModel newEvent)
+        public IActionResult CreateStepTwo(EventViewModel newEvent)
         {
             if (ModelState.IsValid)
             {
                 _scheduleService.CreateSchedule(newEvent);
-                var eventId = _eventService.AllEvents.Max(e => e.EventId);
-                // int eventId = _eventService.AllEvents.Select(e => e.EventId).Last();
+                var eventId = _eventService.AllEvents().Max(e => e.EventId);
                 return RedirectToAction(nameof(CreateStepTwo), new { id = eventId });
             }
             return View();
@@ -204,9 +196,10 @@ namespace eShop.Web.Controllers
         //[HttpGet]
         public IActionResult CreateStepThree(int id)
         {
-            var viewModel = new EventCreateEditViewModel
+            var viewModel = new EventViewModel
             {
                 EventId = id,
+                Event = _eventService.GetEventById(id),
                 Tickets = _ticketService.GetTicketById(id)
             };
             return View(viewModel);
@@ -215,12 +208,12 @@ namespace eShop.Web.Controllers
         // POST: Event/CreateStepThree
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateStepThree(int id, EventCreateEditViewModel newEvent)
+        public IActionResult CreateStepThree(int id, EventViewModel newEvent)
         {
             if (ModelState.IsValid)
             {
-                _ticketService.CreateTicket(_eventService.AllEvents.Max(e => e.EventId), newEvent);
-                var eventId = _eventService.AllEvents.Max(e => e.EventId);
+                _ticketService.CreateTicket(_eventService.AllEvents().Max(e => e.EventId), newEvent);
+                var eventId = _eventService.AllEvents().Max(e => e.EventId);
                 return RedirectToAction(nameof(CreateStepThree), new { id = eventId });
             }
             return View();
@@ -229,7 +222,7 @@ namespace eShop.Web.Controllers
         // GET: Event/Edit/5
         public IActionResult Edit(int id)
         {
-            var viewModel = new EventCreateEditViewModel
+            var viewModel = new EventViewModel
             {
                 Teachers = _teachersService.GetTeachersById(id),
                 Location = _locationService.GetLocationById(id),
@@ -237,7 +230,7 @@ namespace eShop.Web.Controllers
                 Event = _eventService.GetEventById(id),
                 Tickets = _ticketService.GetTicketById(id),
                 Days = _scheduleService.GetEventDays(id, false),
-                EventTimes = _scheduleService.GetEventTimes(id, false),
+                Times = _scheduleService.GetEventTimes(id, false),
             };
             if (viewModel == null)
             {
@@ -249,7 +242,7 @@ namespace eShop.Web.Controllers
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, EventCreateEditViewModel newEvent, IList<Ticket> tickets, IList<Day> days, List<string> eventTimesBindedKey, List<string> eventTimesBindedValue)
+        public IActionResult Edit(int id, EventViewModel newEvent, IEnumerable<Ticket> tickets, IEnumerable<Day> days, List<string> SelectedStartTimesBinded, List<string> SelectedEndTimesBinded)
         {
             if (ModelState.IsValid)
             {
@@ -258,7 +251,7 @@ namespace eShop.Web.Controllers
                 _teachersService.UpdateTeachers(newEvent);
                 _ticketService.UpdateTicket(id, tickets);
                 _scheduleService.UpdateDays(id, days);
-                _scheduleService.UpdateTimes(id, eventTimesBindedKey, eventTimesBindedValue);
+                _scheduleService.UpdateTimes(id, SelectedStartTimesBinded, SelectedEndTimesBinded);
 
                 //return Redirect($"/Event/Edit/{id}#tickets");
                 return RedirectToAction(nameof(Details), new { id = newEvent.Event.EventId });

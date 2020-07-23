@@ -7,14 +7,16 @@ namespace eShop.Infrastructure.Services
 {
     public interface IScheduleService
     {
-        public List<List<KeyValuePair<string, string>>> GetEventTimesList();
-        IList<Day> AllDaysList { get; }
+        List<List<KeyValuePair<string, string>>> GetAllEventsTimesList();
+        IEnumerable<Day> AllDaysList { get; }
 
-        IList<Day> GetEventDays(int eventId, bool isNewEvent);
+        IEnumerable<Day> GetEventDays(int eventId, bool isNewEvent);
         List<List<KeyValuePair<string, string>>> GetEventTimes(int eventId, bool isNewEvent);
-        void CreateSchedule(EventCreateEditViewModel newEvent);
-        void UpdateDays(int eventId, IList<Day> newDays);
-        void UpdateTimes(int eventId, List<string> eventTimesBindedKey, List<string> eventTimesBindedValue);
+
+
+        void CreateSchedule(EventViewModel newEvent);
+        void UpdateDays(int eventId, IEnumerable<Day> newDays);
+        void UpdateTimes(int eventId, List<string> selectedStartTimesBinded, List<string> selectedEndTimesBinded);
         void DeleteSchedule(int? id);
     }
 }

@@ -14,10 +14,7 @@ namespace eShop.Infrastructure.Services
     {
         private readonly eShopDbContext _eShopDbContext;
 
-        private ShoppingCartService
-            (
-            eShopDbContext eShopDbContext
-            )
+        private ShoppingCartService(eShopDbContext eShopDbContext)
         {
             _eShopDbContext = eShopDbContext;
         }
@@ -70,56 +67,64 @@ namespace eShop.Infrastructure.Services
 
         public int GetShoppingCartItemAmount(int eventId)
         {
-            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.EventId == eventId)
-    .Select(t => t.Amount).FirstOrDefault();
+            var total = _eShopDbContext.ShoppingCartItems
+                .Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.EventId == eventId)
+                .Select(t => t.Amount).FirstOrDefault();
 
             return total;
         }
 
         public int GetShoppingCartItemTicketId(int eventId)
         {
-            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.EventId == eventId)
-    .Select(t => t.Ticket.TicketId).FirstOrDefault();
+            var total = _eShopDbContext.ShoppingCartItems
+                .Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.EventId == eventId)
+                .Select(t => t.Ticket.TicketId).FirstOrDefault();
 
             return total;
         }
-        
+
         public decimal GetShoppingCartItemTotalSEK(int eventId)
         {
-            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency == SEK && c.Event.EventId == eventId)
-    .Select(t => t.Ticket.TicketPrice * t.Amount).Sum();
+            var total = _eShopDbContext.ShoppingCartItems
+                .Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency == SEK && c.Event.EventId == eventId)
+                .Select(t => t.Ticket.TicketPrice * t.Amount).Sum();
             return total;
         }
 
 
         public decimal GetShoppingCartItemTotalEUR(int eventId)
         {
-            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency != SEK && c.Event.EventId == eventId)
-    .Select(t => t.Ticket.TicketPrice * t.Amount).Sum();
+            var total = _eShopDbContext.ShoppingCartItems
+                .Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency != SEK && c.Event.EventId == eventId)
+                .Select(t => t.Ticket.TicketPrice * t.Amount).Sum();
             return total;
         }
 
         public decimal GetShoppingCartTotalSEK()
         {
-            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency == SEK)
-    .Select(t => t.Ticket.TicketPrice * t.Amount).Sum();
+            var total = _eShopDbContext.ShoppingCartItems
+                .Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency == SEK)
+                .Select(t => t.Ticket.TicketPrice * t.Amount).Sum();
             return total;
         }
 
         public decimal GetShoppingCartTotalEUR()
         {
-            var total = _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency != SEK)
-    .Select(t => t.Ticket.TicketPrice * t.Amount).Sum();
+            var total = _eShopDbContext.ShoppingCartItems
+                .Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.Currency != SEK)
+                .Select(t => t.Ticket.TicketPrice * t.Amount).Sum();
             return total;
         }
 
         public decimal GetTicketTotalPrice(int ticketId, int amount)
         {
-            var total = _eShopDbContext.Ticket.Where(t => t.TicketId == ticketId).Select(t => t.TicketPrice * amount).Sum();
+            var total = _eShopDbContext.Ticket.Where(t => t.TicketId == ticketId)
+                .Select(t => t.TicketPrice * amount)
+                .Sum();
             return total;
         }
 
-        public void AddToCart(Event purchasedEvent, Ticket purchasedTicket, int amount, bool isDetailesPage)
+        public void AddToCart(Event purchasedEvent, Ticket purchasedTicket, int selectedAmount, bool isDetailesPage)
         {
             var shoppingCartItem =
                     _eShopDbContext.ShoppingCartItems.SingleOrDefault(
@@ -130,9 +135,9 @@ namespace eShop.Infrastructure.Services
 
             if (isDetailesPage is false)
             {
-                if (amount == 0)
+                if (selectedAmount == 0)
                 {
-                    amount = oldAmount;
+                    selectedAmount = oldAmount;
                 }
 
                 if (oldTicketId != purchasedTicket.TicketId)
@@ -150,7 +155,7 @@ namespace eShop.Infrastructure.Services
                         Ticket = newPurchasedTicket
                     };
 
-                    _eShopDbContext.ShoppingCartItems.Add(shoppingCartItem);               
+                    _eShopDbContext.ShoppingCartItems.Add(shoppingCartItem);
                 }
 
                 else if (shoppingCartItem == null)
@@ -168,7 +173,7 @@ namespace eShop.Infrastructure.Services
 
                 else
                 {
-                    shoppingCartItem.Amount = amount;
+                    shoppingCartItem.Amount = selectedAmount;
                 }
             }
             else
@@ -179,7 +184,7 @@ namespace eShop.Infrastructure.Services
                     {
                         ShoppingCartId = ShoppingCartId,
                         Event = purchasedEvent,
-                        Amount = amount,
+                        Amount = selectedAmount,
                         Ticket = purchasedTicket
                     };
 
@@ -187,7 +192,7 @@ namespace eShop.Infrastructure.Services
                 }
                 else
                 {
-                    shoppingCartItem.Amount = amount;             
+                    shoppingCartItem.Amount = selectedAmount;
                 }
             }
 

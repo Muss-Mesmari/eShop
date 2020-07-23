@@ -26,7 +26,7 @@ namespace eShop.Web.Components
 
         public IViewComponentResult Invoke()
         {           
-            return View(new HomeViewModel { } );
+            return View(new EventViewModel { } );
         }
     }
 }

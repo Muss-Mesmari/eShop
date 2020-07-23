@@ -9,11 +9,13 @@ namespace eShop.Infrastructure.Services
     public class OrderService : IOrderService
     {
         private readonly ShoppingCartService _shoppingCartService;
-        private readonly eShopDbContext _eShopDbContext;        
+        private readonly eShopDbContext _eShopDbContext;
 
         public OrderService
-            (eShopDbContext eShopDbContext, 
-            ShoppingCartService shoppingCartService)
+            (
+            eShopDbContext eShopDbContext,
+            ShoppingCartService shoppingCartService
+            )
         {
             _eShopDbContext = eShopDbContext;
             _shoppingCartService = shoppingCartService;
@@ -28,7 +30,6 @@ namespace eShop.Infrastructure.Services
             order.OrderTotalEUR = _shoppingCartService.GetShoppingCartTotalEUR();
 
             order.OrderDetails = new List<OrderDetail>();
-            //adding the order with its details
 
             foreach (var shoppingCartItem in shoppingCartItems)
             {

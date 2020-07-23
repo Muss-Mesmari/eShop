@@ -1,4 +1,4 @@
-﻿@model eShop.Presentation.ViewModels.EventsListViewModel
+﻿@model eShop.Presentation.ViewModels.EventViewModel
 
 @{
     int i = 0;
@@ -24,7 +24,7 @@
                             <div class="text-dark">
                                 <h5 class="mt-4 text-nowrap">
 
-                                    @Model.Days[i].DayOfWeek
+                                    @Model.Days.ToList()[i].DayOfWeek
 
                                 </h5>
                             </div>

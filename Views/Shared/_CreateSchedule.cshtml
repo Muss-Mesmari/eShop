@@ -1,4 +1,4 @@
-﻿@model eShop.Presentation.ViewModels.EventCreateEditViewModel
+﻿@model eShop.Presentation.ViewModels.EventViewModel
 
 <div class="form-row">
     <div class="col-md-4 pt-3">
@@ -11,18 +11,18 @@
     </div>
 
     <div class="col-md-4 pt-3">
-        <label asp-for="Times.TimeStart" class="control-label"></label>
-        <input asp-for="Times.TimeStart" class="form-control" required />
-        <span asp-validation-for="Times.TimeStart" class="text-danger"></span>
+        <label asp-for="Time.TimeStart" class="control-label"></label>
+        <input asp-for="Time.TimeStart" class="form-control" required />
+        <span asp-validation-for="Time.TimeStart" class="text-danger"></span>
         <div class="invalid-tooltip">
             Please provide a start time.
         </div>
     </div>
 
     <div class="col-md-4 pt-3">
-        <label asp-for="Times.TimeEnd" class="control-label"></label>
-        <input asp-for="Times.TimeEnd" class="form-control"  required />
-        <span asp-validation-for="Times.TimeEnd" class="text-danger"></span>
+        <label asp-for="Time.TimeEnd" class="control-label"></label>
+        <input asp-for="Time.TimeEnd" class="form-control"  required />
+        <span asp-validation-for="Time.TimeEnd" class="text-danger"></span>
         <div class="invalid-tooltip">
             Please provide an end time.
         </div>

@@ -1,6 +1,4 @@
-﻿@*@model eShop.Presentation.ViewModels.HomeViewModel*@
-@model eShop.Presentation.ViewModels.EventsListViewModel
-
+﻿@model eShop.Presentation.ViewModels.EventViewModel
 
 @{
     ViewData["Title"] = "eShop";
@@ -41,7 +39,7 @@
 
         <div class="row justify-content-center">
 
-            @foreach (var category in Model.AllCategories)
+            @foreach (var category in Model.Categories)
             {
                 <partial name="_CategoryCard" model="category" />
             }
