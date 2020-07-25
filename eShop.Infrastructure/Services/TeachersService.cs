@@ -70,6 +70,5 @@ namespace eShop.Infrastructure.Services
                 _eShopDbContext.SaveChanges();
             }
         }
-
     }
 }

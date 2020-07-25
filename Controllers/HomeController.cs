@@ -61,7 +61,7 @@ namespace eShop.Web.Controllers
         //[Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
-            var days = _scheduleService.AllDaysList;
+            var days = _scheduleService.AllDays;
             var times = _scheduleService.GetAllEventsTimesList();
 
 

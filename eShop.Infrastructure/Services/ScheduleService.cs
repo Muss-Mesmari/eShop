@@ -20,20 +20,24 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext = eShopDbContext;
         }
 
-        public IEnumerable<Day> AllDaysList => _eShopDbContext.Day.OrderBy(d => d.DayId).ToList();
-        
+        public IEnumerable<Day> AllDays => _eShopDbContext.Day.OrderBy(d => d.DayId).ToList();
+
         public IEnumerable<Day> GetAllEventsDays()
         {
-            List<Day> days = new List<Day>();
+            //List<int> weekIds = new List<int>();
+            //foreach (var daysList in AllDaysList)
+            //{
+            //  //  int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
+            //    weekIds = _eShopDbContext.Week.Where(d => d.WeekId == daysList.WeekId).Select(id => id.WeekId).ToList();
+            //}
+
             List<int> weekIds = new List<int>();
-
-            foreach (var daysList in AllDaysList)
+            foreach (var daysList in AllDays)
             {
-              //  int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
-                weekIds = _eShopDbContext.Week.Where(d => d.WeekId == daysList.WeekId).Select(id => id.WeekId).ToList();
+                weekIds.Add(_eShopDbContext.Week.Where(d => d.WeekId == daysList.WeekId).Select(id => id.WeekId).FirstOrDefault());
             }
-          
 
+            List<Day> days = new List<Day>();
             foreach (var weekId in weekIds)
             {
                 days.Add(_eShopDbContext.Day.Where(d => d.WeekId == weekId).FirstOrDefault());
@@ -45,14 +49,14 @@ namespace eShop.Infrastructure.Services
         public List<List<KeyValuePair<string, string>>> GetAllEventsTimesList()
         {
             var AlltimesOfEachDaySorted = new List<List<KeyValuePair<string, string>>>();
-            for (int i = 0; i < AllDaysList.Count(); i++)
+            for (int i = 0; i < AllDays.Count(); i++)
             {
                 var timesOfEachDaySorted = new List<KeyValuePair<string, string>>();
-                var times = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList.ToList()[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimesId).ToList().Count();
-                for (int j = 0; j < times; j++)
+                var allTimes = _eShopDbContext.Times.Where(t => t.DayId == AllDays.ToList()[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimesId).ToList();
+                for (int j = 0; j < allTimes.Count(); j++)
                 {
-                    var timeStart = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList.ToList()[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimeStart.ToString("hh:mm")).ToList()[j];
-                    var timeEnd = _eShopDbContext.Times.Where(t => t.DayId == AllDaysList.ToList()[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimeEnd.ToString("hh:mm")).ToList()[j];
+                    var timeStart = _eShopDbContext.Times.Where(t => t.DayId == AllDays.ToList()[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimeStart.ToString("hh:mm")).ToList()[j];
+                    var timeEnd = _eShopDbContext.Times.Where(t => t.DayId == AllDays.ToList()[i].DayId).OrderBy(t => t.TimesId).Select(t => t.TimeEnd.ToString("hh:mm")).ToList()[j];
                     timesOfEachDaySorted.Insert(j, new KeyValuePair<string, string>(timeStart, timeEnd));
                 }
                 AlltimesOfEachDaySorted.Add(timesOfEachDaySorted);
@@ -67,8 +71,10 @@ namespace eShop.Infrastructure.Services
             List<Day> days = new List<Day>();
             if (!isNewEvent)
             {
-                int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
-                var weekIds = _eShopDbContext.Week.Where(d => d.ScheduleId == scheduleId).Select(id => id.WeekId).ToList();
+                //int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
+                //var weekIds = _eShopDbContext.Week.Where(d => d.ScheduleId == scheduleId).Select(id => id.WeekId).ToList();
+                int scheduleId = GetScheduleId(eventId);
+                var weekIds = GetWeekIds(null, scheduleId);
 
                 foreach (var weekId in weekIds)
                 {
@@ -82,8 +88,10 @@ namespace eShop.Infrastructure.Services
         {
             if (!isNewEvent)
             {
-                int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
-                var weekIds = _eShopDbContext.Week.Where(d => d.ScheduleId == scheduleId).Select(id => id.WeekId).ToList();
+                // int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
+                // var weekIds = _eShopDbContext.Week.Where(d => d.ScheduleId == scheduleId).Select(id => id.WeekId).ToList();
+                int scheduleId = GetScheduleId(eventId);
+                var weekIds = GetWeekIds(null, scheduleId);
 
                 List<int> dayIds = new List<int>();
                 foreach (var weekId in weekIds)
@@ -169,8 +177,11 @@ namespace eShop.Infrastructure.Services
         public void UpdateDays(int eventId, IEnumerable<Day> newDays)
         {
             // Get the needed Ids
-            int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
-            List<int> weekIds = _eShopDbContext.Week.Where(d => d.ScheduleId == scheduleId).Select(id => id.WeekId).ToList();
+            //  int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
+            //  List<int> weekIds = _eShopDbContext.Week.Where(d => d.ScheduleId == scheduleId).Select(id => id.WeekId).ToList();
+            int scheduleId = GetScheduleId(eventId);
+            var weekIds = GetWeekIds(null, scheduleId);
+
             List<int> dayIds = new List<int>();
             foreach (var weekId in weekIds)
             {
@@ -200,43 +211,10 @@ namespace eShop.Infrastructure.Services
 
         }
 
-        private List<int> GetDaysIds(int eventId)
-        {
-            int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
-            List<int> weekIds = _eShopDbContext.Week.Where(d => d.ScheduleId == scheduleId).Select(id => id.WeekId).ToList();
-            List<int> dayIds = new List<int>();
-
-            foreach (var weekId in weekIds)
-            {
-                var day = _eShopDbContext.Day.Where(w => w.WeekId == weekId).FirstOrDefault();
-                dayIds.Add(day.DayId);
-                var entity = _eShopDbContext.Entry(day);
-                entity.State = EntityState.Detached;
-            }
-            return dayIds;
-        }
-
-        private int GetScheduleId(int? eventId)
-        {
-            var schedule = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault();
-            int scheduleId = schedule.ScheduleId;
-            var entity = _eShopDbContext.Entry(schedule);
-            entity.State = EntityState.Detached;
-            return scheduleId;
-        }
-
-        private Schedule GetScheduleById(int? eventId)
-        {
-            var schedule = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault();
-            var entity = _eShopDbContext.Entry(schedule);
-            entity.State = EntityState.Detached;
-            return schedule;
-        }
-
         public void UpdateTimes(int eventId, List<string> selectedStartTimesBinded, List<string> selectedEndTimesBinded)
         {
             // Get the needed Ids
-            var dayIds = GetDaysIds(eventId);
+            var dayIds = GetDaysIds(eventId, null , null);
 
             if (dayIds != null)
             {
@@ -276,6 +254,98 @@ namespace eShop.Infrastructure.Services
                 _eShopDbContext.Remove(removedSchedule);
                 _eShopDbContext.SaveChanges();
             }
+        }
+
+
+        //all the needed ids to interact with the database
+        private List<int> GetDaysIds(int? eventId, List<int> weekIds, int? scheduleId)
+        {
+            // int scheduleId = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault().ScheduleId;
+            //  List<int> weekIds = _eShopDbContext.Week.Where(d => d.ScheduleId == scheduleId).Select(id => id.WeekId).ToList();
+            List<int> dayIds = new List<int>();
+            if (eventId is null && scheduleId is null)
+            {
+                foreach (var weekId in weekIds)
+                {
+                    var day = _eShopDbContext.Day.Where(w => w.WeekId == weekId).FirstOrDefault();
+                    dayIds.Add(day.DayId);
+
+                    var entity = _eShopDbContext.Entry(day);
+                    entity.State = EntityState.Detached;
+                }
+            }
+            else if (eventId is null && weekIds.Count() == 0)
+            {              
+                weekIds = GetWeekIds(null, scheduleId);
+                foreach (var weekId in weekIds)
+                {
+                    var day = _eShopDbContext.Day.Where(w => w.WeekId == weekId).FirstOrDefault();
+                    dayIds.Add(day.DayId);
+
+                    var entity = _eShopDbContext.Entry(day);
+                    entity.State = EntityState.Detached;
+                }
+            }
+            else
+            {
+                weekIds = GetWeekIds(eventId, null);
+                foreach (var weekId in weekIds)
+                {
+                    var day = _eShopDbContext.Day.Where(w => w.WeekId == weekId).FirstOrDefault();
+                    dayIds.Add(day.DayId);
+
+                    var entity = _eShopDbContext.Entry(day);
+                    entity.State = EntityState.Detached;
+                }
+            }            
+            
+            return dayIds;
+        }
+
+        private int GetScheduleId(int? eventId)
+        {
+            var schedule = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault();
+            int scheduleId = schedule.ScheduleId;
+
+            var entity = _eShopDbContext.Entry(schedule);
+            entity.State = EntityState.Detached;
+            return scheduleId;
+        }
+
+        private List<int> GetWeekIds(int? eventId, int? scheduleId)
+        {
+            List<int> weekIds = new List<int>();
+            if (scheduleId == null)
+            {
+                scheduleId = GetScheduleId(eventId);
+                var weeks = _eShopDbContext.Week.Where(d => d.ScheduleId == scheduleId).ToList();
+                foreach (var week in weeks)
+                {
+                    weekIds.Add(_eShopDbContext.Week.Where(w => w.WeekId == week.WeekId).Select(w => w.WeekId).FirstOrDefault());
+                    var entity = _eShopDbContext.Entry(week);
+                    entity.State = EntityState.Detached;
+                }
+                return weekIds;
+            }
+            else
+            {
+                var weeks = _eShopDbContext.Week.Where(d => d.ScheduleId == scheduleId);
+                foreach (var week in weeks)
+                {
+                    weekIds.Add(_eShopDbContext.Week.Where(w => w.WeekId == week.WeekId).Select(w => w.WeekId).FirstOrDefault());
+                    var entity = _eShopDbContext.Entry(week);
+                    entity.State = EntityState.Detached;
+                }
+                return weekIds;
+            }
+        }
+
+        private Schedule GetScheduleById(int? eventId)
+        {
+            var schedule = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault();
+            var entity = _eShopDbContext.Entry(schedule);
+            entity.State = EntityState.Detached;
+            return schedule;
         }
     }
 }

@@ -223,7 +223,6 @@ namespace eShop.Infrastructure.Database
             {
                 EventId = 1,
                 Name = "Event One",
-             //   Price = 12.95M,
                 ShortDescription = "Lorem Ipsum",
                 LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 CategoryId = 1,
@@ -238,8 +237,7 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Event>().HasData(new Event
             {
                 EventId = 2,
-                Name = "Event Two",
-              //  Price = 12.95M,
+                Name = "Event Two",              
                 ShortDescription = "Lorem Ipsum",
                 LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 CategoryId = 1,
@@ -254,8 +252,7 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Event>().HasData(new Event
             {
                 EventId = 3,
-                Name = "Event Three",
-             //   Price = 12.95M,
+                Name = "Event Three",            
                 ShortDescription = "Lorem Ipsum",
                 LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 CategoryId = 1,
@@ -270,8 +267,7 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Event>().HasData(new Event
             {
                 EventId = 4,
-                Name = "Event Four",
-               // Price = 12.95M,
+                Name = "Event Four",           
                 ShortDescription = "Lorem Ipsum",
                 LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 CategoryId = 2,
@@ -286,8 +282,7 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Event>().HasData(new Event
             {
                 EventId = 5,
-                Name = "Event Five",
-              //  Price = 12.95M,
+                Name = "Event Five",           
                 ShortDescription = "Lorem Ipsum",
                 LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 CategoryId = 1,
@@ -302,8 +297,7 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Event>().HasData(new Event
             {
                 EventId = 6,
-                Name = "Event Six",
-              //  Price = 12.95M,
+                Name = "Event Six",              
                 ShortDescription = "Lorem Ipsum",
                 LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 CategoryId = 1,
@@ -318,8 +312,7 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Event>().HasData(new Event
             {
                 EventId = 7,
-                Name = "Event Seven",
-              //  Price = 12.95M,
+                Name = "Event Seven",              
                 ShortDescription = "Lorem Ipsum",
                 LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 CategoryId = 1,
@@ -334,8 +327,7 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Event>().HasData(new Event
             {
                 EventId = 8,
-                Name = "Event Eight",
-               // Price = 12.95M,
+                Name = "Event Eight",              
                 ShortDescription = "Lorem Ipsum",
                 LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 CategoryId = 1,
@@ -351,8 +343,7 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Event>().HasData(new Event
             {
                 EventId = 9,
-                Name = "Event Nine",
-              //  Price = 12.95M,
+                Name = "Event Nine",             
                 ShortDescription = "Lorem Ipsum",
                 LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 CategoryId = 1,
@@ -367,8 +358,7 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Event>().HasData(new Event
             {
                 EventId = 10,
-                Name = "Event Ten",
-              //  Price = 12.95M,
+                Name = "Event Ten",             
                 ShortDescription = "Lorem Ipsum",
                 LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 CategoryId = 1,
@@ -383,8 +373,7 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Event>().HasData(new Event
             {
                 EventId = 11,
-                Name = "Event Eleven",
-               // Price = 12.95M,
+                Name = "Event Eleven",          
                 ShortDescription = "Lorem Ipsum",
                 LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 CategoryId = 1,

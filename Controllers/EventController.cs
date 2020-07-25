@@ -61,7 +61,7 @@ namespace eShop.Web.Controllers
         {
             IEnumerable<Event> events;
 
-            var days = _scheduleService.AllDaysList;
+            var days = _scheduleService.AllDays;
             var times = _scheduleService.GetAllEventsTimesList();
             
             string currentCategory;

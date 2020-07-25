@@ -10,7 +10,7 @@ using eShop.Infrastructure.Database;
 namespace eShop.Infrastructure.Migrations
 {
     [DbContext(typeof(eShopDbContext))]
-    [Migration("20200716233208_1stCreate")]
+    [Migration("20200723230636_1stCreate")]
     partial class _1stCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -374,9 +374,6 @@ namespace eShop.Infrastructure.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -406,7 +403,6 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 1,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event One",
-                            Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
                             TeachersId = 1
                         },
@@ -422,7 +418,6 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 2,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Two",
-                            Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
                             TeachersId = 2
                         },
@@ -438,7 +433,6 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 3,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Three",
-                            Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
                             TeachersId = 3
                         },
@@ -454,7 +448,6 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 4,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Four",
-                            Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
                             TeachersId = 4
                         },
@@ -470,7 +463,6 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 5,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Five",
-                            Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
                             TeachersId = 5
                         },
@@ -486,7 +478,6 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 6,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Six",
-                            Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
                             TeachersId = 6
                         },
@@ -502,7 +493,6 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 7,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Seven",
-                            Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
                             TeachersId = 7
                         },
@@ -518,7 +508,6 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 8,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Eight",
-                            Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
                             TeachersId = 8
                         },
@@ -534,7 +523,6 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 9,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Nine",
-                            Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
                             TeachersId = 9
                         },
@@ -550,7 +538,6 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 10,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Ten",
-                            Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
                             TeachersId = 10
                         },
@@ -566,7 +553,6 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 11,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Eleven",
-                            Price = 12.95m,
                             ShortDescription = "Lorem Ipsum",
                             TeachersId = 11
                         });
@@ -1332,78 +1318,78 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TimesId = 1,
                             DayId = 1,
-                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(5845),
-                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 223, DateTimeKind.Local).AddTicks(5131)
+                            TimeEnd = new DateTime(2020, 7, 24, 3, 6, 35, 867, DateTimeKind.Local).AddTicks(6636),
+                            TimeStart = new DateTime(2020, 7, 24, 1, 6, 35, 864, DateTimeKind.Local).AddTicks(8609)
                         },
                         new
                         {
                             TimesId = 2,
                             DayId = 2,
-                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9006),
-                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(8947)
+                            TimeEnd = new DateTime(2020, 7, 24, 3, 6, 35, 867, DateTimeKind.Local).AddTicks(8306),
+                            TimeStart = new DateTime(2020, 7, 24, 1, 6, 35, 867, DateTimeKind.Local).AddTicks(8278)
                         },
                         new
                         {
                             TimesId = 3,
                             DayId = 3,
-                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9121),
-                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9114)
+                            TimeEnd = new DateTime(2020, 7, 24, 3, 6, 35, 867, DateTimeKind.Local).AddTicks(8369),
+                            TimeStart = new DateTime(2020, 7, 24, 1, 6, 35, 867, DateTimeKind.Local).AddTicks(8364)
                         },
                         new
                         {
                             TimesId = 4,
                             DayId = 4,
-                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9174),
-                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9167)
+                            TimeEnd = new DateTime(2020, 7, 24, 3, 6, 35, 867, DateTimeKind.Local).AddTicks(8403),
+                            TimeStart = new DateTime(2020, 7, 24, 1, 6, 35, 867, DateTimeKind.Local).AddTicks(8398)
                         },
                         new
                         {
                             TimesId = 5,
                             DayId = 5,
-                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9223),
-                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9216)
+                            TimeEnd = new DateTime(2020, 7, 24, 3, 6, 35, 867, DateTimeKind.Local).AddTicks(8434),
+                            TimeStart = new DateTime(2020, 7, 24, 1, 6, 35, 867, DateTimeKind.Local).AddTicks(8430)
                         },
                         new
                         {
                             TimesId = 6,
                             DayId = 6,
-                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9280),
-                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9273)
+                            TimeEnd = new DateTime(2020, 7, 24, 3, 6, 35, 867, DateTimeKind.Local).AddTicks(8468),
+                            TimeStart = new DateTime(2020, 7, 24, 1, 6, 35, 867, DateTimeKind.Local).AddTicks(8464)
                         },
                         new
                         {
                             TimesId = 7,
                             DayId = 7,
-                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9330),
-                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9323)
+                            TimeEnd = new DateTime(2020, 7, 24, 3, 6, 35, 867, DateTimeKind.Local).AddTicks(8552),
+                            TimeStart = new DateTime(2020, 7, 24, 1, 6, 35, 867, DateTimeKind.Local).AddTicks(8547)
                         },
                         new
                         {
                             TimesId = 8,
                             DayId = 8,
-                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9382),
-                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9375)
+                            TimeEnd = new DateTime(2020, 7, 24, 3, 6, 35, 867, DateTimeKind.Local).AddTicks(8585),
+                            TimeStart = new DateTime(2020, 7, 24, 1, 6, 35, 867, DateTimeKind.Local).AddTicks(8581)
                         },
                         new
                         {
                             TimesId = 9,
                             DayId = 9,
-                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9430),
-                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9423)
+                            TimeEnd = new DateTime(2020, 7, 24, 3, 6, 35, 867, DateTimeKind.Local).AddTicks(8620),
+                            TimeStart = new DateTime(2020, 7, 24, 1, 6, 35, 867, DateTimeKind.Local).AddTicks(8615)
                         },
                         new
                         {
                             TimesId = 10,
                             DayId = 10,
-                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9500),
-                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9492)
+                            TimeEnd = new DateTime(2020, 7, 24, 3, 6, 35, 867, DateTimeKind.Local).AddTicks(8654),
+                            TimeStart = new DateTime(2020, 7, 24, 1, 6, 35, 867, DateTimeKind.Local).AddTicks(8649)
                         },
                         new
                         {
                             TimesId = 11,
                             DayId = 11,
-                            TimeEnd = new DateTime(2020, 7, 17, 3, 32, 7, 227, DateTimeKind.Local).AddTicks(9550),
-                            TimeStart = new DateTime(2020, 7, 17, 1, 32, 7, 227, DateTimeKind.Local).AddTicks(9544)
+                            TimeEnd = new DateTime(2020, 7, 24, 3, 6, 35, 867, DateTimeKind.Local).AddTicks(8683),
+                            TimeStart = new DateTime(2020, 7, 24, 1, 6, 35, 867, DateTimeKind.Local).AddTicks(8679)
                         });
                 });
 

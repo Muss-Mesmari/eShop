@@ -37,7 +37,7 @@ namespace eShop.Infrastructure.Services
 
         public void CreateTicket(int eventId, EventViewModel newEvent)
         {           
-            var _newTicket = new Ticket()
+            var newTicket = new Ticket()
             {
                 EventId = eventId,
                 TicketName = newEvent.Ticket.TicketName,
@@ -45,7 +45,7 @@ namespace eShop.Infrastructure.Services
                 TicketPrice = newEvent.Ticket.TicketPrice,
                 TotalAvailableTicket = newEvent.Ticket.TotalAvailableTicket
             };
-            _eShopDbContext.Ticket.Add(_newTicket);
+            _eShopDbContext.Ticket.Add(newTicket);
             _eShopDbContext.SaveChanges();
         }
 
@@ -71,7 +71,7 @@ namespace eShop.Infrastructure.Services
                 var entity = _eShopDbContext.Entry(newTicket);
                 entity.State = EntityState.Modified;
                 _eShopDbContext.SaveChanges();
-                entity.State = EntityState.Detached;
+               // entity.State = EntityState.Detached;
             }
         }
 
