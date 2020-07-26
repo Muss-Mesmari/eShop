@@ -1,90 +1,100 @@
 ﻿@model eShop.Presentation.ViewModels.EventViewModel
 
 @{
-    List<string> DaysOfWeek = new List<string>();
-}
-<div>
-    <div class="row-4 mb-3">
-        <div class="btn-group" role="group" aria-label="Schedule tab">
-            @{for (int i = 0; i < @Model.Days.Select(d => d.DayOfWeek).ToList().Count(); i++)
-                {
-                    DaysOfWeek.Add(@Model.Days.Select(d => d.DayOfWeek).ToList()[i].ToString());
-                    <a class="btn btn-primary" data-toggle="collapse" href="#tab-@i" role="button" aria-expanded="false" aria-controls="tab-@i">
-                        @Model.Days.Select(d => d.DayOfWeek).ToList()[i] <span class="badge badge-light"> @Model.Times[i].Count()</span> <span class="sr-only">unread messages</span>
-                    </a>
-                }
-            }
-        </div>
-    </div>
+    if (Model.Days.Any())
+    {
+        List<string> DaysOfWeek = new List<string>();
 
-    <div class="row-8">
-        <div class="row">
-            <div class="col">
-                @{for (int i = 0; i < @Model.Times.Count(); i++)
-                    {
-
-                        <div class="collapse multi-collapse" id="tab-@i">
-                            <div class="card card-body mb-3">
-                                <h5 class="card-title"> @DaysOfWeek[i] Schedule:</h5>
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">From</th>
-                                            <th scope="col">To</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <table class="table table-borderless m-0">
-                                                    <tr>
-                                                        <td scope="row">
-                                                            @{foreach (var dayTimeStart in @Model.Times[i])
-                                                                {
-                                                                    <table class="table table-borderless table-hover m-0">
-                                                                        <tr>
-                                                                            <td scope="row">
-                                                                                @dayTimeStart.Key
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                }
-                                                            }
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-                                            <td>
-                                                <table class="table table-borderless m-0">
-                                                    <tr>
-                                                        <td scope="row">
-                                                            @{foreach (var dayTimeEnd in @Model.Times[i])
-                                                                {
-                                                                    <table class="table table-borderless table-hover m-0">
-                                                                        <tr>
-                                                                            <td scope="row">
-                                                                                @dayTimeEnd.Value
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                }
-                                                            }
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+        <div>
+            <div class="row-4 mb-3">
+                <div class="btn-group" role="group" aria-label="Schedule tab">
+                    @{for (int i = 0; i < @Model.Days.Select(d => d.DayOfWeek).ToList().Count(); i++)
+                        {
+                            DaysOfWeek.Add(@Model.Days.Select(d => d.DayOfWeek).ToList()[i].ToString());
+                            <a class="btn btn-primary" data-toggle="collapse" href="#tab-@i" role="button" aria-expanded="false" aria-controls="tab-@i">
+                                @Model.Days.Select(d => d.DayOfWeek).ToList()[i] <span class="badge badge-light"> @Model.Times[i].Count()</span> <span class="sr-only">unread messages</span>
+                            </a>
+                        }
                     }
-                }
+                </div>
+            </div>
+
+            <div class="row-8">
+                <div class="row">
+                    <div class="col">
+                        @{for (int i = 0; i < @Model.Times.Count(); i++)
+                            {
+
+                                <div class="collapse multi-collapse" id="tab-@i">
+                                    <div class="card card-body mb-3">
+                                        <h5 class="card-title"> @DaysOfWeek[i] Schedule:</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">From</th>
+                                                    <th scope="col">To</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table class="table table-borderless m-0">
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    @{foreach (var dayTimeStart in @Model.Times[i])
+                                                                        {
+                                                                            <table class="table table-borderless table-hover m-0">
+                                                                                <tr>
+                                                                                    <td scope="row">
+                                                                                        @dayTimeStart.Key
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+
+                                                    <td>
+                                                        <table class="table table-borderless m-0">
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    @{foreach (var dayTimeEnd in @Model.Times[i])
+                                                                        {
+                                                                            <table class="table table-borderless table-hover m-0">
+                                                                                <tr>
+                                                                                    <td scope="row">
+                                                                                        @dayTimeEnd.Value
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="alert alert-danger" role="alert">
+                    <strong>P.S.</strong> Click on each day to see the times!
+                </div>
             </div>
         </div>
-        <div class="alert alert-danger" role="alert">
-            <strong>P.S.</strong> Click on each day to see the times!
-        </div>
-    </div>
-</div>
+    }
+    else
+    {
+        <p class="text-danger text-center"> @Model.NotFoundSchedule</p>
+    }
+}
+
+

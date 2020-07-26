@@ -63,12 +63,12 @@ namespace eShop.Web.Controllers
 
             var days = _scheduleService.AllDays;
             var times = _scheduleService.GetAllEventsTimesList();
-            
+
             string currentCategory;
 
             if (string.IsNullOrEmpty(category))
             {
-                events = _eventService.AllEvents(SearchedEvent, SearchedCategory).OrderBy(e => e.EventId);                
+                events = _eventService.AllEvents(SearchedEvent, SearchedCategory).OrderBy(e => e.EventId);
 
                 if (SearchedEvent != null)
                 {
@@ -108,7 +108,7 @@ namespace eShop.Web.Controllers
             var teachers = _teachersService.GetTeachersById(id);
             var selectedAmount = _shoppingCartService.GetShoppingCartItemAmount(id);
             var tickets = _ticketService.GetTicketById(id);
-
+ 
             if (selectedAmount == 0)
             {
                 selectedAmount = 1;
@@ -130,6 +130,7 @@ namespace eShop.Web.Controllers
                 Location = location,
                 Teachers = teachers,
                 Tickets = tickets,
+                NotFoundSchedule = "The event does not have a schedule yet!"
             });
         }
 
@@ -289,10 +290,7 @@ namespace eShop.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        //// POST: Event/DeleteSchedule/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        public IActionResult DeleteSchedule(int id, Schedule removedSchedule)
+        public IActionResult DeleteSchedule(int id)
         {
             var modifiedEvent = _eventService.GetEventById(id);
 
@@ -300,7 +298,9 @@ namespace eShop.Web.Controllers
             {
                 _scheduleService.DeleteSchedule(id);
             }
-            return RedirectToAction(nameof(Details), new { id = modifiedEvent.EventId });
+            return RedirectToPage($"/Event/Details/{modifiedEvent.EventId}#schedule");
+            // https://localhost:44369/Event/Details/1#schedule
+            //return RedirectToAction(nameof(Details), new { id = modifiedEvent.EventId });
         }
 
         // POST: Event/ImportEvents

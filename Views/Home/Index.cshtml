@@ -16,17 +16,6 @@
         <div class="row justify-content-center">
 
             <partial name="_EventCard" />
-
-            @*@for (int i = 0; i < @Model.IsHighlightedEvent.ToList().Count(); i++)
-                {
-                    <partial name="_EventCard" model="@Model.IsHighlightedEvent.ToList()[i]" />
-                }*@
-
-            @*@foreach (var highlightedevent in Model.IsHighlightedEvent)
-                {
-                    <partial name="_EventCard" model="highlightedevent" />
-                }*@
-
         </div>
     }
     <hr class="my-5" />

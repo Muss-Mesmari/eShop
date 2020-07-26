@@ -80,7 +80,7 @@ namespace eShop.Infrastructure.Services
                 {
                     days.Add(_eShopDbContext.Day.Where(d => d.WeekId == weekId).FirstOrDefault());
                 }
-            }
+            }  
             return days;
         }
 
@@ -304,11 +304,14 @@ namespace eShop.Infrastructure.Services
 
         private int GetScheduleId(int? eventId)
         {
+            int scheduleId = 0;
             var schedule = _eShopDbContext.Schedule.Where(sh => sh.ScheduleId == eventId).FirstOrDefault();
-            int scheduleId = schedule.ScheduleId;
-
-            var entity = _eShopDbContext.Entry(schedule);
-            entity.State = EntityState.Detached;
+            if (schedule != null)
+            {
+                scheduleId = schedule.ScheduleId;
+                var entity = _eShopDbContext.Entry(schedule);
+                entity.State = EntityState.Detached;
+            }
             return scheduleId;
         }
 

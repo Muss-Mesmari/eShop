@@ -14,7 +14,7 @@ namespace eShop.Entities.Entities
         public DayOfWeek DayOfWeek { get; set; }
         public virtual ICollection<Times> Times { get; set; }
         public int WeekId { get; set; }
-        public virtual Week Week { get; set; }
+        public virtual Week Week { get; set; }       
 
     }
 }
