@@ -1,42 +1,32 @@
 ﻿@model eShop.Presentation.ViewModels.EventViewModel
 
-@{
-    List<string> DaysOfWeek = new List<string>();
-}
-<div>
-    <div class="row-4 mb-3">
-        <div class="btn-group" role="group" aria-label="Schedule tab">
-            @{for (int i = 0; i < @Model.Days.Select(d => d.DayOfWeek).ToList().Count(); i++)
-                {
-                    DaysOfWeek.Add(@Model.Days.Select(d => d.DayOfWeek).ToList()[i].ToString());
-                    <a class="btn btn-primary" data-toggle="collapse" href="#tab-@i" role="button" aria-expanded="false" aria-controls="tab-@i">
-                        @Model.Days.Select(d => d.DayOfWeek).ToList()[i] <span class="badge badge-light"> @Model.Times[i].Count()</span> <span class="sr-only">unread messages</span>
+@for (int i = 0; i < Model.Days.Count(); i++)
+{
+    <div id="accordion">
+        <div class="card mt-3">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse_Schedule_@i" aria-expanded="true" aria-controls="collapse_Schedule_@i">
+                        @Model.Days.ToList()[i].DayOfWeek
                     </a>
-                }
-            }
-        </div>
-    </div>
+                </h5>
+            </div>
+            <div id="collapse_Schedule_@i" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
 
-    <div class="row-8">
-        <div class="row">
-            <div class="col">
-                @{for (int i = 0; i < @Model.Times.Count(); i++)
-                    {
-                        <div class="collapse multi-collapse" id="tab-@i">
-                            <div class="card card-body mb-3">
+                    <div class="form-row">
+                        <label asp-for="@Model.Days.ToList()[i].DayOfWeek" class="control-label"></label>
+                        <select asp-for="@Model.Days.ToList()[i].DayOfWeek" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DayOfWeek))))"><option>Choose days</option></select>
+                        <span asp-validation-for="@Model.Days.ToList()[i].DayOfWeek" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a ticket name.
+                        </div>
+                    </div>
 
-                                <h5 class="card-title"> @DaysOfWeek[i] Schedule:</h5>
-
-                                <div class="form-row">
-                                    <label asp-for="@Model.Days.ToList()[i].DayOfWeek" class="control-label"></label>
-                                    <select asp-for="@Model.Days.ToList()[i].DayOfWeek" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DayOfWeek))))"><option>Choose days</option></select>
-                                    <span asp-validation-for="@Model.Days.ToList()[i].DayOfWeek" class="text-danger"></span>
-                                    <div class="invalid-tooltip">
-                                        Please provide a ticket name.
-                                    </div>
-                                </div>
-
-
+                    <div class="form-group mt-3">
+                        <div class="tab-content" id="nav-tabContent">
+                            @for (int j = 0; j < @Model.Times[i].Count(); j++)
+                            {
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
@@ -50,17 +40,33 @@
                                                 <table class="table m-0">
                                                     <tr>
                                                         <td scope="row">
-                                                            @{foreach (var dayTimeStart in @Model.Times[i])
-                                                                {
-                                                                    <table class="table table-borderless table-hover m-0">
-                                                                        <tr>
-                                                                            <td scope="row">
-                                                                                @dayTimeStart.Key
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                }
-                                                            }
+                                                            <table class="table table-borderless table-hover m-0">
+                                                                <tr>
+                                                                    <td scope="row">
+                                                                        @{
+                                                                            List<string> SelectedStartTimesBinded = new List<string>();
+
+                                                                            foreach (var timeStart in @Model.Times[j])
+                                                                            {
+                                                                                SelectedStartTimesBinded.Add(timeStart.Key);
+                                                                            }
+
+                                                                            for (int index = 0; index < SelectedStartTimesBinded.Count(); index++)
+                                                                            {
+                                                                                <div class="form-row">
+                                                                                    <div class="col-md-6 pt-3">
+                                                                                        <input asp-for="@SelectedStartTimesBinded[index]" class="form-control" />
+                                                                                        <span asp-validation-for="@SelectedStartTimesBinded[index]" class="text-danger"></span>
+                                                                                        <div class="invalid-tooltip">
+                                                                                            Please provide a ticket name.
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        }
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -70,17 +76,33 @@
                                                 <table class="table m-0">
                                                     <tr>
                                                         <td scope="row">
-                                                            @{foreach (var dayTimeEnd in @Model.Times[i])
-                                                                {
-                                                                    <table class="table table-borderless table-hover m-0">
-                                                                        <tr>
-                                                                            <td scope="row">
-                                                                                @dayTimeEnd.Value
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                }
-                                                            }
+                                                            <table class="table table-borderless table-hover m-0">
+                                                                <tr>
+                                                                    <td scope="row">
+                                                                        @{
+                                                                            List<string> SelectedEndTimesBinded = new List<string>();
+
+                                                                            foreach (var timeEnd in @Model.Times[j])
+                                                                            {
+                                                                                SelectedEndTimesBinded.Add(timeEnd.Value);
+                                                                            }
+
+                                                                            for (int index = 0; index < SelectedEndTimesBinded.Count(); index++)
+                                                                            {
+                                                                                <div class="form-row">
+                                                                                    <div class="col-md-6 pt-3">
+                                                                                        <input asp-for="@SelectedEndTimesBinded[index]" class="form-control" />
+                                                                                        <span asp-validation-for="@SelectedEndTimesBinded[index]" class="text-danger"></span>
+                                                                                        <div class="invalid-tooltip">
+                                                                                            Please provide a ticket name.
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        }
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -88,14 +110,12 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                            }
+
                         </div>
-                    }
-                }
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="alert alert-danger" role="alert">
-            <strong>P.S.</strong> Click on each day to see the times!
-        </div>
     </div>
-</div>
+}

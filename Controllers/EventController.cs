@@ -289,6 +289,20 @@ namespace eShop.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        //// POST: Event/DeleteSchedule/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public IActionResult DeleteSchedule(int id, Schedule removedSchedule)
+        {
+            var modifiedEvent = _eventService.GetEventById(id);
+
+            if (ModelState.IsValid)
+            {
+                _scheduleService.DeleteSchedule(id);
+            }
+            return RedirectToAction(nameof(Details), new { id = modifiedEvent.EventId });
+        }
+
         // POST: Event/ImportEvents
         public IActionResult ImportEvents(List<Event> importedEvents)
         {
