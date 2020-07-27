@@ -2,17 +2,17 @@
 
 <div class="form-row">
     <div class="col-md-4 pt-3">
-        <label asp-for="Day.DayOfWeek" class="control-label"></label>
-        <select asp-for="Day.DayOfWeek" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DayOfWeek))))"><option>Choose days</option></select>
-        <span asp-validation-for="Day.DayOfWeek" class="text-danger"></span>
+        <label asp-for="Day.Date" class="control-label"></label>
+        <input class="form-control" type="date" asp-for="Day.Date">
+        <span asp-validation-for="Day.Date" class="text-danger"></span>
         <div class="invalid-tooltip">
-            Please provide a day.
+            Please provide a date.
         </div>
     </div>
 
     <div class="col-md-4 pt-3">
         <label asp-for="Time.TimeStart" class="control-label"></label>
-        <input asp-for="Time.TimeStart" class="form-control" required />
+        <input asp-for="Time.TimeStart" type="time" class="form-control" required />
         <span asp-validation-for="Time.TimeStart" class="text-danger"></span>
         <div class="invalid-tooltip">
             Please provide a start time.
@@ -21,7 +21,7 @@
 
     <div class="col-md-4 pt-3">
         <label asp-for="Time.TimeEnd" class="control-label"></label>
-        <input asp-for="Time.TimeEnd" class="form-control"  required />
+        <input asp-for="Time.TimeEnd" type="time" class="form-control" required />
         <span asp-validation-for="Time.TimeEnd" class="text-danger"></span>
         <div class="invalid-tooltip">
             Please provide an end time.

@@ -33,17 +33,17 @@ namespace eShop.Infrastructure.Database
             base.OnModelCreating(modelBuilder);
 
             //seed day
-            modelBuilder.Entity<Day>().HasData(new Day { DayId = 1, WeekId = 1, DayOfWeek = DayOfWeek.Monday });
-            modelBuilder.Entity<Day>().HasData(new Day { DayId = 2, WeekId = 2, DayOfWeek = DayOfWeek.Monday });
-            modelBuilder.Entity<Day>().HasData(new Day { DayId = 3, WeekId = 3, DayOfWeek = DayOfWeek.Monday });
-            modelBuilder.Entity<Day>().HasData(new Day { DayId = 4, WeekId = 4, DayOfWeek = DayOfWeek.Monday });
-            modelBuilder.Entity<Day>().HasData(new Day { DayId = 5, WeekId = 5, DayOfWeek = DayOfWeek.Monday });
-            modelBuilder.Entity<Day>().HasData(new Day { DayId = 6, WeekId = 6, DayOfWeek = DayOfWeek.Monday });
-            modelBuilder.Entity<Day>().HasData(new Day { DayId = 7, WeekId = 7, DayOfWeek = DayOfWeek.Monday });
-            modelBuilder.Entity<Day>().HasData(new Day { DayId = 8, WeekId = 8, DayOfWeek = DayOfWeek.Monday });
-            modelBuilder.Entity<Day>().HasData(new Day { DayId = 9, WeekId = 9, DayOfWeek = DayOfWeek.Monday });
-            modelBuilder.Entity<Day>().HasData(new Day { DayId = 10, WeekId = 10, DayOfWeek = DayOfWeek.Monday });
-            modelBuilder.Entity<Day>().HasData(new Day { DayId = 11, WeekId = 11, DayOfWeek = DayOfWeek.Monday });
+            modelBuilder.Entity<Day>().HasData(new Day { DayId = 1, WeekId = 1, /*DayOfWeek = DayOfWeek.Monday,*/ Date = DateTime.Parse("10/22/2015") });
+            modelBuilder.Entity<Day>().HasData(new Day { DayId = 2, WeekId = 2, /*DayOfWeek = DayOfWeek.Monday,*/ Date = DateTime.Parse("10/22/2015") });
+            modelBuilder.Entity<Day>().HasData(new Day { DayId = 3, WeekId = 3, /*DayOfWeek = DayOfWeek.Monday,*/ Date = DateTime.Parse("10/22/2015") });
+            modelBuilder.Entity<Day>().HasData(new Day { DayId = 4, WeekId = 4, /*DayOfWeek = DayOfWeek.Monday,*/ Date = DateTime.Parse("10/22/2015") });
+            modelBuilder.Entity<Day>().HasData(new Day { DayId = 5, WeekId = 5, /*DayOfWeek = DayOfWeek.Monday,*/ Date = DateTime.Parse("10/22/2015") });
+            modelBuilder.Entity<Day>().HasData(new Day { DayId = 6, WeekId = 6, /*DayOfWeek = DayOfWeek.Monday,*/ Date = DateTime.Parse("10/22/2015") });
+            modelBuilder.Entity<Day>().HasData(new Day { DayId = 7, WeekId = 7, /*DayOfWeek = DayOfWeek.Monday,*/ Date = DateTime.Parse("10/22/2015") });
+            modelBuilder.Entity<Day>().HasData(new Day { DayId = 8, WeekId = 8, /*DayOfWeek = DayOfWeek.Monday,*/ Date = DateTime.Parse("10/22/2015") });
+            modelBuilder.Entity<Day>().HasData(new Day { DayId = 9, WeekId = 9, /*DayOfWeek = DayOfWeek.Monday,*/ Date = DateTime.Parse("10/22/2015") });
+            modelBuilder.Entity<Day>().HasData(new Day { DayId = 10, WeekId = 10, /*DayOfWeek = DayOfWeek.Monday,*/ Date = DateTime.Parse("10/22/2015") });
+            modelBuilder.Entity<Day>().HasData(new Day { DayId = 11, WeekId = 11, /*DayOfWeek = DayOfWeek.Monday,*/ Date = DateTime.Parse("10/22/2015") });
 
             //seed week
             modelBuilder.Entity<Week>().HasData(new Week { WeekId = 1, ScheduleId = 1 });

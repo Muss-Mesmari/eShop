@@ -3,17 +3,17 @@
 @{
     if (Model.Days.Any())
     {
-        List<string> DaysOfWeek = new List<string>();
+        List<string> Dates = new List<string>();
 
         <div>
             <div class="row-4 mb-3">
                 <div class="btn-group" role="group" aria-label="Schedule tab">
-                    @{for (int i = 0; i < @Model.Days.Select(d => d.DayOfWeek).ToList().Count(); i++)
+                    @{for (int i = 0; i < @Model.Days.Select(d => d.Date).ToList().Count(); i++)
                         {
-                            DaysOfWeek.Add(@Model.Days.Select(d => d.DayOfWeek).ToList()[i].ToString());
-                            <a class="btn btn-primary" data-toggle="collapse" href="#tab-@i" role="button" aria-expanded="false" aria-controls="tab-@i">
-                                @Model.Days.Select(d => d.DayOfWeek).ToList()[i] <span class="badge badge-light"> @Model.Times[i].Count()</span> <span class="sr-only">unread messages</span>
-                            </a>
+                            Dates.Add(@Model.Days.Select(d => d.Date).ToList()[i].ToString("MMMM dd"));
+                                        <a class="btn btn-primary" data-toggle="collapse" href="#tab-@i" role="button" aria-expanded="false" aria-controls="tab-@i">
+                                            @Model.Days.Select(d => d.Date).ToList()[i].ToString("MMMM dd") <span class="badge badge-light"> @Model.Times[i].Count()</span> <span class="sr-only">unread messages</span>
+                                        </a>
                         }
                     }
                 </div>
@@ -27,7 +27,7 @@
 
                                 <div class="collapse multi-collapse" id="tab-@i">
                                     <div class="card card-body mb-3">
-                                        <h5 class="card-title"> @DaysOfWeek[i] Schedule:</h5>
+                                        <h5 class="card-title"> @Dates[i] Schedule:</h5>
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>

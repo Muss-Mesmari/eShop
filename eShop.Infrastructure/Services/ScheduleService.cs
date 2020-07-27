@@ -157,7 +157,8 @@ namespace eShop.Infrastructure.Services
             var weekId = newWeek.WeekId;
             var newDay = new Day()
             {
-                DayOfWeek = newEvent.Day.DayOfWeek,
+                Date = newEvent.Day.Date,
+               // DayOfWeek = newEvent.Day.DayOfWeek,
                 WeekId = weekId
             };
             _eShopDbContext.Day.Add(newDay);
@@ -196,7 +197,8 @@ namespace eShop.Infrastructure.Services
                 {
                     if (newDay != null)
                     {
-                        newDay.DayOfWeek = newDay.DayOfWeek;
+                        //newDay.DayOfWeek = newDay.DayOfWeek;
+                        newDay.Date = newDay.Date;
                         newDay.WeekId = weekId;
                         newDay.DayId = dayIds[i];
                         i++;

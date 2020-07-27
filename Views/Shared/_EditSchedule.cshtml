@@ -7,7 +7,7 @@
             <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
                     <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse_Schedule_@i" aria-expanded="true" aria-controls="collapse_Schedule_@i">
-                        @Model.Days.ToList()[i].DayOfWeek
+                        @Model.Days.ToList()[i].Date.ToString("MMMM dd")
                     </a>
                 </h5>
             </div>
@@ -15,11 +15,11 @@
                 <div class="card-body">
 
                     <div class="form-row">
-                        <label asp-for="@Model.Days.ToList()[i].DayOfWeek" class="control-label"></label>
-                        <select asp-for="@Model.Days.ToList()[i].DayOfWeek" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(DayOfWeek))))"><option>Choose days</option></select>
-                        <span asp-validation-for="@Model.Days.ToList()[i].DayOfWeek" class="text-danger"></span>
+                        <label asp-for="@Model.Days.ToList()[i].Date" class="control-label"></label>
+                        <input class="form-control" asp-for="@Model.Days.ToList()[i].Date" type="date" value="@Model.Days.ToList()[i].Date">                        
+                        <span asp-validation-for="@Model.Days.ToList()[i].Date" class="text-danger"></span>
                         <div class="invalid-tooltip">
-                            Please provide a ticket name.
+                            Please provide a date
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                                                                             {
                                                                                 <div class="form-row">
                                                                                     <div class="col-md-6 pt-3">
-                                                                                        <input asp-for="@SelectedStartTimesBinded[index]" class="form-control" />
+                                                                                        <input asp-for="@SelectedStartTimesBinded[index]" type="time" class="form-control" />
                                                                                         <span asp-validation-for="@SelectedStartTimesBinded[index]" class="text-danger"></span>
                                                                                         <div class="invalid-tooltip">
                                                                                             Please provide a ticket name.
@@ -91,7 +91,7 @@
                                                                             {
                                                                                 <div class="form-row">
                                                                                     <div class="col-md-6 pt-3">
-                                                                                        <input asp-for="@SelectedEndTimesBinded[index]" class="form-control" />
+                                                                                        <input asp-for="@SelectedEndTimesBinded[index]" type="time" class="form-control" />
                                                                                         <span asp-validation-for="@SelectedEndTimesBinded[index]" class="text-danger"></span>
                                                                                         <div class="invalid-tooltip">
                                                                                             Please provide a ticket name.
