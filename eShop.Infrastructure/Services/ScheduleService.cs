@@ -20,9 +20,9 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext = eShopDbContext;
         }
 
-        public IEnumerable<Day> AllDays => _eShopDbContext.Day.OrderBy(d => d.DayId).ToList();
+        public List<Day> AllDays => _eShopDbContext.Day.OrderBy(d => d.DayId).ToList();
 
-        public IEnumerable<Day> GetAllEventsDays()
+        public List<Day> GetAllEventsDays()
         {
             //List<int> weekIds = new List<int>();
             //foreach (var daysList in AllDaysList)
@@ -66,7 +66,7 @@ namespace eShop.Infrastructure.Services
         }
 
         // Try int? eventId instead of bool isNewEvent
-        public IEnumerable<Day> GetEventDays(int eventId, bool isNewEvent)
+        public List<Day> GetEventDays(int eventId, bool isNewEvent)
         {
             List<Day> days = new List<Day>();
             if (!isNewEvent)

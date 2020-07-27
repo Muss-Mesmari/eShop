@@ -2,7 +2,7 @@
 <div class="form-row">
     <div class="col pt-3">
         <label asp-for="Ticket.TicketName" class="control-label"></label>
-        <input asp-for="Ticket.TicketName" class="form-control" required />
+        <input asp-for="Ticket.TicketName" class="form-control" />
         <span asp-validation-for="Ticket.TicketName" class="text-danger"></span>
         <div class="invalid-tooltip">
             Please provide a ticket name.
@@ -12,7 +12,7 @@
 <div class="form-row">
     <div class="col-md-6 pt-3">
         <label asp-for="Ticket.TicketPrice" class="control-label"></label>
-        <input asp-for="Ticket.TicketPrice" class="form-control" required />
+        <input asp-for="Ticket.TicketPrice" class="form-control" />
         <span asp-validation-for="Ticket.TicketPrice" class="text-danger"></span>
         <div class="invalid-tooltip">
             Please provide a price.
@@ -20,7 +20,7 @@
     </div>
     <div class="col-md-6 pt-3">
         <label asp-for="Ticket.TotalAvailableTicket" class="control-label"></label>
-        <input asp-for="Ticket.TotalAvailableTicket" class="form-control" required />
+        <input asp-for="Ticket.TotalAvailableTicket" class="form-control"  />
         <span asp-validation-for="Ticket.TotalAvailableTicket" class="text-danger"></span>
         <div class="invalid-tooltip">
             Please provide a number of tickets.
@@ -30,7 +30,7 @@
 <div class="form-row">
     <div class="col pt-3">
         <label asp-for="Ticket.Description" class="control-label"></label>
-        <textarea asp-for="Ticket.Description" class="form-control" row="3" required></textarea>
+        <textarea asp-for="Ticket.Description" class="form-control" row="3" ></textarea>
         <span asp-validation-for="Ticket.Description" class="text-danger"></span>
         <div class="invalid-tooltip">
             Please provide a description.

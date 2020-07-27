@@ -16,10 +16,10 @@ using eShop.Entities.Entities;
 
 namespace eShop.Web.Controllers
 {
-  // [TypeFilter(typeof(OutageAuthorizationFilter))]
+    // [TypeFilter(typeof(OutageAuthorizationFilter))]
 
-  //  [MobileRedirectActionFilter(Action ="ActionName", Controller ="Home")]
-  //   To target the action name that we want to be generated for mobile phones
+    //  [MobileRedirectActionFilter(Action ="ActionName", Controller ="Home")]
+    //   To target the action name that we want to be generated for mobile phones
     public class HomeController : Controller
     {
         // private readonly ILogger<HomeController> _logger;
@@ -46,7 +46,7 @@ namespace eShop.Web.Controllers
         (
             ITicketService ticketService,
             IScheduleService scheduleService,
-            IEventService eventService, 
+            IEventService eventService,
             ICategoryService categoryService,
             IOptions<FeaturesConfiguration> options
         )
@@ -86,6 +86,8 @@ namespace eShop.Web.Controllers
             return View(new EventViewModel
             {
                 Events = events,
+                Days = _scheduleService.AllDays,
+                Times = _scheduleService.GetAllEventsTimesList(),
                 SearchedEventBar = SearchedEventBar,
                 NotFoundSearchedBarMessage = "Nothing was found that matched your search",
             });

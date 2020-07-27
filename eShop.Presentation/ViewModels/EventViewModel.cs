@@ -12,7 +12,7 @@ namespace eShop.Presentation.ViewModels
         public IEnumerable<Event> IsHighlightedEvent { get; set; }
         public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<Event> Events { get; set; }
-        public IEnumerable<Day> Days { get; set; }        
+        public List<Day> Days { get; set; }        
         public List<List<KeyValuePair<string, string>>> Times { get; set; }
         public IEnumerable<Ticket> Tickets { get; set; }
         public string CurrentCategory { get; set; }

@@ -8,9 +8,9 @@ namespace eShop.Infrastructure.Services
     public interface IScheduleService
     {
         List<List<KeyValuePair<string, string>>> GetAllEventsTimesList();
-        IEnumerable<Day> AllDays { get; }
+        List<Day> AllDays { get; }
 
-        IEnumerable<Day> GetEventDays(int eventId, bool isNewEvent);
+        List<Day> GetEventDays(int eventId, bool isNewEvent);
         List<List<KeyValuePair<string, string>>> GetEventTimes(int eventId, bool isNewEvent);
 
 
