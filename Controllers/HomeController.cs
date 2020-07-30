@@ -87,11 +87,16 @@ namespace eShop.Web.Controllers
         public ActionResult Search()
         {
             IEnumerable<Event> events = _eventService.GetSearchedEventsByContent(SearchedEventBar).OrderBy(e => e.EventId);
-
+            List<List<Day>> daysList = new List<List<Day>>();
+            foreach (var e in events)
+            {
+                var days = _scheduleService.GetEventDays(e.EventId, false);
+                daysList.Add(days);
+            }
             return View(new EventViewModel
             {
                 Events = events,
-                Days = _scheduleService.AllDays,
+                DaysList = daysList,
                 Times = _scheduleService.GetAllEventsTimesList(),
                 SearchedEventBar = SearchedEventBar,
                 NotFoundSearchedBarMessage = "Nothing was found that matched your search",

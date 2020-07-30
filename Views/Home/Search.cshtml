@@ -5,10 +5,7 @@
     if (@Model.Events.Any())
     {
         <div class="card-deck">
-            @foreach (var item in Model.Events)
-            {
-                <partial name="_EventCard" />
-            }
+            <partial name="_EventCard" />
         </div>
     }
     else
