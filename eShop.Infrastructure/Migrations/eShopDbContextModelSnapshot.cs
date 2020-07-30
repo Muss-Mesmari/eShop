@@ -1316,78 +1316,78 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TimesId = 1,
                             DayId = 1,
-                            TimeEnd = new DateTime(2020, 7, 27, 0, 48, 53, 412, DateTimeKind.Local).AddTicks(7655),
-                            TimeStart = new DateTime(2020, 7, 26, 22, 48, 53, 409, DateTimeKind.Local).AddTicks(9882)
+                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(4559),
+                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 883, DateTimeKind.Local).AddTicks(8781)
                         },
                         new
                         {
                             TimesId = 2,
                             DayId = 2,
-                            TimeEnd = new DateTime(2020, 7, 27, 0, 48, 53, 412, DateTimeKind.Local).AddTicks(9543),
-                            TimeStart = new DateTime(2020, 7, 26, 22, 48, 53, 412, DateTimeKind.Local).AddTicks(9511)
+                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6610),
+                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6582)
                         },
                         new
                         {
                             TimesId = 3,
                             DayId = 3,
-                            TimeEnd = new DateTime(2020, 7, 27, 0, 48, 53, 412, DateTimeKind.Local).AddTicks(9609),
-                            TimeStart = new DateTime(2020, 7, 26, 22, 48, 53, 412, DateTimeKind.Local).AddTicks(9605)
+                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6667),
+                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6662)
                         },
                         new
                         {
                             TimesId = 4,
                             DayId = 4,
-                            TimeEnd = new DateTime(2020, 7, 27, 0, 48, 53, 412, DateTimeKind.Local).AddTicks(9639),
-                            TimeStart = new DateTime(2020, 7, 26, 22, 48, 53, 412, DateTimeKind.Local).AddTicks(9635)
+                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6697),
+                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6693)
                         },
                         new
                         {
                             TimesId = 5,
                             DayId = 5,
-                            TimeEnd = new DateTime(2020, 7, 27, 0, 48, 53, 412, DateTimeKind.Local).AddTicks(9668),
-                            TimeStart = new DateTime(2020, 7, 26, 22, 48, 53, 412, DateTimeKind.Local).AddTicks(9664)
+                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6725),
+                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6721)
                         },
                         new
                         {
                             TimesId = 6,
                             DayId = 6,
-                            TimeEnd = new DateTime(2020, 7, 27, 0, 48, 53, 412, DateTimeKind.Local).AddTicks(9698),
-                            TimeStart = new DateTime(2020, 7, 26, 22, 48, 53, 412, DateTimeKind.Local).AddTicks(9694)
+                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6759),
+                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6754)
                         },
                         new
                         {
                             TimesId = 7,
                             DayId = 7,
-                            TimeEnd = new DateTime(2020, 7, 27, 0, 48, 53, 412, DateTimeKind.Local).AddTicks(9727),
-                            TimeStart = new DateTime(2020, 7, 26, 22, 48, 53, 412, DateTimeKind.Local).AddTicks(9723)
+                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6788),
+                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6784)
                         },
                         new
                         {
                             TimesId = 8,
                             DayId = 8,
-                            TimeEnd = new DateTime(2020, 7, 27, 0, 48, 53, 412, DateTimeKind.Local).AddTicks(9755),
-                            TimeStart = new DateTime(2020, 7, 26, 22, 48, 53, 412, DateTimeKind.Local).AddTicks(9751)
+                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6816),
+                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6811)
                         },
                         new
                         {
                             TimesId = 9,
                             DayId = 9,
-                            TimeEnd = new DateTime(2020, 7, 27, 0, 48, 53, 412, DateTimeKind.Local).AddTicks(9782),
-                            TimeStart = new DateTime(2020, 7, 26, 22, 48, 53, 412, DateTimeKind.Local).AddTicks(9778)
+                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6843),
+                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6839)
                         },
                         new
                         {
                             TimesId = 10,
                             DayId = 10,
-                            TimeEnd = new DateTime(2020, 7, 27, 0, 48, 53, 412, DateTimeKind.Local).AddTicks(9811),
-                            TimeStart = new DateTime(2020, 7, 26, 22, 48, 53, 412, DateTimeKind.Local).AddTicks(9807)
+                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6873),
+                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6869)
                         },
                         new
                         {
                             TimesId = 11,
                             DayId = 11,
-                            TimeEnd = new DateTime(2020, 7, 27, 0, 48, 53, 412, DateTimeKind.Local).AddTicks(9839),
-                            TimeStart = new DateTime(2020, 7, 26, 22, 48, 53, 412, DateTimeKind.Local).AddTicks(9835)
+                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6902),
+                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6897)
                         });
                 });
 

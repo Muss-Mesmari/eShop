@@ -120,7 +120,13 @@
 
                             <div class="collapse" id="collapseAddToSchedule">
                                 <div class="card card-body">
-                                    <partial name="_CreateSchedule">
+                                    @*<partial name="_CreateSchedule">
+                                        <form asp-controller="Event" asp-action="CreateStepTwo" asp-route-id="@Model.Event.EventId" class="needs-validation" novalidate>
+                                            <partial name="_CreateSchedule">
+                                                <div class="mt-3 pt-3">
+                                                    <button type="submit" class="btn btn-danger w-25">Add to Schedule <i class="fa fa-plus text-white"></i></button>
+                                                </div>
+                                        </form>*@
                                 </div>
                             </div>
                         </div>

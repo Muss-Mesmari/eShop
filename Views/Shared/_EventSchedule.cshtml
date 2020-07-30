@@ -11,9 +11,9 @@
                     @{for (int i = 0; i < @Model.Days.Select(d => d.Date).ToList().Count(); i++)
                         {
                             Dates.Add(@Model.Days.Select(d => d.Date).ToList()[i].ToString("MMMM dd"));
-                                        <a class="btn btn-primary" data-toggle="collapse" href="#tab-@i" role="button" aria-expanded="false" aria-controls="tab-@i">
-                                            @Model.Days.Select(d => d.Date).ToList()[i].ToString("MMMM dd") <span class="badge badge-light"> @Model.Times[i].Count()</span> <span class="sr-only">unread messages</span>
-                                        </a>
+                            <a class="btn btn-primary" data-toggle="collapse" href="#tab-@i" role="button" aria-expanded="false" aria-controls="tab-@i">
+                                @Model.Days.Select(d => d.Date).ToList()[i].ToString("MMMM dd") <span class="badge badge-light"> @Model.Times[i].Count()</span> <span class="sr-only">unread messages</span>
+                            </a>
                         }
                     }
                 </div>

@@ -61,14 +61,19 @@ namespace eShop.Web.Controllers
         //[Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
-            var days = _scheduleService.AllDays;
             var times = _scheduleService.GetAllEventsTimesList();
-
+            List<List<Day>> daysList = new List<List<Day>>();
+            var eventsList = _eventService.AllEvents();
+            foreach (var e in eventsList)
+            {
+                var days = _scheduleService.GetEventDays(e.EventId, false);
+                daysList.Add(days);
+            }
 
             var eventViewModel = new EventViewModel
             {
                 Events = _eventService.AllEvents(),
-                Days = days,
+                DaysList = daysList,
                 Times = times,
                 IsHighlightedEvent = _eventService.IsHighlightedEvent,
                 Categories = _categoryService.AllCategories,

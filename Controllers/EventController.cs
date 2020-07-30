@@ -61,7 +61,13 @@ namespace eShop.Web.Controllers
         {
             IEnumerable<Event> events;
 
-            var days = _scheduleService.AllDays;
+            List<List<Day>> daysList = new List<List<Day>>();
+            var eventsList = _eventService.AllEvents();
+            foreach (var e in eventsList)
+            {
+                var days = _scheduleService.GetEventDays(e.EventId, false);
+                daysList.Add(days); 
+            }
             var times = _scheduleService.GetAllEventsTimesList();
 
             string currentCategory;
@@ -89,7 +95,7 @@ namespace eShop.Web.Controllers
             return View(new EventViewModel
             {
                 Events = events,
-                Days = days,
+                DaysList = daysList,
                 CurrentCategory = currentCategory,
                 SearchedEvent = SearchedEvent,
                 SearchedCategory = SearchedCategory,
@@ -302,6 +308,7 @@ namespace eShop.Web.Controllers
             // https://localhost:44369/Event/Details/1#schedule
             //return RedirectToAction(nameof(Details), new { id = modifiedEvent.EventId });
         }
+
 
         // POST: Event/ImportEvents
         public IActionResult ImportEvents(List<Event> importedEvents)
