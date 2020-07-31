@@ -9,7 +9,6 @@ namespace eShop.Presentation.ViewModels
 {
     public class EventViewModel
     {
-        public IEnumerable<Event> IsHighlightedEvent { get; set; }
         public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<Event> Events { get; set; }
         public List<Day> Days { get; set; }

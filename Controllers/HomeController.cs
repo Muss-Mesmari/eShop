@@ -72,10 +72,9 @@ namespace eShop.Web.Controllers
 
             var eventViewModel = new EventViewModel
             {
-                Events = _eventService.AllEvents(),
+                Events = _eventService.IsHighlightedEvent,
                 DaysList = daysList,
                 Times = times,
-                IsHighlightedEvent = _eventService.IsHighlightedEvent,
                 Categories = _categoryService.AllCategories,
                 HomepageCategorySection = _featuresConfiguration.HomepageCategorySection,
                 HomepageFeaturedEventsSection = _featuresConfiguration.HomepageFeaturedEventsSection
