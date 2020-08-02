@@ -50,7 +50,7 @@
                                 @Model.Tickets.ToList()[0].TicketPrice <small class="text-muted"> @Model.Event.Currency</small>
                             </h5>
                         </div>
-                        <partial name="_ShoppingCartModal">    
+                        <partial name="_ShoppingCartModal">
                     </div>
                 </div>
             </div>
@@ -85,8 +85,9 @@
                     Teachers
                 </div>
                 <div class="card-body">
-                    <p>@Model.Teachers.TeacherName</p>
-                    <p>@Model.Teachers.TeachingAssistantName</p>
+                    <partial name="_EventTeachers" />
+                    @*<p>@Model.Teachers.TeacherName</p>
+                        <p>@Model.Teachers.TeachingAssistantName</p>*@
                 </div>
             </div>
 
@@ -96,7 +97,7 @@
                     Tickets
                 </div>
                 <div class="card-body">
-                    <partial name="_EventTickets" />                                   
+                    <partial name="_EventTickets" />
                 </div>
             </div>
 

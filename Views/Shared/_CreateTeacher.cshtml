@@ -1,0 +1,21 @@
+﻿@model eShop.Presentation.ViewModels.EventViewModel
+<div class="form-row">
+    <div class="col pt-3">
+        <label asp-for="Teacher.TeacherName" class="control-label"></label>
+        <input asp-for="Teacher.TeacherName" class="form-control" />
+        <span asp-validation-for="Teacher.TeacherName" class="text-danger"></span>
+        <div class="invalid-tooltip">
+            Please provide a teacher name.
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col pt-3">
+        <label asp-for="Teacher.TeacherDescription" class="control-label"></label>
+        <textarea asp-for="Teacher.TeacherDescription" class="form-control"></textarea>
+        <span asp-validation-for="Teacher.TeacherDescription" class="text-danger"></span>
+        <div class="invalid-tooltip">
+            Please provide a description.
+        </div>
+    </div>
+</div>

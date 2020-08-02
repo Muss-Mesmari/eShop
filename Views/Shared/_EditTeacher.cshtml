@@ -1,0 +1,84 @@
+﻿@model IEnumerable<eShop.Entities.Entities.Teacher>
+
+
+<div id="accordion">
+    <div class="card mb-1">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse_0" aria-expanded="true" aria-controls="collapse_0">
+                    @Model.ToList()[0].TeacherName
+                </a>
+            </h5>
+        </div>
+        <div id="collapse_0" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+
+                <div class="form-row">
+                    <div class="col pt-3">
+                        <label asp-for="@Model.ToList()[0].TeacherName" class="control-label"></label>
+                        <input asp-for="@Model.ToList()[0].TeacherName" class="form-control"  />
+                        <span asp-validation-for="@Model.ToList()[0].TeacherName" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a teacher name.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col pt-3">
+                        <label asp-for="@Model.ToList()[0].TeacherDescription" class="control-label"></label>
+                        <textarea asp-for="@Model.ToList()[0].TeacherDescription" class="form-control"></textarea>
+                        <span asp-validation-for="@Model.ToList()[0].TeacherDescription" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a description.
+                        </div>
+                    </div>              
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@for (int i = 1; i < Model.Count(); i++)
+{
+    <div id="accordion">
+        <div class="card mb-1">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <a class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapse_@i" aria-expanded="false" aria-controls="collapse_@i">
+                        @Model.ToList()[i].TeacherName
+                    </a>
+                </h5>
+            </div>
+            <div id="collapse_@i" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+
+                    <div class="form-row">
+                        <div class="col pt-3">
+                            <label asp-for="@Model.ToList()[i].TeacherName" class="control-label"></label>
+                            <input asp-for="@Model.ToList()[i].TeacherName" class="form-control"  />
+                            <span asp-validation-for="@Model.ToList()[i].TeacherName" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a teacher name.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col pt-3">
+                            <label asp-for="@Model.ToList()[i].TeacherDescription" class="control-label"></label>
+                            <textarea asp-for="@Model.ToList()[i].TeacherDescription" class="form-control"></textarea>
+                            <span asp-validation-for="@Model.ToList()[i].TeacherDescription" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a price.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="alert alert-danger mt-3" role="alert">
+    <strong>P.S.</strong> Click on each teacher to edit!
+</div>

@@ -15,7 +15,7 @@ namespace eShop.Infrastructure.Database
         }
 
         public DbSet<Ticket> Ticket { get; set; }
-        public DbSet<Teachers> Teachers { get; set; }
+        public DbSet<Teacher> Teacher { get; set; }
         public DbSet<Location> Location { get; set; }
         public DbSet<Day> Day { get; set; }
         public DbSet<Week> Week { get; set; }
@@ -151,18 +151,18 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Schedule>().HasData(new Schedule { ScheduleId = 10, EventId = 10 });
             modelBuilder.Entity<Schedule>().HasData(new Schedule { ScheduleId = 11, EventId = 11 });
 
-            //seed teachers
-            modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 1, TeacherName = "Teacher One", TeachingAssistantName = "Teaching Assistant One" });
-            modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 2, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
-            modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 3, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
-            modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 4, TeacherName = "Teacher One", TeachingAssistantName = "Teaching Assistant One" });
-            modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 5, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
-            modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 6, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
-            modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 7, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
-            modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 8, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
-            modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 9, TeacherName = "Teacher One", TeachingAssistantName = "Teaching Assistant One" });
-            modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 10, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
-            modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 11, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
+            ////seed teachers
+            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 1, TeacherName = "Teacher One", TeachingAssistantName = "Teaching Assistant One" });
+            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 2, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
+            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 3, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
+            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 4, TeacherName = "Teacher One", TeachingAssistantName = "Teaching Assistant One" });
+            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 5, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
+            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 6, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
+            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 7, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
+            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 8, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
+            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 9, TeacherName = "Teacher One", TeachingAssistantName = "Teaching Assistant One" });
+            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 10, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
+            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 11, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
 
             //seed location
             modelBuilder.Entity<Location>().HasData(new Location { LocationId = 1, State = "Stockholm", Street = "vägen", StreetNumber = 1, City = "Stockholm län", ZipCode = 12345 });
@@ -218,6 +218,43 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 33, TicketName = "Ticket Two", TicketPrice = 100, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 20, EventId = 11 });
             modelBuilder.Entity<Ticket>().HasData(new Ticket { TicketId = 34, TicketName = "Ticket Three", TicketPrice = 150, Description = "Omnis et enim aperiam inventore", TotalAvailableTicket = 15, EventId = 11 });
 
+            //seed teachers
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 1, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant One Description", EventId = 1 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 2, TeacherName = "Teacher Two", TeacherDescription = "Teacher Assistant Two Description", EventId = 1 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 3, TeacherName = "Teacher Three", TeacherDescription = "Teacher Assistant Three Description", EventId = 1 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 4, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant One Description", EventId = 2 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 5, TeacherName = "Teacher Two", TeacherDescription = "Teacher Assistant Two Description", EventId = 2 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 6, TeacherName = "Teacher Three", TeacherDescription = "Teacher Assistant Three Description", EventId = 2 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 7, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant Four Description", EventId = 2 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 8, TeacherName = "Teacher Two", TeacherDescription = "Teacher Assistant One Description",  EventId = 3 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 9, TeacherName = "Teacher Three", TeacherDescription = "Teacher Assistant Two Description", EventId = 3 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 10, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant Three Description",  EventId = 3 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 11, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant One Description", EventId = 4 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 12, TeacherName = "Teacher Two", TeacherDescription = "Teacher Assistant Two Description", EventId = 4 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 13, TeacherName = "Teacher Three", TeacherDescription = "Teacher Assistant Three Description", EventId = 4 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 14, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant One Description", EventId = 4 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 15, TeacherName = "Teacher Two", TeacherDescription = "Teacher Assistant Two Description", EventId = 5 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 16, TeacherName = "Teacher Three", TeacherDescription = "Teacher Assistant Three Description", EventId = 5 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 17, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant Four Description", EventId = 5 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 18, TeacherName = "Teacher Two", TeacherDescription = "Teacher Assistant One Description", EventId = 6 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 19, TeacherName = "Teacher Three", TeacherDescription = "Teacher Assistant Two Description", EventId = 6 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 20, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant Three Description", EventId = 6 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 21, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant One Description", EventId = 7 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 22, TeacherName = "Teacher Two", TeacherDescription = "Teacher Assistant Two Description", EventId = 7 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 23, TeacherName = "Teacher Three", TeacherDescription = "Teacher Assistant Three Description", EventId = 7 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 24, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant One Description", EventId = 7 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 25, TeacherName = "Teacher Two", TeacherDescription = "Teacher Assistant Two Description", EventId = 8 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 26, TeacherName = "Teacher Three", TeacherDescription = "Teacher Assistant Three Description", EventId = 8 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 27, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant Four Description", EventId = 8 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 28, TeacherName = "Teacher Two", TeacherDescription = "Teacher Assistant One Description", EventId = 9 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 29, TeacherName = "Teacher Three", TeacherDescription = "Teacher Assistant Two Description", EventId = 9 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 30, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant Three Description", EventId = 9 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 31, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant One Description", EventId = 10 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 32, TeacherName = "Teacher Two", TeacherDescription = "Teacher Assistant Two Description", EventId = 10 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 33, TeacherName = "Teacher Three", TeacherDescription = "Teacher Assistant Three Description", EventId = 10 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 34, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant One Description", EventId = 11 });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { TeacherId = 35, TeacherName = "Teacher One", TeacherDescription = "Teacher Assistant One Description", EventId = 11 });
+           
             //seed events
             modelBuilder.Entity<Event>().HasData(new Event
             {
@@ -231,7 +268,7 @@ namespace eShop.Infrastructure.Database
                 IsHighlightedEvent = true,                
                 LocationId = 1,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                TeachersId = 1
+               // TeachersId = 1
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -246,7 +283,7 @@ namespace eShop.Infrastructure.Database
                 IsHighlightedEvent = true,               
                 LocationId = 2,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                TeachersId = 2
+              //  TeachersId = 2
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -261,7 +298,7 @@ namespace eShop.Infrastructure.Database
                 IsHighlightedEvent = false,                
                 LocationId = 3,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                TeachersId = 3
+              //  TeachersId = 3
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -276,7 +313,7 @@ namespace eShop.Infrastructure.Database
                 IsHighlightedEvent = true,               
                 LocationId = 4,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                TeachersId = 4
+              //  TeachersId = 4
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -291,7 +328,7 @@ namespace eShop.Infrastructure.Database
                 IsHighlightedEvent = false,               
                 LocationId = 5,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                TeachersId = 5
+              //  TeachersId = 5
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -306,7 +343,7 @@ namespace eShop.Infrastructure.Database
                 IsHighlightedEvent = false,               
                 LocationId = 6,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                TeachersId = 6
+              //  TeachersId = 6
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -321,7 +358,7 @@ namespace eShop.Infrastructure.Database
                 IsHighlightedEvent = false,                
                 LocationId = 7,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                TeachersId = 7
+              //  TeachersId = 7
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -336,7 +373,7 @@ namespace eShop.Infrastructure.Database
                 IsHighlightedEvent = false,               
                 LocationId = 8,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                TeachersId = 8
+              //  TeachersId = 8
             });
 
 
@@ -352,7 +389,7 @@ namespace eShop.Infrastructure.Database
                 IsHighlightedEvent = true,                
                 LocationId = 9,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                TeachersId = 9
+               // TeachersId = 9
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -367,7 +404,7 @@ namespace eShop.Infrastructure.Database
                 IsHighlightedEvent = false,               
                 LocationId = 10,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                TeachersId = 10
+              //  TeachersId = 10
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -382,7 +419,7 @@ namespace eShop.Infrastructure.Database
                 IsHighlightedEvent = true,                
                 LocationId = 11,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-                TeachersId = 11
+              //  TeachersId = 11
             });
         }
 

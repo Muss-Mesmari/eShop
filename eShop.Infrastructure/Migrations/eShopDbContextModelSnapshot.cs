@@ -375,16 +375,11 @@ namespace eShop.Infrastructure.Migrations
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TeachersId")
-                        .HasColumnType("int");
-
                     b.HasKey("EventId");
 
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("LocationId");
-
-                    b.HasIndex("TeachersId");
 
                     b.ToTable("Events");
 
@@ -401,8 +396,7 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 1,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event One",
-                            ShortDescription = "Lorem Ipsum",
-                            TeachersId = 1
+                            ShortDescription = "Lorem Ipsum"
                         },
                         new
                         {
@@ -416,8 +410,7 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 2,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Two",
-                            ShortDescription = "Lorem Ipsum",
-                            TeachersId = 2
+                            ShortDescription = "Lorem Ipsum"
                         },
                         new
                         {
@@ -431,8 +424,7 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 3,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Three",
-                            ShortDescription = "Lorem Ipsum",
-                            TeachersId = 3
+                            ShortDescription = "Lorem Ipsum"
                         },
                         new
                         {
@@ -446,8 +438,7 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 4,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Four",
-                            ShortDescription = "Lorem Ipsum",
-                            TeachersId = 4
+                            ShortDescription = "Lorem Ipsum"
                         },
                         new
                         {
@@ -461,8 +452,7 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 5,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Five",
-                            ShortDescription = "Lorem Ipsum",
-                            TeachersId = 5
+                            ShortDescription = "Lorem Ipsum"
                         },
                         new
                         {
@@ -476,8 +466,7 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 6,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Six",
-                            ShortDescription = "Lorem Ipsum",
-                            TeachersId = 6
+                            ShortDescription = "Lorem Ipsum"
                         },
                         new
                         {
@@ -491,8 +480,7 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 7,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Seven",
-                            ShortDescription = "Lorem Ipsum",
-                            TeachersId = 7
+                            ShortDescription = "Lorem Ipsum"
                         },
                         new
                         {
@@ -506,8 +494,7 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 8,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Eight",
-                            ShortDescription = "Lorem Ipsum",
-                            TeachersId = 8
+                            ShortDescription = "Lorem Ipsum"
                         },
                         new
                         {
@@ -521,8 +508,7 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 9,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Nine",
-                            ShortDescription = "Lorem Ipsum",
-                            TeachersId = 9
+                            ShortDescription = "Lorem Ipsum"
                         },
                         new
                         {
@@ -536,8 +522,7 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 10,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Ten",
-                            ShortDescription = "Lorem Ipsum",
-                            TeachersId = 10
+                            ShortDescription = "Lorem Ipsum"
                         },
                         new
                         {
@@ -551,8 +536,7 @@ namespace eShop.Infrastructure.Migrations
                             LocationId = 11,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Eleven",
-                            ShortDescription = "Lorem Ipsum",
-                            TeachersId = 11
+                            ShortDescription = "Lorem Ipsum"
                         });
                 });
 
@@ -866,89 +850,273 @@ namespace eShop.Infrastructure.Migrations
                     b.ToTable("ShoppingCartItems");
                 });
 
-            modelBuilder.Entity("eShop.Entities.Entities.Teachers", b =>
+            modelBuilder.Entity("eShop.Entities.Entities.Teacher", b =>
                 {
-                    b.Property<int>("TeachersId")
+                    b.Property<int>("TeacherId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TeacherDescription")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TeacherName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TeachingAssistantName")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("TeacherId");
 
-                    b.HasKey("TeachersId");
+                    b.HasIndex("EventId");
 
-                    b.ToTable("Teachers");
+                    b.ToTable("Teacher");
 
                     b.HasData(
                         new
                         {
-                            TeachersId = 1,
-                            TeacherName = "Teacher One",
-                            TeachingAssistantName = "Teaching Assistant One"
+                            TeacherId = 1,
+                            EventId = 1,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher One"
                         },
                         new
                         {
-                            TeachersId = 2,
-                            TeacherName = "Teacher Two",
-                            TeachingAssistantName = "Teaching Assistant Two"
+                            TeacherId = 2,
+                            EventId = 1,
+                            TeacherDescription = "Teacher Assistant Two Description",
+                            TeacherName = "Teacher Two"
                         },
                         new
                         {
-                            TeachersId = 3,
-                            TeacherName = "Teacher Three",
-                            TeachingAssistantName = "Teaching Assistant Three"
+                            TeacherId = 3,
+                            EventId = 1,
+                            TeacherDescription = "Teacher Assistant Three Description",
+                            TeacherName = "Teacher Three"
                         },
                         new
                         {
-                            TeachersId = 4,
-                            TeacherName = "Teacher One",
-                            TeachingAssistantName = "Teaching Assistant One"
+                            TeacherId = 4,
+                            EventId = 2,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher One"
                         },
                         new
                         {
-                            TeachersId = 5,
-                            TeacherName = "Teacher Two",
-                            TeachingAssistantName = "Teaching Assistant Two"
+                            TeacherId = 5,
+                            EventId = 2,
+                            TeacherDescription = "Teacher Assistant Two Description",
+                            TeacherName = "Teacher Two"
                         },
                         new
                         {
-                            TeachersId = 6,
-                            TeacherName = "Teacher Three",
-                            TeachingAssistantName = "Teaching Assistant Three"
+                            TeacherId = 6,
+                            EventId = 2,
+                            TeacherDescription = "Teacher Assistant Three Description",
+                            TeacherName = "Teacher Three"
                         },
                         new
                         {
-                            TeachersId = 7,
-                            TeacherName = "Teacher Two",
-                            TeachingAssistantName = "Teaching Assistant Two"
+                            TeacherId = 7,
+                            EventId = 2,
+                            TeacherDescription = "Teacher Assistant Four Description",
+                            TeacherName = "Teacher One"
                         },
                         new
                         {
-                            TeachersId = 8,
-                            TeacherName = "Teacher Three",
-                            TeachingAssistantName = "Teaching Assistant Three"
+                            TeacherId = 8,
+                            EventId = 3,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher Two"
                         },
                         new
                         {
-                            TeachersId = 9,
-                            TeacherName = "Teacher One",
-                            TeachingAssistantName = "Teaching Assistant One"
+                            TeacherId = 9,
+                            EventId = 3,
+                            TeacherDescription = "Teacher Assistant Two Description",
+                            TeacherName = "Teacher Three"
                         },
                         new
                         {
-                            TeachersId = 10,
-                            TeacherName = "Teacher Two",
-                            TeachingAssistantName = "Teaching Assistant Two"
+                            TeacherId = 10,
+                            EventId = 3,
+                            TeacherDescription = "Teacher Assistant Three Description",
+                            TeacherName = "Teacher One"
                         },
                         new
                         {
-                            TeachersId = 11,
-                            TeacherName = "Teacher Three",
-                            TeachingAssistantName = "Teaching Assistant Three"
+                            TeacherId = 11,
+                            EventId = 4,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher One"
+                        },
+                        new
+                        {
+                            TeacherId = 12,
+                            EventId = 4,
+                            TeacherDescription = "Teacher Assistant Two Description",
+                            TeacherName = "Teacher Two"
+                        },
+                        new
+                        {
+                            TeacherId = 13,
+                            EventId = 4,
+                            TeacherDescription = "Teacher Assistant Three Description",
+                            TeacherName = "Teacher Three"
+                        },
+                        new
+                        {
+                            TeacherId = 14,
+                            EventId = 4,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher One"
+                        },
+                        new
+                        {
+                            TeacherId = 15,
+                            EventId = 5,
+                            TeacherDescription = "Teacher Assistant Two Description",
+                            TeacherName = "Teacher Two"
+                        },
+                        new
+                        {
+                            TeacherId = 16,
+                            EventId = 5,
+                            TeacherDescription = "Teacher Assistant Three Description",
+                            TeacherName = "Teacher Three"
+                        },
+                        new
+                        {
+                            TeacherId = 17,
+                            EventId = 5,
+                            TeacherDescription = "Teacher Assistant Four Description",
+                            TeacherName = "Teacher One"
+                        },
+                        new
+                        {
+                            TeacherId = 18,
+                            EventId = 6,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher Two"
+                        },
+                        new
+                        {
+                            TeacherId = 19,
+                            EventId = 6,
+                            TeacherDescription = "Teacher Assistant Two Description",
+                            TeacherName = "Teacher Three"
+                        },
+                        new
+                        {
+                            TeacherId = 20,
+                            EventId = 6,
+                            TeacherDescription = "Teacher Assistant Three Description",
+                            TeacherName = "Teacher One"
+                        },
+                        new
+                        {
+                            TeacherId = 21,
+                            EventId = 7,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher One"
+                        },
+                        new
+                        {
+                            TeacherId = 22,
+                            EventId = 7,
+                            TeacherDescription = "Teacher Assistant Two Description",
+                            TeacherName = "Teacher Two"
+                        },
+                        new
+                        {
+                            TeacherId = 23,
+                            EventId = 7,
+                            TeacherDescription = "Teacher Assistant Three Description",
+                            TeacherName = "Teacher Three"
+                        },
+                        new
+                        {
+                            TeacherId = 24,
+                            EventId = 7,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher One"
+                        },
+                        new
+                        {
+                            TeacherId = 25,
+                            EventId = 8,
+                            TeacherDescription = "Teacher Assistant Two Description",
+                            TeacherName = "Teacher Two"
+                        },
+                        new
+                        {
+                            TeacherId = 26,
+                            EventId = 8,
+                            TeacherDescription = "Teacher Assistant Three Description",
+                            TeacherName = "Teacher Three"
+                        },
+                        new
+                        {
+                            TeacherId = 27,
+                            EventId = 8,
+                            TeacherDescription = "Teacher Assistant Four Description",
+                            TeacherName = "Teacher One"
+                        },
+                        new
+                        {
+                            TeacherId = 28,
+                            EventId = 9,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher Two"
+                        },
+                        new
+                        {
+                            TeacherId = 29,
+                            EventId = 9,
+                            TeacherDescription = "Teacher Assistant Two Description",
+                            TeacherName = "Teacher Three"
+                        },
+                        new
+                        {
+                            TeacherId = 30,
+                            EventId = 9,
+                            TeacherDescription = "Teacher Assistant Three Description",
+                            TeacherName = "Teacher One"
+                        },
+                        new
+                        {
+                            TeacherId = 31,
+                            EventId = 10,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher One"
+                        },
+                        new
+                        {
+                            TeacherId = 32,
+                            EventId = 10,
+                            TeacherDescription = "Teacher Assistant Two Description",
+                            TeacherName = "Teacher Two"
+                        },
+                        new
+                        {
+                            TeacherId = 33,
+                            EventId = 10,
+                            TeacherDescription = "Teacher Assistant Three Description",
+                            TeacherName = "Teacher Three"
+                        },
+                        new
+                        {
+                            TeacherId = 34,
+                            EventId = 11,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher One"
+                        },
+                        new
+                        {
+                            TeacherId = 35,
+                            EventId = 11,
+                            TeacherDescription = "Teacher Assistant One Description",
+                            TeacherName = "Teacher One"
                         });
                 });
 
@@ -1316,78 +1484,78 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TimesId = 1,
                             DayId = 1,
-                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(4559),
-                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 883, DateTimeKind.Local).AddTicks(8781)
+                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(2021),
+                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 835, DateTimeKind.Local).AddTicks(1287)
                         },
                         new
                         {
                             TimesId = 2,
                             DayId = 2,
-                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6610),
-                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6582)
+                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4648),
+                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4598)
                         },
                         new
                         {
                             TimesId = 3,
                             DayId = 3,
-                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6667),
-                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6662)
+                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4811),
+                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4798)
                         },
                         new
                         {
                             TimesId = 4,
                             DayId = 4,
-                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6697),
-                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6693)
+                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4938),
+                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4922)
                         },
                         new
                         {
                             TimesId = 5,
                             DayId = 5,
-                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6725),
-                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6721)
+                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4973),
+                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4969)
                         },
                         new
                         {
                             TimesId = 6,
                             DayId = 6,
-                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6759),
-                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6754)
+                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5009),
+                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5005)
                         },
                         new
                         {
                             TimesId = 7,
                             DayId = 7,
-                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6788),
-                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6784)
+                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5101),
+                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5096)
                         },
                         new
                         {
                             TimesId = 8,
                             DayId = 8,
-                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6816),
-                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6811)
+                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5134),
+                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5130)
                         },
                         new
                         {
                             TimesId = 9,
                             DayId = 9,
-                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6843),
-                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6839)
+                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5163),
+                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5159)
                         },
                         new
                         {
                             TimesId = 10,
                             DayId = 10,
-                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6873),
-                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6869)
+                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5197),
+                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5193)
                         },
                         new
                         {
                             TimesId = 11,
                             DayId = 11,
-                            TimeEnd = new DateTime(2020, 7, 31, 0, 25, 13, 887, DateTimeKind.Local).AddTicks(6902),
-                            TimeStart = new DateTime(2020, 7, 30, 22, 25, 13, 887, DateTimeKind.Local).AddTicks(6897)
+                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5226),
+                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5222)
                         });
                 });
 
@@ -1538,12 +1706,6 @@ namespace eShop.Infrastructure.Migrations
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("eShop.Entities.Entities.Teachers", "Teachers")
-                        .WithMany()
-                        .HasForeignKey("TeachersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("eShop.Entities.Entities.OrderDetail", b =>
@@ -1579,6 +1741,15 @@ namespace eShop.Infrastructure.Migrations
                     b.HasOne("eShop.Entities.Entities.Ticket", "Ticket")
                         .WithMany()
                         .HasForeignKey("TicketId");
+                });
+
+            modelBuilder.Entity("eShop.Entities.Entities.Teacher", b =>
+                {
+                    b.HasOne("eShop.Entities.Entities.Event", "Event")
+                        .WithMany("Teachers")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eShop.Entities.Entities.Ticket", b =>

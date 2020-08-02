@@ -62,7 +62,7 @@ namespace eShop.Web
             services.AddScoped<ITicketService, TicketService>();
             services.AddScoped<IScheduleService, ScheduleService>();
             services.AddScoped<ILocationService, LocationService>();
-            services.AddScoped<ITeachersService, TeachersService>();
+            services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<IOrderService, OrderService>();

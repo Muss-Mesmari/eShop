@@ -128,7 +128,7 @@ namespace eShop.Infrastructure.Services
         {
             var shoppingCartItem =
                     _eShopDbContext.ShoppingCartItems.SingleOrDefault(
-                        e => e.Event.EventId == purchasedEvent.EventId && e.ShoppingCartId == ShoppingCartId);
+                        e => e.Event.EventId == purchasedEvent.EventId && e.ShoppingCartId == ShoppingCartId && e.Ticket.TicketId == purchasedTicket.TicketId);
 
             var oldAmount = GetShoppingCartItemAmount(purchasedEvent.EventId);
             var oldTicketId = GetShoppingCartItemTicketId(purchasedEvent.EventId);
@@ -145,7 +145,10 @@ namespace eShop.Infrastructure.Services
                     var newPurchasedEvent = purchasedEvent;
                     var newPurchasedTicket = purchasedTicket;
 
-                    _eShopDbContext.ShoppingCartItems.Remove(shoppingCartItem);
+                    if (shoppingCartItem != null)
+                    {
+                        _eShopDbContext.ShoppingCartItems.Remove(shoppingCartItem);
+                    }                   
 
                     shoppingCartItem = new ShoppingCartItem
                     {

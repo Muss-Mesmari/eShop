@@ -15,6 +15,7 @@ namespace eShop.Presentation.ViewModels
         public List<List<Day>> DaysList { get; set; }
         public List<List<KeyValuePair<string, string>>> Times { get; set; }
         public IEnumerable<Ticket> Tickets { get; set; }
+        public IEnumerable<Teacher> Teachers { get; set; }
         public string CurrentCategory { get; set; }
         public string SearchedEvent { get; set; }
         public string SearchedCategory { get; set; }
@@ -23,7 +24,7 @@ namespace eShop.Presentation.ViewModels
         public Day Day { get; set; }
         public Times Time { get; set; }
         public Location Location { get; set; }
-        public Teachers Teachers { get; set; }
+        public Teacher Teacher { get; set; }
         public Ticket Ticket { get; set; }
         public decimal ShoppingCartItemTotalEUR { get; set; }
         public decimal ShoppingCartItemTotalSEK { get; set; }

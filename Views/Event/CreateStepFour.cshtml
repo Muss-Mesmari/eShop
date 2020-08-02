@@ -1,0 +1,85 @@
+﻿@model eShop.Presentation.ViewModels.EventViewModel
+
+@{
+    ViewData["Title"] = "Create an event | Step Four";
+}
+
+<h1>Create an event | Step Four</h1>
+
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+</div>
+<hr />
+<!-- Page Content -->
+<div class="row">
+    <!-- the side scroll spy menu -->
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+        <div class="sticky">
+            <h1 class="mt-4">New Event</h1>
+            <div id="side-menu-list" class="list-group">
+                <a href="#teachers" class="list-group-item list-group-item-action active">Teachers</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- the contents of the side scroll spy menu -->
+    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+        <div data-spy="scroll" data-target="side-menu-list" data-offset="0" class="scrollspy">
+
+            <!-- the "Teachers" Card >> content of the side scroll spy menu -->
+            <div class="card card-outline-secondary my-4" id="teachers">
+                <div id="">
+                    <div class="card-header" id="headingTeachers">
+                        <h5 class="mb-0">
+                            <a class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseTeachers" aria-expanded="true" aria-controls="collapseTeachers">
+                                Teachers
+                            </a>
+                        </h5>
+                    </div>
+
+                    <div id="collapseTeachers" class="collapse show" aria-labelledby="headingTeachers" data-parent="">
+                        <div class="card-body">
+                            <div class="container-fluid bg-transparent">
+                                <div class="align-items-center justify-content-center">
+                                    @{ if (Model.Teachers.Any())
+                                        {
+                                            <partial name="_EventTeachers" />
+                                        }
+                                        else
+                                        {
+                                            <div class="alert alert-danger" role="alert">
+                                                <h4 class="alert-heading">Warning!</h4>
+                                                <p>There are no teachers have been added to the event yet. Teachers will appear here after adding them.</p>
+                                            </div>
+                                        }
+                                    }
+                                    <hr />
+                                    <form asp-action="CreateStepFour" class="needs-validation" novalidate>
+                                        <partial name="_CreateTeacher" />
+                                        <div class="mt-3 pt-3">
+                                            <button type="submit" class="btn btn-danger w-25">Add Teacher <i class="fa fa-plus text-white"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-row-reverse">
+                <a asp-controller="Event"
+                   asp-action="Details"
+                   asp-route-id="@Model.EventId"
+                   role="button" class="btn btn-lg btn-danger text-nowrap w-50">
+                    Save & Continue
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

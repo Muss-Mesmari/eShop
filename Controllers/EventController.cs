@@ -20,7 +20,7 @@ namespace eShop.Web.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IScheduleService _scheduleService;
         private readonly ILocationService _locationService;
-        private readonly ITeachersService _teachersService;
+        private readonly ITeacherService _teacherService;
         private readonly ITicketService _ticketService;
         private readonly ShoppingCartService _shoppingCartService;
         private readonly FeaturesConfiguration _featuresConfiguration;
@@ -40,7 +40,7 @@ namespace eShop.Web.Controllers
             ICategoryService categoryService,
             IScheduleService scheduleService,
             ILocationService locationService,
-            ITeachersService teachersService,
+            ITeacherService teachersService,
             ITicketService ticketService,
             ShoppingCartService shoppingCartService,
             IOptions<FeaturesConfiguration> options
@@ -50,7 +50,7 @@ namespace eShop.Web.Controllers
             _eventService = eventService;
             _categoryService = categoryService;
             _locationService = locationService;
-            _teachersService = teachersService;
+            _teacherService = teachersService;
             _ticketService = ticketService;
             _shoppingCartService = shoppingCartService;
             _featuresConfiguration = options.Value;
@@ -111,7 +111,7 @@ namespace eShop.Web.Controllers
             var days = _scheduleService.GetEventDays(id, false);
             var times = _scheduleService.GetEventTimes(id, false);
             var location = _locationService.GetLocationById(id);
-            var teachers = _teachersService.GetTeachersById(id);
+            var teachers = _teacherService.GetTeachersById(id);
             var selectedAmount = _shoppingCartService.GetShoppingCartItemAmount(id);
             var tickets = _ticketService.GetTicketById(id);
  
@@ -160,7 +160,7 @@ namespace eShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _teachersService.CreateTeachers(newEvent);
+              //  _teacherService.CreateTeacher(newEvent);
                 _locationService.CreateLocation(newEvent);
                 _eventService.CreateEvent(newEvent);
 
@@ -221,7 +221,36 @@ namespace eShop.Web.Controllers
             {
                 _ticketService.CreateTicket(_eventService.AllEvents().Max(e => e.EventId), newEvent);
                 var eventId = _eventService.AllEvents().Max(e => e.EventId);
-                return RedirectToAction(nameof(CreateStepThree), new { id = eventId });
+                return RedirectToAction(nameof(CreateStepFour), new { id = eventId });
+                //  return RedirectToAction(nameof(CreateStepThree), new { id = eventId });
+            }
+            return View();
+        }
+
+        // GET: Event/CreateStepFour
+        //[Route("/Event/Create-Step-Four")]
+        //[HttpGet]
+        public IActionResult CreateStepFour(int id)
+        {
+            var viewModel = new EventViewModel
+            {
+                EventId = id,
+                Event = _eventService.GetEventById(id),
+                Teachers = _teacherService.GetTeachersById(id)
+            };
+            return View(viewModel);
+        }
+
+        // POST: Event/CreateStepFour
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateStepFour(int id, EventViewModel newEvent)
+        {
+            if (ModelState.IsValid)
+            {
+                _teacherService.CreateTeacher(_eventService.AllEvents().Max(e => e.EventId), newEvent);
+                var eventId = _eventService.AllEvents().Max(e => e.EventId);
+                return RedirectToAction(nameof(CreateStepFour), new { id = eventId });
             }
             return View();
         }
@@ -231,7 +260,7 @@ namespace eShop.Web.Controllers
         {
             var viewModel = new EventViewModel
             {
-                Teachers = _teachersService.GetTeachersById(id),
+                Teachers = _teacherService.GetTeachersById(id),
                 Location = _locationService.GetLocationById(id),
                 Categories = _categoryService.AllCategories.ToList(),
                 Event = _eventService.GetEventById(id),
@@ -249,13 +278,13 @@ namespace eShop.Web.Controllers
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, EventViewModel newEvent, IEnumerable<Ticket> tickets, IEnumerable<Day> days, List<string> SelectedStartTimesBinded, List<string> SelectedEndTimesBinded)
+        public IActionResult Edit(int id, EventViewModel newEvent, IEnumerable<Teacher> teachers, IEnumerable<Ticket> tickets, IEnumerable<Day> days, List<string> SelectedStartTimesBinded, List<string> SelectedEndTimesBinded)
         {
             if (ModelState.IsValid)
             {
                 _eventService.UpdateEvent(newEvent);
                 _locationService.UpdateLocation(newEvent);
-                _teachersService.UpdateTeachers(newEvent);
+                _teacherService.UpdateTeacher(id, teachers);
                 _ticketService.UpdateTicket(id, tickets);
                 _scheduleService.UpdateDays(id, days);
                 _scheduleService.UpdateTimes(id, SelectedStartTimesBinded, SelectedEndTimesBinded);
@@ -283,7 +312,7 @@ namespace eShop.Web.Controllers
         public IActionResult Delete(int id, Event removedEvent)
         {
             int locationId = _locationService.GetLocationById(id).LocationId;
-            int teachersId = _teachersService.GetTeachersById(id).TeachersId;
+         //   int teachersId = _teacherService.GetTeacherById(id).TeacherId;
 
             if (ModelState.IsValid)
             {
@@ -291,7 +320,7 @@ namespace eShop.Web.Controllers
                 _scheduleService.DeleteSchedule(id);
                 _eventService.DeleteEvent(id);
                 _locationService.DeleteLocation(locationId);
-                _teachersService.DeleteTeachers(teachersId);
+                _teacherService.DeleteTeacher(id);
             }
             return RedirectToAction("Index");
         }

@@ -15,12 +15,12 @@ namespace eShop.Infrastructure.Services
     {
         private readonly eShopDbContext _eShopDbContext;
         private readonly ILocationService _locationService;
-        private readonly ITeachersService _teachersService;
+        private readonly ITeacherService _teachersService;
 
         public EventService(
             eShopDbContext eShopDbContext,
             ILocationService locationService,
-            ITeachersService teachersService)
+            ITeacherService teachersService)
         {
             _eShopDbContext = eShopDbContext;
             _locationService = locationService;
@@ -61,7 +61,7 @@ namespace eShop.Infrastructure.Services
         {
             var eventId = newEvent.Event.EventId;
             int locationId = _locationService.GetLocationById(eventId).LocationId;
-            int teachersId = _teachersService.GetTeachersById(eventId).TeachersId;
+          //  int teachersId = _teachersService.GetTeachersById(eventId).TeachersId;
             //int locationId = _eShopDbContext.Location.Select(l => l.LocationId).ToList().Last();
             //int teachersId = _eShopDbContext.Teachers.Select(t => t.TeachersId).ToList().Last();
 
@@ -76,7 +76,7 @@ namespace eShop.Infrastructure.Services
                 CategoryId = newEvent.Event.CategoryId,
                 Currency = newEvent.Event.Currency,
                 LocationId = locationId,
-                TeachersId = teachersId
+                //TeachersId = teachersId
             };
 
             _eShopDbContext.Events.Add(_newEvent);
@@ -87,7 +87,7 @@ namespace eShop.Infrastructure.Services
         {
             var eventId = newEvent.Event.EventId;
             var location = _locationService.GetLocationById(eventId);
-            var teachers = _teachersService.GetTeachersById(eventId);
+           // var teachers = _teachersService.GetTeachersById(eventId);
 
             //var location = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == eventId);
             //var entityLocation = _eShopDbContext.Entry(location);
@@ -108,7 +108,7 @@ namespace eShop.Infrastructure.Services
                 newEvent.Event.CategoryId = newEvent.Event.CategoryId;
                 newEvent.Event.Currency = newEvent.Event.Currency;
                 newEvent.Event.LocationId = location.LocationId;
-                newEvent.Event.TeachersId = teachers.TeachersId;
+               // newEvent.Event.TeachersId = teachers.TeachersId;
             }
 
             var entity = _eShopDbContext.Entry(newEvent.Event);
