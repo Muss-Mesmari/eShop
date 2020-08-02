@@ -16,6 +16,7 @@ namespace eShop.Presentation.ViewModels
         public List<List<KeyValuePair<string, string>>> Times { get; set; }
         public IEnumerable<Ticket> Tickets { get; set; }
         public IEnumerable<Teacher> Teachers { get; set; }
+        public IEnumerable<Location> Locations { get; set; }
         public string CurrentCategory { get; set; }
         public string SearchedEvent { get; set; }
         public string SearchedCategory { get; set; }

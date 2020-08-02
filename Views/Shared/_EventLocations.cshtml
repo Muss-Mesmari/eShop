@@ -1,0 +1,28 @@
+﻿@model eShop.Presentation.ViewModels.EventViewModel
+
+
+<div class="card-group">
+    @{
+        for (int i = 0; i < @Model.Locations.ToList().Count(); i++)
+        {
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <div class="event-card">
+                    <div class="card w-auto m-0 my-3 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.Locations.ToList()[i].Street @Model.Locations.ToList()[i].StreetNumber</h5>
+                            @*<h6 class="card-subtitle mb-2 text-muted"> @Model.Locations.ToList()[i].TicketPrice @Model.Event.Currency </h6>*@
+                            <address>
+                                @Model.Locations.ToList()[i].Street @Model.Locations.ToList()[i].StreetNumber
+                                <br>
+                                @Model.Locations.ToList()[i].ZipCode @Model.Locations.ToList()[i].City
+                                <br>
+                                @Model.Locations.ToList()[i].State
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+

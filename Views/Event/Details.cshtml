@@ -71,11 +71,7 @@
                     Location
                 </div>
                 <div class="card-body">
-                    <address>
-                        <p>@Model.Location.Street  @Model.Location.StreetNumber</p>
-                        <p>@Model.Location.City</p>
-                        <p> @Model.Location.ZipCode, @Model.Location.State</p>
-                    </address>
+                    <partial name="_EventLocations" />
                 </div>
             </div>
 
@@ -86,8 +82,6 @@
                 </div>
                 <div class="card-body">
                     <partial name="_EventTeachers" />
-                    @*<p>@Model.Teachers.TeacherName</p>
-                        <p>@Model.Teachers.TeachingAssistantName</p>*@
                 </div>
             </div>
 

@@ -1,0 +1,46 @@
+﻿@model eShop.Presentation.ViewModels.EventViewModel
+
+    <div class="form-row">
+        <div class="form-group col-md-8">
+            <label asp-for="Location.Street" class="control-label"></label>
+            <input asp-for="Location.Street" class="form-control" />
+            <span asp-validation-for="Location.Street" class="text-danger"></span>
+            <div class="invalid-tooltip">
+                Please provide a street.
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Location.StreetNumber" class="control-label"></label>
+            <input asp-for="Location.StreetNumber" class="form-control" />
+            <span asp-validation-for="Location.StreetNumber" class="text-danger"></span>
+        </div>
+        <div class="invalid-tooltip">
+            Please provide a street number.
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Location.City" class="control-label"></label>
+            <input asp-for="Location.City" class="form-control" />
+            <span asp-validation-for="Location.City" class="text-danger"></span>
+            <div class="invalid-tooltip">
+                Please provide a city.
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Location.State" class="control-label"></label>
+            <input asp-for="Location.State" class="form-control" />
+            <span asp-validation-for="Location.State" class="text-danger"></span>
+            <div class="invalid-tooltip">
+                Please provide a state.
+            </div>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="Location.ZipCode" class="control-label"></label>
+            <input asp-for="Location.ZipCode" class="form-control" />
+            <span asp-validation-for="Location.ZipCode" class="text-danger"></span>
+            <div class="invalid-tooltip">
+                Please provide a zip code.
+            </div>
+        </div>
+    </div>

@@ -151,32 +151,31 @@ namespace eShop.Infrastructure.Database
             modelBuilder.Entity<Schedule>().HasData(new Schedule { ScheduleId = 10, EventId = 10 });
             modelBuilder.Entity<Schedule>().HasData(new Schedule { ScheduleId = 11, EventId = 11 });
 
-            ////seed teachers
-            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 1, TeacherName = "Teacher One", TeachingAssistantName = "Teaching Assistant One" });
-            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 2, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
-            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 3, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
-            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 4, TeacherName = "Teacher One", TeachingAssistantName = "Teaching Assistant One" });
-            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 5, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
-            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 6, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
-            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 7, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
-            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 8, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
-            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 9, TeacherName = "Teacher One", TeachingAssistantName = "Teaching Assistant One" });
-            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 10, TeacherName = "Teacher Two", TeachingAssistantName = "Teaching Assistant Two" });
-            //modelBuilder.Entity<Teachers>().HasData(new Teachers { TeachersId = 11, TeacherName = "Teacher Three", TeachingAssistantName = "Teaching Assistant Three" });
-
             //seed location
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 1, State = "Stockholm", Street = "vägen", StreetNumber = 1, City = "Stockholm län", ZipCode = 12345 });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 2, State = "Stockholm", Street = "vägen", StreetNumber = 2, City = "Stockholm län", ZipCode = 12346 });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 3, State = "Stockholm", Street = "vägen", StreetNumber = 3, City = "Stockholm län", ZipCode = 12347 });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 4, State = "Stockholm", Street = "vägen", StreetNumber = 4, City = "Stockholm län", ZipCode = 12348 });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 5, State = "Stockholm", Street = "vägen", StreetNumber = 5, City = "Stockholm län", ZipCode = 12349 });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 6, State = "Stockholm", Street = "vägen", StreetNumber = 6, City = "Stockholm län", ZipCode = 12350 });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 7, State = "Stockholm", Street = "vägen", StreetNumber = 7, City = "Stockholm län", ZipCode = 12351 });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 8, State = "Stockholm", Street = "vägen", StreetNumber = 8, City = "Stockholm län", ZipCode = 12352 });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 9, State = "Stockholm", Street = "vägen", StreetNumber = 9, City = "Stockholm län", ZipCode = 12353 });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 10, State = "Stockholm", Street = "vägen", StreetNumber = 10, City = "Stockholm län", ZipCode = 12354 });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 11, State = "Stockholm", Street = "vägen", StreetNumber = 11, City = "Stockholm län", ZipCode = 12355 });
- 
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 1, State = "Stockholm", Street = "vägen", StreetNumber = 1, City = "Stockholm län", ZipCode = 12345, EventId = 1 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 2, State = "Stockholm", Street = "vägen", StreetNumber = 2, City = "Stockholm län", ZipCode = 12346, EventId = 1 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 3, State = "Stockholm", Street = "vägen", StreetNumber = 3, City = "Stockholm län", ZipCode = 12347, EventId = 2 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 4, State = "Stockholm", Street = "vägen", StreetNumber = 4, City = "Stockholm län", ZipCode = 12348, EventId = 2 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 5, State = "Stockholm", Street = "vägen", StreetNumber = 5, City = "Stockholm län", ZipCode = 12349, EventId = 3 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 6, State = "Stockholm", Street = "vägen", StreetNumber = 6, City = "Stockholm län", ZipCode = 12350, EventId = 3 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 7, State = "Stockholm", Street = "vägen", StreetNumber = 7, City = "Stockholm län", ZipCode = 12351, EventId = 4 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 8, State = "Stockholm", Street = "vägen", StreetNumber = 8, City = "Stockholm län", ZipCode = 12352, EventId = 4 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 9, State = "Stockholm", Street = "vägen", StreetNumber = 9, City = "Stockholm län", ZipCode = 12353, EventId = 5 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 10, State = "Stockholm", Street = "vägen", StreetNumber = 10, City = "Stockholm län", ZipCode = 12354, EventId = 5 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 11, State = "Stockholm", Street = "vägen", StreetNumber = 11, City = "Stockholm län", ZipCode = 12355, EventId = 6 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 12, State = "Stockholm", Street = "vägen", StreetNumber = 12, City = "Stockholm län", ZipCode = 12351, EventId = 6 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 13, State = "Stockholm", Street = "vägen", StreetNumber = 13, City = "Stockholm län", ZipCode = 12352, EventId = 7 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 14, State = "Stockholm", Street = "vägen", StreetNumber = 14, City = "Stockholm län", ZipCode = 12353, EventId = 7 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 15, State = "Stockholm", Street = "vägen", StreetNumber = 15, City = "Stockholm län", ZipCode = 12354, EventId = 8 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 16, State = "Stockholm", Street = "vägen", StreetNumber = 16, City = "Stockholm län", ZipCode = 12355, EventId = 8 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 17, State = "Stockholm", Street = "vägen", StreetNumber = 17, City = "Stockholm län", ZipCode = 12352, EventId = 9 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 18, State = "Stockholm", Street = "vägen", StreetNumber = 18, City = "Stockholm län", ZipCode = 12353, EventId = 9 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 19, State = "Stockholm", Street = "vägen", StreetNumber = 19, City = "Stockholm län", ZipCode = 12354, EventId = 10 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 20, State = "Stockholm", Street = "vägen", StreetNumber = 20, City = "Stockholm län", ZipCode = 12355, EventId = 10 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 21, State = "Stockholm", Street = "vägen", StreetNumber = 21, City = "Stockholm län", ZipCode = 12354, EventId = 11 });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 22, State = "Stockholm", Street = "vägen", StreetNumber = 22, City = "Stockholm län", ZipCode = 12355, EventId = 11 });
+
+
             //seed categories
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 1, CategoryName = "Category One" });
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 2, CategoryName = "Category Two" });
@@ -265,10 +264,9 @@ namespace eShop.Infrastructure.Database
                 CategoryId = 1,
                 ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                 InStock = true,
-                IsHighlightedEvent = true,                
-                LocationId = 1,
+                IsHighlightedEvent = true,                              
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-               // TeachersId = 1
+               
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -280,10 +278,9 @@ namespace eShop.Infrastructure.Database
                 CategoryId = 1,
                 ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                 InStock = true,
-                IsHighlightedEvent = true,               
-                LocationId = 2,
+                IsHighlightedEvent = true,                           
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-              //  TeachersId = 2
+             
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -295,10 +292,9 @@ namespace eShop.Infrastructure.Database
                 CategoryId = 1,
                 ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                 InStock = true,
-                IsHighlightedEvent = false,                
-                LocationId = 3,
+                IsHighlightedEvent = false,                               
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-              //  TeachersId = 3
+             
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -310,10 +306,9 @@ namespace eShop.Infrastructure.Database
                 CategoryId = 2,
                 ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                 InStock = true,
-                IsHighlightedEvent = true,               
-                LocationId = 4,
+                IsHighlightedEvent = true,                              
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-              //  TeachersId = 4
+              
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -326,9 +321,8 @@ namespace eShop.Infrastructure.Database
                 ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                 InStock = true,
                 IsHighlightedEvent = false,               
-                LocationId = 5,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-              //  TeachersId = 5
+              
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -341,9 +335,8 @@ namespace eShop.Infrastructure.Database
                 ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                 InStock = true,
                 IsHighlightedEvent = false,               
-                LocationId = 6,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-              //  TeachersId = 6
+            
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -356,9 +349,8 @@ namespace eShop.Infrastructure.Database
                 ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                 InStock = true,
                 IsHighlightedEvent = false,                
-                LocationId = 7,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-              //  TeachersId = 7
+              
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -371,9 +363,8 @@ namespace eShop.Infrastructure.Database
                 ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                 InStock = true,
                 IsHighlightedEvent = false,               
-                LocationId = 8,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-              //  TeachersId = 8
+      
             });
 
 
@@ -387,9 +378,8 @@ namespace eShop.Infrastructure.Database
                 ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                 InStock = true,
                 IsHighlightedEvent = true,                
-                LocationId = 9,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-               // TeachersId = 9
+             
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -402,9 +392,8 @@ namespace eShop.Infrastructure.Database
                 ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                 InStock = true,
                 IsHighlightedEvent = false,               
-                LocationId = 10,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-              //  TeachersId = 10
+           
             });
 
             modelBuilder.Entity<Event>().HasData(new Event
@@ -417,9 +406,8 @@ namespace eShop.Infrastructure.Database
                 ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                 InStock = true,
                 IsHighlightedEvent = true,                
-                LocationId = 11,
                 HowToGo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.",
-              //  TeachersId = 11
+           
             });
         }
 

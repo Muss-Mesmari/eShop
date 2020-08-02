@@ -61,23 +61,6 @@ namespace eShop.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Location",
-                columns: table => new
-                {
-                    LocationId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    State = table.Column<string>(nullable: true),
-                    Street = table.Column<string>(nullable: true),
-                    StreetNumber = table.Column<int>(nullable: false),
-                    City = table.Column<string>(nullable: true),
-                    ZipCode = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Location", x => x.LocationId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -214,7 +197,6 @@ namespace eShop.Infrastructure.Migrations
                     Name = table.Column<string>(nullable: true),
                     ShortDescription = table.Column<string>(nullable: true),
                     LongDescription = table.Column<string>(nullable: true),
-                    LocationId = table.Column<int>(nullable: false),
                     HowToGo = table.Column<string>(nullable: true),
                     Currency = table.Column<int>(nullable: false),
                     ImageUrl = table.Column<string>(nullable: true),
@@ -231,11 +213,29 @@ namespace eShop.Infrastructure.Migrations
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Location",
+                columns: table => new
+                {
+                    LocationId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EventId = table.Column<int>(nullable: false),
+                    State = table.Column<string>(nullable: true),
+                    Street = table.Column<string>(nullable: true),
+                    StreetNumber = table.Column<int>(nullable: false),
+                    City = table.Column<string>(nullable: true),
+                    ZipCode = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Location", x => x.LocationId);
                     table.ForeignKey(
-                        name: "FK_Events_Location_LocationId",
-                        column: x => x.LocationId,
-                        principalTable: "Location",
-                        principalColumn: "LocationId",
+                        name: "FK_Location_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "EventId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -421,47 +421,63 @@ namespace eShop.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "CategoryId", "CategoryName", "Description" },
+                values: new object[] { 1, "Category One", null });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName", "Description" },
+                values: new object[] { 2, "Category Two", null });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName", "Description" },
+                values: new object[] { 3, "Category Three", null });
+
+            migrationBuilder.InsertData(
+                table: "Events",
+                columns: new[] { "EventId", "CategoryId", "Currency", "HowToGo", "ImageUrl", "InStock", "IsHighlightedEvent", "LongDescription", "Name", "ShortDescription" },
                 values: new object[,]
                 {
-                    { 1, "Category One", null },
-                    { 2, "Category Two", null },
-                    { 3, "Category Three", null }
+                    { 1, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event One", "Lorem Ipsum" },
+                    { 2, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, true, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Two", "Lorem Ipsum" },
+                    { 3, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Three", "Lorem Ipsum" },
+                    { 5, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Five", "Lorem Ipsum" },
+                    { 6, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Six", "Lorem Ipsum" },
+                    { 7, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Seven", "Lorem Ipsum" },
+                    { 8, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eight", "Lorem Ipsum" },
+                    { 9, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Nine", "Lorem Ipsum" },
+                    { 10, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Ten", "Lorem Ipsum" },
+                    { 11, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eleven", "Lorem Ipsum" },
+                    { 4, 2, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, true, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Four", "Lorem Ipsum" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Location",
-                columns: new[] { "LocationId", "City", "State", "Street", "StreetNumber", "ZipCode" },
+                columns: new[] { "LocationId", "City", "EventId", "State", "Street", "StreetNumber", "ZipCode" },
                 values: new object[,]
                 {
-                    { 1, "Stockholm län", "Stockholm", "vägen", 1, 12345 },
-                    { 2, "Stockholm län", "Stockholm", "vägen", 2, 12346 },
-                    { 3, "Stockholm län", "Stockholm", "vägen", 3, 12347 },
-                    { 4, "Stockholm län", "Stockholm", "vägen", 4, 12348 },
-                    { 5, "Stockholm län", "Stockholm", "vägen", 5, 12349 },
-                    { 6, "Stockholm län", "Stockholm", "vägen", 6, 12350 },
-                    { 7, "Stockholm län", "Stockholm", "vägen", 7, 12351 },
-                    { 8, "Stockholm län", "Stockholm", "vägen", 8, 12352 },
-                    { 9, "Stockholm län", "Stockholm", "vägen", 9, 12353 },
-                    { 10, "Stockholm län", "Stockholm", "vägen", 10, 12354 },
-                    { 11, "Stockholm län", "Stockholm", "vägen", 11, 12355 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Events",
-                columns: new[] { "EventId", "CategoryId", "Currency", "HowToGo", "ImageUrl", "InStock", "IsHighlightedEvent", "LocationId", "LongDescription", "Name", "ShortDescription" },
-                values: new object[,]
-                {
-                    { 1, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event One", "Lorem Ipsum" },
-                    { 2, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, true, 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Two", "Lorem Ipsum" },
-                    { 3, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Three", "Lorem Ipsum" },
-                    { 4, 2, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, true, 4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Four", "Lorem Ipsum" },
-                    { 5, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Five", "Lorem Ipsum" },
-                    { 6, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Six", "Lorem Ipsum" },
-                    { 7, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, false, 7, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Seven", "Lorem Ipsum" },
-                    { 8, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 8, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eight", "Lorem Ipsum" },
-                    { 9, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, 9, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Nine", "Lorem Ipsum" },
-                    { 10, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg", true, false, 10, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Ten", "Lorem Ipsum" },
-                    { 11, 1, 0, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.", "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg", true, true, 11, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Event Eleven", "Lorem Ipsum" }
+                    { 1, "Stockholm län", 1, "Stockholm", "vägen", 1, 12345 },
+                    { 14, "Stockholm län", 7, "Stockholm", "vägen", 14, 12353 },
+                    { 13, "Stockholm län", 7, "Stockholm", "vägen", 13, 12352 },
+                    { 15, "Stockholm län", 8, "Stockholm", "vägen", 15, 12354 },
+                    { 16, "Stockholm län", 8, "Stockholm", "vägen", 16, 12355 },
+                    { 12, "Stockholm län", 6, "Stockholm", "vägen", 12, 12351 },
+                    { 11, "Stockholm län", 6, "Stockholm", "vägen", 11, 12355 },
+                    { 17, "Stockholm län", 9, "Stockholm", "vägen", 17, 12352 },
+                    { 18, "Stockholm län", 9, "Stockholm", "vägen", 18, 12353 },
+                    { 10, "Stockholm län", 5, "Stockholm", "vägen", 10, 12354 },
+                    { 9, "Stockholm län", 5, "Stockholm", "vägen", 9, 12353 },
+                    { 19, "Stockholm län", 10, "Stockholm", "vägen", 19, 12354 },
+                    { 6, "Stockholm län", 3, "Stockholm", "vägen", 6, 12350 },
+                    { 5, "Stockholm län", 3, "Stockholm", "vägen", 5, 12349 },
+                    { 21, "Stockholm län", 11, "Stockholm", "vägen", 21, 12354 },
+                    { 22, "Stockholm län", 11, "Stockholm", "vägen", 22, 12355 },
+                    { 20, "Stockholm län", 10, "Stockholm", "vägen", 20, 12355 },
+                    { 2, "Stockholm län", 1, "Stockholm", "vägen", 2, 12346 },
+                    { 7, "Stockholm län", 4, "Stockholm", "vägen", 7, 12351 },
+                    { 3, "Stockholm län", 2, "Stockholm", "vägen", 3, 12347 },
+                    { 8, "Stockholm län", 4, "Stockholm", "vägen", 8, 12352 },
+                    { 4, "Stockholm län", 2, "Stockholm", "vägen", 4, 12348 }
                 });
 
             migrationBuilder.InsertData(
@@ -469,17 +485,17 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "ScheduleId", "EventId" },
                 values: new object[,]
                 {
-                    { 1, 1 },
-                    { 6, 6 },
-                    { 4, 4 },
-                    { 7, 7 },
-                    { 8, 8 },
-                    { 3, 3 },
                     { 9, 9 },
-                    { 2, 2 },
                     { 5, 5 },
-                    { 11, 11 },
-                    { 10, 10 }
+                    { 6, 6 },
+                    { 7, 7 },
+                    { 10, 10 },
+                    { 4, 4 },
+                    { 3, 3 },
+                    { 2, 2 },
+                    { 1, 1 },
+                    { 8, 8 },
+                    { 11, 11 }
                 });
 
             migrationBuilder.InsertData(
@@ -487,41 +503,41 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TeacherId", "EventId", "TeacherDescription", "TeacherName" },
                 values: new object[,]
                 {
-                    { 30, 9, "Teacher Assistant Three Description", "Teacher One" },
-                    { 16, 5, "Teacher Assistant Three Description", "Teacher Three" },
-                    { 17, 5, "Teacher Assistant Four Description", "Teacher One" },
-                    { 35, 11, "Teacher Assistant One Description", "Teacher One" },
-                    { 19, 6, "Teacher Assistant Two Description", "Teacher Three" },
-                    { 20, 6, "Teacher Assistant Three Description", "Teacher One" },
-                    { 34, 11, "Teacher Assistant One Description", "Teacher One" },
-                    { 21, 7, "Teacher Assistant One Description", "Teacher One" },
-                    { 22, 7, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 25, 8, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 14, 4, "Teacher Assistant One Description", "Teacher One" },
+                    { 24, 7, "Teacher Assistant One Description", "Teacher One" },
                     { 23, 7, "Teacher Assistant Three Description", "Teacher Three" },
-                    { 33, 10, "Teacher Assistant Three Description", "Teacher Three" },
-                    { 32, 10, "Teacher Assistant Two Description", "Teacher Two" },
-                    { 15, 5, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 13, 4, "Teacher Assistant Three Description", "Teacher Three" },
+                    { 12, 4, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 34, 11, "Teacher Assistant One Description", "Teacher One" },
                     { 26, 8, "Teacher Assistant Three Description", "Teacher Three" },
                     { 27, 8, "Teacher Assistant Four Description", "Teacher One" },
-                    { 31, 10, "Teacher Assistant One Description", "Teacher One" },
                     { 28, 9, "Teacher Assistant One Description", "Teacher Two" },
                     { 29, 9, "Teacher Assistant Two Description", "Teacher Three" },
-                    { 24, 7, "Teacher Assistant One Description", "Teacher One" },
-                    { 25, 8, "Teacher Assistant Two Description", "Teacher Two" },
-                    { 18, 6, "Teacher Assistant One Description", "Teacher Two" },
-                    { 12, 4, "Teacher Assistant Two Description", "Teacher Two" },
-                    { 7, 2, "Teacher Assistant Four Description", "Teacher One" },
-                    { 8, 3, "Teacher Assistant One Description", "Teacher Two" },
-                    { 4, 2, "Teacher Assistant One Description", "Teacher One" },
+                    { 30, 9, "Teacher Assistant Three Description", "Teacher One" },
+                    { 31, 10, "Teacher Assistant One Description", "Teacher One" },
+                    { 35, 11, "Teacher Assistant One Description", "Teacher One" },
+                    { 32, 10, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 33, 10, "Teacher Assistant Three Description", "Teacher Three" },
                     { 11, 4, "Teacher Assistant One Description", "Teacher One" },
+                    { 22, 7, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 21, 7, "Teacher Assistant One Description", "Teacher One" },
                     { 10, 3, "Teacher Assistant Three Description", "Teacher One" },
+                    { 16, 5, "Teacher Assistant Three Description", "Teacher Three" },
+                    { 17, 5, "Teacher Assistant Four Description", "Teacher One" },
                     { 5, 2, "Teacher Assistant Two Description", "Teacher Two" },
-                    { 9, 3, "Teacher Assistant Two Description", "Teacher Three" },
+                    { 8, 3, "Teacher Assistant One Description", "Teacher Two" },
+                    { 6, 2, "Teacher Assistant Three Description", "Teacher Three" },
+                    { 7, 2, "Teacher Assistant Four Description", "Teacher One" },
+                    { 15, 5, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 4, 2, "Teacher Assistant One Description", "Teacher One" },
+                    { 19, 6, "Teacher Assistant Two Description", "Teacher Three" },
+                    { 20, 6, "Teacher Assistant Three Description", "Teacher One" },
                     { 3, 1, "Teacher Assistant Three Description", "Teacher Three" },
                     { 2, 1, "Teacher Assistant Two Description", "Teacher Two" },
                     { 1, 1, "Teacher Assistant One Description", "Teacher One" },
-                    { 14, 4, "Teacher Assistant One Description", "Teacher One" },
-                    { 6, 2, "Teacher Assistant Three Description", "Teacher Three" },
-                    { 13, 4, "Teacher Assistant Three Description", "Teacher Three" }
+                    { 9, 3, "Teacher Assistant Two Description", "Teacher Three" },
+                    { 18, 6, "Teacher Assistant One Description", "Teacher Two" }
                 });
 
             migrationBuilder.InsertData(
@@ -529,40 +545,40 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TicketId", "Description", "EventId", "TicketName", "TicketPrice", "TotalAvailableTicket" },
                 values: new object[,]
                 {
-                    { 26, "Omnis et enim aperiam inventore", 9, "Ticket Three", 150m, 15 },
-                    { 27, "Omnis et enim aperiam inventore", 9, "Ticket One", 50m, 10 },
-                    { 28, "Omnis et enim aperiam inventore", 9, "Ticket Two", 100m, 20 },
-                    { 12, "Omnis et enim aperiam inventore", 4, "Ticket Three", 150m, 15 },
-                    { 2, "Omnis et enim aperiam inventore", 1, "Ticket Two", 100m, 20 },
-                    { 3, "Omnis et enim aperiam inventore", 1, "Ticket Three", 150m, 15 },
-                    { 1, "Omnis et enim aperiam inventore", 1, "Ticket One", 50m, 10 },
-                    { 29, "Omnis et enim aperiam inventore", 10, "Ticket Three", 150m, 15 },
+                    { 5, "Omnis et enim aperiam inventore", 2, "Ticket Two", 100m, 20 },
                     { 30, "Omnis et enim aperiam inventore", 10, "Ticket Two", 100m, 20 },
                     { 31, "Omnis et enim aperiam inventore", 10, "Ticket Three", 150m, 15 },
-                    { 32, "Omnis et enim aperiam inventore", 11, "Ticket One", 50m, 10 },
-                    { 4, "Omnis et enim aperiam inventore", 1, "Ticket One", 50m, 10 },
-                    { 25, "Omnis et enim aperiam inventore", 8, "Ticket Two", 100m, 20 },
-                    { 6, "Omnis et enim aperiam inventore", 2, "Ticket Three", 150m, 15 },
-                    { 23, "Omnis et enim aperiam inventore", 8, "Ticket Two", 100m, 20 },
-                    { 11, "Omnis et enim aperiam inventore", 4, "Ticket Two", 100m, 20 },
-                    { 14, "Omnis et enim aperiam inventore", 5, "Ticket Two", 100m, 20 },
-                    { 15, "Omnis et enim aperiam inventore", 5, "Ticket Three", 150m, 15 },
-                    { 16, "Omnis et enim aperiam inventore", 5, "Ticket One", 50m, 10 },
                     { 33, "Omnis et enim aperiam inventore", 11, "Ticket Two", 100m, 20 },
-                    { 17, "Omnis et enim aperiam inventore", 6, "Ticket Two", 100m, 20 },
-                    { 18, "Omnis et enim aperiam inventore", 6, "Ticket Three", 150m, 15 },
+                    { 34, "Omnis et enim aperiam inventore", 11, "Ticket Three", 150m, 15 },
+                    { 4, "Omnis et enim aperiam inventore", 1, "Ticket One", 50m, 10 },
+                    { 3, "Omnis et enim aperiam inventore", 1, "Ticket Three", 150m, 15 },
+                    { 2, "Omnis et enim aperiam inventore", 1, "Ticket Two", 100m, 20 },
+                    { 1, "Omnis et enim aperiam inventore", 1, "Ticket One", 50m, 10 },
+                    { 11, "Omnis et enim aperiam inventore", 4, "Ticket Two", 100m, 20 },
+                    { 32, "Omnis et enim aperiam inventore", 11, "Ticket One", 50m, 10 },
+                    { 29, "Omnis et enim aperiam inventore", 10, "Ticket Three", 150m, 15 },
                     { 19, "Omnis et enim aperiam inventore", 6, "Ticket One", 50m, 10 },
-                    { 10, "Omnis et enim aperiam inventore", 3, "Ticket One", 50m, 10 },
-                    { 9, "Omnis et enim aperiam inventore", 3, "Ticket Three", 150m, 15 },
-                    { 8, "Omnis et enim aperiam inventore", 3, "Ticket Two", 100m, 20 },
+                    { 7, "Omnis et enim aperiam inventore", 2, "Ticket One", 50m, 10 },
+                    { 18, "Omnis et enim aperiam inventore", 6, "Ticket Three", 150m, 15 },
                     { 20, "Omnis et enim aperiam inventore", 7, "Ticket Two", 100m, 20 },
                     { 21, "Omnis et enim aperiam inventore", 7, "Ticket Three", 150m, 15 },
                     { 22, "Omnis et enim aperiam inventore", 7, "Ticket One", 50m, 10 },
-                    { 7, "Omnis et enim aperiam inventore", 2, "Ticket One", 50m, 10 },
-                    { 13, "Omnis et enim aperiam inventore", 4, "Ticket One", 50m, 10 },
-                    { 5, "Omnis et enim aperiam inventore", 2, "Ticket Two", 100m, 20 },
+                    { 17, "Omnis et enim aperiam inventore", 6, "Ticket Two", 100m, 20 },
+                    { 16, "Omnis et enim aperiam inventore", 5, "Ticket One", 50m, 10 },
+                    { 15, "Omnis et enim aperiam inventore", 5, "Ticket Three", 150m, 15 },
+                    { 23, "Omnis et enim aperiam inventore", 8, "Ticket Two", 100m, 20 },
+                    { 6, "Omnis et enim aperiam inventore", 2, "Ticket Three", 150m, 15 },
                     { 24, "Omnis et enim aperiam inventore", 8, "Ticket Three", 150m, 15 },
-                    { 34, "Omnis et enim aperiam inventore", 11, "Ticket Three", 150m, 15 }
+                    { 14, "Omnis et enim aperiam inventore", 5, "Ticket Two", 100m, 20 },
+                    { 10, "Omnis et enim aperiam inventore", 3, "Ticket One", 50m, 10 },
+                    { 9, "Omnis et enim aperiam inventore", 3, "Ticket Three", 150m, 15 },
+                    { 26, "Omnis et enim aperiam inventore", 9, "Ticket Three", 150m, 15 },
+                    { 27, "Omnis et enim aperiam inventore", 9, "Ticket One", 50m, 10 },
+                    { 28, "Omnis et enim aperiam inventore", 9, "Ticket Two", 100m, 20 },
+                    { 8, "Omnis et enim aperiam inventore", 3, "Ticket Two", 100m, 20 },
+                    { 12, "Omnis et enim aperiam inventore", 4, "Ticket Three", 150m, 15 },
+                    { 25, "Omnis et enim aperiam inventore", 8, "Ticket Two", 100m, 20 },
+                    { 13, "Omnis et enim aperiam inventore", 4, "Ticket One", 50m, 10 }
                 });
 
             migrationBuilder.InsertData(
@@ -573,14 +589,14 @@ namespace eShop.Infrastructure.Migrations
                     { 1, 1 },
                     { 2, 2 },
                     { 3, 3 },
-                    { 4, 4 },
                     { 5, 5 },
                     { 6, 6 },
                     { 7, 7 },
                     { 8, 8 },
                     { 9, 9 },
                     { 10, 10 },
-                    { 11, 11 }
+                    { 11, 11 },
+                    { 4, 4 }
                 });
 
             migrationBuilder.InsertData(
@@ -591,14 +607,14 @@ namespace eShop.Infrastructure.Migrations
                     { 1, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 },
                     { 2, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 },
                     { 3, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 3 },
-                    { 4, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 4 },
                     { 5, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 5 },
                     { 6, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 6 },
                     { 7, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 7 },
                     { 8, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 8 },
                     { 9, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 9 },
                     { 10, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 10 },
-                    { 11, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 11 }
+                    { 11, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 11 },
+                    { 4, new DateTime(2015, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 4 }
                 });
 
             migrationBuilder.InsertData(
@@ -606,17 +622,17 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TimesId", "DayId", "TimeEnd", "TimeStart" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(2021), new DateTime(2020, 8, 2, 20, 18, 44, 835, DateTimeKind.Local).AddTicks(1287) },
-                    { 2, 2, new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4648), new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4598) },
-                    { 3, 3, new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4811), new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4798) },
-                    { 4, 4, new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4938), new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4922) },
-                    { 5, 5, new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4973), new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4969) },
-                    { 6, 6, new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5009), new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5005) },
-                    { 7, 7, new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5101), new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5096) },
-                    { 8, 8, new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5134), new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5130) },
-                    { 9, 9, new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5163), new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5159) },
-                    { 10, 10, new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5197), new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5193) },
-                    { 11, 11, new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5226), new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5222) }
+                    { 1, 1, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(2431), new DateTime(2020, 8, 2, 23, 17, 56, 935, DateTimeKind.Local).AddTicks(2535) },
+                    { 2, 2, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4164), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4134) },
+                    { 3, 3, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4223), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4218) },
+                    { 5, 5, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4286), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4282) },
+                    { 6, 6, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4321), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4317) },
+                    { 7, 7, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4351), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4347) },
+                    { 8, 8, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4381), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4377) },
+                    { 9, 9, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4412), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4408) },
+                    { 10, 10, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4443), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4440) },
+                    { 11, 11, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4474), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4470) },
+                    { 4, 4, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4256), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4252) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -669,9 +685,9 @@ namespace eShop.Infrastructure.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Events_LocationId",
-                table: "Events",
-                column: "LocationId");
+                name: "IX_Location_EventId",
+                table: "Location",
+                column: "EventId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_EventId",
@@ -737,6 +753,9 @@ namespace eShop.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Location");
+
+            migrationBuilder.DropTable(
                 name: "OrderDetails");
 
             migrationBuilder.DropTable(
@@ -774,9 +793,6 @@ namespace eShop.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Location");
         }
     }
 }

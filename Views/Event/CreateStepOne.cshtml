@@ -7,7 +7,7 @@
 <h1>Create an event | Step One</h1>
 
 <div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
 </div>
 <hr />
 
@@ -20,8 +20,6 @@
             <div id="side-menu-list" class="list-group">
                 <a href="#basic-info" class="list-group-item list-group-item-action active">Basic information</a>
                 <a href="#about-the-event" class="list-group-item list-group-item-action">About the event</a>
-                <a href="#location" class="list-group-item list-group-item-action">Location</a>
-                @*<a href="#teachers" class="list-group-item list-group-item-action">Teachers</a>*@
                 <a href="#settings" class="list-group-item list-group-item-action">Settings</a>
             </div>
         </div>
@@ -90,77 +88,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- the "Location" Card >> content of the side scroll spy menu -->
-                <div class="card card-outline-secondary my-4" id="location">
-                    <div class="card-header" id="headingLocation">
-                        <h5 class="mb-0">
-                            <a class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseLocation" aria-expanded="true" aria-controls="collapseLocation">
-                                Location
-                            </a>
-                        </h5>
-                    </div>
-                    <div id="collapseLocation" class="collapse show" aria-labelledby="headingLocation" data-parent="">
-                        <div class="card-body">
-                            <div class="form-row">
-                                <div class="form-group col-md-8">
-                                    <label asp-for="Location.Street" class="control-label"></label>
-                                    <input asp-for="Location.Street" class="form-control" />
-                                    <span asp-validation-for="Location.Street" class="text-danger"></span>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label asp-for="Location.StreetNumber" class="control-label"></label>
-                                    <input asp-for="Location.StreetNumber" class="form-control" />
-                                    <span asp-validation-for="Location.StreetNumber" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label asp-for="Location.City" class="control-label"></label>
-                                    <input asp-for="Location.City" class="form-control" />
-                                    <span asp-validation-for="Location.City" class="text-danger"></span>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label asp-for="Location.State" class="control-label"></label>
-                                    <input asp-for="Location.State" class="form-control" />
-                                    <span asp-validation-for="Location.State" class="text-danger"></span>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label asp-for="Location.ZipCode" class="control-label"></label>
-                                    <input asp-for="Location.ZipCode" class="form-control" />
-                                    <span asp-validation-for="Location.ZipCode" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- the "Teachers" Card >> content of the side scroll spy menu -->
-                @*<div class="card card-outline-secondary my-4" id="teachers">
-                    <div id="accordion">
-                        <div class="card-header" id="headingTeachers">
-                            <h5 class="mb-0">
-                                <a class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseTeachers" aria-expanded="true" aria-controls="collapseTeachers">
-                                    Teachers
-                                </a>
-                            </h5>
-                        </div>
-                        <div id="collapseTeachers" class="collapse show" aria-labelledby="headingTeachers" data-parent="">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label asp-for="Teachers.TeacherName" class="control-label"></label>
-                                    <input asp-for="Teachers.TeacherName" class="form-control" />
-                                    <span asp-validation-for="Teachers.TeacherName" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Teachers.TeachingAssistantName" class="control-label"></label>
-                                    <input asp-for="Teachers.TeachingAssistantName" class="form-control" />
-                                    <span asp-validation-for="Teachers.TeachingAssistantName" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
 
                 <!-- the "Settings" Card >> the content of the side scroll spy menu-->
                 <div class="card card-outline-secondary my-4" id="settings">

@@ -24,21 +24,22 @@ namespace eShop.Infrastructure.Services
 
         public IEnumerable<Location> AllLocations => _eShopDbContext.Location;
 
-        public Location GetLocationById(int? eventId)
+        public IEnumerable<Location> GetLocationById(int? eventId)
         {
-            var locationId = _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId).LocationId;
-            var location = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == locationId);
-
-            var entity = _eShopDbContext.Entry(location);
-            entity.State = EntityState.Detached;
-
-            return location;
+            var locations = _eShopDbContext.Location.Where(e => e.EventId == eventId).ToList();
+            foreach (var location in locations)
+            {
+                var entity = _eShopDbContext.Entry(location);
+                entity.State = EntityState.Detached;
+            }
+            return locations;
         }
 
-        public void CreateLocation(EventViewModel newEvent)
+        public void CreateLocation(int eventId, EventViewModel newEvent)
         {
             var _newLocation = new Location()
             {
+                EventId = eventId,
                 Street = newEvent.Location.Street,
                 StreetNumber = newEvent.Location.StreetNumber,
                 City = newEvent.Location.City,
@@ -49,35 +50,43 @@ namespace eShop.Infrastructure.Services
             _eShopDbContext.SaveChanges();
         }
 
-        public void UpdateLocation(EventViewModel newEvent)
+        public void UpdateLocation(int eventId, IEnumerable<Location> newLocations)
         {
-            var eventId = newEvent.Event.EventId;
-            var location = GetLocationById(eventId);
+            var oldLocations = GetLocationById(eventId);
+            var oldLocationsIds = oldLocations.Select(t => t.LocationId).ToList();
 
-            var newLocation = newEvent.Location;
-            if (newLocation != null)
+            var i = 0;
+            foreach (var newLocation in newLocations)
             {
-                newLocation.LocationId = location.LocationId;
-                newLocation.Street = newLocation.Street;
-                newLocation.StreetNumber = newLocation.StreetNumber;
-                newLocation.City = newLocation.City;
-                newLocation.State = newLocation.State;
-                newLocation.ZipCode = newLocation.ZipCode;
-            }
+                if (newLocation != null)
+                {
+                    newLocation.EventId = eventId;
+                    newLocation.LocationId = oldLocationsIds[i];
+                    newLocation.Street = newLocation.Street;
+                    newLocation.StreetNumber = newLocation.StreetNumber;
+                    newLocation.City = newLocation.City;
+                    newLocation.ZipCode = newLocation.ZipCode;
+                    newLocation.State = newLocation.State;
+                    i++;
+                }
 
-            var entity = _eShopDbContext.Entry(newLocation);
-            entity.State = EntityState.Modified;
-            _eShopDbContext.SaveChanges();
+                var entity = _eShopDbContext.Entry(newLocation);
+                entity.State = EntityState.Modified;
+                _eShopDbContext.SaveChanges();
+            }
         }
 
-        public void DeleteLocation(int locationId)
+        public void DeleteLocations(int id)
         {                       
-            var removedLocation = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == locationId);
+            var removedLocation = GetLocationById(id);
 
             if (removedLocation != null)
             {
-                _eShopDbContext.Remove(removedLocation);
-                _eShopDbContext.SaveChanges();
+                foreach (var location in removedLocation)
+                {
+                    _eShopDbContext.Remove(location);
+                    _eShopDbContext.SaveChanges();
+                }
             }
         }
 

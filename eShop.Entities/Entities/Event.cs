@@ -12,10 +12,6 @@ namespace eShop.Entities.Entities
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
         public virtual ICollection<Schedule> Schedule { get; set; }
-        public Location Location { get; set; }
-        public int LocationId { get; set; }
-        //public Teachers Teachers { get; set; }
-        //public int TeachersId { get; set; }
         public string HowToGo { get; set; }        
         public Currency Currency { get; set; }
         public string ImageUrl { get; set; }
@@ -25,5 +21,6 @@ namespace eShop.Entities.Entities
         public int CategoryId { get; set; }
         public ICollection<Ticket> Tickets { get; set; }
         public ICollection<Teacher> Teachers { get; set; }
+        public ICollection<Location> Locations { get; set; }
     }
 }

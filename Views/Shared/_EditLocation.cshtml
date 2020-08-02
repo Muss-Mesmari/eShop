@@ -1,0 +1,139 @@
+﻿@model IEnumerable<eShop.Entities.Entities.Location>
+
+
+<div id="accordion">
+    <div class="card mb-1">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse_0" aria-expanded="true" aria-controls="collapse_0">
+                    @Model.ToList()[0].Street @Model.ToList()[0].StreetNumber
+                </a>
+            </h5>
+        </div>
+        <div id="collapse_0" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label asp-for="@Model.ToList()[0].Street" class="control-label"></label>
+                        <input asp-for="@Model.ToList()[0].Street" class="form-control" />
+                        <span asp-validation-for="@Model.ToList()[0].Street" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a street.
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label asp-for="@Model.ToList()[0].StreetNumber" class="control-label"></label>
+                        <input asp-for="@Model.ToList()[0].StreetNumber" class="form-control"/>
+                        <span asp-validation-for="@Model.ToList()[0].StreetNumber" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a street number.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label asp-for="@Model.ToList()[0].ZipCode" class="control-label"></label>
+                        <input asp-for="@Model.ToList()[0].ZipCode" class="form-control"/>
+                        <span asp-validation-for="@Model.ToList()[0].ZipCode" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a zip code.
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label asp-for="@Model.ToList()[0].City" class="control-label"></label>
+                        <input asp-for="@Model.ToList()[0].City" class="form-control"/>
+                        <span asp-validation-for="@Model.ToList()[0].City" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a city.
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label asp-for="@Model.ToList()[0].State" class="control-label"></label>
+                        <input asp-for="@Model.ToList()[0].State" class="form-control"/>
+                        <span asp-validation-for="@Model.ToList()[0].State" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a state.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@for (int i = 1; i < Model.Count(); i++)
+{
+    <div id="accordion">
+        <div class="card mb-1">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <a class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapse_@i" aria-expanded="false" aria-controls="collapse_@i">
+                        @Model.ToList()[i].Street @Model.ToList()[i].StreetNumber
+                    </a>
+                </h5>
+            </div>
+            <div id="collapse_@i" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label asp-for="@Model.ToList()[i].Street" class="control-label"></label>
+                            <input asp-for="@Model.ToList()[i].Street" class="form-control" />
+                            <span asp-validation-for="@Model.ToList()[i].Street" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a street.
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label asp-for="@Model.ToList()[i].StreetNumber" class="control-label"></label>
+                            <input asp-for="@Model.ToList()[i].StreetNumber" class="form-control"/>
+                            <span asp-validation-for="@Model.ToList()[i].StreetNumber" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a street number.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label asp-for="@Model.ToList()[i].ZipCode" class="control-label"></label>
+                            <input asp-for="@Model.ToList()[i].ZipCode" class="form-control"/>
+                            <span asp-validation-for="@Model.ToList()[i].ZipCode" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a zib code.
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label asp-for="@Model.ToList()[i].City" class="control-label"></label>
+                            <input asp-for="@Model.ToList()[i].City" class="form-control"/>
+                            <span asp-validation-for="@Model.ToList()[i].City" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a city.
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label asp-for="@Model.ToList()[i].State" class="control-label"></label>
+                            <input asp-for="@Model.ToList()[i].State" class="form-control"/>
+                            <span asp-validation-for="@Model.ToList()[i].State" class="text-danger"></span>
+                            <div class="invalid-tooltip">
+                                Please provide a state.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="alert alert-danger mt-3" role="alert">
+    <strong>P.S.</strong> Click on each location to edit!
+</div>

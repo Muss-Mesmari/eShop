@@ -1,15 +1,17 @@
 ﻿@model eShop.Presentation.ViewModels.EventViewModel
 
 @{
-    ViewData["Title"] = "Create an event | Step Three";
+    ViewData["Title"] = "Create an event | Step Five";
 }
 
-<h1>Create an event | Step Three</h1>
+<h1>Create an event | Step Five</h1>
 
 <div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+    <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
 </div>
+
 <hr />
+
 <!-- Page Content -->
 <div class="row">
     <!-- the side scroll spy menu -->
@@ -17,7 +19,7 @@
         <div class="sticky">
             <h1 class="mt-4">New Event</h1>
             <div id="side-menu-list" class="list-group">
-                <a href="#tickets" class="list-group-item list-group-item-action active">Tickets</a>
+                <a href="#locations" class="list-group-item list-group-item-action active">Locations</a>
             </div>
         </div>
     </div>
@@ -26,38 +28,38 @@
     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
         <div data-spy="scroll" data-target="side-menu-list" data-offset="0" class="scrollspy">
 
-            <!-- the "Tickets" Card >> content of the side scroll spy menu -->
-            <div class="card card-outline-secondary my-4" id="tickets">
+            <!-- the "Locations" Card >> content of the side scroll spy menu -->
+            <div class="card card-outline-secondary my-4" id="locations">
                 <div id="">
-                    <div class="card-header" id="headingTickets">
+                    <div class="card-header" id="headingLocations">
                         <h5 class="mb-0">
-                            <a class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseTickets" aria-expanded="true" aria-controls="collapseTickets">
-                                Tickets
+                            <a class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseLocations" aria-expanded="true" aria-controls="collapseLocations">
+                                Locations
                             </a>
                         </h5>
                     </div>
 
-                    <div id="collapseTickets" class="collapse show" aria-labelledby="headingTickets" data-parent="">
+                    <div id="collapseLocations" class="collapse show" aria-labelledby="headingLocations" data-parent="">
                         <div class="card-body">
                             <div class="container-fluid bg-transparent">
                                 <div class="align-items-center justify-content-center">
-                                    @{ if (Model.Tickets.Any())
+                                    @{ if (Model.Locations.Any())
                                         {
-                                            <partial name="_EventTickets" />
+                                            <partial name="_EventLocations" />
                                         }
                                         else
                                         {
                                             <div class="alert alert-danger" role="alert">
                                                 <h4 class="alert-heading">Warning!</h4>
-                                                <p>There are no tickets have been added to the event yet. Tickets will appear here after adding them.</p>
+                                                <p>There are no locations have been added to the event yet. Loactiobs will appear here after adding them.</p>
                                             </div>
                                         }
                                     }
                                     <hr />
-                                    <form asp-action="CreateStepThree" class="needs-validation" novalidate>
-                                        <partial name="_CreateTicket" />
+                                    <form asp-action="CreateStepFive" class="needs-validation" novalidate>
+                                        <partial name="_CreateLocation" />
                                         <div class="mt-3 pt-3">
-                                            <button type="submit" class="btn btn-danger w-25">Add Ticket <i class="fa fa-plus text-white"></i></button>
+                                            <button type="submit" class="btn btn-danger w-25">Add Location <i class="fa fa-plus text-white"></i></button>
                                         </div>
                                     </form>
                                 </div>

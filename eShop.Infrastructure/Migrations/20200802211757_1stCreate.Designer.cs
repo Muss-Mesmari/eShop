@@ -10,7 +10,7 @@ using eShop.Infrastructure.Database;
 namespace eShop.Infrastructure.Migrations
 {
     [DbContext(typeof(eShopDbContext))]
-    [Migration("20200802181845_1stCreate")]
+    [Migration("20200802211757_1stCreate")]
     partial class _1stCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -365,9 +365,6 @@ namespace eShop.Infrastructure.Migrations
                     b.Property<bool>("IsHighlightedEvent")
                         .HasColumnType("bit");
 
-                    b.Property<int>("LocationId")
-                        .HasColumnType("int");
-
                     b.Property<string>("LongDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -381,8 +378,6 @@ namespace eShop.Infrastructure.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("LocationId");
-
                     b.ToTable("Events");
 
                     b.HasData(
@@ -395,7 +390,6 @@ namespace eShop.Infrastructure.Migrations
                             ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
-                            LocationId = 1,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event One",
                             ShortDescription = "Lorem Ipsum"
@@ -409,7 +403,6 @@ namespace eShop.Infrastructure.Migrations
                             ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
-                            LocationId = 2,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Two",
                             ShortDescription = "Lorem Ipsum"
@@ -423,7 +416,6 @@ namespace eShop.Infrastructure.Migrations
                             ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
-                            LocationId = 3,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Three",
                             ShortDescription = "Lorem Ipsum"
@@ -437,7 +429,6 @@ namespace eShop.Infrastructure.Migrations
                             ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
-                            LocationId = 4,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Four",
                             ShortDescription = "Lorem Ipsum"
@@ -451,7 +442,6 @@ namespace eShop.Infrastructure.Migrations
                             ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
-                            LocationId = 5,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Five",
                             ShortDescription = "Lorem Ipsum"
@@ -465,7 +455,6 @@ namespace eShop.Infrastructure.Migrations
                             ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
-                            LocationId = 6,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Six",
                             ShortDescription = "Lorem Ipsum"
@@ -479,7 +468,6 @@ namespace eShop.Infrastructure.Migrations
                             ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
-                            LocationId = 7,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Seven",
                             ShortDescription = "Lorem Ipsum"
@@ -493,7 +481,6 @@ namespace eShop.Infrastructure.Migrations
                             ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
-                            LocationId = 8,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Eight",
                             ShortDescription = "Lorem Ipsum"
@@ -507,7 +494,6 @@ namespace eShop.Infrastructure.Migrations
                             ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
-                            LocationId = 9,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Nine",
                             ShortDescription = "Lorem Ipsum"
@@ -521,7 +507,6 @@ namespace eShop.Infrastructure.Migrations
                             ImageUrl = "https://i.ytimg.com/vi/5Cy_KvI2nME/maxresdefault.jpg",
                             InStock = true,
                             IsHighlightedEvent = false,
-                            LocationId = 10,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Ten",
                             ShortDescription = "Lorem Ipsum"
@@ -535,7 +520,6 @@ namespace eShop.Infrastructure.Migrations
                             ImageUrl = "https://www.nhm.ac.uk/content/dam/nhmwww/visit/Exhibitions/events/after-hours/silent-disco/silent-disco-calendar.jpg",
                             InStock = true,
                             IsHighlightedEvent = true,
-                            LocationId = 11,
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Eleven",
                             ShortDescription = "Lorem Ipsum"
@@ -552,6 +536,9 @@ namespace eShop.Infrastructure.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
@@ -566,6 +553,8 @@ namespace eShop.Infrastructure.Migrations
 
                     b.HasKey("LocationId");
 
+                    b.HasIndex("EventId");
+
                     b.ToTable("Location");
 
                     b.HasData(
@@ -573,6 +562,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             LocationId = 1,
                             City = "Stockholm län",
+                            EventId = 1,
                             State = "Stockholm",
                             Street = "vägen",
                             StreetNumber = 1,
@@ -582,6 +572,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             LocationId = 2,
                             City = "Stockholm län",
+                            EventId = 1,
                             State = "Stockholm",
                             Street = "vägen",
                             StreetNumber = 2,
@@ -591,6 +582,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             LocationId = 3,
                             City = "Stockholm län",
+                            EventId = 2,
                             State = "Stockholm",
                             Street = "vägen",
                             StreetNumber = 3,
@@ -600,6 +592,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             LocationId = 4,
                             City = "Stockholm län",
+                            EventId = 2,
                             State = "Stockholm",
                             Street = "vägen",
                             StreetNumber = 4,
@@ -609,6 +602,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             LocationId = 5,
                             City = "Stockholm län",
+                            EventId = 3,
                             State = "Stockholm",
                             Street = "vägen",
                             StreetNumber = 5,
@@ -618,6 +612,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             LocationId = 6,
                             City = "Stockholm län",
+                            EventId = 3,
                             State = "Stockholm",
                             Street = "vägen",
                             StreetNumber = 6,
@@ -627,6 +622,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             LocationId = 7,
                             City = "Stockholm län",
+                            EventId = 4,
                             State = "Stockholm",
                             Street = "vägen",
                             StreetNumber = 7,
@@ -636,6 +632,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             LocationId = 8,
                             City = "Stockholm län",
+                            EventId = 4,
                             State = "Stockholm",
                             Street = "vägen",
                             StreetNumber = 8,
@@ -645,6 +642,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             LocationId = 9,
                             City = "Stockholm län",
+                            EventId = 5,
                             State = "Stockholm",
                             Street = "vägen",
                             StreetNumber = 9,
@@ -654,6 +652,7 @@ namespace eShop.Infrastructure.Migrations
                         {
                             LocationId = 10,
                             City = "Stockholm län",
+                            EventId = 5,
                             State = "Stockholm",
                             Street = "vägen",
                             StreetNumber = 10,
@@ -663,9 +662,120 @@ namespace eShop.Infrastructure.Migrations
                         {
                             LocationId = 11,
                             City = "Stockholm län",
+                            EventId = 6,
                             State = "Stockholm",
                             Street = "vägen",
                             StreetNumber = 11,
+                            ZipCode = 12355
+                        },
+                        new
+                        {
+                            LocationId = 12,
+                            City = "Stockholm län",
+                            EventId = 6,
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 12,
+                            ZipCode = 12351
+                        },
+                        new
+                        {
+                            LocationId = 13,
+                            City = "Stockholm län",
+                            EventId = 7,
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 13,
+                            ZipCode = 12352
+                        },
+                        new
+                        {
+                            LocationId = 14,
+                            City = "Stockholm län",
+                            EventId = 7,
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 14,
+                            ZipCode = 12353
+                        },
+                        new
+                        {
+                            LocationId = 15,
+                            City = "Stockholm län",
+                            EventId = 8,
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 15,
+                            ZipCode = 12354
+                        },
+                        new
+                        {
+                            LocationId = 16,
+                            City = "Stockholm län",
+                            EventId = 8,
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 16,
+                            ZipCode = 12355
+                        },
+                        new
+                        {
+                            LocationId = 17,
+                            City = "Stockholm län",
+                            EventId = 9,
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 17,
+                            ZipCode = 12352
+                        },
+                        new
+                        {
+                            LocationId = 18,
+                            City = "Stockholm län",
+                            EventId = 9,
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 18,
+                            ZipCode = 12353
+                        },
+                        new
+                        {
+                            LocationId = 19,
+                            City = "Stockholm län",
+                            EventId = 10,
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 19,
+                            ZipCode = 12354
+                        },
+                        new
+                        {
+                            LocationId = 20,
+                            City = "Stockholm län",
+                            EventId = 10,
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 20,
+                            ZipCode = 12355
+                        },
+                        new
+                        {
+                            LocationId = 21,
+                            City = "Stockholm län",
+                            EventId = 11,
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 21,
+                            ZipCode = 12354
+                        },
+                        new
+                        {
+                            LocationId = 22,
+                            City = "Stockholm län",
+                            EventId = 11,
+                            State = "Stockholm",
+                            Street = "vägen",
+                            StreetNumber = 22,
                             ZipCode = 12355
                         });
                 });
@@ -1486,78 +1596,78 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TimesId = 1,
                             DayId = 1,
-                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(2021),
-                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 835, DateTimeKind.Local).AddTicks(1287)
+                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(2431),
+                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 935, DateTimeKind.Local).AddTicks(2535)
                         },
                         new
                         {
                             TimesId = 2,
                             DayId = 2,
-                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4648),
-                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4598)
+                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4164),
+                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4134)
                         },
                         new
                         {
                             TimesId = 3,
                             DayId = 3,
-                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4811),
-                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4798)
+                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4223),
+                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4218)
                         },
                         new
                         {
                             TimesId = 4,
                             DayId = 4,
-                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4938),
-                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4922)
+                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4256),
+                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4252)
                         },
                         new
                         {
                             TimesId = 5,
                             DayId = 5,
-                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(4973),
-                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(4969)
+                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4286),
+                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4282)
                         },
                         new
                         {
                             TimesId = 6,
                             DayId = 6,
-                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5009),
-                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5005)
+                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4321),
+                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4317)
                         },
                         new
                         {
                             TimesId = 7,
                             DayId = 7,
-                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5101),
-                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5096)
+                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4351),
+                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4347)
                         },
                         new
                         {
                             TimesId = 8,
                             DayId = 8,
-                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5134),
-                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5130)
+                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4381),
+                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4377)
                         },
                         new
                         {
                             TimesId = 9,
                             DayId = 9,
-                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5163),
-                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5159)
+                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4412),
+                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4408)
                         },
                         new
                         {
                             TimesId = 10,
                             DayId = 10,
-                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5197),
-                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5193)
+                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4443),
+                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4440)
                         },
                         new
                         {
                             TimesId = 11,
                             DayId = 11,
-                            TimeEnd = new DateTime(2020, 8, 2, 22, 18, 44, 838, DateTimeKind.Local).AddTicks(5226),
-                            TimeStart = new DateTime(2020, 8, 2, 20, 18, 44, 838, DateTimeKind.Local).AddTicks(5222)
+                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4474),
+                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4470)
                         });
                 });
 
@@ -1702,10 +1812,13 @@ namespace eShop.Infrastructure.Migrations
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.HasOne("eShop.Entities.Entities.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId")
+            modelBuilder.Entity("eShop.Entities.Entities.Location", b =>
+                {
+                    b.HasOne("eShop.Entities.Entities.Event", "Event")
+                        .WithMany("Locations")
+                        .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

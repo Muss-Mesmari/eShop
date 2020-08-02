@@ -60,10 +60,6 @@ namespace eShop.Infrastructure.Services
         public void CreateEvent(EventViewModel newEvent)
         {
             var eventId = newEvent.Event.EventId;
-            int locationId = _locationService.GetLocationById(eventId).LocationId;
-          //  int teachersId = _teachersService.GetTeachersById(eventId).TeachersId;
-            //int locationId = _eShopDbContext.Location.Select(l => l.LocationId).ToList().Last();
-            //int teachersId = _eShopDbContext.Teachers.Select(t => t.TeachersId).ToList().Last();
 
             var _newEvent = new Event()
             {
@@ -74,9 +70,7 @@ namespace eShop.Infrastructure.Services
                 IsHighlightedEvent = newEvent.Event.IsHighlightedEvent,
                 InStock = newEvent.Event.InStock,
                 CategoryId = newEvent.Event.CategoryId,
-                Currency = newEvent.Event.Currency,
-                LocationId = locationId,
-                //TeachersId = teachersId
+                Currency = newEvent.Event.Currency
             };
 
             _eShopDbContext.Events.Add(_newEvent);
@@ -86,16 +80,6 @@ namespace eShop.Infrastructure.Services
         public void UpdateEvent(EventViewModel newEvent)
         {
             var eventId = newEvent.Event.EventId;
-            var location = _locationService.GetLocationById(eventId);
-           // var teachers = _teachersService.GetTeachersById(eventId);
-
-            //var location = _eShopDbContext.Location.FirstOrDefault(l => l.LocationId == eventId);
-            //var entityLocation = _eShopDbContext.Entry(location);
-            //entityLocation.State = EntityState.Detached;
-
-            //var teachers = _eShopDbContext.Events.FirstOrDefault(e => e.EventId == eventId);        
-            //var entityTeachers = _eShopDbContext.Entry(teachers);
-            //entityTeachers.State = EntityState.Detached;
 
             if (newEvent != null)
             {
@@ -107,8 +91,6 @@ namespace eShop.Infrastructure.Services
                 newEvent.Event.InStock = newEvent.Event.InStock;
                 newEvent.Event.CategoryId = newEvent.Event.CategoryId;
                 newEvent.Event.Currency = newEvent.Event.Currency;
-                newEvent.Event.LocationId = location.LocationId;
-               // newEvent.Event.TeachersId = teachers.TeachersId;
             }
 
             var entity = _eShopDbContext.Entry(newEvent.Event);
