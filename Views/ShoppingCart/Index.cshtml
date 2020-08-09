@@ -31,6 +31,7 @@
                         <form asp-controller="ShoppingCart"
                               asp-action="AddToShoppingCart"
                               asp-route-eventId="@line.Event.EventId"
+                              asp-route-ticketId="@line.Ticket.TicketId"
                               asp-route-isDetailesPage="@false"
                               method="post" role="form">
 
@@ -38,28 +39,30 @@
 
                                 <div class="d-flex justify-content-center">
                                     <div class="form-group col">
-                                        <div class="input-group">
-                                            <select asp-for="@Model.SelectedTicketId" class="custom-select form-control text-center w-auto" asp-items="@(new SelectList(Model.Tickets, "TicketId", "TicketName"))">
-                                                <option value="@line.Ticket.TicketId">@line.Ticket.TicketName</option>
-                                            </select>
+                                        @line.Ticket.TicketName
 
-                                            <div class="input-group-append">
-                                                <button class="btn btn-sm btn-outline-secondary" type="submit">Edit</button>
-                                            </div>
-                                        </div>
+                                        @*<div class="input-group">
+                                                <select asp-for="@Model.SelectedTicketId" class="custom-select form-control text-center w-auto" asp-items="@(new SelectList(Model.Tickets, "TicketId", "TicketName"))">
+                                                    <option value="@line.Ticket.TicketId">@line.Ticket.TicketName</option>
+                                                </select>
+
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-sm btn-outline-secondary" type="submit">Edit</button>
+                                                </div>
+                                            </div>*@
                                     </div>
                                 </div>
 
                                 <div class="d-flex justify-content-center">
                                     <div class="form-group col-8">
-                                        <div class="input-group">
-                                            <input class="form-control text-center" type="number" asp-for="@Model.SelectedAmount" value="@line.Amount">
+                                            <div class="input-group">
+                                                <input class="form-control text-center" type="number" asp-for="@Model.SelectedAmount" value="@line.Amount">
 
-                                            <div class="input-group-append">
-                                                <button class="btn btn-sm btn-outline-secondary" type="submit">Edit</button>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-sm btn-outline-secondary" type="submit">Edit</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
 
                             </div>
@@ -71,6 +74,7 @@
                         <a asp-controller="ShoppingCart"
                            asp-action="RemoveFromShoppingCart"
                            asp-route-eventId="@line.Event.EventId"
+                           asp-route-ticketId="@line.Ticket.TicketId"
                            class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i>
                         </a>
@@ -105,7 +109,7 @@
 
 
 @{
-    if (Model.ShoppingCartService.ShoppingCartItems.Count() != 0 )
+    if (Model.ShoppingCartService.ShoppingCartItems.Count() != 0)
     {
         <div class="d-flex justify-content-end">
             <a class="btn btn-lg btn-danger w-25 text-center text-nowrap" asp-controller="Order" asp-action="Checkout">Check out now!</a>

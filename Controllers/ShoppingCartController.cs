@@ -63,11 +63,15 @@ namespace eShop.Web.Controllers
             }
         }
 
-        public RedirectToActionResult AddToShoppingCart(int eventId, bool isDetailesPage)
+        public RedirectToActionResult AddToShoppingCart(int eventId, int ticketId, bool isDetailesPage)
         {
             if (_featuresConfiguration.EnableOrder)
             {
                 var selectedEvent = _eventService.AllEvents().FirstOrDefault(e => e.EventId == eventId);
+                if (SelectedTicketId == 0)
+                {
+                    SelectedTicketId = ticketId;
+                }
                 var SelectedTicket = _ticketService.AllTickets.FirstOrDefault(t => t.TicketId == SelectedTicketId);
 
                 if (selectedEvent != null)
@@ -78,13 +82,11 @@ namespace eShop.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public RedirectToActionResult RemoveFromShoppingCart(int eventId)
+        public RedirectToActionResult RemoveFromShoppingCart(int eventId, int ticketId)
         {
-            var selectedEvent = _eventService.AllEvents().FirstOrDefault(e => e.EventId == eventId);
-
-            if (selectedEvent != null)
+            if (eventId != 0 || ticketId != 0)
             {
-                _shoppingCartService.RemoveFromCart(selectedEvent);
+                _shoppingCartService.RemoveFromCart(eventId, ticketId);
             }
             return RedirectToAction("Index");
         }

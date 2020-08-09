@@ -49,6 +49,6 @@ namespace eShop.Presentation.ViewModels
         public string NotFoundSearchedBarMessage { get; set; }
         public string NotFoundSearchedEventMessage { get; set; }
         public string NotFoundSchedule { get; set; }
-
+        public bool IsBoughtTicket { get; set; }
     }
 }

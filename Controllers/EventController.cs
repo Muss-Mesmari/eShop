@@ -10,6 +10,7 @@ using eShop.Web.ViewModels;
 using eShop.Presentation.ViewModels;
 using eShop.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace eShop.Web.Controllers
 {
@@ -114,7 +115,10 @@ namespace eShop.Web.Controllers
             var teachers = _teacherService.GetTeachersById(id);
             var selectedAmount = _shoppingCartService.GetShoppingCartItemAmount(id);
             var tickets = _ticketService.GetTicketById(id);
- 
+            var isBoughtTicket = _shoppingCartService.GetShoppingCartItems(id).Any();
+            var shoppingCartItems = _shoppingCartService.GetShoppingCartItems(id);
+
+
             if (selectedAmount == 0)
             {
                 selectedAmount = 1;
@@ -136,6 +140,7 @@ namespace eShop.Web.Controllers
                 Locations = locations,
                 Teachers = teachers,
                 Tickets = tickets,
+                IsBoughtTicket = isBoughtTicket,
                 NotFoundSchedule = "The event does not have a schedule yet!"
             });
         }

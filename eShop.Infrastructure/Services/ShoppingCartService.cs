@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Update.Internal;
 
 namespace eShop.Infrastructure.Services
 {
@@ -42,14 +43,26 @@ namespace eShop.Infrastructure.Services
             return new ShoppingCartService(context) { ShoppingCartId = cartId };
         }
 
-        public List<ShoppingCartItem> GetShoppingCartItems()
+        public List<ShoppingCartItem> GetShoppingCartItems(int? eventId = 0)
         {
-            return ShoppingCartItems ??
-                   (ShoppingCartItems =
-                       _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
-                           .Include(e => e.Event)
-                           .Include(t => t.Ticket)
-                           .ToList());
+            if (eventId != 0)
+            {
+                return ShoppingCartItems ??
+                    (ShoppingCartItems =
+                    _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.EventId == eventId)
+                    .Include(e => e.Event)
+                    .Include(t => t.Ticket)
+                    .ToList());
+            }
+            else
+            {
+                return ShoppingCartItems ??
+                       (ShoppingCartItems =
+                           _eShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
+                               .Include(e => e.Event)
+                               .Include(t => t.Ticket)
+                               .ToList());
+            }
         }
 
         public IList<Ticket> GetTickets()
@@ -65,6 +78,23 @@ namespace eShop.Infrastructure.Services
             return tickets;
         }
 
+
+        public ShoppingCartItem GetShoppingCartItem(int? eventId = 0, List<int> ticketIds = null, int purchasedTicketId = 0)
+        {
+            ShoppingCartItem shoppingCartItem = null;
+            foreach (var id in ticketIds)
+            {
+                if (id != purchasedTicketId)
+                {
+                    shoppingCartItem = _eShopDbContext.ShoppingCartItems.Where(
+                        c => c.ShoppingCartId == ShoppingCartId &&
+                        c.Event.EventId == eventId)
+                        .SingleOrDefault();
+                }
+            }
+            return shoppingCartItem;
+        }
+
         public int GetShoppingCartItemAmount(int eventId)
         {
             var total = _eShopDbContext.ShoppingCartItems
@@ -74,13 +104,11 @@ namespace eShop.Infrastructure.Services
             return total;
         }
 
-        public int GetShoppingCartItemTicketId(int eventId)
+        public List<int> GetShoppingCartItemTicketId(int eventId, int ticketId)
         {
-            var total = _eShopDbContext.ShoppingCartItems
+            return _eShopDbContext.ShoppingCartItems
                 .Where(c => c.ShoppingCartId == ShoppingCartId && c.Event.EventId == eventId)
-                .Select(t => t.Ticket.TicketId).FirstOrDefault();
-
-            return total;
+                .Select(t => t.Ticket.TicketId).ToList();
         }
 
         public decimal GetShoppingCartItemTotalSEK(int eventId)
@@ -124,89 +152,147 @@ namespace eShop.Infrastructure.Services
             return total;
         }
 
-        public void AddToCart(Event purchasedEvent, Ticket purchasedTicket, int selectedAmount, bool isDetailesPage)
+        public void AddToCart(Event purchasedEvent, Ticket purchasedTicket, int purchasedAmount, bool isDetailesPage)
         {
-            var shoppingCartItem =
-                    _eShopDbContext.ShoppingCartItems.SingleOrDefault(
-                        e => e.Event.EventId == purchasedEvent.EventId && e.ShoppingCartId == ShoppingCartId && e.Ticket.TicketId == purchasedTicket.TicketId);
 
-            var oldAmount = GetShoppingCartItemAmount(purchasedEvent.EventId);
-            var oldTicketId = GetShoppingCartItemTicketId(purchasedEvent.EventId);
-
-            if (isDetailesPage is false)
+            if (IsShoppingCartEmpty() || !IsEventInCart(purchasedEvent).Item1)
             {
-                if (selectedAmount == 0)
+                var shoppingCartItem = new ShoppingCartItem
                 {
-                    selectedAmount = oldAmount;
-                }
+                    ShoppingCartId = ShoppingCartId,
+                    Event = purchasedEvent,
+                    Amount = purchasedAmount,
+                    Ticket = purchasedTicket
+                };
+                _eShopDbContext.ShoppingCartItems.Add(shoppingCartItem);
+            }
 
-                if (oldTicketId != purchasedTicket.TicketId)
+            // detail page rule 
+            else if (isDetailesPage && IsEventInCart(purchasedEvent).Item1)
+            {
+                // ticket rule
+                var evenId = purchasedEvent.EventId;
+                var purchasedTicketId = purchasedTicket.TicketId;
+                var oldPurchasedTicketId = GetShoppingCartItemTicketId(purchasedEvent.EventId, purchasedTicket.TicketId);
+                if (!IsTicketInCart(oldPurchasedTicketId, purchasedTicketId))
                 {
-                    var newPurchasedEvent = purchasedEvent;
-                    var newPurchasedTicket = purchasedTicket;
-
-                    if (shoppingCartItem != null)
-                    {
-                        _eShopDbContext.ShoppingCartItems.Remove(shoppingCartItem);
-                    }                   
-
-                    shoppingCartItem = new ShoppingCartItem
-                    {
-                        ShoppingCartId = ShoppingCartId,
-                        Event = newPurchasedEvent,
-                        Amount = oldAmount,
-                        Ticket = newPurchasedTicket
-                    };
-
-                    _eShopDbContext.ShoppingCartItems.Add(shoppingCartItem);
-                }
-
-                else if (shoppingCartItem == null)
-                {
-                    shoppingCartItem = new ShoppingCartItem
+                    var newShoppingCartItem = new ShoppingCartItem
                     {
                         ShoppingCartId = ShoppingCartId,
                         Event = purchasedEvent,
-                        Amount = 0,
+                        Amount = purchasedAmount,
                         Ticket = purchasedTicket
                     };
-
-                    _eShopDbContext.ShoppingCartItems.Add(shoppingCartItem);
+                    _eShopDbContext.ShoppingCartItems.Add(newShoppingCartItem);
                 }
-
                 else
                 {
-                    shoppingCartItem.Amount = selectedAmount;
+                    // temp statment. The operation should not be allowed
+
+                    // GetShoppingCartItem(evenId, oldPurchasedTicketId, purchasedTicketId).Ticket = purchasedTicket;
+                    //shoppingCartItem.Ticket = purchasedTicket;
                 }
             }
+
             else
             {
-                if (shoppingCartItem == null)
+                // rule if event in cart and how many
+                ShoppingCartItem shoppingCartItem = null;
+                if (IsEventInCart(purchasedEvent).Item1 && IsEventInCart(purchasedEvent).Item2 > 1)
                 {
-                    shoppingCartItem = new ShoppingCartItem
-                    {
-                        ShoppingCartId = ShoppingCartId,
-                        Event = purchasedEvent,
-                        Amount = selectedAmount,
-                        Ticket = purchasedTicket
-                    };
-
-                    _eShopDbContext.ShoppingCartItems.Add(shoppingCartItem);
+                    shoppingCartItem = _eShopDbContext.ShoppingCartItems.Where(
+                        e => e.Event.EventId == purchasedEvent.EventId &&
+                        e.ShoppingCartId == ShoppingCartId &&
+                        e.Ticket.TicketId == purchasedTicket.TicketId).SingleOrDefault();
                 }
                 else
                 {
-                    shoppingCartItem.Amount = selectedAmount;
+                    shoppingCartItem =
+                            _eShopDbContext.ShoppingCartItems.SingleOrDefault(
+                                e => e.Event.EventId == purchasedEvent.EventId &&
+                                e.ShoppingCartId == ShoppingCartId);
                 }
-            }
 
+                // amount rule     
+                var oldPurchasedAmount = GetShoppingCartItemAmount(purchasedEvent.EventId);
+                if (!IsSameAmount(oldPurchasedAmount, purchasedAmount))
+                {
+                    shoppingCartItem.Amount = purchasedAmount;
+                };
+            }
             _eShopDbContext.SaveChanges();
         }
 
-        public int RemoveFromCart(Event purchasedEvent)
+        private (bool, int) IsEventInCart(Event purchasedEvent)
+        {
+            var oldPurchasedEvents = _eShopDbContext.ShoppingCartItems
+                .Where(e => e.Event.EventId == purchasedEvent.EventId
+                && e.ShoppingCartId == ShoppingCartId)
+                .ToList();
+            int counter = 0;
+            var isEventInCart = false;
+            foreach (var oldPurchasedEvent in oldPurchasedEvents)
+            {
+                if (oldPurchasedEvent.Event.EventId == purchasedEvent.EventId)
+                {
+                    counter++;
+                    isEventInCart = true;
+                }
+            }
+            return (isEventInCart, counter);
+        }
+
+        private bool IsShoppingCartEmpty()
+        {
+            var shoppingCart =
+        _eShopDbContext.ShoppingCartItems.Where(
+            e => e.ShoppingCartId == ShoppingCartId).ToList();
+
+
+            if (shoppingCart.Any())
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool IsTicketInCart(List<int> selectedTicketIds, int oldTicketId)
+        {
+            var isTicketInCart = false;
+            foreach (var id in selectedTicketIds)
+            {
+                if (id == oldTicketId)
+                {
+                    isTicketInCart = true;
+                }
+                else
+                {
+                    isTicketInCart = false;
+                }
+            }
+            return isTicketInCart;
+        }
+
+        private bool IsSameAmount(int selectedAmount, int oldAmount)
+        {
+            if (selectedAmount == oldAmount)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int RemoveFromCart(int eventId, int SelectedTicketId)
         {
             var shoppingCartItem =
                     _eShopDbContext.ShoppingCartItems.SingleOrDefault(
-                        e => e.Event.EventId == purchasedEvent.EventId && e.ShoppingCartId == ShoppingCartId);
+                        e => e.Event.EventId == eventId && e.ShoppingCartId == ShoppingCartId && e.Ticket.TicketId == SelectedTicketId);
 
             var localAmount = 0;
 
