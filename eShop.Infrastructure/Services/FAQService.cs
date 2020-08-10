@@ -37,13 +37,16 @@ namespace eShop.Infrastructure.Services
 
         public void CreateFAQ(int eventId, EventViewModel newEvent)
         {
-            var _newFAQ = new FAQ()
+            if (newEvent.FAQ != null)
             {
-                EventId = eventId,
-                Question = newEvent.FAQ.Question,
-                Answer = newEvent.FAQ.Answer
-            };
-            _eShopDbContext.FAQ.Add(_newFAQ);
+                var _newFAQ = new FAQ()
+                {
+                    EventId = eventId,
+                    Question = newEvent.FAQ.Question,
+                    Answer = newEvent.FAQ.Answer
+                };
+                _eShopDbContext.FAQ.Add(_newFAQ);
+            }
             _eShopDbContext.SaveChanges();
         }
 

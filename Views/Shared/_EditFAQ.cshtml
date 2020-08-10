@@ -3,35 +3,33 @@
 
 <div id="accordion">
     <div class="card mb-1">
-        <div class="card-header" id="headingOne">
+        <div class="card-header" id="headingFAQOne">
             <h5 class="mb-0">
-                <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse_0" aria-expanded="true" aria-controls="collapse_0">
+                <a class="btn btn-block text-left" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapse">
                     @Model.ToList()[0].Question
                 </a>
             </h5>
         </div>
-        <div id="collapse_0" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div id="collapse" class="collapse show" aria-labelledby="headingFAQOne" data-parent="#accordion">
             <div class="card-body">
 
-                <div class="form-row">
-                    <div class="form-group col">
-                        <label asp-for="@Model.ToList()[0].Question" class="control-label"></label>
-                        <input asp-for="@Model.ToList()[0].Question" class="form-control" />
-                        <span asp-validation-for="@Model.ToList()[0].Question" class="text-danger"></span>
-                        <div class="invalid-tooltip">
-                            Please provide a question.
-                        </div>
+                <div class="form-group">
+                    <label asp-for="@Model.ToList()[0].Question" class="control-label"></label>
+                    <input asp-for="@Model.ToList()[0].Question" class="form-control" />
+                    <span asp-validation-for="@Model.ToList()[0].Question" class="text-danger"></span>
+                    <div class="invalid-tooltip">
+                        Please provide a question.
                     </div>
+                </div>
 
-                    <div class="form-group col">
-                        <label asp-for="@Model.ToList()[0].Answer" class="control-label"></label>
-                        <input asp-for="@Model.ToList()[0].Answer" class="form-control"/>
-                        <span asp-validation-for="@Model.ToList()[0].Answer" class="text-danger"></span>
-                        <div class="invalid-tooltip">
-                            Please provide an answer.
-                        </div>
+                <div class="form-group">
+                    <label asp-for="@Model.ToList()[0].Answer" class="control-label"></label>
+                    <textarea asp-for="@Model.ToList()[0].Answer" class="form-control"></textarea>
+                    <span asp-validation-for="@Model.ToList()[0].Answer" class="text-danger"></span>
+                    <div class="invalid-tooltip">
+                        Please provide an answer.
                     </div>
-                </div>               
+                </div>
 
             </div>
         </div>
@@ -43,35 +41,33 @@
 {
     <div id="accordion">
         <div class="card mb-1">
-            <div class="card-header" id="headingOne">
+            <div class="card-header" id="headingFAQ-@i">
                 <h5 class="mb-0">
                     <a class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapse_@i" aria-expanded="false" aria-controls="collapse_@i">
                         @Model.ToList()[i].Question
                     </a>
                 </h5>
             </div>
-            <div id="collapse_@i" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="collapse_@i" class="collapse" aria-labelledby="headingFAQ-@i" data-parent="#accordion">
                 <div class="card-body">
 
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <label asp-for="@Model.ToList()[i].Question" class="control-label"></label>
-                            <input asp-for="@Model.ToList()[i].Question" class="form-control" />
-                            <span asp-validation-for="@Model.ToList()[i].Question" class="text-danger"></span>
-                            <div class="invalid-tooltip">
-                                Please provide a question.
-                            </div>
+                    <div class="form-group col">
+                        <label asp-for="@Model.ToList()[i].Question" class="control-label"></label>
+                        <input asp-for="@Model.ToList()[i].Question" class="form-control" />
+                        <span asp-validation-for="@Model.ToList()[i].Question" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide a question.
                         </div>
+                    </div>
 
-                        <div class="form-group col">
-                            <label asp-for="@Model.ToList()[i].Answer" class="control-label"></label>
-                            <input asp-for="@Model.ToList()[i].Answer" class="form-control"/>
-                            <span asp-validation-for="@Model.ToList()[i].Answer" class="text-danger"></span>
-                            <div class="invalid-tooltip">
-                                Please provide an answer.
-                            </div>
+                    <div class="form-group col">
+                        <label asp-for="@Model.ToList()[i].Answer" class="control-label"></label>
+                        <textarea asp-for="@Model.ToList()[i].Answer" class="form-control"></textarea>
+                        <span asp-validation-for="@Model.ToList()[i].Answer" class="text-danger"></span>
+                        <div class="invalid-tooltip">
+                            Please provide an answer.
                         </div>
-                    </div>              
+                    </div>
 
                 </div>
             </div>

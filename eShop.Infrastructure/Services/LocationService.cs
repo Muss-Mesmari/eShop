@@ -37,16 +37,19 @@ namespace eShop.Infrastructure.Services
 
         public void CreateLocation(int eventId, EventViewModel newEvent)
         {
-            var _newLocation = new Location()
+            if (newEvent.Location != null)
             {
-                EventId = eventId,
-                Street = newEvent.Location.Street,
-                StreetNumber = newEvent.Location.StreetNumber,
-                City = newEvent.Location.City,
-                State = newEvent.Location.State,
-                ZipCode = newEvent.Location.ZipCode
-            };
-            _eShopDbContext.Location.Add(_newLocation);
+                var _newLocation = new Location()
+                {
+                    EventId = eventId,
+                    Street = newEvent.Location.Street,
+                    StreetNumber = newEvent.Location.StreetNumber,
+                    City = newEvent.Location.City,
+                    State = newEvent.Location.State,
+                    ZipCode = newEvent.Location.ZipCode
+                };
+                _eShopDbContext.Location.Add(_newLocation);                
+            }
             _eShopDbContext.SaveChanges();
         }
 
