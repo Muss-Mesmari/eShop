@@ -216,6 +216,27 @@ namespace eShop.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FAQ",
+                columns: table => new
+                {
+                    FAQId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EventId = table.Column<int>(nullable: false),
+                    Question = table.Column<string>(nullable: true),
+                    Answer = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FAQ", x => x.FAQId);
+                    table.ForeignKey(
+                        name: "FK_FAQ_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "EventId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Location",
                 columns: table => new
                 {
@@ -452,32 +473,72 @@ namespace eShop.Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "FAQ",
+                columns: new[] { "FAQId", "Answer", "EventId", "Question" },
+                values: new object[,]
+                {
+                    { 1, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 1, "Question no.1" },
+                    { 8, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 3, "Question no.2" },
+                    { 9, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 3, "Question no.3" },
+                    { 20, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 7, "Question no.2" },
+                    { 29, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 10, "Question no.2" },
+                    { 28, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 10, "Question no.1" },
+                    { 27, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 9, "Question no.3" },
+                    { 26, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 9, "Question no.2" },
+                    { 13, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 5, "Question no.1" },
+                    { 7, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 3, "Question no.1" },
+                    { 14, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 5, "Question no.2" },
+                    { 25, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 9, "Question no.1" },
+                    { 24, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 8, "Question no.3" },
+                    { 23, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 8, "Question no.2" },
+                    { 22, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 8, "Question no.1" },
+                    { 16, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 6, "Question no.1" },
+                    { 17, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 6, "Question no.2" },
+                    { 18, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 6, "Question no.3" },
+                    { 21, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 7, "Question no.3" },
+                    { 15, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 5, "Question no.3" },
+                    { 30, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 10, "Question no.3" },
+                    { 19, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 7, "Question no.1" },
+                    { 10, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 4, "Question no.1" },
+                    { 31, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 11, "Question no.1" },
+                    { 12, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 4, "Question no.3" },
+                    { 3, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 2, "Question no.3" },
+                    { 4, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 2, "Question no.1" },
+                    { 6, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 2, "Question no.3" },
+                    { 5, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 2, "Question no.2" },
+                    { 33, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 11, "Question no.3" },
+                    { 32, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 11, "Question no.2" },
+                    { 2, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 1, "Question no.2" },
+                    { 11, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.", 4, "Question no.2" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Location",
                 columns: new[] { "LocationId", "City", "EventId", "State", "Street", "StreetNumber", "ZipCode" },
                 values: new object[,]
                 {
+                    { 11, "Stockholm län", 6, "Stockholm", "vägen", 11, 12355 },
                     { 1, "Stockholm län", 1, "Stockholm", "vägen", 1, 12345 },
                     { 14, "Stockholm län", 7, "Stockholm", "vägen", 14, 12353 },
+                    { 16, "Stockholm län", 8, "Stockholm", "vägen", 16, 12355 },
+                    { 2, "Stockholm län", 1, "Stockholm", "vägen", 2, 12346 },
+                    { 8, "Stockholm län", 4, "Stockholm", "vägen", 8, 12352 },
+                    { 7, "Stockholm län", 4, "Stockholm", "vägen", 7, 12351 },
                     { 13, "Stockholm län", 7, "Stockholm", "vägen", 13, 12352 },
                     { 15, "Stockholm län", 8, "Stockholm", "vägen", 15, 12354 },
-                    { 16, "Stockholm län", 8, "Stockholm", "vägen", 16, 12355 },
                     { 12, "Stockholm län", 6, "Stockholm", "vägen", 12, 12351 },
-                    { 11, "Stockholm län", 6, "Stockholm", "vägen", 11, 12355 },
+                    { 5, "Stockholm län", 3, "Stockholm", "vägen", 5, 12349 },
+                    { 9, "Stockholm län", 5, "Stockholm", "vägen", 9, 12353 },
+                    { 22, "Stockholm län", 11, "Stockholm", "vägen", 22, 12355 },
                     { 17, "Stockholm län", 9, "Stockholm", "vägen", 17, 12352 },
                     { 18, "Stockholm län", 9, "Stockholm", "vägen", 18, 12353 },
-                    { 10, "Stockholm län", 5, "Stockholm", "vägen", 10, 12354 },
-                    { 9, "Stockholm län", 5, "Stockholm", "vägen", 9, 12353 },
-                    { 19, "Stockholm län", 10, "Stockholm", "vägen", 19, 12354 },
                     { 6, "Stockholm län", 3, "Stockholm", "vägen", 6, 12350 },
-                    { 5, "Stockholm län", 3, "Stockholm", "vägen", 5, 12349 },
-                    { 21, "Stockholm län", 11, "Stockholm", "vägen", 21, 12354 },
-                    { 22, "Stockholm län", 11, "Stockholm", "vägen", 22, 12355 },
-                    { 20, "Stockholm län", 10, "Stockholm", "vägen", 20, 12355 },
-                    { 2, "Stockholm län", 1, "Stockholm", "vägen", 2, 12346 },
-                    { 7, "Stockholm län", 4, "Stockholm", "vägen", 7, 12351 },
                     { 3, "Stockholm län", 2, "Stockholm", "vägen", 3, 12347 },
-                    { 8, "Stockholm län", 4, "Stockholm", "vägen", 8, 12352 },
-                    { 4, "Stockholm län", 2, "Stockholm", "vägen", 4, 12348 }
+                    { 4, "Stockholm län", 2, "Stockholm", "vägen", 4, 12348 },
+                    { 21, "Stockholm län", 11, "Stockholm", "vägen", 21, 12354 },
+                    { 19, "Stockholm län", 10, "Stockholm", "vägen", 19, 12354 },
+                    { 20, "Stockholm län", 10, "Stockholm", "vägen", 20, 12355 },
+                    { 10, "Stockholm län", 5, "Stockholm", "vägen", 10, 12354 }
                 });
 
             migrationBuilder.InsertData(
@@ -485,17 +546,17 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "ScheduleId", "EventId" },
                 values: new object[,]
                 {
-                    { 9, 9 },
-                    { 5, 5 },
-                    { 6, 6 },
-                    { 7, 7 },
-                    { 10, 10 },
+                    { 8, 8 },
+                    { 11, 11 },
                     { 4, 4 },
+                    { 9, 9 },
+                    { 10, 10 },
+                    { 7, 7 },
                     { 3, 3 },
                     { 2, 2 },
+                    { 6, 6 },
                     { 1, 1 },
-                    { 8, 8 },
-                    { 11, 11 }
+                    { 5, 5 }
                 });
 
             migrationBuilder.InsertData(
@@ -503,41 +564,41 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TeacherId", "EventId", "TeacherDescription", "TeacherName" },
                 values: new object[,]
                 {
-                    { 25, 8, "Teacher Assistant Two Description", "Teacher Two" },
-                    { 14, 4, "Teacher Assistant One Description", "Teacher One" },
-                    { 24, 7, "Teacher Assistant One Description", "Teacher One" },
-                    { 23, 7, "Teacher Assistant Three Description", "Teacher Three" },
-                    { 13, 4, "Teacher Assistant Three Description", "Teacher Three" },
-                    { 12, 4, "Teacher Assistant Two Description", "Teacher Two" },
-                    { 34, 11, "Teacher Assistant One Description", "Teacher One" },
-                    { 26, 8, "Teacher Assistant Three Description", "Teacher Three" },
+                    { 3, 1, "Teacher Assistant Three Description", "Teacher Three" },
+                    { 5, 2, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 32, 10, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 31, 10, "Teacher Assistant One Description", "Teacher One" },
+                    { 7, 2, "Teacher Assistant Four Description", "Teacher One" },
+                    { 10, 3, "Teacher Assistant Three Description", "Teacher One" },
                     { 27, 8, "Teacher Assistant Four Description", "Teacher One" },
+                    { 9, 3, "Teacher Assistant Two Description", "Teacher Three" },
                     { 28, 9, "Teacher Assistant One Description", "Teacher Two" },
                     { 29, 9, "Teacher Assistant Two Description", "Teacher Three" },
                     { 30, 9, "Teacher Assistant Three Description", "Teacher One" },
-                    { 31, 10, "Teacher Assistant One Description", "Teacher One" },
                     { 35, 11, "Teacher Assistant One Description", "Teacher One" },
-                    { 32, 10, "Teacher Assistant Two Description", "Teacher Two" },
-                    { 33, 10, "Teacher Assistant Three Description", "Teacher Three" },
-                    { 11, 4, "Teacher Assistant One Description", "Teacher One" },
-                    { 22, 7, "Teacher Assistant Two Description", "Teacher Two" },
-                    { 21, 7, "Teacher Assistant One Description", "Teacher One" },
-                    { 10, 3, "Teacher Assistant Three Description", "Teacher One" },
-                    { 16, 5, "Teacher Assistant Three Description", "Teacher Three" },
-                    { 17, 5, "Teacher Assistant Four Description", "Teacher One" },
-                    { 5, 2, "Teacher Assistant Two Description", "Teacher Two" },
-                    { 8, 3, "Teacher Assistant One Description", "Teacher Two" },
-                    { 6, 2, "Teacher Assistant Three Description", "Teacher Three" },
-                    { 7, 2, "Teacher Assistant Four Description", "Teacher One" },
-                    { 15, 5, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 34, 11, "Teacher Assistant One Description", "Teacher One" },
                     { 4, 2, "Teacher Assistant One Description", "Teacher One" },
-                    { 19, 6, "Teacher Assistant Two Description", "Teacher Three" },
+                    { 26, 8, "Teacher Assistant Three Description", "Teacher Three" },
+                    { 15, 5, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 8, 3, "Teacher Assistant One Description", "Teacher Two" },
+                    { 33, 10, "Teacher Assistant Three Description", "Teacher Three" },
                     { 20, 6, "Teacher Assistant Three Description", "Teacher One" },
-                    { 3, 1, "Teacher Assistant Three Description", "Teacher Three" },
-                    { 2, 1, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 19, 6, "Teacher Assistant Two Description", "Teacher Three" },
+                    { 18, 6, "Teacher Assistant One Description", "Teacher Two" },
+                    { 14, 4, "Teacher Assistant One Description", "Teacher One" },
+                    { 21, 7, "Teacher Assistant One Description", "Teacher One" },
+                    { 22, 7, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 25, 8, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 23, 7, "Teacher Assistant Three Description", "Teacher Three" },
+                    { 13, 4, "Teacher Assistant Three Description", "Teacher Three" },
+                    { 12, 4, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 11, 4, "Teacher Assistant One Description", "Teacher One" },
                     { 1, 1, "Teacher Assistant One Description", "Teacher One" },
-                    { 9, 3, "Teacher Assistant Two Description", "Teacher Three" },
-                    { 18, 6, "Teacher Assistant One Description", "Teacher Two" }
+                    { 2, 1, "Teacher Assistant Two Description", "Teacher Two" },
+                    { 17, 5, "Teacher Assistant Four Description", "Teacher One" },
+                    { 16, 5, "Teacher Assistant Three Description", "Teacher Three" },
+                    { 24, 7, "Teacher Assistant One Description", "Teacher One" },
+                    { 6, 2, "Teacher Assistant Three Description", "Teacher Three" }
                 });
 
             migrationBuilder.InsertData(
@@ -545,39 +606,39 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TicketId", "Description", "EventId", "TicketName", "TicketPrice", "TotalAvailableTicket" },
                 values: new object[,]
                 {
-                    { 5, "Omnis et enim aperiam inventore", 2, "Ticket Two", 100m, 20 },
-                    { 30, "Omnis et enim aperiam inventore", 10, "Ticket Two", 100m, 20 },
-                    { 31, "Omnis et enim aperiam inventore", 10, "Ticket Three", 150m, 15 },
+                    { 1, "Omnis et enim aperiam inventore", 1, "Ticket One", 50m, 10 },
+                    { 3, "Omnis et enim aperiam inventore", 1, "Ticket Three", 150m, 15 },
+                    { 32, "Omnis et enim aperiam inventore", 11, "Ticket One", 50m, 10 },
                     { 33, "Omnis et enim aperiam inventore", 11, "Ticket Two", 100m, 20 },
                     { 34, "Omnis et enim aperiam inventore", 11, "Ticket Three", 150m, 15 },
-                    { 4, "Omnis et enim aperiam inventore", 1, "Ticket One", 50m, 10 },
-                    { 3, "Omnis et enim aperiam inventore", 1, "Ticket Three", 150m, 15 },
                     { 2, "Omnis et enim aperiam inventore", 1, "Ticket Two", 100m, 20 },
-                    { 1, "Omnis et enim aperiam inventore", 1, "Ticket One", 50m, 10 },
                     { 11, "Omnis et enim aperiam inventore", 4, "Ticket Two", 100m, 20 },
-                    { 32, "Omnis et enim aperiam inventore", 11, "Ticket One", 50m, 10 },
-                    { 29, "Omnis et enim aperiam inventore", 10, "Ticket Three", 150m, 15 },
+                    { 4, "Omnis et enim aperiam inventore", 1, "Ticket One", 50m, 10 },
                     { 19, "Omnis et enim aperiam inventore", 6, "Ticket One", 50m, 10 },
-                    { 7, "Omnis et enim aperiam inventore", 2, "Ticket One", 50m, 10 },
-                    { 18, "Omnis et enim aperiam inventore", 6, "Ticket Three", 150m, 15 },
+                    { 27, "Omnis et enim aperiam inventore", 9, "Ticket One", 50m, 10 },
+                    { 30, "Omnis et enim aperiam inventore", 10, "Ticket Two", 100m, 20 },
+                    { 17, "Omnis et enim aperiam inventore", 6, "Ticket Two", 100m, 20 },
+                    { 12, "Omnis et enim aperiam inventore", 4, "Ticket Three", 150m, 15 },
                     { 20, "Omnis et enim aperiam inventore", 7, "Ticket Two", 100m, 20 },
                     { 21, "Omnis et enim aperiam inventore", 7, "Ticket Three", 150m, 15 },
                     { 22, "Omnis et enim aperiam inventore", 7, "Ticket One", 50m, 10 },
-                    { 17, "Omnis et enim aperiam inventore", 6, "Ticket Two", 100m, 20 },
                     { 16, "Omnis et enim aperiam inventore", 5, "Ticket One", 50m, 10 },
                     { 15, "Omnis et enim aperiam inventore", 5, "Ticket Three", 150m, 15 },
-                    { 23, "Omnis et enim aperiam inventore", 8, "Ticket Two", 100m, 20 },
-                    { 6, "Omnis et enim aperiam inventore", 2, "Ticket Three", 150m, 15 },
-                    { 24, "Omnis et enim aperiam inventore", 8, "Ticket Three", 150m, 15 },
                     { 14, "Omnis et enim aperiam inventore", 5, "Ticket Two", 100m, 20 },
+                    { 23, "Omnis et enim aperiam inventore", 8, "Ticket Two", 100m, 20 },
+                    { 24, "Omnis et enim aperiam inventore", 8, "Ticket Three", 150m, 15 },
+                    { 25, "Omnis et enim aperiam inventore", 8, "Ticket Two", 100m, 20 },
                     { 10, "Omnis et enim aperiam inventore", 3, "Ticket One", 50m, 10 },
                     { 9, "Omnis et enim aperiam inventore", 3, "Ticket Three", 150m, 15 },
-                    { 26, "Omnis et enim aperiam inventore", 9, "Ticket Three", 150m, 15 },
-                    { 27, "Omnis et enim aperiam inventore", 9, "Ticket One", 50m, 10 },
-                    { 28, "Omnis et enim aperiam inventore", 9, "Ticket Two", 100m, 20 },
                     { 8, "Omnis et enim aperiam inventore", 3, "Ticket Two", 100m, 20 },
-                    { 12, "Omnis et enim aperiam inventore", 4, "Ticket Three", 150m, 15 },
-                    { 25, "Omnis et enim aperiam inventore", 8, "Ticket Two", 100m, 20 },
+                    { 26, "Omnis et enim aperiam inventore", 9, "Ticket Three", 150m, 15 },
+                    { 18, "Omnis et enim aperiam inventore", 6, "Ticket Three", 150m, 15 },
+                    { 28, "Omnis et enim aperiam inventore", 9, "Ticket Two", 100m, 20 },
+                    { 7, "Omnis et enim aperiam inventore", 2, "Ticket One", 50m, 10 },
+                    { 6, "Omnis et enim aperiam inventore", 2, "Ticket Three", 150m, 15 },
+                    { 5, "Omnis et enim aperiam inventore", 2, "Ticket Two", 100m, 20 },
+                    { 29, "Omnis et enim aperiam inventore", 10, "Ticket Three", 150m, 15 },
+                    { 31, "Omnis et enim aperiam inventore", 10, "Ticket Three", 150m, 15 },
                     { 13, "Omnis et enim aperiam inventore", 4, "Ticket One", 50m, 10 }
                 });
 
@@ -622,17 +683,17 @@ namespace eShop.Infrastructure.Migrations
                 columns: new[] { "TimesId", "DayId", "TimeEnd", "TimeStart" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(2431), new DateTime(2020, 8, 2, 23, 17, 56, 935, DateTimeKind.Local).AddTicks(2535) },
-                    { 2, 2, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4164), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4134) },
-                    { 3, 3, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4223), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4218) },
-                    { 5, 5, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4286), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4282) },
-                    { 6, 6, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4321), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4317) },
-                    { 7, 7, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4351), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4347) },
-                    { 8, 8, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4381), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4377) },
-                    { 9, 9, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4412), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4408) },
-                    { 10, 10, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4443), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4440) },
-                    { 11, 11, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4474), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4470) },
-                    { 4, 4, new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4256), new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4252) }
+                    { 1, 1, new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(3105), new DateTime(2020, 8, 10, 20, 42, 24, 991, DateTimeKind.Local).AddTicks(1076) },
+                    { 2, 2, new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(5822), new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(5782) },
+                    { 3, 3, new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(5920), new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(5913) },
+                    { 5, 5, new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6017), new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6011) },
+                    { 6, 6, new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6073), new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6067) },
+                    { 7, 7, new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6121), new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6115) },
+                    { 8, 8, new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6168), new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6162) },
+                    { 9, 9, new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6215), new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6209) },
+                    { 10, 10, new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6263), new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6258) },
+                    { 11, 11, new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6329), new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6321) },
+                    { 4, 4, new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(5969), new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(5962) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -683,6 +744,11 @@ namespace eShop.Infrastructure.Migrations
                 name: "IX_Events_CategoryId",
                 table: "Events",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FAQ_EventId",
+                table: "FAQ",
+                column: "EventId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Location_EventId",
@@ -751,6 +817,9 @@ namespace eShop.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "FAQ");
 
             migrationBuilder.DropTable(
                 name: "Location");

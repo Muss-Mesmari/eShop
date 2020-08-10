@@ -10,7 +10,7 @@ using eShop.Infrastructure.Database;
 namespace eShop.Infrastructure.Migrations
 {
     [DbContext(typeof(eShopDbContext))]
-    [Migration("20200802211757_1stCreate")]
+    [Migration("20200810184225_1stCreate")]
     partial class _1stCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -523,6 +523,262 @@ namespace eShop.Infrastructure.Migrations
                             LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             Name = "Event Eleven",
                             ShortDescription = "Lorem Ipsum"
+                        });
+                });
+
+            modelBuilder.Entity("eShop.Entities.Entities.FAQ", b =>
+                {
+                    b.Property<int>("FAQId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Question")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FAQId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("FAQ");
+
+                    b.HasData(
+                        new
+                        {
+                            FAQId = 1,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 1,
+                            Question = "Question no.1"
+                        },
+                        new
+                        {
+                            FAQId = 2,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 1,
+                            Question = "Question no.2"
+                        },
+                        new
+                        {
+                            FAQId = 3,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 2,
+                            Question = "Question no.3"
+                        },
+                        new
+                        {
+                            FAQId = 4,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 2,
+                            Question = "Question no.1"
+                        },
+                        new
+                        {
+                            FAQId = 5,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 2,
+                            Question = "Question no.2"
+                        },
+                        new
+                        {
+                            FAQId = 6,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 2,
+                            Question = "Question no.3"
+                        },
+                        new
+                        {
+                            FAQId = 7,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 3,
+                            Question = "Question no.1"
+                        },
+                        new
+                        {
+                            FAQId = 8,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 3,
+                            Question = "Question no.2"
+                        },
+                        new
+                        {
+                            FAQId = 9,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 3,
+                            Question = "Question no.3"
+                        },
+                        new
+                        {
+                            FAQId = 10,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 4,
+                            Question = "Question no.1"
+                        },
+                        new
+                        {
+                            FAQId = 11,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 4,
+                            Question = "Question no.2"
+                        },
+                        new
+                        {
+                            FAQId = 12,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 4,
+                            Question = "Question no.3"
+                        },
+                        new
+                        {
+                            FAQId = 13,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 5,
+                            Question = "Question no.1"
+                        },
+                        new
+                        {
+                            FAQId = 14,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 5,
+                            Question = "Question no.2"
+                        },
+                        new
+                        {
+                            FAQId = 15,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 5,
+                            Question = "Question no.3"
+                        },
+                        new
+                        {
+                            FAQId = 16,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 6,
+                            Question = "Question no.1"
+                        },
+                        new
+                        {
+                            FAQId = 17,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 6,
+                            Question = "Question no.2"
+                        },
+                        new
+                        {
+                            FAQId = 18,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 6,
+                            Question = "Question no.3"
+                        },
+                        new
+                        {
+                            FAQId = 19,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 7,
+                            Question = "Question no.1"
+                        },
+                        new
+                        {
+                            FAQId = 20,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 7,
+                            Question = "Question no.2"
+                        },
+                        new
+                        {
+                            FAQId = 21,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 7,
+                            Question = "Question no.3"
+                        },
+                        new
+                        {
+                            FAQId = 22,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 8,
+                            Question = "Question no.1"
+                        },
+                        new
+                        {
+                            FAQId = 23,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 8,
+                            Question = "Question no.2"
+                        },
+                        new
+                        {
+                            FAQId = 24,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 8,
+                            Question = "Question no.3"
+                        },
+                        new
+                        {
+                            FAQId = 25,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 9,
+                            Question = "Question no.1"
+                        },
+                        new
+                        {
+                            FAQId = 26,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 9,
+                            Question = "Question no.2"
+                        },
+                        new
+                        {
+                            FAQId = 27,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 9,
+                            Question = "Question no.3"
+                        },
+                        new
+                        {
+                            FAQId = 28,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 10,
+                            Question = "Question no.1"
+                        },
+                        new
+                        {
+                            FAQId = 29,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 10,
+                            Question = "Question no.2"
+                        },
+                        new
+                        {
+                            FAQId = 30,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 10,
+                            Question = "Question no.3"
+                        },
+                        new
+                        {
+                            FAQId = 31,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 11,
+                            Question = "Question no.1"
+                        },
+                        new
+                        {
+                            FAQId = 32,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 11,
+                            Question = "Question no.2"
+                        },
+                        new
+                        {
+                            FAQId = 33,
+                            Answer = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            EventId = 11,
+                            Question = "Question no.3"
                         });
                 });
 
@@ -1596,78 +1852,78 @@ namespace eShop.Infrastructure.Migrations
                         {
                             TimesId = 1,
                             DayId = 1,
-                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(2431),
-                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 935, DateTimeKind.Local).AddTicks(2535)
+                            TimeEnd = new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(3105),
+                            TimeStart = new DateTime(2020, 8, 10, 20, 42, 24, 991, DateTimeKind.Local).AddTicks(1076)
                         },
                         new
                         {
                             TimesId = 2,
                             DayId = 2,
-                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4164),
-                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4134)
+                            TimeEnd = new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(5822),
+                            TimeStart = new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(5782)
                         },
                         new
                         {
                             TimesId = 3,
                             DayId = 3,
-                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4223),
-                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4218)
+                            TimeEnd = new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(5920),
+                            TimeStart = new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(5913)
                         },
                         new
                         {
                             TimesId = 4,
                             DayId = 4,
-                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4256),
-                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4252)
+                            TimeEnd = new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(5969),
+                            TimeStart = new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(5962)
                         },
                         new
                         {
                             TimesId = 5,
                             DayId = 5,
-                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4286),
-                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4282)
+                            TimeEnd = new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6017),
+                            TimeStart = new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6011)
                         },
                         new
                         {
                             TimesId = 6,
                             DayId = 6,
-                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4321),
-                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4317)
+                            TimeEnd = new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6073),
+                            TimeStart = new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6067)
                         },
                         new
                         {
                             TimesId = 7,
                             DayId = 7,
-                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4351),
-                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4347)
+                            TimeEnd = new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6121),
+                            TimeStart = new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6115)
                         },
                         new
                         {
                             TimesId = 8,
                             DayId = 8,
-                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4381),
-                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4377)
+                            TimeEnd = new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6168),
+                            TimeStart = new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6162)
                         },
                         new
                         {
                             TimesId = 9,
                             DayId = 9,
-                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4412),
-                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4408)
+                            TimeEnd = new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6215),
+                            TimeStart = new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6209)
                         },
                         new
                         {
                             TimesId = 10,
                             DayId = 10,
-                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4443),
-                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4440)
+                            TimeEnd = new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6263),
+                            TimeStart = new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6258)
                         },
                         new
                         {
                             TimesId = 11,
                             DayId = 11,
-                            TimeEnd = new DateTime(2020, 8, 3, 1, 17, 56, 938, DateTimeKind.Local).AddTicks(4474),
-                            TimeStart = new DateTime(2020, 8, 2, 23, 17, 56, 938, DateTimeKind.Local).AddTicks(4470)
+                            TimeEnd = new DateTime(2020, 8, 10, 22, 42, 24, 995, DateTimeKind.Local).AddTicks(6329),
+                            TimeStart = new DateTime(2020, 8, 10, 20, 42, 24, 995, DateTimeKind.Local).AddTicks(6321)
                         });
                 });
 
@@ -1810,6 +2066,15 @@ namespace eShop.Infrastructure.Migrations
                     b.HasOne("eShop.Entities.Entities.Category", "Category")
                         .WithMany("Events")
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eShop.Entities.Entities.FAQ", b =>
+                {
+                    b.HasOne("eShop.Entities.Entities.Event", "Event")
+                        .WithMany("FAQ")
+                        .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

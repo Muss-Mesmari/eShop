@@ -1,0 +1,20 @@
+﻿@model eShop.Presentation.ViewModels.EventViewModel
+
+<div class="form-row">
+    <div class="form-group col">
+        <label asp-for="FAQ.Question" class="control-label"></label>
+        <input asp-for="FAQ.Question" class="form-control" />
+        <span asp-validation-for="FAQ.Question" class="text-danger"></span>
+        <div class="invalid-tooltip">
+            Please provide a question.
+        </div>
+    </div>
+    <div class="form-group col">
+        <label asp-for="FAQ.Answer" class="control-label"></label>
+        <input asp-for="FAQ.Answer" class="form-control" />
+        <span asp-validation-for="FAQ.Answer" class="text-danger"></span>
+    </div>
+    <div class="invalid-tooltip">
+        Please provide an answer.
+    </div>
+</div>

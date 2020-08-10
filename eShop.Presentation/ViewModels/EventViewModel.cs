@@ -9,6 +9,7 @@ namespace eShop.Presentation.ViewModels
 {
     public class EventViewModel
     {
+        public IEnumerable<FAQ> FAQs { get; set; }
         public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<Event> Events { get; set; }
         public List<Day> Days { get; set; }
@@ -25,6 +26,7 @@ namespace eShop.Presentation.ViewModels
         public Day Day { get; set; }
         public Times Time { get; set; }
         public Location Location { get; set; }
+        public FAQ FAQ { get; set; }
         public Teacher Teacher { get; set; }
         public Ticket Ticket { get; set; }
         public decimal ShoppingCartItemTotalEUR { get; set; }

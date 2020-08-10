@@ -22,5 +22,6 @@ namespace eShop.Entities.Entities
         public ICollection<Ticket> Tickets { get; set; }
         public ICollection<Teacher> Teachers { get; set; }
         public ICollection<Location> Locations { get; set; }
+        public ICollection<FAQ> FAQ { get; set; }
     }
 }

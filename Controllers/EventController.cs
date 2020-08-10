@@ -23,6 +23,7 @@ namespace eShop.Web.Controllers
         private readonly ILocationService _locationService;
         private readonly ITeacherService _teacherService;
         private readonly ITicketService _ticketService;
+        private readonly IFAQService _faqService;
         private readonly ShoppingCartService _shoppingCartService;
         private readonly FeaturesConfiguration _featuresConfiguration;
 
@@ -43,6 +44,7 @@ namespace eShop.Web.Controllers
             ILocationService locationService,
             ITeacherService teachersService,
             ITicketService ticketService,
+            IFAQService faqService,
             ShoppingCartService shoppingCartService,
             IOptions<FeaturesConfiguration> options
             )
@@ -53,6 +55,7 @@ namespace eShop.Web.Controllers
             _locationService = locationService;
             _teacherService = teachersService;
             _ticketService = ticketService;
+            _faqService = faqService;
             _shoppingCartService = shoppingCartService;
             _featuresConfiguration = options.Value;
         }
@@ -115,6 +118,7 @@ namespace eShop.Web.Controllers
             var teachers = _teacherService.GetTeachersById(id);
             var selectedAmount = _shoppingCartService.GetShoppingCartItemAmount(id);
             var tickets = _ticketService.GetTicketById(id);
+            var faqs = _faqService.GetFAQById(id);
             var isBoughtTicket = _shoppingCartService.GetShoppingCartItems(id).Any();
             var shoppingCartItems = _shoppingCartService.GetShoppingCartItems(id);
 
@@ -138,6 +142,7 @@ namespace eShop.Web.Controllers
                 Days = days,
                 Times = times,
                 Locations = locations,
+                FAQs = faqs,
                 Teachers = teachers,
                 Tickets = tickets,
                 IsBoughtTicket = isBoughtTicket,
@@ -266,7 +271,8 @@ namespace eShop.Web.Controllers
             {
                 EventId = id,
                 Event = _eventService.GetEventById(id),
-                Locations = _locationService.GetLocationById(id)
+                Locations = _locationService.GetLocationById(id),
+                FAQs = _faqService.GetFAQById(id)
             };
             return View(viewModel);
         }
@@ -278,6 +284,7 @@ namespace eShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                _faqService.CreateFAQ(_eventService.AllEvents().Max(e => e.EventId), newEvent);
                 _locationService.CreateLocation(_eventService.AllEvents().Max(e => e.EventId), newEvent);
                 var eventId = _eventService.AllEvents().Max(e => e.EventId);
                 return RedirectToAction(nameof(CreateStepFive), new { id = eventId });
@@ -292,6 +299,7 @@ namespace eShop.Web.Controllers
             {
                 Teachers = _teacherService.GetTeachersById(id),
                 Locations = _locationService.GetLocationById(id),
+                FAQs = _faqService.GetFAQById(id),
                 Categories = _categoryService.AllCategories.ToList(),
                 Event = _eventService.GetEventById(id),
                 Tickets = _ticketService.GetTicketById(id),
@@ -308,12 +316,13 @@ namespace eShop.Web.Controllers
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, EventViewModel newEvent, IEnumerable<Location> locations, IEnumerable<Teacher> teachers, IEnumerable<Ticket> tickets, IEnumerable<Day> days, List<string> SelectedStartTimesBinded, List<string> SelectedEndTimesBinded)
+        public IActionResult Edit(int id, EventViewModel newEvent, IEnumerable<FAQ> faqs, IEnumerable<Location> locations, IEnumerable<Teacher> teachers, IEnumerable<Ticket> tickets, IEnumerable<Day> days, List<string> SelectedStartTimesBinded, List<string> SelectedEndTimesBinded)
         {
             if (ModelState.IsValid)
             {
                 _eventService.UpdateEvent(newEvent);
                 _locationService.UpdateLocation(id, locations);
+                _faqService.UpdateFAQ(id, faqs);
                 _teacherService.UpdateTeacher(id, teachers);
                 _ticketService.UpdateTicket(id, tickets);
                 _scheduleService.UpdateDays(id, days);
@@ -347,6 +356,7 @@ namespace eShop.Web.Controllers
                 _scheduleService.DeleteSchedule(id);
                 _eventService.DeleteEvent(id);
                 _locationService.DeleteLocations(id);
+                _faqService.DeleteFAQs(id);
                 _teacherService.DeleteTeacher(id);
             }
             return RedirectToAction("Index");

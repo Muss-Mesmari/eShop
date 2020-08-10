@@ -55,9 +55,22 @@
                                             </div>
                                         }
                                     }
+                                    @{ if (Model.FAQs.Any())
+                                        {
+                                            <partial name="_EventFAQs" />
+                                        }
+                                        else
+                                        {
+                                            <div class="alert alert-danger" role="alert">
+                                                <h4 class="alert-heading">Warning!</h4>
+                                                <p>There are no faqs have been added to the event yet. Loactiobs will appear here after adding them.</p>
+                                            </div>
+                                        }
+                                    }
                                     <hr />
                                     <form asp-action="CreateStepFive" class="needs-validation" novalidate>
                                         <partial name="_CreateLocation" />
+                                        <partial name="_CreateFAQ" />
                                         <div class="mt-3 pt-3">
                                             <button type="submit" class="btn btn-danger w-25">Add Location <i class="fa fa-plus text-white"></i></button>
                                         </div>
